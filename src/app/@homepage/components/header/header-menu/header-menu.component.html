@@ -1,0 +1,42 @@
+<button [fxHide.gt-md]="true"
+        nbButton
+        [status]="'warning'"
+        [shape]="'round'"
+        [nbPopover]="menuTemplate"
+        [nbPopoverContext]="{ items: menuItems }"
+        [nbPopoverPlacement]="'bottom'">
+  <nb-icon [icon]="'menu-2-outline'"></nb-icon>
+</button>
+
+<div [fxHide.lt-lg]="true">
+  <ul [fxLayout]="'row'">
+    <ng-container *ngFor="let item of menuItems">
+      <li *ngIf="item?.children"
+          [nbPopover]="menuTemplate"
+          [nbPopoverContext]="{ items: item.children }"
+          [nbPopoverTrigger]="'hover'"
+          [nbPopoverPlacement]="'bottom'"
+          [routerLink]="item.link"
+          [fragment]="item.fragment"
+          [class.active]="(activeFragment | async) === item.fragment">
+        {{ item.title }}
+        <nb-icon icon="chevron-down-outline"></nb-icon>
+      </li>
+      <li *ngIf="!item?.children"
+          [routerLink]="item.link"
+          [fragment]="item.fragment"
+          [class.active]="(activeFragment | async) === item.fragment">
+        {{ item.title }}
+      </li>
+
+    </ng-container>
+  </ul>
+</div>
+
+
+<ng-template #menuTemplate
+             let-data>
+  <nb-menu [items]="data.items">
+  </nb-menu>
+</ng-template>
+

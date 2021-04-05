@@ -1,0 +1,47 @@
+@import './homepage-colors.utils';
+
+:host ::ng-deep {
+  // OVERRIDE MAIN LAYOUT
+  nb-layout {
+    nb-layout-header {
+      background-color: transparent;
+      z-index: 1;
+
+      nav {
+        box-shadow: none;
+      }
+    }
+
+    nb-layout-column {
+      padding: 0 !important;
+      background-color: $creamy-white !important;
+    }
+
+    nb-layout-footer {
+      background-color: $creamy-white !important;
+      nav {
+        background-color: inherit !important;
+      }
+    }
+  }
+
+  // OVERRIDE POPOVER
+  nb-popover {
+    background-color: $creamy-white !important;
+    span:after {
+      display: none;
+    }
+  }
+
+  // OVERRIDE MENU STYLE NOT HORIZONTAL
+  nb-menu {
+    background-color: $creamy-white !important;
+    ul {
+      border-color: $creamy-white !important;
+      li {
+        border-color: $creamy-white !important;
+      }
+    }
+  }
+
+}
