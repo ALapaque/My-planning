@@ -1,0 +1,14 @@
+:host ::ng-deep {
+  nb-layout {
+    nb-layout-column {
+      padding: 2.5rem !important;
+
+      nb-card {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+
+}
