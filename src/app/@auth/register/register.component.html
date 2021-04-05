@@ -1,1 +1,63 @@
-<p>register works!</p>
+<nb-card>
+  <nb-card-header fxLayoutAlign="space-between center">
+    <button nbButton
+            ghost
+            status="primary"
+            shape="round"
+            size="giant"
+            (click)="navigatePrevious()">
+      <nb-icon icon="arrow-back" ></nb-icon>
+    </button>
+  </nb-card-header>
+  <nb-card-body [fxLayoutAlign]="'center center'">
+
+    <form [formGroup]="loginForm"
+          (ngSubmit)="login()"
+          [fxFlex.lt-md]="'100%'"
+          [fxFlex]="'1 1 560px'"
+          [fxLayout]="'column'"
+          [fxLayoutAlign]="'center center'"
+          [fxLayoutGap]="'32px'">
+
+      <h1 class="title">Enregistrement</h1>
+
+      <nb-form-field>
+        <nb-icon nbPrefix icon="person-outline" pack="eva"></nb-icon>
+        <input nbInput
+               fullWidth
+               [type]="'text'"
+               [formControlName]="'username'">
+      </nb-form-field>
+
+      <nb-form-field>
+        <nb-icon nbPrefix icon="unlock-outline" pack="eva"></nb-icon>
+
+        <input nbInput
+               fullWidth
+               [type]="showPassword ? 'text' : 'password'"
+               [formControlName]="'password'">
+        <button nbSuffix
+                nbButton
+                ghost
+                (click)="showPassword = !showPassword">
+          <nb-icon [icon]="showPassword ? 'eye-outline' : 'eye-off-2-outline'"
+                   pack="eva"
+                   [attr.aria-label]="showPassword ? 'hide password' : 'show password'">
+          </nb-icon>
+        </button>
+      </nb-form-field>
+
+      <button nbButton
+              hero
+              status="primary">
+        S'enregistrer
+      </button>
+
+      <p>
+        Vous possèdez déjà un compte ? <a [routerLink]="'../login'">Se connecter</a>
+      </p>
+
+
+    </form>
+  </nb-card-body>
+</nb-card>

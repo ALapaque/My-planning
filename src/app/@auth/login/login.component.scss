@@ -1,0 +1,16 @@
+:host ::ng-deep {
+  nb-card {
+    nb-card-header {}
+
+    nb-card-body {
+      form {
+        height: 100%;
+        h1.title {
+          font-family: "Dancing Script", cursive;
+          font-size: 3rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

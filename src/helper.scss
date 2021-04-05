@@ -1,3 +1,282 @@
+// USEFUL VARS
+$spacingSize: 1rem; // used for margin AND padding
+$spacingSizeXS: .5rem;
+$spacingSizeXL: 2rem;
+
+$transitionDefault: cubic-bezier(0.0, 0.0, 0.2, 1);
+$transitionDecelerate: cubic-bezier(0.0, 0.0, 0.2, 1);
+$transitionAccelerate: cubic-bezier(0.4, 0.0, 1, 1);
+
+// Display styles helpers
+.text-center {
+  text-align: center !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.margin {
+  margin: $spacingSize !important;
+}
+
+.margin-xs {
+  margin: $spacingSizeXS !important;
+}
+
+.margin-xl {
+  margin: $spacingSizeXL !important;
+}
+
+.margin-side {
+  margin-left: $spacingSize !important;
+  margin-right: $spacingSize !important;
+}
+
+.margin-side-xs {
+  margin-left: $spacingSizeXS !important;
+  margin-right: $spacingSizeXS !important;
+}
+
+.margin-side-xl {
+  margin-left: $spacingSizeXL !important;
+  margin-right: $spacingSizeXL !important;
+}
+
+.margin-vertical {
+  margin-top: $spacingSize !important;
+  margin-bottom: $spacingSize !important;
+}
+
+.margin-vertical-xs {
+  margin-top: $spacingSizeXS !important;
+  margin-bottom: $spacingSizeXS !important;
+}
+
+.margin-vertical-xl {
+  margin-top: $spacingSizeXL !important;
+  margin-bottom: $spacingSizeXL !important;
+}
+
+.margin-left {
+  margin-left: $spacingSize !important;
+}
+
+.margin-left-xs {
+  margin-left: $spacingSizeXS !important;
+}
+
+.margin-left-xl {
+  margin-left: $spacingSizeXL !important;
+}
+
+.margin-right {
+  margin-right: $spacingSize !important;
+}
+
+.margin-right-xs {
+  margin-right: $spacingSizeXS !important;
+}
+
+.margin-right-xl {
+  margin-right: $spacingSizeXL !important;
+}
+
+.margin-top {
+  margin-top: $spacingSize !important;
+}
+
+.margin-top-xs {
+  margin-top: $spacingSizeXS !important;
+}
+
+.margin-top-xl {
+  margin-top: $spacingSizeXL !important;
+}
+
+.margin-bottom {
+  margin-bottom: $spacingSize !important;
+}
+
+.margin-bottom-xs {
+  margin-bottom: $spacingSizeXS !important;
+}
+
+.margin-bottom-xl {
+  margin-bottom: $spacingSizeXL !important;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.padding {
+  padding: $spacingSize !important;
+}
+
+.padding-xs {
+  padding: $spacingSizeXS !important;
+}
+
+.padding-xl {
+  padding: $spacingSizeXL !important;
+}
+
+.padding-side {
+  padding-left: $spacingSize !important;
+  padding-right: $spacingSize !important;
+}
+
+.padding-side-xs {
+  padding-left: $spacingSizeXS !important;
+  padding-right: $spacingSizeXS !important;
+}
+
+.padding-side-xl {
+  padding-left: $spacingSizeXL !important;
+  padding-right: $spacingSizeXL !important;
+}
+
+.padding-left {
+  padding-left: $spacingSize !important;
+}
+
+.padding-left-xs {
+  padding-left: $spacingSizeXS !important;
+}
+
+.padding-left-xl {
+  padding-left: $spacingSizeXL !important;
+}
+
+.padding-right {
+  padding-right: $spacingSize !important;
+}
+
+.padding-right-xs {
+  padding-right: $spacingSizeXS !important;
+}
+
+.padding-right-xl {
+  padding-right: $spacingSizeXL !important;
+}
+
+.padding-top {
+  padding-top: $spacingSize !important;
+}
+
+.padding-top-xs {
+  padding-top: $spacingSizeXS !important;
+}
+
+.padding-top-xl {
+  padding-top: $spacingSizeXL !important;
+}
+
+.padding-bottom {
+  padding-bottom: $spacingSize !important;
+}
+
+.padding-bottom-xs {
+  padding-bottom: $spacingSizeXS !important;
+}
+
+.padding-bottom-xl {
+  padding-bottom: $spacingSizeXL !important;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+// Rotated classes
+.rotate-90 {
+  transform: rotate(90deg);
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.rotate-270 {
+  transform: rotate(-90deg);
+}
+
+.rotate-animation {
+  transition: transform 175ms $transitionDecelerate;
+}
+
+//avoid select text or icons ....
+.not-selectable {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently */
+}
+
+.spinning {
+  animation-name: rotate;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+// Clickable
 .clickable {
   cursor: pointer;
+
+  &:hover.clickable--underline {
+    text-decoration: underline;
+  }
+}
+
+// Loading background
+.loading-background {
+  @keyframes placeHolderShimmer {
+    0% {
+      background-position-x: 0;
+    }
+    100% {
+      background-position-x: 500px;
+    }
+  }
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 100px, #dddddd 250px, #eeeeee 400px);
+  background-position: 0 0;
+  background-size: 500px 100px;
+  position: relative;
+}
+
+.contrast-bg {
+  background: rgba(0, 0, 0, .20) !important;
 }

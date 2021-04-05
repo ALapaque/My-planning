@@ -3,14 +3,14 @@
         [status]="'warning'"
         [shape]="'round'"
         [nbPopover]="menuTemplate"
-        [nbPopoverContext]="{ items: menuItems }"
+        [nbPopoverContext]="{ items: smallScreenMenu }"
         [nbPopoverPlacement]="'bottom'">
   <nb-icon [icon]="'menu-2-outline'"></nb-icon>
 </button>
 
 <div [fxHide.lt-lg]="true">
   <ul [fxLayout]="'row'">
-    <ng-container *ngFor="let item of menuItems">
+    <ng-container *ngFor="let item of biggerScreenMenu">
       <li *ngIf="item?.children"
           [nbPopover]="menuTemplate"
           [nbPopoverContext]="{ items: item.children }"
