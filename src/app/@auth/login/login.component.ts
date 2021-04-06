@@ -1,6 +1,8 @@
 import { Component, OnInit }                  from '@angular/core';
 import { Location }                           from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router }                             from '@angular/router';
+import { NbToastrService }                    from '@nebular/theme';
 import { AuthService }                        from '../../@shared/services/auth.service';
 
 @Component({
@@ -19,8 +21,10 @@ export class LoginComponent implements OnInit {
   );
 
   constructor(
+    private _routerService: Router,
     private _location: Location,
     private _authService: AuthService,
+    private _toastrService: NbToastrService,
   ) {
   }
 
@@ -32,6 +36,14 @@ export class LoginComponent implements OnInit {
   }
 
   public login(): void {
-    this._authService.login(this.loginForm.value).subscribe();
+    this._authService.login(this.loginForm.value).subscribe(
+      () => {
+        this._routerService.navigate(['/app']);
+        this._toastrService.warning('Bienvenue dans My-planning');
+      },
+      () => {
+        this._toastrService.danger('Une erreur est survenue');
+      }
+    );
   }
 }
