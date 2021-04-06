@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute }    from '@angular/router';
 import { NbMenuItem }        from '@nebular/theme';
-import { share }             from 'rxjs/operators';
+import { map, share }        from 'rxjs/operators';
 
-@Component({
-             selector: 'app-header-menu',
-             templateUrl: './header-menu.component.html',
-             styleUrls: [ './header-menu.component.scss' ],
-           })
+@Component(
+  {
+    selector: 'app-header-menu',
+    templateUrl: './header-menu.component.html',
+    styleUrls: [ './header-menu.component.scss' ],
+  },
+)
 export class HeaderMenuComponent implements OnInit {
 
   public menuItems: NbMenuItem[] = [
@@ -23,22 +25,30 @@ export class HeaderMenuComponent implements OnInit {
     {
       title: 'Secteurs',
       link: '/homepage',
-      fragment: 'sectors'
+      fragment: 'sectors',
     },
     {
       title: 'Nos offres',
       link: '/homepage',
-      fragment: 'offers'
+      fragment: 'offers',
     },
     {
       title: 'Clients',
       link: '/homepage',
-      fragment: 'clients'
+      fragment: 'clients',
     },
     {
       title: 'A propos',
       link: '/homepage',
-      fragment: 'about'
+      fragment: 'about',
+    },
+  ];
+
+  public mobileMenuItems: NbMenuItem[] = [
+    ...this.menuItems,
+    {
+      title: 'Accéder à l\'application',
+      link: '/auth',
     },
   ];
 

@@ -1,9 +1,9 @@
 <button [fxHide.gt-md]="true"
         nbButton
-        [status]="'warning'"
-        [shape]="'round'"
+        status="control"
+        shape="semi-round"
         [nbPopover]="menuTemplate"
-        [nbPopoverContext]="{ items: menuItems }"
+        [nbPopoverContext]="{ items: mobileMenuItems }"
         [nbPopoverPlacement]="'bottom'">
   <nb-icon [icon]="'menu-2-outline'"></nb-icon>
 </button>

@@ -3,7 +3,6 @@
   <ng-container [ngTemplateOutlet]="headerMenu"></ng-container>
   <ng-container [ngTemplateOutlet]="appName"></ng-container>
 </div>
-
 <div [fxHide.lt-lg]="true"
      fxLayoutGap="16px">
   <ng-container [ngTemplateOutlet]="appName"></ng-container>
@@ -11,9 +10,11 @@
 </div>
 
 
-<span [fxFlex]="'auto'"></span>
+<span [fxHide.lt-lg]="true"
+      [fxFlex]="'auto'">
+</span>
 
-<app-header-go-to-app [fxHide.lt-md]="true"></app-header-go-to-app>
+<app-header-go-to-app [fxHide.lt-lg]="true"></app-header-go-to-app>
 
 <ng-template #headerMenu>
   <app-header-menu [fxFlex]="'auto'"
