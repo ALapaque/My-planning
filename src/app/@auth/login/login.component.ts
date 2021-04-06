@@ -1,6 +1,7 @@
 import { Component, OnInit }                  from '@angular/core';
 import { Location }                           from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService }                        from '../../@shared/services/auth.service';
 
 @Component({
              selector: 'app-login',
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _location: Location,
+    private _authService: AuthService,
   ) {
   }
 
@@ -30,6 +32,6 @@ export class LoginComponent implements OnInit {
   }
 
   public login(): void {
-
+    this._authService.login(this.loginForm.value).subscribe();
   }
 }
