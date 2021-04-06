@@ -4,14 +4,14 @@
 @import '~@nebular/theme/styles/themes/corporate';
 @import '~@nebular/theme/styles/themes/cosmic';
 
-$nb-themes: nb-register-theme((
+$dark-themes: nb-register-theme((
 ), dark, dark);
 
-$nb-themes: nb-register-theme((
+$default-themes: nb-register-theme((
 ), default, default);
 
-$nb-themes: nb-register-theme((
+$corporate-themes: nb-register-theme((
 ), corporate, corporate);
 
-$nb-themes: nb-register-theme((
+$cosmic-themes: nb-register-theme((
 ), cosmic, cosmic);

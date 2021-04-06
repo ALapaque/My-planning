@@ -10,94 +10,15 @@ import { share }             from 'rxjs/operators';
            })
 export class HeaderMenuComponent implements OnInit {
 
-  public smallScreenMenu: NbMenuItem[] = [
+  public menuItems: NbMenuItem[] = [
     {
       title: 'Accueil',
-      link: '/homepage'
+      link: '/homepage',
     },
     {
       title: 'Fonctionnalités',
       link: '/homepage',
       fragment: 'features',
-      children: [
-        {
-          title: 'Le tableau de bord',
-          link: '/homepage',
-          fragment: 'dashboard'
-        },
-        {
-          title: 'L\'agenda',
-          link: '/homepage',
-          fragment: 'agenda'
-        },
-        {
-          title: 'La communication',
-          link: '/homepage',
-          fragment: 'communication'
-        },
-        {
-          title: 'Le suivi des réunions',
-          link: '/homepage',
-          fragment: 'meetings'
-        },
-      ],
-    },
-    {
-      title: 'Secteurs',
-      link: '/homepage',
-      fragment: 'sectors'
-    },
-    {
-      title: 'Nos offres',
-      link: '/homepage',
-      fragment: 'offers'
-    },
-    {
-      title: 'Clients',
-      link: '/homepage',
-      fragment: 'clients'
-    },
-    {
-      title: 'A propos',
-      link: '/homepage',
-      fragment: 'about'
-    },
-    {
-      title: 'Accèder à l\'application',
-      link: '/auth'
-    },
-  ];
-  public biggerScreenMenu: NbMenuItem[] = [
-    {
-      title: 'Accueil',
-      link: '/homepage'
-    },
-    {
-      title: 'Fonctionnalités',
-      link: '/homepage',
-      fragment: 'features',
-      children: [
-        {
-          title: 'Le tableau de bord',
-          link: '/homepage',
-          fragment: 'dashboard'
-        },
-        {
-          title: 'L\'agenda',
-          link: '/homepage',
-          fragment: 'agenda'
-        },
-        {
-          title: 'La communication',
-          link: '/homepage',
-          fragment: 'communication'
-        },
-        {
-          title: 'Le suivi des réunions',
-          link: '/homepage',
-          fragment: 'meetings'
-        },
-      ],
     },
     {
       title: 'Secteurs',

@@ -3,35 +3,20 @@
         [status]="'warning'"
         [shape]="'round'"
         [nbPopover]="menuTemplate"
-        [nbPopoverContext]="{ items: smallScreenMenu }"
+        [nbPopoverContext]="{ items: menuItems }"
         [nbPopoverPlacement]="'bottom'">
   <nb-icon [icon]="'menu-2-outline'"></nb-icon>
 </button>
 
-<div [fxHide.lt-lg]="true">
-  <ul [fxLayout]="'row'">
-    <ng-container *ngFor="let item of biggerScreenMenu">
-      <li *ngIf="item?.children"
-          [nbPopover]="menuTemplate"
-          [nbPopoverContext]="{ items: item.children }"
-          [nbPopoverTrigger]="'hover'"
-          [nbPopoverPlacement]="'bottom'"
-          [routerLink]="item.link"
-          [fragment]="item.fragment"
-          [class.active]="(activeFragment | async) === item.fragment">
-        {{ item.title }}
-        <nb-icon icon="chevron-down-outline"></nb-icon>
-      </li>
-      <li *ngIf="!item?.children"
-          [routerLink]="item.link"
-          [fragment]="item.fragment"
-          [class.active]="(activeFragment | async) === item.fragment">
-        {{ item.title }}
-      </li>
-
-    </ng-container>
-  </ul>
-</div>
+<ul [fxHide.lt-lg]="true">
+  <li *ngFor="let item of menuItems">
+    <a [routerLink]="item.link"
+       [fragment]="item.fragment"
+       [class.active]="(activeFragment | async) === item.fragment">
+      {{ item.title }}
+    </a>
+  </li>
+</ul>
 
 
 <ng-template #menuTemplate

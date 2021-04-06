@@ -1,44 +1,58 @@
-@import "../../homepage-colors.utils";
+@import '../../../../themes';
+@import '../../../../helper';
 
 :host ::ng-deep {
   ul {
-    list-style-type: none;
-    border: solid 6px rgba(32, 32, 32);
-    background: $creamy-white;
     padding: 0;
-    border-radius: 8px;
+    list-style: none;
+    display: table;
+    text-align: center;
 
     li {
-      color: #e95b1b;
-      font-weight: bold;
-      padding: 8px 12px;
-    }
+      display: table-cell;
+      position: relative;
+      padding: 0 12px;
 
-    li:hover {
-      cursor: pointer;
-      background-color: rgba(32, 32, 32, 0.3);
+      a {
+        @extend .font;
+        @extend .--man-rope;
+        font-weight: 600;
+        color: nb-theme(color-basic-800);
+        text-transform: uppercase;
+        text-decoration: none;
+        letter-spacing: 0.15em;
+        display: inline-block;
+        position: relative;
+      }
 
-      nb-icon {
-        transition-duration: 0.8s;
-        transition-property: transform;
-        transform: rotate(180deg);
-        -webkit-transform: rotate(180deg);
+      a:after {
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 2px;
+        left: 50%;
+        position: absolute;
+        background: nb-theme(color-success-default);
+        transition: width 0.3s ease 0s, left 0.3s ease 0s;
+        width: 0;
+      }
+
+      a:hover {
+        color: nb-theme(color-success-default);
+      }
+
+      a.active {
+        color: nb-theme(color-success-default);
+        &:after {
+          width: 100%;
+          left: 0;
+        }
+      }
+
+      a:hover:after {
+        width: 100%;
+        left: 0;
       }
     }
-    li.active {
-      background-color: rgba(32, 32, 32, 0.3);
-    }
-  }
-}
-
-@keyframes rotate {
-  0% {
-    font-size: 10px;
-  }
-  30% {
-    font-size: 15px;
-  }
-  100% {
-    font-size: 12px;
   }
 }

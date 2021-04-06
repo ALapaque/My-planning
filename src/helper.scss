@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&family=Train+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab+Highlight:wght@700&display=swap');
+
 // USEFUL VARS
 $spacingSize: 1rem; // used for margin AND padding
 $spacingSizeXS: .5rem;
@@ -6,6 +9,21 @@ $spacingSizeXL: 2rem;
 $transitionDefault: cubic-bezier(0.0, 0.0, 0.2, 1);
 $transitionDecelerate: cubic-bezier(0.0, 0.0, 0.2, 1);
 $transitionAccelerate: cubic-bezier(0.4, 0.0, 1, 1);
+
+.font {
+  &.--caveat {
+    font-family: 'Caveat', cursive !important;
+  }
+  &.--man-rope {
+    font-family: 'Manrope', sans-serif !important;
+  }
+  &.--train-one {
+    font-family: 'Train One', cursive !important;
+  }
+  &.--zilla-slab {
+    font-family: 'Zilla Slab Highlight', cursive;
+  }
+}
 
 // Display styles helpers
 .text-center {

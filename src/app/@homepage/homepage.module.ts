@@ -26,7 +26,7 @@ import { HeaderGoToAppComponent } from './header/header-go-to-app/header-go-to-a
     imports: [
       SharedModule,
       HomepageRouting,
-      NbThemeModule.forRoot(),
+      NbThemeModule.forRoot({name: 'default'}),
     ],
   },
 )
