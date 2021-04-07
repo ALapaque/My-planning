@@ -6,9 +6,6 @@ import { NbThemeModule }           from '@nebular/theme';
 import { AppComponent }            from './app.component';
 import { AppRouting }              from './app.routing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule }        from './app-routing.module';
-
-
 
 @NgModule({
             declarations: [
@@ -19,14 +16,13 @@ import { AppRoutingModule }        from './app-routing.module';
               AppRouting,
               BrowserAnimationsModule,
               HttpClientModule,
-              AppRoutingModule,
-              NbThemeModule.forRoot({name: 'corporate'}),
+              NbThemeModule.forRoot({ name: 'default' }),
               JwtModule.forRoot({
                                   config: {
                                     tokenGetter: () => {
                                       return localStorage.getItem('jwt_token');
                                     },
-                                    allowedDomains: ['example.com'],
+                                    allowedDomains: [ 'example.com' ],
                                   },
                                 }),
             ],
