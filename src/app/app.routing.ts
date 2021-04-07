@@ -6,13 +6,19 @@ const routes: Routes = [
     path: '', redirectTo: 'homepage', pathMatch: 'full',
   },
   {
-    path: 'homepage', loadChildren: () => import('./@homepage/homepage.module').then((m) => m.HomepageModule),
+    path: 'homepage',
+    data: { animation: 'homepage' },
+    loadChildren: () => import('./@homepage/homepage.module').then((m) => m.HomepageModule),
   },
   {
-    path: 'auth', loadChildren: () => import('./@auth/auth.module').then((m) => m.AuthModule),
+    path: 'auth',
+    data: { animation: 'auth' },
+    loadChildren: () => import('./@auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'app', loadChildren: () => import('./@application/application.module').then((m) => m.ApplicationModule),
+    path: 'app',
+    data: { animation: 'app' },
+    loadChildren: () => import('./@application/application.module').then((m) => m.ApplicationModule),
   },
 ];
 

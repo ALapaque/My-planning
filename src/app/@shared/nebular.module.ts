@@ -51,6 +51,7 @@ const nebularModule = [
             imports: [
               ...nebularModule,
               NbMenuModule.forRoot(),
+              NbSidebarModule.forRoot(),
               NbToastrModule.forRoot(
                 {
                   destroyByClick: true,

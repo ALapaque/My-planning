@@ -31,9 +31,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public navigatePrevious(): void {
-    this._location.back();
-  }
 
   public login(): void {
     this._authService.login(this.loginForm.value).subscribe(

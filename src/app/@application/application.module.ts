@@ -1,5 +1,6 @@
 import { NgModule }           from '@angular/core';
 import { CommonModule }       from '@angular/common';
+import { NbThemeModule }      from '@nebular/theme';
 import { SharedModule }       from '../@shared/shared.module';
 import { TemplateComponent }  from './@core/template/template.component';
 import { ApplicationRouting } from './application.routing';

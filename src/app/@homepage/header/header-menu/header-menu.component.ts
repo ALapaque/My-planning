@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute }    from '@angular/router';
 import { NbMenuItem }        from '@nebular/theme';
-import { map, share }        from 'rxjs/operators';
+import { share }             from 'rxjs/operators';
 
 @Component(
   {
