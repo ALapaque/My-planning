@@ -1,11 +1,22 @@
 :host ::ng-deep {
   // OVERRIDE MAIN LAYOUT
   nb-layout {
+    .layout {
+      background-color: #ffffff !important;
+
+    }
+
     nb-layout-header {
+      background: transparent !important;
+
+      nav {
+        box-shadow: none !important;
+      }
     }
 
     nb-layout-column {
       padding: 0 !important;
+      background: #ffffff !important;
     }
 
     nb-layout-footer {
