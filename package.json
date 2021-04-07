@@ -28,6 +28,7 @@
     "@nebular/theme": "^7.0.0",
     "@zeit/ng-deploy": "^0.3.0",
     "eva-icons": "^1.1.2",
+    "ngx-toastr": "^13.2.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

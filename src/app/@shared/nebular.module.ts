@@ -52,15 +52,6 @@ const nebularModule = [
               ...nebularModule,
               NbMenuModule.forRoot(),
               NbSidebarModule.forRoot(),
-              NbToastrModule.forRoot(
-                {
-                  destroyByClick: true,
-                  status: 'primary',
-                  position: NbGlobalLogicalPosition.BOTTOM_START,
-                  limit: 5,
-                  preventDuplicates: true,
-                },
-              ),
               NbWindowModule.forRoot(
                 {
                   hasBackdrop: true,

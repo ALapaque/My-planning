@@ -1,0 +1,30 @@
+:host {
+  div {
+    width: 100%;
+    height: calc(80vh - 76px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    place-content: center;
+    padding: 0 60px;
+
+
+    #img_container {
+      background-image: url("/assets/@homepage/6316.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      object-fit: contain;
+    }
+  }
+
+
+  @media screen and (max-width: 1280px) {
+    div {
+      height: calc(100vh - 76px);
+      flex-direction: column;
+    }
+  }
+}
+
+

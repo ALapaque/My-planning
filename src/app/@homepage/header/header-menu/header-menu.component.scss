@@ -1,4 +1,4 @@
-@import '../../../../themes';
+@import '../../../../theme/theme';
 @import '../../../../helper';
 
 :host ::ng-deep {
@@ -32,17 +32,17 @@
         height: 2px;
         left: 50%;
         position: absolute;
-        background: nb-theme(color-success-default);
+        background: nb-theme(text-primary-color);
         transition: width 0.3s ease 0s, left 0.3s ease 0s;
         width: 0;
       }
 
       a:hover {
-        color: nb-theme(color-success-default);
+        color: nb-theme(text-primary-color);
       }
 
       a.active {
-        color: nb-theme(color-success-default);
+        color: nb-theme(text-primary-color);
         &:after {
           width: 100%;
           left: 0;

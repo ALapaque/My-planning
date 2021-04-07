@@ -1,0 +1,15 @@
+:host ::ng-deep {
+  // OVERRIDE MAIN LAYOUT
+  nb-layout {
+    nb-layout-header {
+    }
+
+    nb-layout-column {
+      padding: 0 !important;
+    }
+
+    nb-layout-footer {
+
+    }
+  }
+}
