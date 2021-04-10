@@ -33,3 +33,14 @@ html body {
   border-radius: 15px;
   box-shadow: inset 7px 10px 12px #f0f0f0;
 }
+
+@font-face {
+  font-family: 'kg-happy';
+  src: url('assets/@fonts/kg_happy/KGHAPPY.eot');
+  src: url('assets/@fonts/kg_happy/KGHAPPY.eot?#iefix') format('embedded-opentype'),
+  url('assets/@fonts/kg_happy/KGHAPPY.woff2') format('woff2'),
+  url('assets/@fonts/kg_happy/KGHAPPY.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

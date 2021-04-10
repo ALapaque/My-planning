@@ -16,6 +16,7 @@ export class HeaderMenuComponent implements OnInit {
     {
       title: 'Accueil',
       link: '/homepage',
+      fragment: '#',
     },
     {
       title: 'Fonctionnalités',

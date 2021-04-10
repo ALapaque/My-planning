@@ -1,28 +1,26 @@
+@import "../../../theme/theme";
+
 :host {
-  div {
+  div.hero-banner {
+    height: calc(100vh - 76px);
     width: 100%;
-    height: calc(80vh - 76px);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    place-content: center;
-    padding: 0 60px;
-
-
-    #img_container {
-      background-image: url("/assets/@homepage/6316.png");
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      object-fit: contain;
-    }
   }
 
+  div.hero-banner-background {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: calc(100vh - 76px);
+    background: #2a70ea;
 
-  @media screen and (max-width: 1280px) {
-    div {
-      height: calc(100vh - 76px);
-      flex-direction: column;
+    span {
+      font-family: kg-happy, serif;
+      color: #2761c6;
+      position: absolute;
+      bottom: -4px;
+      padding-left: 36px;
+      font-size: 6em;
+      line-height: 1em;
     }
   }
 }

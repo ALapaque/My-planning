@@ -7,7 +7,9 @@
     }
 
     nb-layout-header {
-      background: transparent !important;
+      &.transparent {
+        background-color: transparent !important;
+      }
 
       nav {
         box-shadow: none !important;

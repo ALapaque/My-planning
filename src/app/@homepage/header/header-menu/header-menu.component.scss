@@ -17,7 +17,7 @@
         @extend .font;
         @extend .--man-rope;
         font-weight: 600;
-        color: nb-theme(color-basic-800);
+        color: #ffffff;
         text-transform: uppercase;
         text-decoration: none;
         letter-spacing: 0.15em;
@@ -32,17 +32,17 @@
         height: 2px;
         left: 50%;
         position: absolute;
-        background: nb-theme(text-primary-color);
+        background: #2761c6;
         transition: width 0.3s ease 0s, left 0.3s ease 0s;
         width: 0;
       }
 
       a:hover {
-        color: nb-theme(text-primary-color);
+        color: #2761c6;
       }
 
       a.active {
-        color: nb-theme(text-primary-color);
+        color: #2761c6;
         &:after {
           width: 100%;
           left: 0;
