@@ -17,7 +17,6 @@
         @extend .font;
         @extend .--man-rope;
         font-weight: 600;
-        color: #ffffff;
         text-transform: uppercase;
         text-decoration: none;
         letter-spacing: 0.15em;
@@ -32,18 +31,19 @@
         height: 2px;
         left: 50%;
         position: absolute;
-        background: #2761c6;
+        background: nb-theme(text-primary-color);
         transition: width 0.3s ease 0s, left 0.3s ease 0s;
         width: 0;
       }
 
       a:hover {
-        color: #2761c6;
+        color: nb-theme(text-primary-color);
       }
 
       a.active {
-        color: #2761c6;
+        color: nb-theme(text-primary-color);
         &:after {
+          background: nb-theme(text-primary-color);
           width: 100%;
           left: 0;
         }

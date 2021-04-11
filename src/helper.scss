@@ -23,6 +23,9 @@ $transitionAccelerate: cubic-bezier(0.4, 0.0, 1, 1);
   &.--zilla-slab {
     font-family: 'Zilla Slab Highlight', cursive;
   }
+  &.--kg-happy {
+    font-family: kg-happy, serif;
+  }
 }
 
 // Display styles helpers
