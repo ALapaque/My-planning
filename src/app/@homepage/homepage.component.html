@@ -8,9 +8,9 @@
   </nb-layout-header>
 
   <nb-layout-column>
-    <section *ngFor="let section of sections$ | async"
-             id="{{ section.anchor }}">
-      <ng-container [ngSwitch]="section.title">
+    <app-section *ngFor="let section of sections$ | async" [section]="section">
+
+      <div [ngSwitch]="section.title">
 
         <app-hero-banner *ngIf="section.title.toLowerCase() === 'time management'; else sectionTemplate"></app-hero-banner>
 
@@ -52,12 +52,8 @@
 
         </ng-template>
 
-      </ng-container>
-
-
-    </section>
-
-    <app-section></app-section>
+      </div>
+    </app-section>
 
   </nb-layout-column>
 

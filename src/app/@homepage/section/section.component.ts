@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Section }                  from '../@shared/models/section.model';
 
 @Component({
   selector: 'app-section',
@@ -6,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: [ './section.component.scss']
 })
 export class SectionComponent implements OnInit {
-  @Input() public index: number | undefined;
+  @Input() public section: Section = new Section();
 
   constructor() { }
 

@@ -11,6 +11,9 @@
       // menu is fixed to top
       &:not(.transparent) {
         background-color: #ffffff;
+        border-bottom-left-radius: 25px !important;
+        border-bottom-right-radius: 25px !important;
+        transition: all 1s ease-in-out;
 
         app-header-app-name {
           color: nb-theme(color-primary-default);
@@ -21,6 +24,7 @@
             li {
               a {
                 color: nb-theme(color-basic-800);
+                transition: all 1s ease-in-out;
               }
 
               a:after {
@@ -32,6 +36,7 @@
               }
 
               a.active {
+                transition: all 1s ease-in-out;
                 color: nb-theme(color-primary-default);
               }
             }
@@ -40,7 +45,7 @@
       }
 
       &.transparent {
-        background-color: transparent;
+        background-color: #2a70ea;
 
         app-header-app-name {
           div {
