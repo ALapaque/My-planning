@@ -1,31 +1,46 @@
 @import 'helper';
-@import 'themes';
+@import 'theme/theme.scss';
 
 @import '~@nebular/theme/styles/globals';
+
+@import '../node_modules/ngx-toastr/toastr.css';
 
 @include nb-install() {
   @include nb-theme-global();
 }
 
-;
-/* You can add global styles to this file, and also import other style files */
+html body {
+  font-family: 'Manrope', sans-serif;
+}
 
+/* You can add global styles to this file, and also import other style files */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(13deg, #ffa9eb 14%, #f3a572 56%);
+  background: linear-gradient(13deg, nb-theme(color-primary-active) 14%, nb-theme(color-primary-default) 56%);
   border-radius: 15px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(13deg, #f3a572 14%, #ffa9eb 64%);
+  background: linear-gradient(13deg, nb-theme(color-primary-default) 14%, nb-theme(color-primary-active) 64%);
 }
 
 ::-webkit-scrollbar-track {
   background: #ffffff;
   border-radius: 15px;
   box-shadow: inset 7px 10px 12px #f0f0f0;
+}
+
+@font-face {
+  font-family: 'kg-happy';
+  src: url('assets/@fonts/kg_happy/KGHAPPY.eot');
+  src: url('assets/@fonts/kg_happy/KGHAPPY.eot?#iefix') format('embedded-opentype'),
+  url('assets/@fonts/kg_happy/KGHAPPY.woff2') format('woff2'),
+  url('assets/@fonts/kg_happy/KGHAPPY.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }

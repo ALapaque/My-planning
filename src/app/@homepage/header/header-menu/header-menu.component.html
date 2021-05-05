@@ -1,0 +1,27 @@
+<button [fxHide.gt-md]="true"
+        nbButton
+        status="control"
+        shape="semi-round"
+        [nbPopover]="menuTemplate"
+        [nbPopoverContext]="{ items: mobileMenuItems }"
+        [nbPopoverPlacement]="'bottom'">
+  <nb-icon [icon]="'menu-2-outline'"></nb-icon>
+</button>
+
+<ul [fxHide.lt-lg]="true">
+  <li *ngFor="let item of menuItems">
+    <a [routerLink]="'.'"
+       [fragment]="item.fragment"
+       [class.active]="(activeFragment | async) === item.fragment">
+      {{ item.title }}
+    </a>
+  </li>
+</ul>
+
+
+<ng-template #menuTemplate
+             let-data>
+  <nb-menu [items]="data.items">
+  </nb-menu>
+</ng-template>
+

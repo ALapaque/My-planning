@@ -1,0 +1,15 @@
+@import '../../../../theme/theme';
+@import '../../../../helper';
+
+
+:host ::ng-deep {
+  div {
+    @extend .font;
+    @extend .--zilla-slab;
+    height: 100%;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: bold;
+    color: nb-theme(color-primary-default);
+  }
+}

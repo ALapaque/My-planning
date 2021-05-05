@@ -1,47 +1,94 @@
-@import './homepage-colors.utils';
-
 :host ::ng-deep {
   // OVERRIDE MAIN LAYOUT
   nb-layout {
+    .layout {
+      background-color: #ffffff !important;
+
+    }
+
     nb-layout-header {
-      background-color: transparent;
-      z-index: 1;
+
+      // menu is fixed to top
+      &:not(.transparent) {
+        background-color: #ffffff;
+        border-bottom-left-radius: 25px !important;
+        border-bottom-right-radius: 25px !important;
+        transition: all 1s ease-in-out;
+
+        app-header-app-name {
+          color: nb-theme(color-primary-default);
+        }
+
+        app-header-menu {
+          ul {
+            li {
+              a {
+                color: nb-theme(color-basic-800);
+                transition: all 1s ease-in-out;
+              }
+
+              a:after {
+                background: nb-theme(color-primary-default);
+              }
+
+              a:hover {
+                color: nb-theme(color-primary-default);
+              }
+
+              a.active {
+                transition: all 1s ease-in-out;
+                color: nb-theme(color-primary-default);
+              }
+            }
+          }
+        }
+      }
+
+      &.transparent {
+        background-color: #2a70ea;
+
+        app-header-app-name {
+          div {
+            color: #ffffff;
+          }
+        }
+
+        app-header-menu {
+          ul {
+            li {
+              a {
+                color: #ffffff;
+              }
+
+              a:after {
+                background: rgba(32, 32, 32, 0.5);
+              }
+
+              a:hover {
+                color: rgba(32, 32, 32, 0.5);
+              }
+
+              a.active {
+                color: rgba(32, 32, 32, 0.5);
+              }
+            }
+          }
+        }
+      }
+
 
       nav {
-        box-shadow: none;
+        box-shadow: none !important;
       }
     }
 
     nb-layout-column {
       padding: 0 !important;
-      background-color: $creamy-white !important;
+      background: #ffffff !important;
     }
 
     nb-layout-footer {
-      background-color: $creamy-white !important;
-      nav {
-        background-color: inherit !important;
-      }
+
     }
   }
-
-  // OVERRIDE POPOVER
-  nb-popover {
-    background-color: $creamy-white !important;
-    span:after {
-      display: none;
-    }
-  }
-
-  // OVERRIDE MENU STYLE NOT HORIZONTAL
-  nb-menu {
-    background-color: $creamy-white !important;
-    ul {
-      border-color: $creamy-white !important;
-      li {
-        border-color: $creamy-white !important;
-      }
-    }
-  }
-
 }

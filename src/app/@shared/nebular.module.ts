@@ -51,15 +51,7 @@ const nebularModule = [
             imports: [
               ...nebularModule,
               NbMenuModule.forRoot(),
-              NbToastrModule.forRoot(
-                {
-                  destroyByClick: true,
-                  status: 'primary',
-                  position: NbGlobalLogicalPosition.BOTTOM_START,
-                  limit: 5,
-                  preventDuplicates: true,
-                },
-              ),
+              NbSidebarModule.forRoot(),
               NbWindowModule.forRoot(
                 {
                   hasBackdrop: true,

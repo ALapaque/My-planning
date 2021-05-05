@@ -1,0 +1,82 @@
+<nb-card>
+  <nb-card-header fxLayoutAlign="space-between center">
+    <button nbButton
+            ghost
+            status="primary"
+            shape="round"
+            size="giant"
+            [routerLink]="'/homepage'">
+      <nb-icon icon="arrow-back"></nb-icon>
+    </button>
+  </nb-card-header>
+  <nb-card-body [fxLayoutAlign]="'center center'">
+
+    <form [formGroup]="loginForm"
+          (ngSubmit)="login()"
+          [fxFlex.lt-md]="'100%'"
+          [fxFlex]="'1 1 560px'"
+          [fxLayout]="'column'"
+          [fxLayoutAlign]="'center center'"
+          [fxLayoutGap]="'32px'">
+
+      <h1 class="title">Connexion</h1>
+
+      <nb-form-field>
+        <label for="username-input">Nom d'utilisateur :</label>
+        <nb-icon nbPrefix
+                 icon="person-outline"
+                 pack="eva"
+                 [style.margin-top]="'1.6rem'">
+        </nb-icon>
+        <input nbInput
+               id="username-input"
+               fullWidth
+               [type]="'text'"
+               [formControlName]="'username'">
+      </nb-form-field>
+
+      <nb-form-field>
+        <div class="margin-bottom-xs"
+             [fxLayout]="'row'"
+             [fxLayoutAlign]="'space-between center'">
+          <span [fxHide.lt-md]="true">Mot de passe :</span>
+
+          <a [routerLink]="'../reset-password'">Mot de passe oublié ?</a>
+        </div>
+        <nb-icon nbPrefix
+                 icon="unlock-outline"
+                 pack="eva"
+                 [style.margin-top]="'1.6rem'">
+        </nb-icon>
+
+        <input nbInput
+               fullWidth
+               [type]="showPassword ? 'text' : 'password'"
+               [formControlName]="'password'">
+        <button nbSuffix
+                nbButton
+                ghost
+                (click)="showPassword = !showPassword"
+                [style.margin-top]="'1.6rem'">
+          <nb-icon [icon]="showPassword ? 'eye-outline' : 'eye-off-2-outline'"
+                   pack="eva"
+                   [attr.aria-label]="showPassword ? 'hide password' : 'show password'">
+          </nb-icon>
+        </button>
+      </nb-form-field>
+
+      <button nbButton
+              hero
+              status="primary"
+              type="submit">
+        Se connecter
+      </button>
+
+      <p>Pas de compte ?
+        <a [routerLink]="'../register'">S'enregistrer</a>
+      </p>
+
+
+    </form>
+  </nb-card-body>
+</nb-card>

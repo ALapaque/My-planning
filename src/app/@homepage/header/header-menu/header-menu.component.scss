@@ -1,0 +1,58 @@
+@import '../../../../theme/theme';
+@import '../../../../helper';
+
+:host ::ng-deep {
+  ul {
+    padding: 0;
+    list-style: none;
+    display: table;
+    text-align: center;
+
+    li {
+      display: table-cell;
+      position: relative;
+      padding: 0 12px;
+
+      a {
+        @extend .font;
+        @extend .--man-rope;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-decoration: none;
+        letter-spacing: 0.15em;
+        display: inline-block;
+        position: relative;
+      }
+
+      a:after {
+        bottom: 0;
+        content: "";
+        display: block;
+        height: 2px;
+        left: 50%;
+        position: absolute;
+        background: nb-theme(text-primary-color);
+        transition: width 0.3s ease 0s, left 0.3s ease 0s;
+        width: 0;
+      }
+
+      a:hover {
+        color: nb-theme(text-primary-color);
+      }
+
+      a.active {
+        color: nb-theme(text-primary-color);
+        &:after {
+          background: nb-theme(text-primary-color);
+          width: 100%;
+          left: 0;
+        }
+      }
+
+      a:hover:after {
+        width: 100%;
+        left: 0;
+      }
+    }
+  }
+}
