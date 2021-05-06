@@ -46,6 +46,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "baseHref": "",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -56,13 +57,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "5000kb",
+                  "maximumError": "10mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "10kb",
+                  "maximumError": "20kb"
                 }
               ]
             }
@@ -128,7 +129,8 @@
           }
         },
         "deploy": {
-          "builder": "@zeit/ng-deploy:deploy"
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     }
