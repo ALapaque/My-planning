@@ -5,9 +5,11 @@ name: Build and Deploy to gh-pages
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
 
 jobs:
   build-and-deploy:
