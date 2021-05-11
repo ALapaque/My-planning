@@ -1,0 +1,787 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>tfe documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/material.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">tfe documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Saisissez un texte"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Composants</li>
+  <li>HomepageComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>Fichier</h3>
+</p>
+<p class="comment">
+    <code>src/app/@homepage/homepage.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implémente</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Métadonnées</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-homepage</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./homepage.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./homepage.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Propriétés</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#nbLayoutHeaderComponent">nbLayoutHeaderComponent</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#scrollYPosition">scrollYPosition</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#sections$">sections$</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Méthodes</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_refreshSections">_refreshSections</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>HostListeners</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#window:scroll">window:scroll</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructeur</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(_sectionService: <a href="../injectables/SectionService.html">SectionService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Défini dans <a href="" data-line="17" class="link-to-prism">src/app/@homepage/homepage.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Paramètres :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Nom</td>
+                                                    <td>Type</td>
+                                                <td>Optionnel</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>_sectionService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SectionService.html" target="_self" >SectionService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            Non
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+    <section>
+    <h3>HostListeners</h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="window:scroll"></a>
+                    <span class="name">
+                        <b>
+                            window:scroll
+                        </b>
+                        <a href="#window:scroll"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <i>Arguments : </i><code>'$event' </code>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>window:scroll(e: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Défini dans <a href="" data-line="28"
+                            class="link-to-prism">src/app/@homepage/homepage.component.ts:28</a></div>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="methods">
+        Méthodes
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_refreshSections"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Private</span>
+                            _refreshSections
+                        </b>
+                        <a href="#_refreshSections"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_refreshSections()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Défini dans <a href="" data-line="32"
+                            class="link-to-prism">src/app/@homepage/homepage.component.ts:32</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Renvoie : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Défini dans <a href="" data-line="24"
+                            class="link-to-prism">src/app/@homepage/homepage.component.ts:24</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Renvoie : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Propriétés
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nbLayoutHeaderComponent"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            nbLayoutHeaderComponent</b>
+                            <a href="#nbLayoutHeaderComponent"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>ElementRef | undefined</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Décorateurs : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;nbLayoutHeaderComponent&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Défini dans <a href="" data-line="17" class="link-to-prism">src/app/@homepage/homepage.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="scrollYPosition"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            scrollYPosition</b>
+                            <a href="#scrollYPosition"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Valeur par défaut : </i><code>0</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Défini dans <a href="" data-line="15" class="link-to-prism">src/app/@homepage/homepage.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sections$"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            sections$</b>
+                            <a href="#sections$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Section.html" target="_self" >Observable&lt;Array&lt;Section&gt;&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Valeur par défaut : </i><code>new BehaviorSubject(new Array&lt;Section&gt;()).asObservable()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Défini dans <a href="" data-line="14" class="link-to-prism">src/app/@homepage/homepage.component.ts:14</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, HostListener, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+import { Event }                                                  from &#x27;@angular/router&#x27;;
+import { BehaviorSubject, Observable }                            from &#x27;rxjs&#x27;;
+import { Section }                                                from &#x27;./@shared/models/section.model&#x27;;
+import { SectionService }                                         from &#x27;./@shared/services/section.service&#x27;;
+
+@Component({
+             selector: &#x27;app-homepage&#x27;,
+             templateUrl: &#x27;./homepage.component.html&#x27;,
+             styleUrls: [ &#x27;./homepage.component.scss&#x27; ],
+           })
+export class HomepageComponent implements OnInit {
+
+  public sections$: Observable&lt;Array&lt;Section&gt;&gt; &#x3D; new BehaviorSubject(new Array&lt;Section&gt;()).asObservable();
+  public scrollYPosition: number &#x3D; 0;
+
+  @ViewChild(&#x27;nbLayoutHeaderComponent&#x27;) public nbLayoutHeaderComponent: ElementRef | undefined;
+
+  constructor(
+    private _sectionService: SectionService,
+  ) {
+  }
+
+  public ngOnInit(): void {
+    this._refreshSections();
+  }
+
+  @HostListener(&#x27;window:scroll&#x27;, [&#x27;$event&#x27;]) onScroll(e: any): void {
+    this.scrollYPosition &#x3D; e.srcElement.scrollingElement.scrollTop;
+  }
+
+  private _refreshSections(): void {
+    this.sections$ &#x3D; this._sectionService.getSections();
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;nb-layout&gt;
+  &lt;nb-layout-header fixed
+                    [class.transparent]&#x3D;&quot;scrollYPosition &#x3D;&#x3D;&#x3D; 0&quot;&gt;
+    &lt;app-header [fxFlex]&#x3D;&quot;&#x27;100%&#x27;&quot;
+                [fxLayoutAlign]&#x3D;&quot;&#x27;space-around center&#x27;&quot;
+                [fxLayoutGap]&#x3D;&quot;&#x27;16px&#x27;&quot;&gt;
+    &lt;/app-header&gt;
+  &lt;/nb-layout-header&gt;
+
+  &lt;nb-layout-column&gt;
+    &lt;app-section *ngFor&#x3D;&quot;let section of sections$ | async&quot; [section]&#x3D;&quot;section&quot;&gt;
+
+      &lt;div [ngSwitch]&#x3D;&quot;section.title&quot;&gt;
+
+        &lt;app-hero-banner *ngIf&#x3D;&quot;section.title.toLowerCase() &#x3D;&#x3D;&#x3D; &#x27;time management&#x27;&quot;&gt;&lt;/app-hero-banner&gt;
+
+&lt;!--          &lt;div class&#x3D;&quot;section-title&quot;&gt;--&gt;
+&lt;!--            {{ section.title }}--&gt;
+&lt;!--          &lt;/div&gt;--&gt;
+&lt;!--          &lt;p&gt;--&gt;
+&lt;!--            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem eius itaque laborum magnam, minus--&gt;
+&lt;!--            molestiae--&gt;
+&lt;!--            numquam quasi veritatis vitae voluptatum? Ab aspernatur magni neque, officiis perferendis possimus velit.--&gt;
+&lt;!--            Dolores, iure?Alias architecto, aspernatur delectus enim perspiciatis repellat voluptatum? Aperiam--&gt;
+&lt;!--            asperiores--&gt;
+&lt;!--            culpa cum debitis delectus deserunt et fugit harum ipsa iste iusto libero neque non, quibusdam quod saepe ut--&gt;
+&lt;!--            vero voluptatem.Accusantium aliquam aliquid architecto cum dignissimos distinctio dolore eaque error esse--&gt;
+&lt;!--            est--&gt;
+&lt;!--            eveniet illo iste magnam minus, nemo nobis nulla, perferendis qui rem soluta tempora tempore temporibus unde--&gt;
+&lt;!--            vero vitae!Alias consequatur dicta dolorum ea eaque, earum excepturi ipsam laborum laudantium, minima nihil--&gt;
+&lt;!--            praesentium quibusdam, quo ratione recusandae repellat sed! Ab alias aliquid amet assumenda cum ducimus--&gt;
+&lt;!--            explicabo placeat porro.Commodi excepturi expedita maiores necessitatibus nemo, nulla provident quis--&gt;
+&lt;!--            repudiandae tempore. Architecto cupiditate eveniet natus omnis soluta, tempora tempore tenetur! Aliquam hic--&gt;
+&lt;!--            impedit vero voluptas. Accusantium earum libero quasi velit!Animi architecto asperiores consequuntur--&gt;
+&lt;!--            distinctio--&gt;
+&lt;!--            eligendi eum eveniet excepturi illo in laboriosam magnam maiores molestias nesciunt non odit officia optio--&gt;
+&lt;!--            perferendis, perspiciatis porro quibusdam reiciendis similique sunt, temporibus voluptate--&gt;
+&lt;!--            voluptatibus!Accusamus aspernatur atque dignissimos distinctio doloribus dolorum ea exercitationem fuga--&gt;
+&lt;!--            fugiat--&gt;
+&lt;!--            hic in, ipsam magni nemo nisi nulla numquam officia possimus quaerat quam recusandae reprehenderit suscipit--&gt;
+&lt;!--            tempore. Autem, error totam?Accusamus, aspernatur assumenda cumque earum et facilis illum in incidunt ipsam--&gt;
+&lt;!--            iure labore minima natus nobis nulla odit pariatur perferendis possimus quis, ratione reiciendis rem--&gt;
+&lt;!--            repudiandae sequi similique vel voluptates.Ab aperiam aspernatur autem corporis cumque ducimus, est--&gt;
+&lt;!--            explicabo--&gt;
+&lt;!--            necessitatibus optio rem repudiandae sunt temporibus voluptas voluptates, voluptatum! Doloremque eaque--&gt;
+&lt;!--            impedit--&gt;
+&lt;!--            in molestias odit officia officiis rem saepe vero voluptate?Aut commodi fuga ipsam nemo nobis odit pariatur--&gt;
+&lt;!--            perspiciatis porro sequi, veritatis. Aperiam aspernatur, cumque eius eum excepturi illum, itaque, nesciunt--&gt;
+&lt;!--            nobis officia placeat reiciendis voluptates. Ad dolore laboriosam necessitatibus?--&gt;
+&lt;!--          &lt;/p&gt;--&gt;
+
+
+      &lt;/div&gt;
+    &lt;/app-section&gt;
+
+  &lt;/nb-layout-column&gt;
+
+&lt;/nb-layout&gt;
+
+
+
+
+
+
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./homepage.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">:host ::ng-deep {
+  // OVERRIDE MAIN LAYOUT
+  nb-layout {
+    .layout {
+      background-color: #ffffff !important;
+
+    }
+
+    nb-layout-header {
+
+      // menu is fixed to top
+      &amp;:not(.transparent) {
+        background-color: #ffffff;
+        border-bottom-left-radius: 25px !important;
+        border-bottom-right-radius: 25px !important;
+        transition: all 1s ease-in-out;
+
+        app-header-app-name {
+          color: nb-theme(color-primary-default);
+        }
+
+        app-header-menu {
+          ul {
+            li {
+              a {
+                color: nb-theme(color-basic-800);
+                transition: all 1s ease-in-out;
+              }
+
+              a:after {
+                background: nb-theme(color-primary-default);
+              }
+
+              a:hover {
+                color: nb-theme(color-primary-default);
+              }
+
+              a.active {
+                transition: all 1s ease-in-out;
+                color: nb-theme(color-primary-default);
+              }
+            }
+          }
+        }
+      }
+
+      &amp;.transparent {
+        background-color: #2a70ea;
+
+        app-header-app-name {
+          div {
+            color: #ffffff;
+          }
+        }
+
+        app-header-menu {
+          ul {
+            li {
+              a {
+                color: #ffffff;
+              }
+
+              a:after {
+                background: rgba(32, 32, 32, 0.5);
+              }
+
+              a:hover {
+                color: rgba(32, 32, 32, 0.5);
+              }
+
+              a.active {
+                color: rgba(32, 32, 32, 0.5);
+              }
+            }
+          }
+        }
+      }
+
+
+      nav {
+        box-shadow: none !important;
+      }
+    }
+
+    nb-layout-column {
+      padding: 0 !important;
+      background: #ffffff !important;
+    }
+
+    nb-layout-footer {
+
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Légende</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Elément Html</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Composant</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Elément Html avec une directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><nb-layout>  <nb-layout-header fixed                    [class.transparent]="scrollYPosition === 0">    <app-header [fxFlex]="\'100%\'"                [fxLayoutAlign]="\'space-around center\'"                [fxLayoutGap]="\'16px\'">    </app-header>  </nb-layout-header>  <nb-layout-column>    <app-section *ngFor="let section of sections$ | async" [section]="section">      <div [ngSwitch]="section.title">        <app-hero-banner *ngIf="section.title.toLowerCase() === \'time management\'"></app-hero-banner><!--          <div class="section-title">--><!--            {{ section.title }}--><!--          </div>--><!--          <p>--><!--            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem eius itaque laborum magnam, minus--><!--            molestiae--><!--            numquam quasi veritatis vitae voluptatum? Ab aspernatur magni neque, officiis perferendis possimus velit.--><!--            Dolores, iure?Alias architecto, aspernatur delectus enim perspiciatis repellat voluptatum? Aperiam--><!--            asperiores--><!--            culpa cum debitis delectus deserunt et fugit harum ipsa iste iusto libero neque non, quibusdam quod saepe ut--><!--            vero voluptatem.Accusantium aliquam aliquid architecto cum dignissimos distinctio dolore eaque error esse--><!--            est--><!--            eveniet illo iste magnam minus, nemo nobis nulla, perferendis qui rem soluta tempora tempore temporibus unde--><!--            vero vitae!Alias consequatur dicta dolorum ea eaque, earum excepturi ipsam laborum laudantium, minima nihil--><!--            praesentium quibusdam, quo ratione recusandae repellat sed! Ab alias aliquid amet assumenda cum ducimus--><!--            explicabo placeat porro.Commodi excepturi expedita maiores necessitatibus nemo, nulla provident quis--><!--            repudiandae tempore. Architecto cupiditate eveniet natus omnis soluta, tempora tempore tenetur! Aliquam hic--><!--            impedit vero voluptas. Accusantium earum libero quasi velit!Animi architecto asperiores consequuntur--><!--            distinctio--><!--            eligendi eum eveniet excepturi illo in laboriosam magnam maiores molestias nesciunt non odit officia optio--><!--            perferendis, perspiciatis porro quibusdam reiciendis similique sunt, temporibus voluptate--><!--            voluptatibus!Accusamus aspernatur atque dignissimos distinctio doloribus dolorum ea exercitationem fuga--><!--            fugiat--><!--            hic in, ipsam magni nemo nisi nulla numquam officia possimus quaerat quam recusandae reprehenderit suscipit--><!--            tempore. Autem, error totam?Accusamus, aspernatur assumenda cumque earum et facilis illum in incidunt ipsam--><!--            iure labore minima natus nobis nulla odit pariatur perferendis possimus quis, ratione reiciendis rem--><!--            repudiandae sequi similique vel voluptates.Ab aperiam aspernatur autem corporis cumque ducimus, est--><!--            explicabo--><!--            necessitatibus optio rem repudiandae sunt temporibus voluptas voluptates, voluptatum! Doloremque eaque--><!--            impedit--><!--            in molestias odit officia officiis rem saepe vero voluptate?Aut commodi fuga ipsam nemo nobis odit pariatur--><!--            perspiciatis porro sequi, veritatis. Aperiam aspernatur, cumque eius eum excepturi illum, itaque, nesciunt--><!--            nobis officia placeat reiciendis voluptates. Ad dolore laboriosam necessitatibus?--><!--          </p>-->      </div>    </app-section>  </nb-layout-column></nb-layout></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'app-about'},{'name': 'AgendaComponent', 'selector': 'app-agenda'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AuthComponent', 'selector': 'app-auth'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HeaderAppNameComponent', 'selector': 'app-header-app-name'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'HeaderGoToAppComponent', 'selector': 'app-header-go-to-app'},{'name': 'HeaderMenuComponent', 'selector': 'app-header-menu'},{'name': 'HeroBannerComponent', 'selector': 'app-hero-banner'},{'name': 'HomepageComponent', 'selector': 'app-homepage'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SectionComponent', 'selector': 'app-section'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'TemplateComponent', 'selector': 'app-template'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'HomepageComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">Aucun résultat matchant "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'HomepageComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
