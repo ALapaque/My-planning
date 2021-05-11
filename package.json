@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng run tfe:deploy"
+    "deploy": "ng run TFE:deploy"
   },
   "private": true,
   "dependencies": {
