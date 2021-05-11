@@ -27,20 +27,10 @@ jobs:
           branch: gh-pages # The branch the action should deploy to.
           folder: dist/TFE # The folder the action should deploy.
 
-  build-application:
-
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Build application 🔧
         run: |
           npm run build
 
-  deploy-application:
-
-    runs-on: ubuntu-latest
-
-    steps:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.2
         with:
