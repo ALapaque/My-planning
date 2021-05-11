@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{et8b:function(n,e,o){"use strict";o.r(e),o.d(e,"AgendaModule",function(){return c});var t=o("ofXK"),r=o("fXoL");let c=(()=>{class n{}return n.\u0275fac=function(e){return new(e||n)},n.\u0275mod=r.Nb({type:n}),n.\u0275inj=r.Mb({imports:[[t.c]]}),n})()}}]);
