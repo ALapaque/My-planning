@@ -16,7 +16,7 @@ export class HeaderMenuComponent implements OnInit {
     {
       title: 'Accueil',
       link: '/homepage',
-      fragment: '#',
+      fragment: 'home',
     },
     {
       title: 'Fonctionnalités',
@@ -63,4 +63,20 @@ export class HeaderMenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * test
+   * @param {string} location
+   * @param {number} wait
+   */
+  public scrollToAnchor(location: string | undefined, wait: number = 250): void {
+    if (!location) {
+      return;
+    }
+    const element = document.querySelector('#' + location);
+    if (element) {
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'end' });
+      }, wait);
+    }
+  }
 }

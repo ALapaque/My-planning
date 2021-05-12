@@ -1,5 +1,5 @@
-import { Component }                    from '@angular/core';
-import { slideInAnimation }             from './@shared/routing.animation';
+import { Component }        from '@angular/core';
+import { slideInAnimation } from './@shared/animation/routing.animation';
 
 @Component(
   {

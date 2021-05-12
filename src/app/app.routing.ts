@@ -25,9 +25,11 @@ const routes: Routes = [
 @NgModule({
             imports: [ RouterModule.forRoot(routes,
                                             {
+                                              useHash: false,
+                                              scrollPositionRestoration: 'enabled',
                                               anchorScrolling: 'enabled',
                                               preloadingStrategy: PreloadAllModules,
-                                            }
+                                            },
             ) ],
             exports: [ RouterModule ],
           })

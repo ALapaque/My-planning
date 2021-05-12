@@ -4,10 +4,11 @@
 :host {
   .hero {
     width: 100%;
-    height: calc(100vh - 76px);
+    height: 100vh;
     display: table;
     background: #2a70ea;
     padding: 20px;
+    clip-path: polygon(0 0, 100% 0%, 100% 93%, 0% 100%);
 
     &__image,
     &__content {
