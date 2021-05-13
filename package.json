@@ -27,6 +27,7 @@
     "@nebular/auth": "^7.0.0",
     "@nebular/eva-icons": "7.0.0",
     "@nebular/theme": "^7.0.0",
+    "@syncfusion/ej2-angular-schedule": "^19.1.63",
     "@zeit/ng-deploy": "^0.3.0",
     "eva-icons": "^1.1.2",
     "ngx-toastr": "^13.2.1",

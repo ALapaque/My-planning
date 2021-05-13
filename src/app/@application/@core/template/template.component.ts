@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NbSidebarService }  from '@nebular/theme';
+import { NbSidebarState }    from '@nebular/theme/components/sidebar/sidebar.component';
 
 @Component({
              selector: 'app-template',
@@ -8,6 +9,8 @@ import { NbSidebarService }  from '@nebular/theme';
            })
 export class TemplateComponent implements OnInit {
 
+  public sideBarState: NbSidebarState | undefined;
+
   constructor(private sidebarService: NbSidebarService) {
   }
 
@@ -15,11 +18,7 @@ export class TemplateComponent implements OnInit {
   }
 
   toggle() {
-    this.sidebarService.toggle(false, 'left');
-  }
-
-  toggleCompact() {
-    this.sidebarService.toggle(true, 'right');
+    this.sidebarService.toggle(true, 'left');
   }
 
 }

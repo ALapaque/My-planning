@@ -1,0 +1,26 @@
+<ejs-schedule [width]="'100%'"
+              [height]="'calc(100vh - 76px - (2 * 2.25rem))'"
+              [views]="scheduleViews"
+              [selectedDate]="selectedDate"
+              [eventSettings]="eventSettings"
+              [group]="group"
+              [currentView]="currentView">
+  <e-resources>
+    <e-resource field='RoomId'
+                title='Room Type'
+                [dataSource]='resourceDataSource'
+                [allowMultiple]='allowMultiple'
+                name='MeetingRoom'
+                textField='text'
+                idField='id'
+                colorField='color'>
+    </e-resource>
+    <e-views>
+      <e-view option='TimelineDay'></e-view>
+      <e-view option='TimelineWeek'></e-view>
+      <e-view option='TimelineWorkWeek'></e-view>
+      <e-view option='TimelineMonth'></e-view>
+      <e-view option='Agenda'></e-view>
+    </e-views>
+  </e-resources>
+</ejs-schedule>

@@ -1,0 +1,15 @@
+:host ::ng-deep {
+  nb-layout {
+    nb-layout-column {
+      padding: 2.25rem !important;
+    }
+
+    nb-sidebar {
+      &.compacted {
+        nb-icon {
+          margin: 0 !important;
+        }
+      }
+    }
+  }
+}
