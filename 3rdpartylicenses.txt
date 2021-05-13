@@ -120,6 +120,54 @@ SOFTWARE.
 
 
 
+@syncfusion/ej2-angular-base
+SEE LICENSE IN license
+
+@syncfusion/ej2-angular-schedule
+SEE LICENSE IN license
+
+@syncfusion/ej2-base
+SEE LICENSE IN license
+
+@syncfusion/ej2-buttons
+SEE LICENSE IN license
+
+@syncfusion/ej2-calendars
+SEE LICENSE IN license
+
+@syncfusion/ej2-compression
+SEE LICENSE IN license
+
+@syncfusion/ej2-data
+SEE LICENSE IN license
+
+@syncfusion/ej2-dropdowns
+SEE LICENSE IN license
+
+@syncfusion/ej2-excel-export
+SEE LICENSE IN license
+
+@syncfusion/ej2-file-utils
+SEE LICENSE IN license
+
+@syncfusion/ej2-inputs
+SEE LICENSE IN license
+
+@syncfusion/ej2-lists
+SEE LICENSE IN license
+
+@syncfusion/ej2-navigations
+SEE LICENSE IN license
+
+@syncfusion/ej2-popups
+SEE LICENSE IN license
+
+@syncfusion/ej2-schedule
+SEE LICENSE IN license
+
+@syncfusion/ej2-splitbuttons
+SEE LICENSE IN license
+
 eva-icons
 MIT
 
