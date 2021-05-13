@@ -1,14 +1,13 @@
-@import "../../../theme/theme";
-@import "../../../helper";
+@import "../homepage.helper";
 
 :host {
   .hero {
     width: 100%;
     height: 100vh;
     display: table;
-    background: #2a70ea;
+    background: nb-theme(color-primary-400);
     padding: 20px;
-    clip-path: polygon(0 0, 100% 0%, 100% 93%, 0% 100%);
+    clip-path: polygon(0 0, 100% 0%, 100% 94%, 0% 100%);
 
     &__image,
     &__content {

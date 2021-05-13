@@ -23,17 +23,17 @@ export class HomepageComponent implements OnInit {
   ) {
   }
 
+  public ngOnInit(): void {
+    this._refreshSections();
+    this._router.navigate([ '' ], { fragment: 'home' });
+  }
+
   public get displayScrollToTop(): boolean {
     return !!this.scrollYPosition;
   }
 
   @HostListener('window:scroll', [ '$event' ]) onScroll(e: any): void {
     this.scrollYPosition = e.srcElement.scrollingElement.scrollTop;
-  }
-
-  public ngOnInit(): void {
-    this._refreshSections();
-    this._router.navigate([ '' ], { fragment: 'home' });
   }
 
   private _refreshSections(): void {

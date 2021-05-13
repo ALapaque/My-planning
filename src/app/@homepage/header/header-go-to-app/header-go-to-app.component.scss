@@ -1,5 +1,9 @@
+@import "../../homepage.helper";
+
 :host ::ng-deep {
   button {
     background-color: #ffffff !important;
+    border-color: nb-theme(color-primary-400) !important;
+    color: nb-theme(color-primary-400) !important;
   }
 }

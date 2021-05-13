@@ -10,20 +10,23 @@
   </nb-layout-header>
 
   <nb-layout-column>
-    <ng-container *ngFor="let section of sections$ | async">
+    <ng-container
+      *ngFor="let section of sections$ | async; let first = first; let last = last; let even = even; let odd = odd"
+      [ngSwitch]="section.title.toLowerCase()">
 
-      <ng-container [ngSwitch]="section.title.toLowerCase()">
+      <app-hero-banner *ngSwitchCase="'time management'"></app-hero-banner>
 
-        <app-hero-banner *ngSwitchCase="'time management'"></app-hero-banner>
+      <app-section *ngSwitchDefault
+                   [section]="section"
+                   [even]="even"
+                   [first]="first"
+                   [last]="last"
+                   [odd]="odd">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad doloremque eveniet numquam. Consectetur cum
+        dicta dolore dolorem eveniet expedita odio perspiciatis ratione rerum sed. Doloremque, impedit, quaerat.
+        Blanditiis, consectetur dicta.
+      </app-section>
 
-        <app-section *ngSwitchDefault
-                     [section]="section">
-          <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad doloremque eveniet numquam. Consectetur cum
-               dicta dolore dolorem eveniet expedita odio perspiciatis ratione rerum sed. Doloremque, impedit, quaerat.
-               Blanditiis, consectetur dicta.
-          </div>
-        </app-section>
-      </ng-container>
     </ng-container>
 
 
