@@ -10,8 +10,9 @@
 
 <ul [fxHide.lt-lg]="true">
   <li *ngFor="let item of menuItems">
-    <a [routerLink]="'.'"
+    <a (click)="scrollToAnchor(item?.fragment)"
        [fragment]="item.fragment"
+       [routerLink]="item.link"
        [class.active]="(activeFragment | async) === item.fragment">
       {{ item.title }}
     </a>

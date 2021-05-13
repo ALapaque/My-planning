@@ -20,12 +20,12 @@ html body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(13deg, nb-theme(color-primary-active) 14%, nb-theme(color-primary-default) 56%);
+  background: nb-theme(color-primary-400);
   border-radius: 15px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(13deg, nb-theme(color-primary-default) 14%, nb-theme(color-primary-active) 64%);
+  background: nb-theme(color-primary-400);
 }
 
 ::-webkit-scrollbar-track {

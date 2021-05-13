@@ -1,0 +1,26 @@
+@import "../homepage.helper";
+
+:host {
+  height: 100vh;
+
+  section {
+    height: inherit;
+    padding: 60px 20px 0;
+
+    &.even {
+      background: nb-theme(color-primary-400);
+      color: white;
+
+      h1 {
+        color: inherit;
+      }
+    }
+
+    &.odd {
+      color: nb-theme(color-primary-400);
+      h1 {
+        color: inherit;
+      }
+    }
+  }
+}

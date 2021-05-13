@@ -1,0 +1,20 @@
+@import "../../../../theme/theme";
+@import "../../../../helper";
+
+:host {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  button {
+    box-shadow: 5px 4px 19px -4px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 5px 4px 19px -4px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 5px 4px 19px -4px rgba(0, 0, 0, 0.75);
+
+    &.homepage {
+      background-color: nb-theme(color-primary-400) !important;
+      border-color: nb-theme(color-primary-400) !important;
+      color: #ffffff !important;
+    }
+  }
+}

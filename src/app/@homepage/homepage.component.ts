@@ -1,5 +1,5 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { Event }                                                  from '@angular/router';
+import { ActivatedRoute, Router }                                 from '@angular/router';
 import { BehaviorSubject, Observable }                            from 'rxjs';
 import { Section }                                                from './@shared/models/section.model';
 import { SectionService }                                         from './@shared/services/section.service';
@@ -18,14 +18,21 @@ export class HomepageComponent implements OnInit {
 
   constructor(
     private _sectionService: SectionService,
+    private _activatedRoute: ActivatedRoute,
+    private _router: Router,
   ) {
   }
 
   public ngOnInit(): void {
     this._refreshSections();
+    this._router.navigate([ '' ], { fragment: 'home' });
   }
 
-  @HostListener('window:scroll', ['$event']) onScroll(e: any): void {
+  public get displayScrollToTop(): boolean {
+    return !!this.scrollYPosition;
+  }
+
+  @HostListener('window:scroll', [ '$event' ]) onScroll(e: any): void {
     this.scrollYPosition = e.srcElement.scrollingElement.scrollTop;
   }
 
