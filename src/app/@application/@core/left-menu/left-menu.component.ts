@@ -12,21 +12,14 @@ export class LeftMenuComponent implements OnInit {
     {
       title: 'Tableau de bord',
       icon: 'grid-outline',
-      link: 'dashboard',
+      link: '/app/dashboard',
+      pathMatch: 'full',
     },
     {
       title: 'Agenda',
       icon: 'calendar-outline',
-      children: [
-        {
-          title: 'Standard',
-          link: 'agenda/standard'
-        },
-        {
-          title: 'Time line',
-          link: 'agenda/timeline'
-        }
-      ]
+      link: '/app/agenda',
+      pathMatch: 'full',
     },
   ];
 

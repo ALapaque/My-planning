@@ -1,17 +1,14 @@
-import { NgModule }                from '@angular/core';
-import { RouterModule, Routes }    from '@angular/router';
-import { AgendaStandardComponent } from './agenda-standard/agenda-standard.component';
-import { AgendaTimelineComponent } from './agenda-timeline/agenda-timeline.component';
-import { AgendaComponent }         from './agenda.component';
+import { NgModule }                 from '@angular/core';
+import { RouterModule, Routes }     from '@angular/router';
+import { AgendaContainerComponent } from './agenda-container.component';
+import { AgendaComponent }          from './agenda-standard/agenda.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AgendaComponent,
+    component: AgendaContainerComponent,
     children: [
-      { path: '', redirectTo: 'standard', pathMatch: 'full' },
-      { path: 'standard', component: AgendaStandardComponent },
-      { path: 'timeline', component: AgendaTimelineComponent },
+      { path: '', component: AgendaComponent },
     ],
   },
 ];

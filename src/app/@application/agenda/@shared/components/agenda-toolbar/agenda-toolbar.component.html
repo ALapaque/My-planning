@@ -1,0 +1,61 @@
+<nb-card>
+  <nb-card-body>
+    <nb-actions [size]="'small'">
+      <nb-action>
+        <div fxLayoutAlign="start center"
+             fxLayoutGap="16px">
+
+          <button ghost
+                  nbButton
+                  shape="round"
+                  size="small"
+                  status="primary">
+            <nb-icon icon="arrow-left-outline"></nb-icon>
+          </button>
+
+
+          <span>{{ agendaHelperService.viewDate | date }}</span>
+
+          <button ghost
+                  nbButton
+                  shape="round"
+                  size="small"
+                  status="primary">
+            <nb-icon icon="arrow-right-outline"></nb-icon>
+          </button>
+
+        </div>
+      </nb-action>
+    </nb-actions>
+
+    <span [fxFlex]="'auto'"></span>
+
+    <nb-actions [size]="'small'">
+
+      <nb-action>
+        <nb-select [(ngModel)]="agendaHelperService.currentView"
+                   [size]="'tiny'"
+                   filled
+                   placeholder="Selectionner une vue"
+                   shape="semi-round"
+                   status="primary">
+
+          <nb-option value='Day'>Journée</nb-option>
+          <nb-option value='Week'>Semaine</nb-option>
+          <nb-option value='WorkWeek'>Semaine de travail</nb-option>
+          <nb-option value='Month'>Mois</nb-option>
+          <nb-option value='Agenda'>Planning</nb-option>
+
+          <nb-option-group title="Ligne du temps">
+            <nb-option value='TimelineDay'>Journée</nb-option>
+            <nb-option value='TimelineWeek'>Semaine</nb-option>
+            <nb-option value='TimelineWorkWeek'>Semaine de travail</nb-option>
+            <nb-option value='TimelineMonth'>Mois</nb-option>
+          </nb-option-group>
+
+        </nb-select>
+      </nb-action>
+    </nb-actions>
+
+  </nb-card-body>
+</nb-card>
