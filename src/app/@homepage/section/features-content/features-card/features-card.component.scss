@@ -1,0 +1,35 @@
+@import "../../../homepage.helper";
+
+:host ::ng-deep {
+  .card {
+    background-color: nb-theme(color-primary-400);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(nb-theme(color-primary-400), 0.18);
+    color: #ffffff;
+
+    .container {
+      position: relative;
+      img {
+        width: 100%;
+        border-radius: 20px 20px 0 0;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      }
+    }
+
+    .details {
+      padding: 20px 10px;
+      h3 {
+        color: inherit;
+        font-weight: 600;
+        font-size: 18px;
+        margin: 10px 0 15px 0;
+      }
+      div * {
+        color: darken(#ffff, 10%);
+        font-size: 15px;
+        line-height: 30px;
+        font-weight: 400;
+      }
+    }
+  }
+}

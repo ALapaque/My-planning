@@ -22,9 +22,17 @@
                    [first]="first"
                    [last]="last"
                    [odd]="odd">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad doloremque eveniet numquam. Consectetur cum
-        dicta dolore dolorem eveniet expedita odio perspiciatis ratione rerum sed. Doloremque, impedit, quaerat.
-        Blanditiis, consectetur dicta.
+        <ng-container [ngSwitch]="section.anchor">
+
+          <ng-container *ngSwitchCase="'features'"
+                        [ngTemplateOutlet]="featuresContent">
+          </ng-container>
+
+          <ng-container *ngSwitchDefault
+                        [ngTemplateOutlet]="emptyContent">
+          </ng-container>
+
+        </ng-container>
       </app-section>
 
     </ng-container>
@@ -37,6 +45,18 @@
   </nb-layout-column>
 
 </nb-layout>
+
+<ng-template #featuresContent>
+  <app-features-content></app-features-content>
+</ng-template>
+
+<ng-template #emptyContent>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquid debitis delectus dicta dolorem doloribus
+    ducimus eius est in ipsam labore, magnam minus officia provident repellendus unde, veritatis? Ducimus,
+    reiciendis!
+  </p>
+</ng-template>
 
 
 
