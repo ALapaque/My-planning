@@ -6,8 +6,13 @@
             shape="semi-round"
             size="large"
             (click)="toggle()">
-        <nb-icon [icon]="nbSidebarComponent.compacted ? 'menu-outline' : 'menu-arrow-outline'"></nb-icon>
+      <nb-icon [icon]="nbSidebarComponent.compacted ? 'menu-outline' : 'menu-arrow-outline'"></nb-icon>
     </button>
+    <nb-search [type]="'modal-zoomin'"
+               [hint]="'Appuyer sur entrer pour rechercher'"
+               [placeholder]="'Rechercher'"
+               [tag]="'topbar-search'">
+    </nb-search>
 
     <span [fxFlex]="'auto'"></span>
 

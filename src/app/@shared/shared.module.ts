@@ -1,10 +1,10 @@
-import {CommonModule} from '@angular/common';
-import {NgModule} from '@angular/core';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {RouterModule} from '@angular/router';
-import {NebularModule} from './nebular.module';
-import {ScrollToTopComponent} from './ui-components/scroll-to-top/scroll-to-top.component';
+import { CommonModule }                     from '@angular/common';
+import { NgModule }                         from '@angular/core';
+import { FlexLayoutModule }                 from '@angular/flex-layout';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule }                     from '@angular/router';
+import { NebularModule }                    from './nebular.module';
+import { ScrollToTopComponent }             from './ui-components/scroll-to-top/scroll-to-top.component';
 
 const MODULES: Array<any> = [
   CommonModule,
@@ -19,10 +19,13 @@ const UI_COMPONENTS: Array<any> = [
   ScrollToTopComponent,
 ];
 
+const DIRECTIVES: Array<any> = [];
+
 @NgModule(
   {
     declarations: [
       ...UI_COMPONENTS,
+      ...DIRECTIVES,
     ],
     imports: [
       ...MODULES,
@@ -30,6 +33,7 @@ const UI_COMPONENTS: Array<any> = [
     exports: [
       ...MODULES,
       ...UI_COMPONENTS,
+      ...DIRECTIVES,
     ],
   },
 )

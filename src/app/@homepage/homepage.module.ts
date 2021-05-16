@@ -10,6 +10,8 @@ import { HeroBannerComponent }    from './hero-banner/hero-banner.component';
 import { HomepageComponent }      from './homepage.component';
 import { HomepageRouting }        from './homepage.routing';
 import { SectionComponent }       from './section/section.component';
+import { FeaturesContentComponent } from './section/features-content/features-content.component';
+import { FeaturesCardComponent } from './section/features-content/features-card/features-card.component';
 
 @NgModule(
   {
@@ -22,6 +24,8 @@ import { SectionComponent }       from './section/section.component';
       HeaderAppNameComponent,
       HeaderMenuComponent,
       HeaderGoToAppComponent,
+      FeaturesContentComponent,
+      FeaturesCardComponent,
     ],
     imports: [
       SharedModule,

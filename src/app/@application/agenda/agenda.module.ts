@@ -1,24 +1,35 @@
-import { NgModule }                from '@angular/core';
-import { CommonModule }            from '@angular/common';
+import { CommonModule }             from '@angular/common';
+import { NgModule }                 from '@angular/core';
 import {
   AgendaService,
-  DayService, MonthAgendaService, MonthService,
+  DayService,
+  MonthAgendaService,
+  MonthService,
   ScheduleAllModule,
-  TimelineMonthService, TimelineViewsService,
+  TimelineMonthService,
+  TimelineViewsService,
   WeekService,
   WorkWeekService,
-}                                  from '@syncfusion/ej2-angular-schedule';
-import { SharedModule }            from '../../@shared/shared.module';
-import { AgendaTimelineComponent } from './agenda-timeline/agenda-timeline.component';
-import { AgendaComponent }         from './agenda.component';
-import { AgendaRouting }           from './agenda.routing';
-import { AgendaStandardComponent } from './agenda-standard/agenda-standard.component';
+}                                   from '@syncfusion/ej2-angular-schedule';
+import { loadCldr }                 from '@syncfusion/ej2-base';
+import * as gregorian               from 'cldr-data/main/fr-BE/ca-gregorian.json';
+import * as numbers                 from 'cldr-data/main/fr-BE/numbers.json';
+import * as timeZoneNames           from 'cldr-data/main/fr-BE/timeZoneNames.json';
+import * as numberingSystems        from 'cldr-data/supplemental/numberingSystems.json';
+import { SharedModule }             from '../../@shared/shared.module';
+import { AgendaToolbarComponent }   from './@shared/components/agenda-toolbar/agenda-toolbar.component';
+import { AgendaContainerComponent } from './agenda-container.component';
+import { AgendaHelperService }      from './agenda-helper.service';
+import { AgendaComponent }          from './agenda-standard/agenda.component';
+import { AgendaRouting }            from './agenda.routing';
+
+loadCldr(numberingSystems, gregorian, numbers, timeZoneNames);
 
 @NgModule({
             declarations: [
+              AgendaContainerComponent,
               AgendaComponent,
-              AgendaTimelineComponent,
-              AgendaStandardComponent,
+              AgendaToolbarComponent,
             ],
             imports: [
               CommonModule,
@@ -27,6 +38,7 @@ import { AgendaStandardComponent } from './agenda-standard/agenda-standard.compo
               SharedModule,
             ],
             providers: [
+              AgendaHelperService,
               DayService,
               WeekService,
               WorkWeekService,

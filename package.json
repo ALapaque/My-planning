@@ -29,6 +29,7 @@
     "@nebular/theme": "^7.0.0",
     "@syncfusion/ej2-angular-schedule": "^19.1.63",
     "@zeit/ng-deploy": "^0.3.0",
+    "cldr-data": "^36.0.0",
     "eva-icons": "^1.1.2",
     "ngx-toastr": "^13.2.1",
     "rxjs": "~6.6.0",
