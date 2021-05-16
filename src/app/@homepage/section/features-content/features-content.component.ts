@@ -75,17 +75,6 @@ export class FeaturesContentComponent implements OnInit {
                      '</ul>'
       }
     ),
-    new SectionCard(
-      {
-        img: '/assets/homepage/sections/cards/section-card-calendar.jpg',
-        title: 'L\'agenda',
-        description: '<ul>' +
-                     '<li>1</li>' +
-                     '<li>2</li>' +
-                     '<li>3</li>' +
-                     '</ul>'
-      }
-    ),
   );
 
   constructor() { }
