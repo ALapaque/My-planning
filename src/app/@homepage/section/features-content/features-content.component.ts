@@ -11,7 +11,7 @@ export class FeaturesContentComponent implements OnInit {
   public cards: Array<SectionCard> = new Array<SectionCard>(
     new SectionCard(
       {
-        img: '/assets/homepage/sections/cards/section-card-calendar.jpg',
+        img: './assets/homepage/sections/cards/section-card-calendar.jpg',
         title: 'L\'agenda',
         description: '<ul>' +
                      '<li>1</li>' +
@@ -22,7 +22,7 @@ export class FeaturesContentComponent implements OnInit {
     ),
     new SectionCard(
       {
-        img: '/assets/homepage/sections/cards/section-card-calendar.jpg',
+        img: './assets/homepage/sections/cards/section-card-calendar.jpg',
         title: 'L\'agenda',
         description: '<ul>' +
                      '<li>1</li>' +
@@ -33,7 +33,7 @@ export class FeaturesContentComponent implements OnInit {
     ),
     new SectionCard(
       {
-        img: '/assets/homepage/sections/cards/section-card-calendar.jpg',
+        img: './assets/homepage/sections/cards/section-card-calendar.jpg',
         title: 'L\'agenda',
         description: '<ul>' +
                      '<li>1</li>' +
@@ -44,7 +44,7 @@ export class FeaturesContentComponent implements OnInit {
     ),
     new SectionCard(
       {
-        img: '/assets/homepage/sections/cards/section-card-calendar.jpg',
+        img: './assets/homepage/sections/cards/section-card-calendar.jpg',
         title: 'L\'agenda',
         description: '<ul>' +
                      '<li>1</li>' +
@@ -55,7 +55,7 @@ export class FeaturesContentComponent implements OnInit {
     ),
     new SectionCard(
       {
-        img: '/assets/homepage/sections/cards/section-card-calendar.jpg',
+        img: './assets/homepage/sections/cards/section-card-calendar.jpg',
         title: 'L\'agenda',
         description: '<ul>' +
                      '<li>1</li>' +
@@ -66,7 +66,7 @@ export class FeaturesContentComponent implements OnInit {
     ),
     new SectionCard(
       {
-        img: '/assets/homepage/sections/cards/section-card-calendar.jpg',
+        img: './assets/homepage/sections/cards/section-card-calendar.jpg',
         title: 'L\'agenda',
         description: '<ul>' +
                      '<li>1</li>' +
