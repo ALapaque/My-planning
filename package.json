@@ -23,6 +23,7 @@
     "@angular/platform-browser": "~11.2.8",
     "@angular/platform-browser-dynamic": "~11.2.8",
     "@angular/router": "~11.2.8",
+    "@angular/service-worker": "~11.2.8",
     "@auth0/angular-jwt": "^5.0.2",
     "@nebular/auth": "^7.0.0",
     "@nebular/eva-icons": "7.0.0",

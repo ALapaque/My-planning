@@ -9,8 +9,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule }               from '@auth0/angular-jwt';
 import { NbThemeModule }           from '@nebular/theme';
 import { ToastrModule }            from 'ngx-toastr';
+import { SharedModule }            from './@shared/shared.module';
 import { AppComponent }            from './app.component';
 import { AppRouting }              from './app.routing';
+import { ServiceWorkerModule }     from '@angular/service-worker';
+import { environment }             from '../environments/environment';
 
 registerLocaleData(localeFr, 'fr-BE', localeFrBeExtra);
 registerLocaleData(localeEn, 'en-US');
@@ -20,6 +23,7 @@ registerLocaleData(localeEn, 'en-US');
               AppComponent,
             ],
             imports: [
+              SharedModule,
               BrowserModule,
               AppRouting,
               BrowserAnimationsModule,
@@ -44,6 +48,12 @@ registerLocaleData(localeEn, 'en-US');
                                      disableTimeOut: false,
                                      easeTime: 300,
                                    }),
+              ServiceWorkerModule.register('ngsw-worker.js', {
+                enabled: environment.production,
+                // Register the ServiceWorker as soon as the app is stable
+                // or after 30 seconds (whichever comes first).
+                registrationStrategy: 'registerWhenStable:30000'
+              }),
             ],
             providers: [
               { provide: LOCALE_ID, useValue: 'fr-BE' },
