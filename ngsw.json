@@ -1,0 +1,135 @@
+{
+  "configVersion": 1,
+  "timestamp": 1621361969657,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/4.1754537c6dc4c7f27731.js",
+        "/5.b9c15beb5a53cb8ad265.js",
+        "/6.a59d5dbf9b7c9faba176.js",
+        "/7.87e997bec92e48a1e276.js",
+        "/8.3b758acab7f981f4281e.js",
+        "/9.8403045c49cc16666c9a.js",
+        "/favicon.ico",
+        "/index.html",
+        "/main.928f5ce7c86850ba6e0f.js",
+        "/manifest.webmanifest",
+        "/polyfills.00096ed7d93ed26ee6df.js",
+        "/runtime.4a66e3e6887b5c5bcab6.js",
+        "/styles.9ffadea0a3f8f1ba7a8a.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/KGHAPPY.067589b3e71f71155738.woff2",
+        "/KGHAPPY.5d6bf9b33085c071ea9b.eot",
+        "/KGHAPPY.c352e047bdc8813bfc2c.woff",
+        "/assets/fonts/kg_happy/KGHAPPY.eot",
+        "/assets/fonts/kg_happy/KGHAPPY.woff",
+        "/assets/fonts/kg_happy/KGHAPPY.woff2",
+        "/assets/homepage/hero.png",
+        "/assets/homepage/sections/cards/section-card-calendar.jpg",
+        "/assets/icons/icon-192x192.png",
+        "/assets/icons/icon-256x256.png",
+        "/assets/icons/icon-384x384.png",
+        "/assets/icons/icon-512x512.png",
+        "/assets/logo/facebook_cover_photo_1.png",
+        "/assets/logo/facebook_cover_photo_2.png",
+        "/assets/logo/facebook_profile_image.png",
+        "/assets/logo/favicon.png",
+        "/assets/logo/instagram_profile_image.png",
+        "/assets/logo/linkedin_banner_image_1.png",
+        "/assets/logo/linkedin_banner_image_2.png",
+        "/assets/logo/linkedin_profile_image.png",
+        "/assets/logo/logo.png",
+        "/assets/logo/logo_transparent.png",
+        "/assets/logo/logo_transparent_WHITE.png",
+        "/assets/logo/pinterest_board_photo.png",
+        "/assets/logo/pinterest_profile_image.png",
+        "/assets/logo/twitter_header_photo_1.png",
+        "/assets/logo/twitter_header_photo_2.png",
+        "/assets/logo/twitter_profile_image.png",
+        "/assets/logo/youtube_profile_image.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/4.1754537c6dc4c7f27731.js": "71151aef4a72dd625c3578156c458757d2bb140e",
+    "/5.b9c15beb5a53cb8ad265.js": "ff49d4e23c0034cc2e61e85fd346b058257757de",
+    "/6.a59d5dbf9b7c9faba176.js": "426b4acdcb36dd18b785b6aa1655ea5b7cb30606",
+    "/7.87e997bec92e48a1e276.js": "ece5f36bd46eac30adc01a5aa00a51e789dbdbb8",
+    "/8.3b758acab7f981f4281e.js": "c2531786788d0762f8e100471eada4ffc07e9ede",
+    "/9.8403045c49cc16666c9a.js": "1892382718b240e15b13004ec512a5b7baec0b4d",
+    "/KGHAPPY.067589b3e71f71155738.woff2": "b46a107371b83508fa3bdbb8cf4a6e6a2c5e0795",
+    "/KGHAPPY.5d6bf9b33085c071ea9b.eot": "5c9852cda5d777676b31c9b3796fdf0ad10e9320",
+    "/KGHAPPY.c352e047bdc8813bfc2c.woff": "20c9937cee6790d715da2c8b53c6e76a543a5070",
+    "/assets/fonts/kg_happy/KGHAPPY.eot": "5c9852cda5d777676b31c9b3796fdf0ad10e9320",
+    "/assets/fonts/kg_happy/KGHAPPY.woff": "20c9937cee6790d715da2c8b53c6e76a543a5070",
+    "/assets/fonts/kg_happy/KGHAPPY.woff2": "b46a107371b83508fa3bdbb8cf4a6e6a2c5e0795",
+    "/assets/homepage/hero.png": "08b3ad8707beb7bf28e862286c1126759f075af6",
+    "/assets/homepage/sections/cards/section-card-calendar.jpg": "422b6f68d3197f40b2e981a454b8329b2b3d3981",
+    "/assets/icons/icon-192x192.png": "b0881effdf98c3582bad550ac126442af87c6c69",
+    "/assets/icons/icon-256x256.png": "fdb6b09c401543f341cd574f49bd4c64c71ea545",
+    "/assets/icons/icon-384x384.png": "e50ccba6714fe8559b0445364bbea244f514a09b",
+    "/assets/icons/icon-512x512.png": "f0a2f6ddfb4242e1f5fe5cf1a2b08f359890a533",
+    "/assets/logo/facebook_cover_photo_1.png": "221572cde27bfbc6318fddd3efe4f2ea0ad5f5f4",
+    "/assets/logo/facebook_cover_photo_2.png": "5d9fcb351b2bb5c45362bc79afa29381e9737e98",
+    "/assets/logo/facebook_profile_image.png": "109dac4d5fb0609daac3bb0f6c111f4e755188e3",
+    "/assets/logo/favicon.png": "403b43e7620d590fa07da76e493b1b207ec74706",
+    "/assets/logo/instagram_profile_image.png": "0295ee0b4037ab17665ccb988b08d335ab9818b2",
+    "/assets/logo/linkedin_banner_image_1.png": "1ba49252dfd41f1e361bb88da1a361fbf7d9811e",
+    "/assets/logo/linkedin_banner_image_2.png": "b0a700a1ae6b7822ea4c4876ad503c3c05fd3576",
+    "/assets/logo/linkedin_profile_image.png": "0295ee0b4037ab17665ccb988b08d335ab9818b2",
+    "/assets/logo/logo.png": "109dac4d5fb0609daac3bb0f6c111f4e755188e3",
+    "/assets/logo/logo_transparent.png": "6a6bb25d0aa2f021289749fa3a205953863754f2",
+    "/assets/logo/logo_transparent_WHITE.png": "f19b8da2317adb5c8547bf7d5010645268e403bd",
+    "/assets/logo/pinterest_board_photo.png": "91b260e2f70bac911ac39832e90a082602e80a0f",
+    "/assets/logo/pinterest_profile_image.png": "6fcb3f5c30d2ffdd6e91ce8b0bb557c1883b164a",
+    "/assets/logo/twitter_header_photo_1.png": "dc0ed7a5533de3f69a92ffd567139ea38d9921d4",
+    "/assets/logo/twitter_header_photo_2.png": "79bcaf01c647a17b702efc9ab2a395314373c904",
+    "/assets/logo/twitter_profile_image.png": "91b260e2f70bac911ac39832e90a082602e80a0f",
+    "/assets/logo/youtube_profile_image.png": "91b260e2f70bac911ac39832e90a082602e80a0f",
+    "/favicon.ico": "11fca17a6520bf2711e6bb6bbc6f630a9d2ad920",
+    "/index.html": "705d01cfea8220e93f68d35c93370eb6c698a0ca",
+    "/main.928f5ce7c86850ba6e0f.js": "2ddcbb81fbba3da6192a79d67eddaa3ed20b0977",
+    "/manifest.webmanifest": "c296c9e0a7b2a08643821aaf3dbd9fd43b39c8df",
+    "/polyfills.00096ed7d93ed26ee6df.js": "cfe7b0b53e96bff9ba384b4d497c08475a617d62",
+    "/runtime.4a66e3e6887b5c5bcab6.js": "bbdafa3e2d04b2c834bb1af71f87d681da3712e8",
+    "/styles.9ffadea0a3f8f1ba7a8a.css": "f75fd6e032ce4f16f4a8c3cf9a7a60688b4caa75"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
