@@ -5,11 +5,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --configuration=production",
+    "build:test": "npm run build & http-server -p 8080 -c-1 dist/My-planning",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "compodoc": "npx compodoc -p tsconfig.doc.json --hideGenerator --language fr-FR --customLogo src/assets/logo/logo.png --customFavicon src/assets/logo/favicon.png --theme material",
-    "deploy": "ng run TFE:deploy"
+    "deploy": "ng run My-planning:deploy"
   },
   "private": true,
   "dependencies": {

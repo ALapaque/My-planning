@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TFE": {
+    "My-planning": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/TFE",
+            "outputPath": "dist/My-planning",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -43,6 +43,7 @@
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
+            "deleteOutputPath": true,
             "sourceMap": true,
             "optimization": false,
             "namedChunks": true
@@ -147,5 +148,5 @@
       }
     }
   },
-  "defaultProject": "TFE"
+  "defaultProject": "My-planning"
 }
