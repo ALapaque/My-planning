@@ -1,5 +1,6 @@
-import { NgModule }                                from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
+import {AuthenticatedGuard} from './@shared/guards/authenticated.guard';
 
 const routes: Routes = [
   {
@@ -7,28 +8,32 @@ const routes: Routes = [
   },
   {
     path: 'homepage',
-    data: { animation: 'homepage' },
+    data: {animation: 'homepage'},
     loadChildren: () => import('./@homepage/homepage.module').then((m) => m.HomepageModule),
   },
   {
     path: 'auth',
-    data: { animation: 'auth' },
+    data: {animation: 'auth'},
     loadChildren: () => import('./@auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: 'app',
-    data: { animation: 'app' },
+    data: {animation: 'app'},
+    canActivate: [AuthenticatedGuard],
     loadChildren: () => import('./@application/application.module').then((m) => m.ApplicationModule),
   },
 ];
 
 @NgModule({
-            imports: [ RouterModule.forRoot(routes,
-                                            {
-                                              anchorScrolling: 'enabled',
-                                              preloadingStrategy: PreloadAllModules,
-                                            }
-            ) ],
-            exports: [ RouterModule ],
-          })
-export class AppRouting {}
+  imports: [RouterModule.forRoot(routes,
+    {
+      useHash: false,
+      scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled',
+      preloadingStrategy: PreloadAllModules,
+    },
+  )],
+  exports: [RouterModule],
+})
+export class AppRouting {
+}

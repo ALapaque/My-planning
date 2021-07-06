@@ -1,9 +1,26 @@
 @import 'helper';
 @import 'theme/theme.scss';
+@import 'theme/nebular-override';
 
 @import '~@nebular/theme/styles/globals';
 
 @import '../node_modules/ngx-toastr/toastr.css';
+
+// syncfusion style
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-calendars/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-dropdowns/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-lists/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-angular-schedule/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+
 
 @include nb-install() {
   @include nb-theme-global();
@@ -20,12 +37,12 @@ html body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(13deg, nb-theme(color-primary-active) 14%, nb-theme(color-primary-default) 56%);
+  background: nb-theme(color-primary-400);
   border-radius: 15px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(13deg, nb-theme(color-primary-default) 14%, nb-theme(color-primary-active) 64%);
+  background: nb-theme(color-primary-400);
 }
 
 ::-webkit-scrollbar-track {

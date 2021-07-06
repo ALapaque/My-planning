@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "TFE": {
+    "My-planning": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,20 +23,30 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/TFE",
+            "outputPath": "dist/My-planning",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "ngsw-config.json",
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "deleteOutputPath": true,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -48,6 +58,7 @@
               ],
               "baseHref": "",
               "optimization": true,
+              "serviceWorker": true,
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
@@ -72,18 +83,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "TFE:build"
+            "browserTarget": "My-planning:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "TFE:build:production"
+              "browserTarget": "My-planning:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "TFE:build"
+            "browserTarget": "My-planning:build"
           }
         },
         "test": {
@@ -95,7 +106,9 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.scss"
@@ -120,11 +133,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "TFE:serve"
+            "devServerTarget": "My-planning:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "TFE:serve:production"
+              "devServerTarget": "My-planning:serve:production"
             }
           }
         },
@@ -135,5 +148,5 @@
       }
     }
   },
-  "defaultProject": "TFE"
+  "defaultProject": "My-planning"
 }

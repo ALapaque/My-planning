@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="container"
+       *ngIf="card?.img">
+    <img [src]="card.img"
+         alt="card-img">
+  </div>
+  <div class="details">
+    <h3>{{card.title}}</h3>
+    <div [innerHTML]="card.description"></div>
+  </div>
+</div>

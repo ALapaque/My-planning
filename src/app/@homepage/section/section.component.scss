@@ -1,0 +1,26 @@
+@import "../homepage.helper";
+
+:host {
+  height: auto;
+
+  section {
+    height: inherit;
+    padding: 60px 20px 0;
+    clip-path: polygon(0 0, 100% 0%, 100% 94%, 0% 100%);
+
+    &.even {
+      background: nb-theme(color-primary-400);
+      color: white;
+    }
+
+    &.odd {
+      color: nb-theme(color-primary-400);
+    }
+
+    h1 {
+      @extend .font;
+      @extend .--zilla-slab;
+      color: inherit;
+    }
+  }
+}

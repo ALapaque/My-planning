@@ -1,11 +1,15 @@
-import { NgModule }             from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AgendaComponent }      from './agenda.component';
+import { NgModule }                 from '@angular/core';
+import { RouterModule, Routes }     from '@angular/router';
+import { AgendaContainerComponent } from './agenda-container.component';
+import { AgendaComponent }          from './agenda-standard/agenda.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AgendaComponent,
+    component: AgendaContainerComponent,
+    children: [
+      { path: '', component: AgendaComponent },
+    ],
   },
 ];
 

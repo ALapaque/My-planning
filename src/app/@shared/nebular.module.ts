@@ -1,27 +1,30 @@
 import { NgModule }         from '@angular/core';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import {
-  NB_SELECT_INJECTION_TOKEN,
   NbActionsModule,
   NbButtonModule,
   NbCardModule,
   NbCheckboxModule,
-  NbContextMenuModule, NbDialogModule,
+  NbContextMenuModule,
+  NbDialogModule,
   NbFormFieldModule,
-  NbGlobalLogicalPosition,
   NbIconModule,
   NbInputModule,
   NbLayoutModule,
   NbListModule,
   NbMenuModule,
-  NbPopoverModule, NbRouteTabsetModule,
-  NbSearchModule, NbSelectModule,
-  NbSidebarModule, NbTabsetModule,
+  NbPopoverModule,
+  NbRouteTabsetModule,
+  NbSearchModule,
+  NbSelectModule,
+  NbSidebarModule,
+  NbTabsetModule,
   NbToastrModule,
+  NbToggleModule,
   NbUserModule,
   NbWindowModule,
   NbWindowState,
-} from '@nebular/theme';
+}                           from '@nebular/theme';
 
 const nebularModule = [
   NbSidebarModule,
@@ -43,6 +46,7 @@ const nebularModule = [
   NbActionsModule,
   NbSelectModule,
   NbTabsetModule,
+  NbToggleModule,
   NbRouteTabsetModule,
 ];
 

@@ -1,5 +1,11 @@
-import { Component }                    from '@angular/core';
-import { slideInAnimation }             from './@shared/routing.animation';
+import { Component }                      from '@angular/core';
+import { SwUpdate, UpdateAvailableEvent } from '@angular/service-worker';
+import { NbDialogService }                from '@nebular/theme';
+import { slideInAnimation }               from './@shared/animation/routing.animation';
+import {
+  ConfirmDialogComponent,
+  ConfirmDialogResult,
+} from './@shared/ui-components/confirm-dialog/confirm-dialog.component';
 
 @Component(
   {
@@ -14,5 +20,40 @@ import { slideInAnimation }             from './@shared/routing.animation';
   },
 )
 export class AppComponent {
-  title = 'TFE';
+
+  constructor(
+    private _nbDialogService: NbDialogService,
+    private _swUpdateService: SwUpdate,
+  ) {
+    this._checkForUpdates();
+  }
+
+  /**
+   * check if an update is available
+   * @private
+   */
+  private _checkForUpdates(): void {
+    this._swUpdateService
+        .available
+        .subscribe(
+          (version: UpdateAvailableEvent) => {
+            if (version) {
+              this._swUpdateService
+                  .activateUpdate()
+                  .then(() => {
+                    this._nbDialogService
+                        .open(ConfirmDialogComponent)
+                        .onClose
+                        .subscribe(
+                          (result: ConfirmDialogResult) => {
+                            if (!result) return;
+                            else if (result.confirmed) document.location.reload();
+                          }
+                        );
+                  });
+            }
+          },
+        );
+  }
+
 }
