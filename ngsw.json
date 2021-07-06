@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1625588057702,
+  "timestamp": 1625588454649,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -118,7 +118,7 @@
     "/assets/logo/twitter_profile_image.png": "91b260e2f70bac911ac39832e90a082602e80a0f",
     "/assets/logo/youtube_profile_image.png": "91b260e2f70bac911ac39832e90a082602e80a0f",
     "/favicon.ico": "11fca17a6520bf2711e6bb6bbc6f630a9d2ad920",
-    "/index.html": "816a9c60efab59367986d03ce9158e6c86a3f22b",
+    "/index.html": "99d35e99826ee9ab4bface7eb7b322eb1b4704fa",
     "/main.a73a12e2306f0b11b557.js": "38e236ba18e068c1c195ee4d9b83f00006894798",
     "/manifest.webmanifest": "363edc668167456b25467ee7a8178dc0970a3633",
     "/polyfills.66ee2c1c1497a85a3e2e.js": "5ed932c690e004932e6f5e9a783fee6d94095b09",
