@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {AuthService} from '../../@shared/services/auth.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -40,8 +41,12 @@ export class LoginComponent implements OnInit {
         this._toastrService.success('Bienvenue dans My-planning');
         this._routerService.navigate(['/app']);
       },
-      () => {
-        this._toastrService.error('Une erreur est survenue');
+      (error: HttpErrorResponse) => {
+        if (error.status === 400) {
+          this._toastrService.error('Les informations saisies sont érronées');
+        } else {
+          this._toastrService.error('Une erreur est survenue');
+        }
       }
     );
   }
