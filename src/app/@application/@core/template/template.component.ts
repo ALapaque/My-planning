@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbSidebarService }  from '@nebular/theme';
 import { NbSidebarState }    from '@nebular/theme/components/sidebar/sidebar.component';
+import {AuthService} from '../../../@shared/services/auth.service';
 
 @Component({
              selector: 'app-template',
@@ -11,14 +12,21 @@ export class TemplateComponent implements OnInit {
 
   public sideBarState: NbSidebarState | undefined;
 
-  constructor(private sidebarService: NbSidebarService) {
+  constructor(
+    private _sidebarService: NbSidebarService,
+    private _authService: AuthService,
+    ) {
   }
 
   ngOnInit(): void {
   }
 
-  toggle() {
-    this.sidebarService.toggle(true, 'left');
+  public toggle() {
+    this._sidebarService.toggle(true, 'left');
+  }
+
+  public logout() {
+    this._authService.logout();
   }
 
 }
