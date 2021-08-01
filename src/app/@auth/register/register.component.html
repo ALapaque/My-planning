@@ -6,7 +6,7 @@
             shape="round"
             size="giant"
             (click)="navigatePrevious()">
-      <nb-icon icon="arrow-back" ></nb-icon>
+      <nb-icon icon="arrow-back"></nb-icon>
     </button>
   </nb-card-header>
   <nb-card-body [fxLayoutAlign]="'center center'">
@@ -24,32 +24,96 @@
       <nb-form-field>
         <nb-icon nbPrefix icon="person-outline" pack="eva"></nb-icon>
         <input nbInput
+               name="username"
+               [status]="(checkFieldForError('username')) ?
+               'danger' : 'basic'"
                fullWidth
                [type]="'text'"
+               placeholder="Nom d'utilisateur"
                [formControlName]="'username'">
+        <nb-error *ngIf="checkFieldForError('username')">
+          <ng-container *ngIf="loginForm.get('username').errors.required">Ce champ est requis !</ng-container>
+        </nb-error>
+      </nb-form-field>
+
+      <nb-form-field>
+        <nb-icon nbPrefix icon="email-outline" pack="eva"></nb-icon>
+        <input nbInput
+               name="email"
+               fullWidth
+               placeholder="Email"
+               [status]="(checkFieldForError('email')) ?
+               'danger' : 'basic'"
+               [type]="'email'"
+               [formControlName]="'email'">
+        <nb-error *ngIf="checkFieldForError('email')">
+          <ng-container *ngIf="loginForm.get('email').errors.required">Ce champ est requis !</ng-container>
+        </nb-error>
       </nb-form-field>
 
       <nb-form-field>
         <nb-icon nbPrefix icon="unlock-outline" pack="eva"></nb-icon>
 
         <input nbInput
+               #passwordInput
                fullWidth
+               name="password"
+               placeholder="Mot de passe"
+               [status]="loginForm.get('password').dirty ?
+               ((loginForm.hasError('passwordNoMatch') || loginForm.get('password').invalid)  ? 'danger' : 'success') :
+               'basic'"
                [type]="showPassword ? 'text' : 'password'"
                [formControlName]="'password'">
         <button nbSuffix
                 nbButton
                 ghost
-                (click)="showPassword = !showPassword">
-          <nb-icon [icon]="showPassword ? 'eye-outline' : 'eye-off-2-outline'"
+                (click)="passwordInput.type === 'text' ?
+                passwordInput.type = 'password' :
+                passwordInput.type = 'text'">
+          <nb-icon [icon]="passwordInput.type === 'text' ? 'eye-outline' : 'eye-off-2-outline'"
                    pack="eva"
-                   [attr.aria-label]="showPassword ? 'hide password' : 'show password'">
+                   [attr.aria-label]="passwordInput.type === 'text' ? 'hide password' : 'show password'">
           </nb-icon>
         </button>
+        <nb-error *ngIf="checkFieldForError('password')">
+          <ng-container *ngIf="loginForm.get('password').errors.required">Ce champ est requis !</ng-container>
+          <ng-container *ngIf="loginForm.get('password').hasError('passwordNoMatch')">Les mots de passes ne sont pas identiques</ng-container>
+        </nb-error>
+      </nb-form-field>
+
+      <nb-form-field>
+        <nb-icon nbPrefix icon="unlock-outline" pack="eva"></nb-icon>
+
+        <input nbInput
+               #confirmPasswordInput
+               fullWidth
+               placeholder="Confirmation du mot de passe"
+               name="confirmPassword"
+               [status]="loginForm.get('confirmPassword').dirty ?
+               ((loginForm.hasError('passwordNoMatch') || loginForm.get('confirmPassword').invalid)  ? 'danger' : 'success') :
+               'basic'"
+               [type]="'password'"
+               [formControlName]="'confirmPassword'">
+        <button nbSuffix
+                nbButton
+                ghost
+                (click)="confirmPasswordInput.type === 'text' ?
+                confirmPasswordInput.type = 'password' :
+                confirmPasswordInput.type = 'text'">
+          <nb-icon [icon]="confirmPasswordInput.type === 'text' ? 'eye-outline' : 'eye-off-2-outline'"
+                   pack="eva"
+                   [attr.aria-label]="confirmPasswordInput.type === 'text' ? 'hide password' : 'show password'">
+          </nb-icon>
+        </button>
+        <nb-error *ngIf="checkFieldForError('confirmPassword')">
+          <ng-container *ngIf="loginForm.get('confirmPassword').errors.required">Ce champ est requis !</ng-container>
+          <ng-container *ngIf="loginForm.get('confirmPassword').hasError('passwordNoMatch')">Les mots de passes ne sont pas identiques</ng-container>        </nb-error>
       </nb-form-field>
 
       <button nbButton
               hero
-              status="primary">
+              status="primary"
+              [disabled]="!loginForm.valid">
         S'enregistrer
       </button>
 
