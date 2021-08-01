@@ -6,6 +6,7 @@ import { AuthComponent }          from './auth.component';
 import { LoginComponent }         from './login/login.component';
 import { RegisterComponent }      from './register/register.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule(
   {
@@ -15,10 +16,11 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
       RegisterComponent,
       ResetPasswordComponent,
     ],
-    imports: [
-      SharedModule,
-      AuthRouting,
-    ],
+      imports: [
+          SharedModule,
+          AuthRouting,
+          TranslateModule,
+      ],
   },
 )
 export class AuthModule {}
