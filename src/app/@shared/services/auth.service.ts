@@ -20,7 +20,7 @@ export class AuthService {
     return this.jwtHelper$.getValue();
   }
 
-  public login(loginRequest: { usernameOrEmail: string, password: string }) {
+  public login(loginRequest: { usernameOrEmail: string, password: string }): Observable<JwtHelper> {
     return this.http.post<string>(`${environment.apiUrl}/auth/login`, loginRequest)
       .pipe(
         map((token: string) => new JwtHelper({token, isAuthenticated: true, expired: false})),
@@ -30,6 +30,10 @@ export class AuthService {
           this.jwtHelper$.next(jwtHelper);
           return jwtHelper;
         }));
+  }
+
+  public register(registerRequest: {username: string, email: string, password: string, confirmPassword: string}): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/auth/register`, registerRequest);
   }
 
   public logout() {

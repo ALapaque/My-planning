@@ -3,6 +3,9 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomValidators} from '../../@shared/helpers/validators/custom-validators';
 import {ErrorStateMatcher} from '../../@shared/helpers/error-state-matcher/error-state-matcher';
+import {AuthService} from '../../@shared/services/auth.service';
+import {ToastrService} from 'ngx-toastr';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -24,6 +27,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private _location: Location,
+    private _authService: AuthService,
+    private _toastrService: ToastrService,
   ) {
   }
 
@@ -34,8 +39,14 @@ export class RegisterComponent implements OnInit {
     this._location.back();
   }
 
-  public login(): void {
-
+  public register(): void {
+    this._authService.register(this.registerForm.value).subscribe(
+      () => {
+      },
+      (error: HttpErrorResponse) => {
+        this._toastrService.error('Une erreur est survenue');
+      }
+    );
   }
 
   checkFieldForError(fieldName: string): boolean | undefined {
