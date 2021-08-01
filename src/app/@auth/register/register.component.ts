@@ -12,7 +12,7 @@ import {ErrorStateMatcher} from '../../@shared/helpers/error-state-matcher/error
 export class RegisterComponent implements OnInit {
 
   public showPassword: boolean = false;
-  public loginForm: FormGroup = new FormGroup(
+  public registerForm: FormGroup = new FormGroup(
     {
       username: new FormControl(null, [Validators.required]),
       email: new FormControl(null, [Validators.required, Validators.email]),
@@ -39,6 +39,6 @@ export class RegisterComponent implements OnInit {
   }
 
   checkFieldForError(fieldName: string): boolean | undefined {
-    return ErrorStateMatcher.checkField(fieldName, this.loginForm);
+    return ErrorStateMatcher.checkField(fieldName, this.registerForm);
   }
 }

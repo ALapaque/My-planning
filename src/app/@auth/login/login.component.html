@@ -31,8 +31,13 @@
         <input nbInput
                id="username-input"
                fullWidth
+               [status]="(checkFieldForError('usernameOrEmail')) ?
+               'danger' : 'basic'"
                [type]="'text'"
                [formControlName]="'usernameOrEmail'">
+        <nb-error *ngIf="checkFieldForError('usernameOrEmail')">
+          <ng-container *ngIf="loginForm.get('usernameOrEmail').errors.required">Ce champ est requis !</ng-container>
+        </nb-error>
       </nb-form-field>
 
       <nb-form-field>
@@ -51,8 +56,13 @@
 
         <input nbInput
                fullWidth
+               [status]="(checkFieldForError('password')) ?
+               'danger' : 'basic'"
                [type]="showPassword ? 'text' : 'password'"
                [formControlName]="'password'">
+        <nb-error *ngIf="checkFieldForError('password')">
+          <ng-container *ngIf="loginForm.get('password').errors.required">Ce champ est requis !</ng-container>
+        </nb-error>
         <button nbSuffix
                 nbButton
                 ghost
@@ -68,7 +78,8 @@
       <button nbButton
               hero
               status="primary"
-              type="submit">
+              type="submit"
+              [disabled]="!loginForm.valid">
         Se connecter
       </button>
 

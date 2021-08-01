@@ -11,7 +11,7 @@
   </nb-card-header>
   <nb-card-body [fxLayoutAlign]="'center center'">
 
-    <form [formGroup]="loginForm"
+    <form [formGroup]="registerForm"
           (ngSubmit)="login()"
           [fxFlex.lt-md]="'100%'"
           [fxFlex]="'1 1 560px'"
@@ -32,7 +32,7 @@
                placeholder="Nom d'utilisateur"
                [formControlName]="'username'">
         <nb-error *ngIf="checkFieldForError('username')">
-          <ng-container *ngIf="loginForm.get('username').errors.required">Ce champ est requis !</ng-container>
+          <ng-container *ngIf="registerForm.get('username').errors.required">Ce champ est requis !</ng-container>
         </nb-error>
       </nb-form-field>
 
@@ -47,7 +47,7 @@
                [type]="'email'"
                [formControlName]="'email'">
         <nb-error *ngIf="checkFieldForError('email')">
-          <ng-container *ngIf="loginForm.get('email').errors.required">Ce champ est requis !</ng-container>
+          <ng-container *ngIf="registerForm.get('email').errors.required">Ce champ est requis !</ng-container>
         </nb-error>
       </nb-form-field>
 
@@ -59,8 +59,8 @@
                fullWidth
                name="password"
                placeholder="Mot de passe"
-               [status]="loginForm.get('password').dirty ?
-               ((loginForm.hasError('passwordNoMatch') || loginForm.get('password').invalid)  ? 'danger' : 'success') :
+               [status]="registerForm.get('password').dirty ?
+               ((registerForm.hasError('passwordNoMatch') || registerForm.get('password').invalid)  ? 'danger' : 'success') :
                'basic'"
                [type]="showPassword ? 'text' : 'password'"
                [formControlName]="'password'">
@@ -76,8 +76,8 @@
           </nb-icon>
         </button>
         <nb-error *ngIf="checkFieldForError('password')">
-          <ng-container *ngIf="loginForm.get('password').errors.required">Ce champ est requis !</ng-container>
-          <ng-container *ngIf="loginForm.get('password').hasError('passwordNoMatch')">Les mots de passes ne sont pas identiques</ng-container>
+          <ng-container *ngIf="registerForm.get('password').errors.required">Ce champ est requis !</ng-container>
+          <ng-container *ngIf="registerForm.get('password').hasError('passwordNoMatch')">Les mots de passes ne sont pas identiques</ng-container>
         </nb-error>
       </nb-form-field>
 
@@ -89,8 +89,8 @@
                fullWidth
                placeholder="Confirmation du mot de passe"
                name="confirmPassword"
-               [status]="loginForm.get('confirmPassword').dirty ?
-               ((loginForm.hasError('passwordNoMatch') || loginForm.get('confirmPassword').invalid)  ? 'danger' : 'success') :
+               [status]="registerForm.get('confirmPassword').dirty ?
+               ((registerForm.hasError('passwordNoMatch') || registerForm.get('confirmPassword').invalid)  ? 'danger' : 'success') :
                'basic'"
                [type]="'password'"
                [formControlName]="'confirmPassword'">
@@ -106,14 +106,14 @@
           </nb-icon>
         </button>
         <nb-error *ngIf="checkFieldForError('confirmPassword')">
-          <ng-container *ngIf="loginForm.get('confirmPassword').errors.required">Ce champ est requis !</ng-container>
-          <ng-container *ngIf="loginForm.get('confirmPassword').hasError('passwordNoMatch')">Les mots de passes ne sont pas identiques</ng-container>        </nb-error>
+          <ng-container *ngIf="registerForm.get('confirmPassword').errors.required">Ce champ est requis !</ng-container>
+          <ng-container *ngIf="registerForm.get('confirmPassword').hasError('passwordNoMatch')">Les mots de passes ne sont pas identiques</ng-container>        </nb-error>
       </nb-form-field>
 
       <button nbButton
               hero
               status="primary"
-              [disabled]="!loginForm.valid">
+              [disabled]="!registerForm.valid">
         S'enregistrer
       </button>
 
