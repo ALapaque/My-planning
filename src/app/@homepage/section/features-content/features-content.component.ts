@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { SectionCard }       from '../../@shared/models/section-card.model';
+import {Component, OnInit} from '@angular/core';
+import {SectionCard} from '../../@shared/models/section-card.model';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
-             selector: 'app-features-content',
-             templateUrl: './features-content.component.html',
-             styleUrls: [ './features-content.component.scss' ],
-           })
+  selector: 'app-features-content',
+  templateUrl: './features-content.component.html',
+  styleUrls: ['./features-content.component.scss'],
+})
 export class FeaturesContentComponent implements OnInit {
 
   public cards: Array<SectionCard> | undefined;
@@ -14,6 +14,14 @@ export class FeaturesContentComponent implements OnInit {
   constructor(
     private _translateService: TranslateService,
   ) {
+    this._initCards();
+  }
+
+  ngOnInit(): void {
+  }
+
+  private async _initCards(): Promise<void> {
+    await this._translateService.get('APPNAME').toPromise();
     this.cards = new Array<SectionCard>(
       new SectionCard(
         {
@@ -35,8 +43,4 @@ export class FeaturesContentComponent implements OnInit {
       )
     );
   }
-
-  ngOnInit(): void {
-  }
-
 }

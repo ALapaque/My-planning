@@ -23,6 +23,31 @@ export class HeaderMenuComponent implements OnInit {
     private _activatedRoute: ActivatedRoute,
     private _translateService: TranslateService,
   ) {
+    this._initMenu();
+  }
+
+  ngOnInit(): void {
+  }
+
+  /**
+   * method in order to scroll to an anchor
+   * @param {string} location
+   * @param {number} wait
+   */
+  public scrollToAnchor(location: string | undefined, wait: number = 250): void {
+    if (!location) {
+      return;
+    }
+    const element = document.querySelector('#' + location);
+    if (element) {
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'end' });
+      }, wait);
+    }
+  }
+
+  private async _initMenu() {
+    await this._translateService.get('APPNAME').toPromise();
     this.menuItems = [
       {
         title: this._translateService.instant('HOMEPAGE.HEADER.MENU.HOMEPAGE'),
@@ -62,25 +87,5 @@ export class HeaderMenuComponent implements OnInit {
         link: '/auth',
       },
     ];
-  }
-
-  ngOnInit(): void {
-  }
-
-  /**
-   * method in order to scroll to an anchor
-   * @param {string} location
-   * @param {number} wait
-   */
-  public scrollToAnchor(location: string | undefined, wait: number = 250): void {
-    if (!location) {
-      return;
-    }
-    const element = document.querySelector('#' + location);
-    if (element) {
-      setTimeout(() => {
-        element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'end' });
-      }, wait);
-    }
   }
 }

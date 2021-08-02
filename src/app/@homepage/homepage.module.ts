@@ -1,6 +1,5 @@
 import { NgModule }               from '@angular/core';
 import { SharedModule }           from '../@shared/shared.module';
-import { SectionService }         from './@shared/services/section.service';
 import { HeaderAppNameComponent } from './header/header-app-name/header-app-name.component';
 import { HeaderGoToAppComponent } from './header/header-go-to-app/header-go-to-app.component';
 import { HeaderMenuComponent }    from './header/header-menu/header-menu.component';
@@ -29,9 +28,6 @@ import { FeaturesCardComponent } from './section/features-content/features-card/
       SharedModule,
       HomepageRouting,
     ],
-    providers: [
-      SectionService
-    ]
   },
 )
 export class HomepageModule {}

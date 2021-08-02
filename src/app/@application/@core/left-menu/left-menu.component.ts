@@ -14,6 +14,14 @@ export class LeftMenuComponent implements OnInit {
   constructor(
     private _translateService: TranslateService
   ) {
+    this._initItems();
+  }
+
+  ngOnInit(): void {
+  }
+
+  private async _initItems(): Promise<void> {
+    await this._translateService.get('APPNAME').toPromise();
     this.items = [
       {
         title: this._translateService.instant('APP.LEFT_MENU.DASHBOARD'),
@@ -22,15 +30,11 @@ export class LeftMenuComponent implements OnInit {
         pathMatch: 'full',
       },
       {
-        title: this._translateService.instant('APP.LEFT_MENU.AGENDA'),
+        title: await this._translateService.instant('APP.LEFT_MENU.AGENDA'),
         icon: 'calendar-outline',
         link: '/app/agenda',
         pathMatch: 'full',
       },
     ];
   }
-
-  ngOnInit(): void {
-  }
-
 }
