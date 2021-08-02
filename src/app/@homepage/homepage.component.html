@@ -11,7 +11,7 @@
 
   <nb-layout-column>
     <ng-container
-      *ngFor="let section of sections$ | async; let first = first; let last = last; let even = even; let odd = odd"
+      *ngFor="let section of sections; let first = first; let last = last; let even = even; let odd = odd"
       [ngSwitch]="section.title.toLowerCase()">
 
       <app-hero-banner *ngSwitchCase="'time management'"></app-hero-banner>

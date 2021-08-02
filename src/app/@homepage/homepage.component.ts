@@ -1,8 +1,7 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router }                                 from '@angular/router';
-import { BehaviorSubject, Observable }                            from 'rxjs';
 import { Section }                                                from './@shared/models/section.model';
-import { SectionService }                                         from './@shared/services/section.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
              selector: 'app-homepage',
@@ -11,20 +10,20 @@ import { SectionService }                                         from './@share
            })
 export class HomepageComponent implements OnInit {
 
-  public sections$: Observable<Array<Section> | undefined> = new BehaviorSubject(new Array<Section>()).asObservable();
+  public sections: Array<Section> | undefined;
   public scrollYPosition: number = 0;
 
   @ViewChild('nbLayoutHeaderComponent') public nbLayoutHeaderComponent: ElementRef | undefined;
 
   constructor(
-    private _sectionService: SectionService,
     private _activatedRoute: ActivatedRoute,
     private _router: Router,
+    private _translateService: TranslateService,
   ) {
+    this._initSections()
   }
 
   public ngOnInit(): void {
-    this._refreshSections();
     this._router.navigate([ '' ], { fragment: 'home' });
   }
 
@@ -36,8 +35,23 @@ export class HomepageComponent implements OnInit {
     this.scrollYPosition = e.srcElement.scrollingElement.scrollTop;
   }
 
-  private _refreshSections(): void {
-    this.sections$ = this._sectionService.getSections();
+  private async _initSections() {
+    await this._translateService.get('APPNAME').toPromise();
+    this.sections = new Array<Section>(
+      new Section(
+        {
+          id: 1,
+          title: 'Time management',
+          anchor: '',
+        },
+      ),
+      new Section(
+        {
+          id: 2,
+          title: this._translateService.instant('HOMEPAGE.SECTION.FUNCTIONNALITIES'),
+          anchor: 'features',
+        },
+      ),
+    );
   }
-
 }
