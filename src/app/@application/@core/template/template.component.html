@@ -9,8 +9,8 @@
       <nb-icon [icon]="nbSidebarComponent.compacted ? 'menu-outline' : 'menu-arrow-outline'"></nb-icon>
     </button>
     <nb-search [type]="'modal-zoomin'"
-               [hint]="'Appuyer sur entrer pour rechercher'"
-               [placeholder]="'Rechercher'"
+               [hint]="'APP.SEARCH.HINT' | translate"
+               [placeholder]="'APP.SEARCH.PLACEHOLDER' | translate"
                [tag]="'topbar-search'">
     </nb-search>
 
@@ -36,4 +36,8 @@
   <nb-layout-column>
     <router-outlet></router-outlet>
   </nb-layout-column>
+
+  <nb-layout-footer>
+    <app-footer [hideCopyRight]="true"></app-footer>
+  </nb-layout-footer>
 </nb-layout>

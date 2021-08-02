@@ -1,0 +1,10 @@
+<nb-select size="small"
+           shape="round"
+           hero
+           status="primary"
+           [placeholder]="'LANGUAGE.NAME' | translate"
+           [formControl]="selectedLanguage"
+           (selectedChange)="languageSelectedChanged($event)">
+  <nb-option [value]="'fr'">{{ 'LANGUAGE.FRENCH' | translate }}</nb-option>
+  <nb-option [value]="'en'">{{ 'LANGUAGE.ENGLISH' | translate }}</nb-option>
+</nb-select>

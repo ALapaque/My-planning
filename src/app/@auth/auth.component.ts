@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-auth',
@@ -7,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
     '  <nb-layout-column>' +
     '    <router-outlet></router-outlet>' +
     '  </nb-layout-column>' +
+    '  <nb-layout-footer>' +
+    '    <app-footer [hideCopyRight]="true"></app-footer>' +
+    '  </nb-layout-footer>' +
     '</nb-layout>',
-  styleUrls: [ './auth.component.scss']
+  styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent {
 }

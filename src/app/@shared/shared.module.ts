@@ -8,6 +8,8 @@ import { ConfirmDialogComponent }           from './ui-components/confirm-dialog
 import { ScrollToTopComponent }             from './ui-components/scroll-to-top/scroll-to-top.component';
 import {NbErrorComponent} from './ui-components/nb-error/nb-error.component';
 import {TranslateModule} from '@ngx-translate/core';
+import {LanguageSelectorComponent} from './ui-components/language-selector/language-selector.component';
+import {FooterComponent} from './ui-components/footer/footer.component';
 
 const MODULES: Array<any> = [
   CommonModule,
@@ -23,6 +25,8 @@ const UI_COMPONENTS: Array<any> = [
   ScrollToTopComponent,
   ConfirmDialogComponent,
   NbErrorComponent,
+  LanguageSelectorComponent,
+  FooterComponent
 ];
 
 const DIRECTIVES: Array<any> = [];

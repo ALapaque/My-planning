@@ -30,8 +30,17 @@ export class AppComponent {
     _translateService.addLangs(['en', 'fr']);
     _translateService.setDefaultLang('fr');
 
-    const browserLang = _translateService.getBrowserLang();
-    _translateService.use(browserLang.match(/fr|fr-FR/) ? 'fr' : 'en');
+    const browserLang: string = _translateService.getBrowserLang();
+    let languageUsed: string;
+
+    if (localStorage.getItem('i18n')) {
+      languageUsed = localStorage.getItem('i18n') as string;
+    } else {
+      languageUsed = browserLang.match(/fr|fr-FR/) ? 'fr' : 'en';
+      localStorage.setItem('i18n', languageUsed);
+    }
+
+    _translateService.use(languageUsed);
   }
 
   /**
