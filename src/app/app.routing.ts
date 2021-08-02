@@ -27,9 +27,11 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes,
     {
-      useHash: false,
+      useHash: true,
+      onSameUrlNavigation: 'ignore',
       scrollPositionRestoration: 'enabled',
       anchorScrolling: 'enabled',
+      relativeLinkResolution: 'legacy',
       preloadingStrategy: PreloadAllModules,
     },
   )],
