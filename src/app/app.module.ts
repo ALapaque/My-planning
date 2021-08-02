@@ -1,4 +1,4 @@
-import {registerLocaleData} from '@angular/common';
+import {HashLocationStrategy, LocationStrategy, registerLocaleData} from '@angular/common';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import localeEn from '@angular/common/locales/en';
 import localeFrBeExtra from '@angular/common/locales/extra/fr-BE';

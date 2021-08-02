@@ -38,7 +38,7 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "serviceWorker": false,
+            "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json",
             "vendorChunk": true,
             "extractLicenses": false,
@@ -56,9 +56,9 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "baseHref": "./",
+              "baseHref": "/",
               "optimization": true,
-              "serviceWorker": false,
+              "serviceWorker": true,
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,
