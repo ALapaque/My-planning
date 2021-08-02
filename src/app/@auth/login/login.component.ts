@@ -6,6 +6,7 @@ import {ToastrService} from 'ngx-toastr';
 import {AuthService} from '../../@shared/services/auth.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {HttpErrorResponse} from '@angular/common/http';
+import {ErrorStateMatcher} from '../../@shared/helpers/error-state-matcher/error-state-matcher';
 
 @Component({
   selector: 'app-login',
@@ -49,5 +50,9 @@ export class LoginComponent implements OnInit {
         }
       }
     );
+  }
+
+  checkFieldForError(fieldName: string) {
+    return ErrorStateMatcher.checkField(fieldName, this.loginForm);
   }
 }

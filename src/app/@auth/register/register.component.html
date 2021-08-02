@@ -6,55 +6,138 @@
             shape="round"
             size="giant"
             (click)="navigatePrevious()">
-      <nb-icon icon="arrow-back" ></nb-icon>
+      <nb-icon icon="arrow-back"></nb-icon>
     </button>
   </nb-card-header>
   <nb-card-body [fxLayoutAlign]="'center center'">
 
-    <form [formGroup]="loginForm"
-          (ngSubmit)="login()"
+    <form [formGroup]="registerForm"
+          (ngSubmit)="register()"
           [fxFlex.lt-md]="'100%'"
           [fxFlex]="'1 1 560px'"
           [fxLayout]="'column'"
           [fxLayoutAlign]="'center center'"
           [fxLayoutGap]="'32px'">
 
-      <h1 class="title">Enregistrement</h1>
+      <h1 class="title">{{ 'AUTH.REGISTER' | translate }}</h1>
 
       <nb-form-field>
         <nb-icon nbPrefix icon="person-outline" pack="eva"></nb-icon>
         <input nbInput
+               name="username"
+               [status]="(checkFieldForError('username')) ?
+               'danger' : 'basic'"
                fullWidth
                [type]="'text'"
+               [placeholder]="'FORM.INPUT.USERNAME' | translate"
                [formControlName]="'username'">
+        <nb-error *ngIf="checkFieldForError('username')">
+          <ng-container *ngIf="registerForm.get('username').errors.required">
+            {{'FORM.INPUT.ERRORS.REQUIRED' | translate}}
+          </ng-container>
+        </nb-error>
+      </nb-form-field>
+
+      <nb-form-field>
+        <nb-icon nbPrefix icon="email-outline" pack="eva"></nb-icon>
+        <input nbInput
+               name="email"
+               fullWidth
+               [placeholder]="'FORM.INPUT.EMAIL' | translate"
+               [status]="(checkFieldForError('email')) ?
+               'danger' : 'basic'"
+               [type]="'email'"
+               [formControlName]="'email'">
+        <nb-error *ngIf="checkFieldForError('email')">
+          <ng-container *ngIf="registerForm.get('email').errors.required">
+            {{'FORM.INPUT.ERRORS.REQUIRED' | translate}}
+          </ng-container>
+          <ng-container *ngIf="registerForm.get('email').errors.email">
+            {{'FORM.INPUT.ERRORS.FORMAT' | translate}}
+          </ng-container>
+        </nb-error>
       </nb-form-field>
 
       <nb-form-field>
         <nb-icon nbPrefix icon="unlock-outline" pack="eva"></nb-icon>
 
         <input nbInput
+               #passwordInput
                fullWidth
+               name="password"
+               [placeholder]="'FORM.INPUT.PASSWORD' | translate"
+               [status]="registerForm.get('password').dirty ?
+               ((registerForm.hasError('passwordNoMatch') || registerForm.get('password').invalid)  ? 'danger' : 'success') :
+               'basic'"
                [type]="showPassword ? 'text' : 'password'"
                [formControlName]="'password'">
         <button nbSuffix
                 nbButton
                 ghost
-                (click)="showPassword = !showPassword">
-          <nb-icon [icon]="showPassword ? 'eye-outline' : 'eye-off-2-outline'"
+                type="button"
+                (click)="passwordInput.type === 'text' ?
+                passwordInput.type = 'password' :
+                passwordInput.type = 'text'">
+          <nb-icon [icon]="passwordInput.type === 'text' ? 'eye-outline' : 'eye-off-2-outline'"
                    pack="eva"
-                   [attr.aria-label]="showPassword ? 'hide password' : 'show password'">
+                   [attr.aria-label]="passwordInput.type === 'text' ? 'hide password' : 'show password'">
           </nb-icon>
         </button>
+        <nb-error *ngIf="checkFieldForError('password')">
+          <ng-container *ngIf="registerForm.get('password').errors.required">
+            {{'FORM.INPUT.ERRORS.REQUIRED' | translate}}
+          </ng-container>
+          <ng-container *ngIf="registerForm.get('password').hasError('passwordNoMatch')">
+            {{'FORM.INPUT.ERRORS.PASSWORD_NO_MATCH' | translate}}
+          </ng-container>
+        </nb-error>
+      </nb-form-field>
+
+      <nb-form-field>
+        <nb-icon nbPrefix icon="unlock-outline" pack="eva"></nb-icon>
+
+        <input nbInput
+               #confirmPasswordInput
+               fullWidth
+               [placeholder]="'FORM.INPUT.CONFIRM_PASSWORD' | translate"
+               name="confirmPassword"
+               [status]="registerForm.get('confirmPassword').dirty ?
+               ((registerForm.hasError('passwordNoMatch') || registerForm.get('confirmPassword').invalid)  ? 'danger' : 'success') :
+               'basic'"
+               [type]="'password'"
+               [formControlName]="'confirmPassword'">
+        <button nbSuffix
+                nbButton
+                ghost
+                type="button"
+                (click)="confirmPasswordInput.type === 'text' ?
+                confirmPasswordInput.type = 'password' :
+                confirmPasswordInput.type = 'text'">
+          <nb-icon [icon]="confirmPasswordInput.type === 'text' ? 'eye-outline' : 'eye-off-2-outline'"
+                   pack="eva"
+                   [attr.aria-label]="confirmPasswordInput.type === 'text' ? 'hide password' : 'show password'">
+          </nb-icon>
+        </button>
+        <nb-error *ngIf="checkFieldForError('confirmPassword')">
+          <ng-container *ngIf="registerForm.get('confirmPassword').errors.required">
+            {{'FORM.INPUT.ERRORS.REQUIRED' | translate}}
+          </ng-container>
+          <ng-container *ngIf="registerForm.get('confirmPassword').hasError('passwordNoMatch')">
+            {{'FORM.INPUT.ERRORS.PASSWORD_NO_MATCH' | translate}}
+          </ng-container>
+        </nb-error>
       </nb-form-field>
 
       <button nbButton
               hero
-              status="primary">
-        S'enregistrer
+              status="primary"
+              type="submit"
+              [disabled]="!registerForm.valid">
+        {{'FORM.BTN.REGISTER' | translate}}
       </button>
 
       <p>
-        Vous possèdez déjà un compte ? <a [routerLink]="'../login'">Se connecter</a>
+        {{'FORM.ACCOUNT_EXIST' | translate}}<a [routerLink]="'../login'">{{'FORM.BTN.LOGIN' | translate}}</a>
       </p>
 
 

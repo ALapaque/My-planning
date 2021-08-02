@@ -19,10 +19,10 @@
           [fxLayoutAlign]="'center center'"
           [fxLayoutGap]="'32px'">
 
-      <h1 class="title">Connexion</h1>
+      <h1 class="title">{{ 'AUTH.LOGIN' | translate }}</h1>
 
       <nb-form-field>
-        <label for="username-input">Nom d'utilisateur :</label>
+        <label for="username-input">{{ 'FORM.INPUT.USERNAME' | translate }}</label>
         <nb-icon nbPrefix
                  icon="person-outline"
                  pack="eva"
@@ -31,17 +31,24 @@
         <input nbInput
                id="username-input"
                fullWidth
+               [status]="(checkFieldForError('usernameOrEmail')) ?
+               'danger' : 'basic'"
                [type]="'text'"
                [formControlName]="'usernameOrEmail'">
+        <nb-error *ngIf="checkFieldForError('usernameOrEmail')">
+          <ng-container *ngIf="loginForm.get('usernameOrEmail').errors.required">
+            {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+          </ng-container>
+        </nb-error>
       </nb-form-field>
 
       <nb-form-field>
         <div class="margin-bottom-xs"
              [fxLayout]="'row'"
              [fxLayoutAlign]="'space-between center'">
-          <span [fxHide.lt-md]="true">Mot de passe :</span>
+          <span [fxHide.lt-md]="true">{{ 'FORM.INPUT.PASSWORD' | translate }}</span>
 
-          <a [routerLink]="'../reset-password'">Mot de passe oublié ?</a>
+          <a [routerLink]="'../reset-password'">{{ 'FORM.FORGOTTEN_PASSWORD' | translate }}</a>
         </div>
         <nb-icon nbPrefix
                  icon="unlock-outline"
@@ -51,8 +58,15 @@
 
         <input nbInput
                fullWidth
+               [status]="(checkFieldForError('password')) ?
+               'danger' : 'basic'"
                [type]="showPassword ? 'text' : 'password'"
                [formControlName]="'password'">
+        <nb-error *ngIf="checkFieldForError('password')">
+          <ng-container *ngIf="loginForm.get('password').errors.required">
+            {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+          </ng-container>
+        </nb-error>
         <button nbSuffix
                 nbButton
                 ghost
@@ -68,12 +82,14 @@
       <button nbButton
               hero
               status="primary"
-              type="submit">
-        Se connecter
+              type="submit"
+              [disabled]="!loginForm.valid">
+        {{ 'FORM.BTN.LOGIN' | translate }}
+
       </button>
 
-      <p>Pas de compte ?
-        <a [routerLink]="'../register'">S'enregistrer</a>
+      <p>{{ 'FORM.NO_ACCOUNT' | translate }}
+        <a [routerLink]="'../register'">{{ 'FORM.BTN.REGISTER' | translate }}</a>
       </p>
 
 

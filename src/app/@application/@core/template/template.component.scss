@@ -3,6 +3,11 @@
     nb-layout-column {
       padding: 2.25rem !important;
     }
+    nb-layout-footer {
+      nav {
+        justify-content: flex-end !important;
+      }
+    }
 
     nb-sidebar {
       &.compacted {

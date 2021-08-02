@@ -1,11 +1,12 @@
-import { Component }                      from '@angular/core';
-import { SwUpdate, UpdateAvailableEvent } from '@angular/service-worker';
-import { NbDialogService }                from '@nebular/theme';
-import { slideInAnimation }               from './@shared/animation/routing.animation';
+import {Component} from '@angular/core';
+import {SwUpdate, UpdateAvailableEvent} from '@angular/service-worker';
+import {NbDialogService} from '@nebular/theme';
+import {slideInAnimation} from './@shared/animation/routing.animation';
 import {
   ConfirmDialogComponent,
   ConfirmDialogResult,
 } from './@shared/ui-components/confirm-dialog/confirm-dialog.component';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component(
   {
@@ -15,8 +16,7 @@ import {
         <router-outlet #o="outlet"></router-outlet>
       </div>
     `,
-    styleUrls: [ './app.component.scss' ],
-    animations: [ slideInAnimation ],
+    animations: [slideInAnimation],
   },
 )
 export class AppComponent {
@@ -24,8 +24,23 @@ export class AppComponent {
   constructor(
     private _nbDialogService: NbDialogService,
     private _swUpdateService: SwUpdate,
+    private _translateService: TranslateService
   ) {
     this._checkForUpdates();
+    _translateService.addLangs(['en', 'fr']);
+    _translateService.setDefaultLang('fr');
+
+    const browserLang: string = _translateService.getBrowserLang();
+    let languageUsed: string;
+
+    if (localStorage.getItem('i18n')) {
+      languageUsed = localStorage.getItem('i18n') as string;
+    } else {
+      languageUsed = browserLang.match(/fr|fr-FR/) ? 'fr' : 'en';
+      localStorage.setItem('i18n', languageUsed);
+    }
+
+    _translateService.use(languageUsed);
   }
 
   /**
@@ -34,26 +49,26 @@ export class AppComponent {
    */
   private _checkForUpdates(): void {
     this._swUpdateService
-        .available
-        .subscribe(
-          (version: UpdateAvailableEvent) => {
-            if (version) {
-              this._swUpdateService
-                  .activateUpdate()
-                  .then(() => {
-                    this._nbDialogService
-                        .open(ConfirmDialogComponent)
-                        .onClose
-                        .subscribe(
-                          (result: ConfirmDialogResult) => {
-                            if (!result) return;
-                            else if (result.confirmed) document.location.reload();
-                          }
-                        );
-                  });
-            }
-          },
-        );
+      .available
+      .subscribe(
+        (version: UpdateAvailableEvent) => {
+          if (version) {
+            this._swUpdateService
+              .activateUpdate()
+              .then(() => {
+                this._nbDialogService
+                  .open(ConfirmDialogComponent)
+                  .onClose
+                  .subscribe(
+                    (result: ConfirmDialogResult) => {
+                      if (!result) return;
+                      else if (result.confirmed) document.location.reload();
+                    }
+                  );
+              });
+          }
+        },
+      );
   }
 
 }

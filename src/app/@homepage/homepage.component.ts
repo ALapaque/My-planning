@@ -11,7 +11,7 @@ import { SectionService }                                         from './@share
            })
 export class HomepageComponent implements OnInit {
 
-  public sections$: Observable<Array<Section>> = new BehaviorSubject(new Array<Section>()).asObservable();
+  public sections$: Observable<Array<Section> | undefined> = new BehaviorSubject(new Array<Section>()).asObservable();
   public scrollYPosition: number = 0;
 
   @ViewChild('nbLayoutHeaderComponent') public nbLayoutHeaderComponent: ElementRef | undefined;
