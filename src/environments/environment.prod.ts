@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: 'http://amaury.must.be:32768',
+  apiUrl: 'http://192.168.10.188:32768',
   production: true
 };
