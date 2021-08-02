@@ -1,0 +1,81 @@
+{
+  "LANGUAGE": {
+    "NAME": "Langue",
+    "FRENCH": "Français",
+    "ENGLISH": "Anglais"
+  },
+  "APPNAME": "MyPlanning",
+  "AUTH": {
+    "LOGIN": "Connexion",
+    "REGISTER": "S'enregistrer"
+  },
+  "HOMEPAGE": {
+    "HEADER": {
+      "MENU": {
+        "HOMEPAGE": "Accueil",
+        "FUNCTIONNALITIES": "Fonctionnalités",
+        "SECTORS": "Secteurs",
+        "OFFERS": "Offres",
+        "CLIENTS": "Clients",
+        "ABOUT": "À propos"
+      },
+      "GOTOAPP": "Accéder à l'application"
+    },
+    "HERO": {
+      "WITH": "Avec",
+      "DESCRIPTION-1": "La planification et le suivi de vos équipes devient ultra-simple.",
+      "DESCRIPTION-2": "Accédez-y n'importe où"
+    },
+    "SECTION": {
+      "FUNCTIONNALITIES": "Fonctionnalités",
+      "SECTORS": "Secteurs",
+      "OFFERS": "Nos offres",
+      "CLIENTS": "Nos clients",
+      "ABOUT": "À propos",
+      "CARDS": {
+        "AGENDA": {
+          "TITLE": "L'agenda",
+          "DESCRIPTION": "<p>Retrouvez un agenda complet avec la possibilité d'afficher vos événements dans différentes vues soit d'un type timeline ou bien standard</p>"
+        },
+        "MEETING": {
+          "TITLE": "Réunions",
+          "DESCRIPTION": "<ul><li>1</li><li>2</li><li>3</li></ul>"
+        },
+        "OFFER": {
+          "TITLE": "Offres",
+          "DESCRIPTION": "<ul><li>1</li><li>2</li><li>3</li></ul>"
+        }
+      }
+    }
+  },
+  "APP": {
+    "SEARCH": {
+      "HINT": "Appuyer sur entrer pour rechercher",
+      "PLACEHOLDER": "Rechercher"
+    },
+    "LEFT_MENU": {
+      "DASHBOARD": "Tableau de bord",
+      "AGENDA": "Agenda"
+    }
+  },
+  "FORM": {
+    "INPUT": {
+      "USERNAME": "Nom d'utilisateur",
+      "PASSWORD": "Mot de passe",
+      "EMAIL": "Adresse email",
+      "CONFIRM_PASSWORD": "Confirmation du mot de passe",
+      "ERRORS": {
+        "REQUIRED": "Ce champ est requis !",
+        "PASSWORD_NO_MATCH": "Les mots de passe ne correspondent pas !",
+        "FORMAT": "Format incorrect"
+      }
+    },
+    "BTN": {
+      "LOGIN": "Se connecter",
+      "REGISTER": "S'enregistrer"
+    },
+    "FORGOTTEN_PASSWORD": "Mot de passe oublié ?",
+    "NO_ACCOUNT": "Pas de compte ?",
+    "ACCOUNT_EXIST": "Vous possédez déjà un compte ?"
+  }
+}

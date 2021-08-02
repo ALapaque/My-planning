@@ -1,0 +1,81 @@
+{
+  "LANGUAGE": {
+    "NAME": "Language",
+    "FRENCH": "French",
+    "ENGLISH": "English"
+  },
+  "APPNAME": "MyPlanning",
+  "AUTH": {
+    "LOGIN": "Login",
+    "REGISTER": "Register"
+  },
+  "HOMEPAGE": {
+    "HEADER": {
+      "MENU": {
+        "HOMEPAGE": "HOME",
+        "FUNCTIONNALITIES": "Features",
+        "SECTORS": "Sectors",
+        "OFFERS": "offers",
+        "CLIENTS": "Clients",
+        "ABOUT": "About"
+      },
+      "GOTOAPP": "Go To the App"
+    },
+    "HERO": {
+      "WITH": "With",
+      "DESCRIPTION-1": "The planification and the follow of your team becomes easier",
+      "DESCRIPTION-2": "Access it from anywhere"
+    },
+    "SECTION": {
+      "FUNCTIONNALITIES": "Features",
+      "SECTORS": "Sectors",
+      "OFFERS": "Our offers",
+      "CLIENTS": "Our clients",
+      "ABOUT": "About",
+      "CARDS": {
+        "AGENDA": {
+          "TITLE": "The agenda",
+          "DESCRIPTION": "<p>Find a complete agenda with different types of views</p>"
+        },
+        "MEETING": {
+          "TITLE": "Meetings",
+          "DESCRIPTION": "<ul><li>1</li><li>2</li><li>3</li></ul>"
+        },
+        "OFFER": {
+          "TITLE": "Offers",
+          "DESCRIPTION": "<ul><li>1</li><li>2</li><li>3</li></ul>"
+        }
+      }
+    }
+  },
+  "APP": {
+    "SEARCH": {
+      "HINT": "Press enter to search",
+      "PLACEHOLDER": "Search"
+    },
+    "LEFT_MENU": {
+      "DASHBOARD": "Dashboard",
+      "AGENDA": "Agenda"
+    }
+  },
+  "FORM": {
+    "INPUT": {
+      "USERNAME": "Username",
+      "PASSWORD": "Password",
+      "EMAIL": "Email adress",
+      "CONFIRM_PASSWORD": "Password confirmation",
+      "ERRORS": {
+        "REQUIRED": "Required field !",
+        "PASSWORD_NO_MATCH": "The passwords doesn't match !",
+        "FORMAT": "Incorrect format"
+      }
+    },
+    "BTN": {
+      "LOGIN": "Login",
+      "REGISTER": "Register"
+    },
+    "FORGOTTEN_PASSWORD": "Forgot your password ?",
+    "NO_ACCOUNT": "No account ?",
+    "ACCOUNT_EXIST": "Already own an account ?"
+  }
+}
