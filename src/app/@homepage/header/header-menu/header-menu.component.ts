@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute }    from '@angular/router';
 import { NbMenuItem }        from '@nebular/theme';
 import { share }             from 'rxjs/operators';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component(
   {
@@ -12,59 +13,62 @@ import { share }             from 'rxjs/operators';
 )
 export class HeaderMenuComponent implements OnInit {
 
-  public menuItems: NbMenuItem[] = [
-    {
-      title: 'Accueil',
-      link: '/homepage',
-      fragment: 'home',
-    },
-    {
-      title: 'Fonctionnalités',
-      link: '/homepage',
-      fragment: 'features',
-    },
-    {
-      title: 'Secteurs',
-      link: '/homepage',
-      fragment: 'sectors',
-    },
-    {
-      title: 'Nos offres',
-      link: '/homepage',
-      fragment: 'offers',
-    },
-    {
-      title: 'Clients',
-      link: '/homepage',
-      fragment: 'clients',
-    },
-    {
-      title: 'A propos',
-      link: '/homepage',
-      fragment: 'about',
-    },
-  ];
+  public menuItems: NbMenuItem[] | undefined;
 
-  public mobileMenuItems: NbMenuItem[] = [
-    ...this.menuItems,
-    {
-      title: 'Accéder à l\'application',
-      link: '/auth',
-    },
-  ];
+  public mobileMenuItems: NbMenuItem[] | undefined;
 
   public activeFragment = this._activatedRoute.fragment.pipe(share());
 
   constructor(
     private _activatedRoute: ActivatedRoute,
+    private _translateService: TranslateService,
   ) {
+    this.menuItems = [
+      {
+        title: this._translateService.instant('HOMEPAGE.HEADER.MENU.HOMEPAGE'),
+        link: '/homepage',
+        fragment: 'home',
+      },
+      {
+        title: this._translateService.instant('HOMEPAGE.HEADER.MENU.FUNCTIONNALITIES'),
+        link: '/homepage',
+        fragment: 'features',
+      },
+      {
+        title: this._translateService.instant('HOMEPAGE.HEADER.MENU.SECTORS'),
+        link: '/homepage',
+        fragment: 'sectors',
+      },
+      {
+        title: this._translateService.instant('HOMEPAGE.HEADER.MENU.OFFERS'),
+        link: '/homepage',
+        fragment: 'offers',
+      },
+      {
+        title: this._translateService.instant('HOMEPAGE.HEADER.MENU.CLIENTS'),
+        link: '/homepage',
+        fragment: 'clients',
+      },
+      {
+        title: this._translateService.instant('HOMEPAGE.HEADER.MENU.ABOUT'),
+        link: '/homepage',
+        fragment: 'about',
+      },
+    ];
+    this.mobileMenuItems = [
+      ...this.menuItems,
+      {
+        title: this._translateService.instant('HOMEPAGE.HEADER.GOTOAPP'),
+        link: '/auth',
+      },
+    ];
   }
 
   ngOnInit(): void {
   }
 
   /**
-   * test
+   * method in order to scroll to an anchor
    * @param {string} location
    * @param {number} wait
    */

@@ -16,7 +16,6 @@ import {TranslateService} from '@ngx-translate/core';
         <router-outlet #o="outlet"></router-outlet>
       </div>
     `,
-    styleUrls: ['./app.component.scss'],
     animations: [slideInAnimation],
   },
 )

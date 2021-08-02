@@ -19,7 +19,7 @@
           [fxLayoutAlign]="'center center'"
           [fxLayoutGap]="'32px'">
 
-      <h1 class="title">Enregistrement</h1>
+      <h1 class="title">{{ 'AUTH.REGISTER' | translate }}</h1>
 
       <nb-form-field>
         <nb-icon nbPrefix icon="person-outline" pack="eva"></nb-icon>
@@ -29,10 +29,12 @@
                'danger' : 'basic'"
                fullWidth
                [type]="'text'"
-               placeholder="Nom d'utilisateur"
+               [placeholder]="'FORM.INPUT.USERNAME' | translate"
                [formControlName]="'username'">
         <nb-error *ngIf="checkFieldForError('username')">
-          <ng-container *ngIf="registerForm.get('username').errors.required">Ce champ est requis !</ng-container>
+          <ng-container *ngIf="registerForm.get('username').errors.required">
+            {{'FORM.INPUT.ERRORS.REQUIRED' | translate}}
+          </ng-container>
         </nb-error>
       </nb-form-field>
 
@@ -41,13 +43,18 @@
         <input nbInput
                name="email"
                fullWidth
-               placeholder="Email"
+               [placeholder]="'FORM.INPUT.EMAIL' | translate"
                [status]="(checkFieldForError('email')) ?
                'danger' : 'basic'"
                [type]="'email'"
                [formControlName]="'email'">
         <nb-error *ngIf="checkFieldForError('email')">
-          <ng-container *ngIf="registerForm.get('email').errors.required">Ce champ est requis !</ng-container>
+          <ng-container *ngIf="registerForm.get('email').errors.required">
+            {{'FORM.INPUT.ERRORS.REQUIRED' | translate}}
+          </ng-container>
+          <ng-container *ngIf="registerForm.get('email').errors.email">
+            {{'FORM.INPUT.ERRORS.FORMAT' | translate}}
+          </ng-container>
         </nb-error>
       </nb-form-field>
 
@@ -58,7 +65,7 @@
                #passwordInput
                fullWidth
                name="password"
-               placeholder="Mot de passe"
+               [placeholder]="'FORM.INPUT.PASSWORD' | translate"
                [status]="registerForm.get('password').dirty ?
                ((registerForm.hasError('passwordNoMatch') || registerForm.get('password').invalid)  ? 'danger' : 'success') :
                'basic'"
@@ -67,6 +74,7 @@
         <button nbSuffix
                 nbButton
                 ghost
+                type="button"
                 (click)="passwordInput.type === 'text' ?
                 passwordInput.type = 'password' :
                 passwordInput.type = 'text'">
@@ -76,8 +84,12 @@
           </nb-icon>
         </button>
         <nb-error *ngIf="checkFieldForError('password')">
-          <ng-container *ngIf="registerForm.get('password').errors.required">Ce champ est requis !</ng-container>
-          <ng-container *ngIf="registerForm.get('password').hasError('passwordNoMatch')">Les mots de passes ne sont pas identiques</ng-container>
+          <ng-container *ngIf="registerForm.get('password').errors.required">
+            {{'FORM.INPUT.ERRORS.REQUIRED' | translate}}
+          </ng-container>
+          <ng-container *ngIf="registerForm.get('password').hasError('passwordNoMatch')">
+            {{'FORM.INPUT.ERRORS.PASSWORD_NO_MATCH' | translate}}
+          </ng-container>
         </nb-error>
       </nb-form-field>
 
@@ -87,7 +99,7 @@
         <input nbInput
                #confirmPasswordInput
                fullWidth
-               placeholder="Confirmation du mot de passe"
+               [placeholder]="'FORM.INPUT.CONFIRM_PASSWORD' | translate"
                name="confirmPassword"
                [status]="registerForm.get('confirmPassword').dirty ?
                ((registerForm.hasError('passwordNoMatch') || registerForm.get('confirmPassword').invalid)  ? 'danger' : 'success') :
@@ -97,6 +109,7 @@
         <button nbSuffix
                 nbButton
                 ghost
+                type="button"
                 (click)="confirmPasswordInput.type === 'text' ?
                 confirmPasswordInput.type = 'password' :
                 confirmPasswordInput.type = 'text'">
@@ -106,19 +119,25 @@
           </nb-icon>
         </button>
         <nb-error *ngIf="checkFieldForError('confirmPassword')">
-          <ng-container *ngIf="registerForm.get('confirmPassword').errors.required">Ce champ est requis !</ng-container>
-          <ng-container *ngIf="registerForm.get('confirmPassword').hasError('passwordNoMatch')">Les mots de passes ne sont pas identiques</ng-container>        </nb-error>
+          <ng-container *ngIf="registerForm.get('confirmPassword').errors.required">
+            {{'FORM.INPUT.ERRORS.REQUIRED' | translate}}
+          </ng-container>
+          <ng-container *ngIf="registerForm.get('confirmPassword').hasError('passwordNoMatch')">
+            {{'FORM.INPUT.ERRORS.PASSWORD_NO_MATCH' | translate}}
+          </ng-container>
+        </nb-error>
       </nb-form-field>
 
       <button nbButton
               hero
               status="primary"
+              type="submit"
               [disabled]="!registerForm.valid">
-        S'enregistrer
+        {{'FORM.BTN.REGISTER' | translate}}
       </button>
 
       <p>
-        Vous possèdez déjà un compte ? <a [routerLink]="'../login'">Se connecter</a>
+        {{'FORM.ACCOUNT_EXIST' | translate}}<a [routerLink]="'../login'">{{'FORM.BTN.LOGIN' | translate}}</a>
       </p>
 
 

@@ -68,7 +68,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
-      }
+      },
     })
   ],
   providers: [

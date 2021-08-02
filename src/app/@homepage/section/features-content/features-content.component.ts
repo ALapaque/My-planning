@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SectionCard }       from '../../@shared/models/section-card.model';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
              selector: 'app-features-content',
@@ -8,52 +9,31 @@ import { SectionCard }       from '../../@shared/models/section-card.model';
            })
 export class FeaturesContentComponent implements OnInit {
 
-  public cards: Array<SectionCard> = new Array<SectionCard>(
-    new SectionCard(
-      {
-        title: 'L\'agenda',
-        description: `<p>Retrouvez un agenda complet avec la possibilité d\'afficher vos événements dans différentes vues soit d\'un type timeline ou bien standard</p>`,
-      },
-    ),
-    new SectionCard(
-      {
-        title: 'Réunions',
-        description: `Suivez vos réunions en direct grace à l'encodage de vos rapport directement sur vos événements`,
-      },
-    ),
-    new SectionCard(
-      {
-        title: 'L\'agenda',
-        description: '<ul>' +
-                     '<li>1</li>' +
-                     '<li>2</li>' +
-                     '<li>3</li>' +
-                     '</ul>',
-      },
-    ),
-    new SectionCard(
-      {
-        title: 'L\'agenda',
-        description: '<ul>' +
-                     '<li>1</li>' +
-                     '<li>2</li>' +
-                     '<li>3</li>' +
-                     '</ul>',
-      },
-    ),
-    new SectionCard(
-      {
-        title: 'L\'agenda',
-        description: '<ul>' +
-                     '<li>1</li>' +
-                     '<li>2</li>' +
-                     '<li>3</li>' +
-                     '</ul>',
-      },
-    ),
-  );
+  public cards: Array<SectionCard> | undefined;
 
-  constructor() {
+  constructor(
+    private _translateService: TranslateService,
+  ) {
+    this.cards = new Array<SectionCard>(
+      new SectionCard(
+        {
+          title: this._translateService.instant('HOMEPAGE.SECTION.CARDS.AGENDA.TITLE'),
+          description: this._translateService.instant('HOMEPAGE.SECTION.CARDS.AGENDA.DESCRIPTION'),
+        },
+      ),
+      new SectionCard(
+        {
+          title: this._translateService.instant('HOMEPAGE.SECTION.CARDS.MEETING.TITLE'),
+          description: this._translateService.instant('HOMEPAGE.SECTION.CARDS.MEETING.DESCRIPTION'),
+        },
+      ),
+      new SectionCard(
+        {
+          title: this._translateService.instant('HOMEPAGE.SECTION.CARDS.OFFER.TITLE'),
+          description: this._translateService.instant('HOMEPAGE.SECTION.CARDS.OFFER.DESCRIPTION'),
+        },
+      )
+    );
   }
 
   ngOnInit(): void {
