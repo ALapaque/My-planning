@@ -40,7 +40,7 @@ export class AgendaComponent implements AfterViewInit {
 
   public cellClicked($event: CellClickEventArgs): void {
     console.log($event);
-    const isFullscreen: string = (window.innerWidth <= 960) ? 'nebular-dialog-fullscreen' : '';
+    const isFullscreen: string = (window.innerWidth <= 960) ? 'nebular-dialog-fullscreen' : 'nebular-dialog';
     this._dialogService.open(EventFormComponent, {dialogClass: isFullscreen});
   }
 

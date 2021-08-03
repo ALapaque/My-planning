@@ -50,7 +50,7 @@ export class AppComponent {
 
     if (!dialog) return;
     else if (width <= 960) {
-      dialog[0].classList.add('nebular-dialog-fullscreen');
+      dialog[0].classList.replace('nebular-dialog', 'nebular-dialog-fullscreen');
     } else {
       dialog[0].classList.replace('nebular-dialog-fullscreen', 'nebular-dialog');
     }
