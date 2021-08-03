@@ -9,6 +9,11 @@
     "LOGIN": "Login",
     "REGISTER": "Register"
   },
+  "GLOBAL": {
+    "CANCEL": "Cancel",
+    "OK": "Ok",
+    "SAVE": "Save"
+  },
   "HOMEPAGE": {
     "HEADER": {
       "MENU": {
@@ -49,6 +54,28 @@
     }
   },
   "APP": {
+    "AGENDA": {
+      "VIEWS": {
+        "DAY": "Day",
+        "WEEK": "Week",
+        "WORKWEEK": "Work week",
+        "MONTH": "Month",
+        "YEAR": "Year",
+        "AGENDA": "Planning",
+        "TIMELINEDAY": "Day",
+        "TIMELINEWEEK": "Week",
+        "TIMELINEWORKWEEK": "Work week",
+        "TIMELINEMONTH": "Month",
+        "TIMELINEYEAR": "Year"
+      },
+      "FORM": {
+        "EVENT": {
+          "CREATE": "New meeting",
+          "UPDATE": "Update meeting",
+          "DELETE": "Delete meeting"
+        }
+      }
+    },
     "SEARCH": {
       "HINT": "Press enter to search",
       "PLACEHOLDER": "Search"
