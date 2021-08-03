@@ -1,11 +1,11 @@
-import { NgModule }         from '@angular/core';
-import { NbEvaIconsModule } from '@nebular/eva-icons';
+import {NgModule} from '@angular/core';
+import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {
   NbActionsModule,
   NbButtonModule,
   NbCardModule,
   NbCheckboxModule,
-  NbContextMenuModule,
+  NbContextMenuModule, NbDatepickerModule,
   NbDialogModule,
   NbFormFieldModule,
   NbIconModule,
@@ -17,14 +17,14 @@ import {
   NbRouteTabsetModule,
   NbSearchModule,
   NbSelectModule,
-  NbSidebarModule,
+  NbSidebarModule, NbSpinnerModule,
   NbTabsetModule,
   NbToastrModule,
   NbToggleModule,
   NbUserModule,
   NbWindowModule,
   NbWindowState,
-}                           from '@nebular/theme';
+} from '@nebular/theme';
 
 const nebularModule = [
   NbSidebarModule,
@@ -48,35 +48,39 @@ const nebularModule = [
   NbTabsetModule,
   NbToggleModule,
   NbRouteTabsetModule,
+  NbDatepickerModule,
+  NbSpinnerModule,
 ];
 
 @NgModule({
-            declarations: [],
-            imports: [
-              ...nebularModule,
-              NbMenuModule.forRoot(),
-              NbSidebarModule.forRoot(),
-              NbWindowModule.forRoot(
-                {
-                  hasBackdrop: true,
-                  closeOnBackdropClick: false,
-                  closeOnEsc: true,
-                  initialState: NbWindowState.FULL_SCREEN,
-                },
-              ),
-              NbDialogModule.forRoot(
-                {
-                  hasBackdrop: true,
-                  closeOnBackdropClick: false,
-                  closeOnEsc: false,
-                },
-              ),
-            ],
-            exports: [
-              ...nebularModule,
-              NbToastrModule,
-              NbWindowModule,
-            ],
-          })
+  declarations: [],
+  imports: [
+    ...nebularModule,
+    NbMenuModule.forRoot(),
+    NbSidebarModule.forRoot(),
+    NbWindowModule.forRoot(
+      {
+        hasBackdrop: true,
+        closeOnBackdropClick: false,
+        closeOnEsc: true,
+        initialState: NbWindowState.FULL_SCREEN,
+      },
+    ),
+    NbDialogModule.forRoot(
+      {
+        hasBackdrop: true,
+        closeOnBackdropClick: false,
+        closeOnEsc: false,
+        dialogClass: 'nebular-dialog'
+      },
+    ),
+    NbDatepickerModule.forRoot()
+  ],
+  exports: [
+    ...nebularModule,
+    NbToastrModule,
+    NbWindowModule,
+  ],
+})
 export class NebularModule {
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TranslateService} from '@ngx-translate/core';
+import {Locale} from '../../services/session.service';
 
 @Component({
   selector: 'app-language-selector',
@@ -11,7 +12,7 @@ export class LanguageSelectorComponent implements OnInit {
   selectedLanguage: FormControl = new FormControl(null);
 
   constructor(
-    private _translateService: TranslateService
+    private _translateService: TranslateService,
   ) {
     this.selectedLanguage.setValue(this._translateService.currentLang);
   }
@@ -19,9 +20,8 @@ export class LanguageSelectorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  languageSelectedChanged($event: 'en' | 'fr'): void {
-    if ($event === localStorage.getItem('i18n')) return;
-    localStorage.setItem('i18n', $event);
-    location.reload();
+  languageSelectedChanged($event: Locale): void {
+    if ($event === sessionStorage.getItem('i18n')) return;
+    this._translateService.use($event);
   }
 }

@@ -1,0 +1,15 @@
+<div fxLayoutAlign="space-between center"
+     fxLayoutGap="16px">
+  <ng-content></ng-content>
+
+  <button nbButton
+          ghost
+          type="button"
+          shape="semi-round"
+          size="small"
+          status="danger"
+          (click)="close.emit()">
+    <nb-icon icon="close-outline"></nb-icon>
+  </button>
+
+</div>

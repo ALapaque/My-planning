@@ -3,6 +3,7 @@
     nb-layout-column {
       padding: 2.25rem !important;
     }
+
     nb-layout-footer {
       nav {
         justify-content: flex-end !important;
@@ -15,6 +16,28 @@
           margin: 0 !important;
         }
       }
+    }
+  }
+
+  .nebular-dialog {
+    display: flex;
+    align-items: center;
+    place-content: center;
+    min-width: 20vw !important;
+    max-width: 80vw !important;
+    max-height: 80vh !important;
+
+    nb-card {
+      height: 100% !important;
+    }
+  }
+
+  .nebular-dialog-fullscreen {
+    width: 100vw !important;
+    height: 100vh !important;
+
+    nb-card {
+      height: 100% !important;
     }
   }
 }

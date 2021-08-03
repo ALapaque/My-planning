@@ -11,8 +11,8 @@ export class AuthService {
   private jwtHelper$: BehaviorSubject<JwtHelper> = new BehaviorSubject(new JwtHelper());
 
   constructor(private http: HttpClient) {
-    if (localStorage.getItem('jwtHelper')) {
-      this.jwtHelper$.next(new JwtHelper(JSON.parse(<string>localStorage.getItem('jwtHelper'))));
+    if (sessionStorage.getItem('jwtHelper')) {
+      this.jwtHelper$.next(new JwtHelper(JSON.parse(<string>sessionStorage.getItem('jwtHelper'))));
     }
   }
 
@@ -26,7 +26,7 @@ export class AuthService {
         map((token: string) => new JwtHelper({token, isAuthenticated: true, expired: false})),
         map((jwtHelper: JwtHelper) => {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('jwtHelper', JSON.stringify(jwtHelper));
+          sessionStorage.setItem('jwtHelper', JSON.stringify(jwtHelper));
           this.jwtHelper$.next(jwtHelper);
           return jwtHelper;
         }));
@@ -38,7 +38,7 @@ export class AuthService {
 
   public logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('jwtHelper');
+    sessionStorage.removeItem('jwtHelper');
     this.jwtHelper$.next(new JwtHelper());
   }
 }

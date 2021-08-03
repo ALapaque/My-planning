@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import {SwUpdate, UpdateAvailableEvent} from '@angular/service-worker';
 import {NbDialogService} from '@nebular/theme';
 import {slideInAnimation} from './@shared/animation/routing.animation';
@@ -7,6 +7,7 @@ import {
   ConfirmDialogResult,
 } from './@shared/ui-components/confirm-dialog/confirm-dialog.component';
 import {TranslateService} from '@ngx-translate/core';
+import {Locale, SessionService} from './@shared/services/session.service';
 
 @Component(
   {
@@ -24,23 +25,23 @@ export class AppComponent {
   constructor(
     private _nbDialogService: NbDialogService,
     private _swUpdateService: SwUpdate,
-    private _translateService: TranslateService
+    private _sessionService: SessionService,
+
   ) {
     this._checkForUpdates();
-    _translateService.addLangs(['en', 'fr']);
-    _translateService.setDefaultLang('fr');
+  }
 
-    const browserLang: string = _translateService.getBrowserLang();
-    let languageUsed: string;
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    const width: number = event.target.innerWidth;
+    const dialog: HTMLCollection = document.getElementsByClassName('cdk-overlay-pane');
 
-    if (localStorage.getItem('i18n')) {
-      languageUsed = localStorage.getItem('i18n') as string;
+    if (!dialog) return;
+    else if (width <= 960) {
+      dialog[0].classList.replace('nebular-dialog', 'nebular-dialog-fullscreen');
     } else {
-      languageUsed = browserLang.match(/fr|fr-FR/) ? 'fr' : 'en';
-      localStorage.setItem('i18n', languageUsed);
+      dialog[0].classList.replace('nebular-dialog-fullscreen', 'nebular-dialog');
     }
-
-    _translateService.use(languageUsed);
   }
 
   /**

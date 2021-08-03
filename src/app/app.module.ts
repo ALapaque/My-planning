@@ -15,9 +15,9 @@ import {AppRouting} from './app.routing';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 
-// import ngx-translate and the http loader
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {SessionService} from './@shared/services/session.service';
 
 registerLocaleData(localeFr, 'fr-BE', localeFrBeExtra);
 registerLocaleData(localeEn, 'en-US');
@@ -41,7 +41,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
-          return localStorage.getItem('jwt_token');
+          return sessionStorage.getItem('jwt_token');
         },
         allowedDomains: ['example.com'],
       },
@@ -59,8 +59,6 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     }),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
-      // Register the ServiceWorker as soon as the app is stable
-      // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
     TranslateModule.forRoot({
@@ -72,7 +70,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     })
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'fr-BE'},
+    {
+      provide: LOCALE_ID,
+      deps: [SessionService],
+      useFactory: (sessionService: SessionService) => sessionService.locale
+    },
   ],
   bootstrap: [AppComponent],
 })

@@ -5,6 +5,11 @@
     "ENGLISH": "Anglais"
   },
   "APPNAME": "MyPlanning",
+  "GLOBAL": {
+    "CANCEL": "Annuler",
+    "OK": "Ok",
+    "SAVE": "Enregistrer"
+  },
   "AUTH": {
     "LOGIN": "Connexion",
     "REGISTER": "S'enregistrer"
@@ -49,6 +54,28 @@
     }
   },
   "APP": {
+    "AGENDA": {
+      "VIEWS": {
+        "DAY": "Journée",
+        "WEEK": "Semaine",
+        "WORKWEEK": "Semaine de travail",
+        "MONTH": "Mois",
+        "YEAR": "Année",
+        "AGENDA": "Planning",
+        "TIMELINEDAY": "Journée",
+        "TIMELINEWEEK": "Semaine",
+        "TIMELINEWORKWEEK": "Semaine de travail",
+        "TIMELINEMONTH": "Mois",
+        "TIMELINEYEAR": "Année"
+      },
+      "FORM": {
+        "EVENT": {
+          "CREATE": "Nouveau rendez-vous",
+          "UPDATE": "Modifier le rendez-vous",
+          "DELETE": "Supprimer le rendez-vous"
+        }
+      }
+    },
     "SEARCH": {
       "HINT": "Appuyer sur entrer pour rechercher",
       "PLACEHOLDER": "Rechercher"

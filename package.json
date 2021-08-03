@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --watch",
     "build": "ng build --configuration=production",
     "build:test": "npm run build & http-server -p 8090 -c-1 dist/My-planning",
     "test": "ng test",
