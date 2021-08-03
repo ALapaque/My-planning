@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, HostListener} from '@angular/core';
 import {SwUpdate, UpdateAvailableEvent} from '@angular/service-worker';
 import {NbDialogService} from '@nebular/theme';
 import {slideInAnimation} from './@shared/animation/routing.animation';
@@ -41,6 +41,19 @@ export class AppComponent {
     }
 
     _translateService.use(languageUsed);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void {
+    const width: number = event.target.innerWidth;
+    const dialog: HTMLCollection = document.getElementsByClassName('cdk-overlay-pane');
+
+    if (!dialog) return;
+    else if (width <= 960) {
+      dialog[0].classList.add('nebular-dialog-fullscreen');
+    } else {
+      dialog[0].classList.replace('nebular-dialog-fullscreen', 'nebular-dialog');
+    }
   }
 
   /**

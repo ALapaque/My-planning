@@ -5,6 +5,11 @@
     "ENGLISH": "Anglais"
   },
   "APPNAME": "MyPlanning",
+  "GLOBAL": {
+    "CANCEL": "Annuler",
+    "OK": "Ok",
+    "SAVE": "Enregistrer"
+  },
   "AUTH": {
     "LOGIN": "Connexion",
     "REGISTER": "S'enregistrer"
@@ -62,6 +67,13 @@
         "TIMELINEWORKWEEK": "Semaine de travail",
         "TIMELINEMONTH": "Mois",
         "TIMELINEYEAR": "Année"
+      },
+      "FORM": {
+        "EVENT": {
+          "CREATE": "Nouveau rendez-vous",
+          "UPDATE": "Modifier le rendez-vous",
+          "DELETE": "Supprimer le rendez-vous"
+        }
       }
     },
     "SEARCH": {

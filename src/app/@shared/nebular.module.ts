@@ -1,5 +1,5 @@
-import { NgModule }         from '@angular/core';
-import { NbEvaIconsModule } from '@nebular/eva-icons';
+import {NgModule} from '@angular/core';
+import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {
   NbActionsModule,
   NbButtonModule,
@@ -17,7 +17,7 @@ import {
   NbRouteTabsetModule,
   NbSearchModule,
   NbSelectModule,
-  NbSidebarModule,
+  NbSidebarModule, NbSpinnerModule,
   NbTabsetModule,
   NbToastrModule,
   NbToggleModule,
@@ -48,37 +48,39 @@ const nebularModule = [
   NbTabsetModule,
   NbToggleModule,
   NbRouteTabsetModule,
-  NbDatepickerModule
+  NbDatepickerModule,
+  NbSpinnerModule,
 ];
 
 @NgModule({
-            declarations: [],
-            imports: [
-              ...nebularModule,
-              NbMenuModule.forRoot(),
-              NbSidebarModule.forRoot(),
-              NbWindowModule.forRoot(
-                {
-                  hasBackdrop: true,
-                  closeOnBackdropClick: false,
-                  closeOnEsc: true,
-                  initialState: NbWindowState.FULL_SCREEN,
-                },
-              ),
-              NbDialogModule.forRoot(
-                {
-                  hasBackdrop: true,
-                  closeOnBackdropClick: false,
-                  closeOnEsc: false,
-                },
-              ),
-              NbDatepickerModule.forRoot()
-            ],
-            exports: [
-              ...nebularModule,
-              NbToastrModule,
-              NbWindowModule,
-            ],
-          })
+  declarations: [],
+  imports: [
+    ...nebularModule,
+    NbMenuModule.forRoot(),
+    NbSidebarModule.forRoot(),
+    NbWindowModule.forRoot(
+      {
+        hasBackdrop: true,
+        closeOnBackdropClick: false,
+        closeOnEsc: true,
+        initialState: NbWindowState.FULL_SCREEN,
+      },
+    ),
+    NbDialogModule.forRoot(
+      {
+        hasBackdrop: true,
+        closeOnBackdropClick: false,
+        closeOnEsc: false,
+        dialogClass: 'nebular-dialog'
+      },
+    ),
+    NbDatepickerModule.forRoot()
+  ],
+  exports: [
+    ...nebularModule,
+    NbToastrModule,
+    NbWindowModule,
+  ],
+})
 export class NebularModule {
 }

@@ -21,10 +21,9 @@
                    status="primary"
                    fieldSize="tiny"
                    shape="round"
-                   placeholder="Form Picker"
-                   [nbDatepicker]="ngmodel"
+                   [nbDatepicker]="viewDatePicker"
                    [(ngModel)]="agendaHelperService.viewDate">
-            <nb-datepicker #ngmodel></nb-datepicker>
+            <nb-datepicker #viewDatePicker></nb-datepicker>
           </div>
 
           <button ghost
@@ -43,7 +42,7 @@
 
     <nb-actions [size]="'small'">
 
-      <nb-action>
+      <nb-action [fxHide.lt-md]="true">
         <nb-select [(ngModel)]="agendaHelperService.currentView"
                    [size]="'tiny'"
                    filled

@@ -1,0 +1,23 @@
+<div fxLayoutAlign="end center"
+     fxLayoutGap="16px">
+
+  <button nbButton
+          outline
+          type="button"
+          shape="semi-round"
+          size="small"
+          status="danger"
+          (click)="close.emit()">
+    {{ 'GLOBAL.CANCEL' | translate }}
+  </button>
+
+  <button nbButton
+          hero
+          type="submit"
+          shape="semi-round"
+          size="small"
+          status="success">
+    {{ 'GLOBAL.OK' | translate }}
+  </button>
+
+</div>

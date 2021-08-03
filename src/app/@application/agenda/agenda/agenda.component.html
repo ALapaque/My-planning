@@ -1,0 +1,22 @@
+<nb-card [style]="{ height: '93%' }"
+         [nbSpinner]="agendaHelperService.isAgendaLoading | async"
+         nbSpinnerStatus="primary"
+         nbSpinnerSize="giant">
+  <nb-card-body>
+    <ejs-schedule #ejsSchedule
+                  [views]="agendaHelperService.views"
+                  [currentView]="agendaHelperService.currentView"
+                  [eventSettings]="eventSettings"
+                  [height]="'calc(((100vh - 76px) - 60px) - 4.5rem)'"
+                  [selectedDate]="agendaHelperService.viewDate"
+                  [showHeaderBar]="false"
+                  [width]="'100%'"
+                  (popupOpen)="$event.cancel = true"
+                  (cellClick)="cellClicked($event)"
+                  (eventClick)="eventClicked($event)"
+                  (dragStop)="eventDropped($event)">
+    </ejs-schedule>
+  </nb-card-body>
+</nb-card>
+
+

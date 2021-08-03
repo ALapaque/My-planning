@@ -1,4 +1,4 @@
-import { Component, OnInit }   from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import { AgendaHelperService } from '../../../agenda-helper.service';
 
 @Component({
@@ -15,4 +15,5 @@ export class AgendaToolbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 }

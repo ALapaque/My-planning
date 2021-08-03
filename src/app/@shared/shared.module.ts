@@ -10,6 +10,8 @@ import {NbErrorComponent} from './ui-components/nb-error/nb-error.component';
 import {TranslateModule} from '@ngx-translate/core';
 import {LanguageSelectorComponent} from './ui-components/language-selector/language-selector.component';
 import {FooterComponent} from './ui-components/footer/footer.component';
+import {DialogHeaderComponent} from './ui-components/dialog/dialog-header/dialog-header.component';
+import {DialogActionBtnComponent} from './ui-components/dialog/dialog-action-btn/dialog-action-btn.component';
 
 const MODULES: Array<any> = [
   CommonModule,
@@ -26,7 +28,9 @@ const UI_COMPONENTS: Array<any> = [
   ConfirmDialogComponent,
   NbErrorComponent,
   LanguageSelectorComponent,
-  FooterComponent
+  FooterComponent,
+  DialogHeaderComponent,
+  DialogActionBtnComponent
 ];
 
 const DIRECTIVES: Array<any> = [];
