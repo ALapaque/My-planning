@@ -41,7 +41,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
-          return localStorage.getItem('jwt_token');
+          return sessionStorage.getItem('jwt_token');
         },
         allowedDomains: ['example.com'],
       },

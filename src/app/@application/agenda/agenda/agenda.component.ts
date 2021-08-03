@@ -58,11 +58,11 @@ export class AgendaComponent implements AfterViewInit {
     const browserLang: string = this._translateService.getBrowserLang();
     let languageUsed: string;
 
-    if (localStorage.getItem('i18n')) {
-      languageUsed = (localStorage.getItem('i18n') as string).match(/fr|fr-FR/) ? 'fr-BE' : 'en-US';
+    if (sessionStorage.getItem('i18n')) {
+      languageUsed = (sessionStorage.getItem('i18n') as string).match(/fr|fr-FR/) ? 'fr-BE' : 'en-US';
     } else {
       languageUsed = browserLang.match(/fr|fr-FR/) ? 'fr-BE' : 'en-US';
-      localStorage.setItem('i18n', languageUsed);
+      sessionStorage.setItem('i18n', languageUsed);
     }
 
     return languageUsed;

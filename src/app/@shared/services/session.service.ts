@@ -19,7 +19,7 @@ export class SessionService {
     _translateService.addLangs(['en-US', 'fr-BE']);
     _translateService.setDefaultLang('fr-BE');
 
-    const defaultLanguage: Locale = localStorage.getItem('i18n') as Locale ?? 'fr-BE';
+    const defaultLanguage: Locale = sessionStorage.getItem('i18n') as Locale ?? 'fr-BE';
 
     if (defaultLanguage.match(/fr|fr-BE/)) {
       this.registerCulture('fr-BE');
@@ -27,7 +27,7 @@ export class SessionService {
       this.registerCulture('en-US');
     } else {
       const languageUsed: Locale = _translateService.getBrowserLang().match(/fr|fr-FR/) ? 'fr-BE' : 'en-US';
-      localStorage.setItem('i18n', languageUsed);
+      sessionStorage.setItem('i18n', languageUsed);
     }
 
     this._initListener();
@@ -35,7 +35,7 @@ export class SessionService {
 
   set locale(value: Locale) {
     this._locale = value;
-    localStorage.setItem('i18n', value);
+    sessionStorage.setItem('i18n', value);
   }
 
   get locale(): Locale {

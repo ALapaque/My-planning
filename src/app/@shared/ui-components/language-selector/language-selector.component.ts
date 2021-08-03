@@ -21,7 +21,7 @@ export class LanguageSelectorComponent implements OnInit {
   }
 
   languageSelectedChanged($event: Locale): void {
-    if ($event === localStorage.getItem('i18n')) return;
+    if ($event === sessionStorage.getItem('i18n')) return;
     this._translateService.use($event);
   }
 }
