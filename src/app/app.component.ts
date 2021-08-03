@@ -7,6 +7,7 @@ import {
   ConfirmDialogResult,
 } from './@shared/ui-components/confirm-dialog/confirm-dialog.component';
 import {TranslateService} from '@ngx-translate/core';
+import {Locale, SessionService} from './@shared/services/session.service';
 
 @Component(
   {
@@ -24,23 +25,10 @@ export class AppComponent {
   constructor(
     private _nbDialogService: NbDialogService,
     private _swUpdateService: SwUpdate,
-    private _translateService: TranslateService
+    private _sessionService: SessionService,
+
   ) {
     this._checkForUpdates();
-    _translateService.addLangs(['en', 'fr']);
-    _translateService.setDefaultLang('fr');
-
-    const browserLang: string = _translateService.getBrowserLang();
-    let languageUsed: string;
-
-    if (localStorage.getItem('i18n')) {
-      languageUsed = localStorage.getItem('i18n') as string;
-    } else {
-      languageUsed = browserLang.match(/fr|fr-FR/) ? 'fr' : 'en';
-      localStorage.setItem('i18n', languageUsed);
-    }
-
-    _translateService.use(languageUsed);
   }
 
   @HostListener('window:resize', ['$event'])

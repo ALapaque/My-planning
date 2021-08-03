@@ -5,6 +5,7 @@ import {scheduleData} from '../../../@shared/datasources/agenda.datasource';
 import {AgendaHelperService} from '../agenda-helper.service';
 import {NbDialogService} from '@nebular/theme';
 import {EventFormComponent} from '../@shared/components/forms/event-form/event-form.component';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-agenda',
@@ -20,6 +21,7 @@ export class AgendaComponent implements AfterViewInit {
   constructor(
     public agendaHelperService: AgendaHelperService,
     private _dialogService: NbDialogService,
+    private _translateService: TranslateService,
   ) {
   }
 
@@ -50,5 +52,19 @@ export class AgendaComponent implements AfterViewInit {
 
   public eventDropped($event: DragEventArgs): void {
     console.log($event);
+  }
+
+  public getAgendaLocale() {
+    const browserLang: string = this._translateService.getBrowserLang();
+    let languageUsed: string;
+
+    if (localStorage.getItem('i18n')) {
+      languageUsed = (localStorage.getItem('i18n') as string).match(/fr|fr-FR/) ? 'fr-BE' : 'en-US';
+    } else {
+      languageUsed = browserLang.match(/fr|fr-FR/) ? 'fr-BE' : 'en-US';
+      localStorage.setItem('i18n', languageUsed);
+    }
+
+    return languageUsed;
   }
 }

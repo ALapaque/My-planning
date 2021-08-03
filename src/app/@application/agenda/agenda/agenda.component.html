@@ -4,6 +4,7 @@
          nbSpinnerSize="giant">
   <nb-card-body>
     <ejs-schedule #ejsSchedule
+                  [locale]='getAgendaLocale()'
                   [views]="agendaHelperService.views"
                   [currentView]="agendaHelperService.currentView"
                   [eventSettings]="eventSettings"
