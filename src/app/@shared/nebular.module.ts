@@ -5,7 +5,7 @@ import {
   NbButtonModule,
   NbCardModule,
   NbCheckboxModule,
-  NbContextMenuModule,
+  NbContextMenuModule, NbDatepickerModule,
   NbDialogModule,
   NbFormFieldModule,
   NbIconModule,
@@ -24,7 +24,7 @@ import {
   NbUserModule,
   NbWindowModule,
   NbWindowState,
-}                           from '@nebular/theme';
+} from '@nebular/theme';
 
 const nebularModule = [
   NbSidebarModule,
@@ -48,6 +48,7 @@ const nebularModule = [
   NbTabsetModule,
   NbToggleModule,
   NbRouteTabsetModule,
+  NbDatepickerModule
 ];
 
 @NgModule({
@@ -71,6 +72,7 @@ const nebularModule = [
                   closeOnEsc: false,
                 },
               ),
+              NbDatepickerModule.forRoot()
             ],
             exports: [
               ...nebularModule,

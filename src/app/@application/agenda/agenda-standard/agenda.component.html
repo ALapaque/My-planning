@@ -1,8 +1,13 @@
 <ejs-schedule #ejsSchedule
+              [views]="agendaHelperService.views"
               [currentView]="agendaHelperService.currentView"
               [eventSettings]="eventSettings"
-              [height]="'calc(100vh - 76px - 60px - (2 * 2.25rem))'"
+              [height]="'calc(((100vh - 76px) - 60px) - 10rem)'"
               [selectedDate]="agendaHelperService.viewDate"
               [showHeaderBar]="false"
-              [width]="'100%'">
+              [width]="'100%'"
+              (popupOpen)="$event.cancel = true"
+              (cellClick)="cellClicked($event)"
+              (eventClick)="eventClicked($event)"
+              (dragStop)="eventDropped($event)">
 </ejs-schedule>

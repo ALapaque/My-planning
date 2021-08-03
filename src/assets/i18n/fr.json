@@ -49,6 +49,21 @@
     }
   },
   "APP": {
+    "AGENDA": {
+      "VIEWS": {
+        "DAY": "Journée",
+        "WEEK": "Semaine",
+        "WORKWEEK": "Semaine de travail",
+        "MONTH": "Mois",
+        "YEAR": "Année",
+        "AGENDA": "Planning",
+        "TIMELINEDAY": "Journée",
+        "TIMELINEWEEK": "Semaine",
+        "TIMELINEWORKWEEK": "Semaine de travail",
+        "TIMELINEMONTH": "Mois",
+        "TIMELINEYEAR": "Année"
+      }
+    },
     "SEARCH": {
       "HINT": "Appuyer sur entrer pour rechercher",
       "PLACEHOLDER": "Rechercher"
