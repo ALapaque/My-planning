@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NbSidebarState} from '@nebular/theme/components/sidebar/sidebar.component';
 
 @Component({
              selector: 'app-agenda-container',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
              styleUrls: [ './agenda-container.component.scss' ],
            })
 export class AgendaContainerComponent implements OnInit {
+  nbSidebarState: NbSidebarState = 'compacted';
 
   constructor() {
   }

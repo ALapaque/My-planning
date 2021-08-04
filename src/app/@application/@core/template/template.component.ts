@@ -1,32 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { NbSidebarService }  from '@nebular/theme';
-import { NbSidebarState }    from '@nebular/theme/components/sidebar/sidebar.component';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {NbSidebarService} from '@nebular/theme';
+import {NbSidebarState} from '@nebular/theme/components/sidebar/sidebar.component';
 import {AuthService} from '../../../@shared/services/auth.service';
+import {Subject} from 'rxjs';
 
 @Component({
-             selector: 'app-template',
-             templateUrl: './template.component.html',
-             styleUrls: [ './template.component.scss' ],
-           })
-export class TemplateComponent implements OnInit {
+  selector: 'app-template',
+  templateUrl: './template.component.html',
+  styleUrls: ['./template.component.scss'],
+})
+export class TemplateComponent implements OnDestroy {
 
-  public sideBarState: NbSidebarState | undefined;
+  public nbSidebarState: NbSidebarState = 'expanded';
+
+  private _destroy: Subject<any> = new Subject<any>();
 
   constructor(
-    private _sidebarService: NbSidebarService,
+    public sidebarService: NbSidebarService,
     private _authService: AuthService,
-    ) {
+  ) {
   }
 
-  ngOnInit(): void {
+  ngOnDestroy(): void {
+    this._destroy.next();
   }
 
-  public toggle() {
-    this._sidebarService.toggle(true, 'left');
+  public toggle(): void {
+    this.sidebarService.toggle(true, 'left');
   }
 
-  public logout() {
+  public logout(): void {
     this._authService.logout();
   }
-
 }

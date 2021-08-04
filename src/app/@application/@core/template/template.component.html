@@ -28,9 +28,13 @@
   </nb-layout-header>
 
   <nb-sidebar #nbSidebarComponent
-              tag="left"
-              [responsive]="true">
+              [tag]="'left'"
+              [responsive]="true"
+              (stateChange)="nbSidebarState = $event">
     <app-left-menu></app-left-menu>
+    <nb-sidebar-footer>
+      <app-language-selector *ngIf="nbSidebarState === 'expanded'"></app-language-selector>
+    </nb-sidebar-footer>
   </nb-sidebar>
 
   <nb-layout-column>
