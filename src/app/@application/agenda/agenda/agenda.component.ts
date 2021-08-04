@@ -2,10 +2,11 @@ import {AfterViewInit, Component, HostListener, ViewChild} from '@angular/core';
 import {CellClickEventArgs, DragEventArgs, EventClickArgs, EventSettingsModel} from '@syncfusion/ej2-angular-schedule';
 import {ScheduleComponent} from '@syncfusion/ej2-angular-schedule/src/schedule/schedule.component';
 import {scheduleData} from '../../../@shared/datasources/agenda.datasource';
-import {AgendaHelperService} from '../agenda-helper.service';
-import {NbDialogService} from '@nebular/theme';
+import {AgendaHelperService} from '../@shared/services/agenda-helper.service';
 import {EventFormComponent} from '../@shared/components/forms/event-form/event-form.component';
 import {TranslateService} from '@ngx-translate/core';
+import {NbDialogCustomService} from '../../../@shared/services/nb-dialog-custom.service';
+import {NbDialogService} from '@nebular/theme';
 
 @Component({
   selector: 'app-agenda',
@@ -21,6 +22,7 @@ export class AgendaComponent implements AfterViewInit {
   constructor(
     public agendaHelperService: AgendaHelperService,
     private _dialogService: NbDialogService,
+    private _dialogServiceCustom: NbDialogCustomService,
     private _translateService: TranslateService,
   ) {
   }
@@ -41,9 +43,9 @@ export class AgendaComponent implements AfterViewInit {
   }
 
   public cellClicked($event: CellClickEventArgs): void {
-    console.log($event);
-    const isFullscreen: string = (window.innerWidth <= 960) ? 'nebular-dialog-fullscreen' : 'nebular-dialog';
-    this._dialogService.open(EventFormComponent, {dialogClass: isFullscreen});
+    this._dialogService.open(EventFormComponent,
+      {dialogClass: this._dialogServiceCustom.isFullscreen}
+    );
   }
 
   public eventClicked($event: EventClickArgs): void {

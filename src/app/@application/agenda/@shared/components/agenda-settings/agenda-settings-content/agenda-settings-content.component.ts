@@ -1,6 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {NbStepperComponent} from '@nebular/theme';
-import {AgendaHelperService} from '../../../../agenda-helper.service';
+import {AgendaHelperService} from '../../../services/agenda-helper.service';
+import {FormGroup} from '@angular/forms';
+import {BreakpointObserver} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-agenda-settings-content',
@@ -10,12 +12,15 @@ import {AgendaHelperService} from '../../../../agenda-helper.service';
 export class AgendaSettingsContentComponent implements OnInit {
 
   @ViewChild('stepper') public nbStepper: NbStepperComponent;
+  @Input() public form!: FormGroup;
+  date: Date = new Date();
 
   constructor(
-    public agendaHelperService: AgendaHelperService
-  ) { }
+    public agendaHelperService: AgendaHelperService,
+    public breakpointObserver: BreakpointObserver
+  ) {
+  }
 
   ngOnInit(): void {
   }
-
 }

@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {AgendaHelperService} from '../../../agenda-helper.service';
+import {AgendaHelperService} from '../../services/agenda-helper.service';
 import {subDays, addDays, addWeeks, subWeeks, addMonths, subMonths, addYears, subYears} from 'date-fns';
-import {NbDialogService} from '@nebular/theme';
+import {EventFormComponent} from '../forms/event-form/event-form.component';
+import {NbDialogCustomService} from '../../../../../@shared/services/nb-dialog-custom.service';
 import {AgendaSettingsComponent} from '../agenda-settings/agenda-settings.component';
+import {NbDialogService} from '@nebular/theme';
 
 @Component({
   selector: 'app-agenda-toolbar',
@@ -14,6 +16,7 @@ export class AgendaToolbarComponent implements OnInit {
   constructor(
     public agendaHelperService: AgendaHelperService,
     private _dialogService: NbDialogService,
+    private _dialogCustomService: NbDialogCustomService,
   ) {
   }
 
@@ -29,7 +32,9 @@ export class AgendaToolbarComponent implements OnInit {
   }
 
   agendaSettings(): void {
-    this._dialogService.open(AgendaSettingsComponent);
+    this._dialogService.open(AgendaSettingsComponent,
+      {dialogClass: this._dialogCustomService.isFullscreen}
+    );
   }
 
   private _navigate(type: 'previous' | 'next'): void {

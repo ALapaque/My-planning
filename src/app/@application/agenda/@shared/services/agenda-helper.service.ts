@@ -4,6 +4,7 @@ import {ScheduleComponent} from '@syncfusion/ej2-angular-schedule/src/schedule/s
 import {BehaviorSubject, Observable} from 'rxjs';
 import {delay, map} from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
+import {set} from 'date-fns';
 
 export interface TimeSlot {
   name: string;
@@ -43,6 +44,8 @@ export class AgendaHelperService {
   private _timeSlotDisplayed: TimeSlot;
   private _weekDaysDisplayed: Array<WeekDay>;
   private _firstDayDisplayed: WeekDay;
+  private _startTime: Date = set(new Date(), {hours: 8, minutes: 0});
+  private _endTime: Date = set(new Date(), {hours: 17, minutes: 0});
 
   constructor(
     private _translateService: TranslateService
@@ -50,6 +53,26 @@ export class AgendaHelperService {
     this._timeSlotDisplayed = this._timeSlotDuration[2];
     this._weekDaysDisplayed = this._weekDays;
     this._firstDayDisplayed = this._weekDays[0];
+  }
+
+
+
+  get startTime(): Date {
+    return this._startTime;
+  }
+
+  set startTime(value: Date) {
+    this._startTime = value;
+    this.ejsSchedule.startHour = value.toDateString();
+  }
+
+  get endTime(): Date {
+    return this._endTime;
+  }
+
+  set endTime(value: Date) {
+    this._endTime = value;
+    this.ejsSchedule.endHour = value.toDateString();
   }
 
   get viewDate(): Date {
@@ -88,6 +111,10 @@ export class AgendaHelperService {
     return this._weekDays;
   }
 
+  get workDays(): Array<number> {
+    return this._weekDays.map((weekDay: WeekDay) => weekDay.value);
+  }
+
   set weekDays(value: Array<WeekDay>) {
     this._weekDays = value;
   }
@@ -106,6 +133,7 @@ export class AgendaHelperService {
 
   set timeSlotDisplayed(value: TimeSlot) {
     this._timeSlotDisplayed = value;
+    this.ejsSchedule.timeScale.interval = value.value;
   }
 
   get weekDaysDisplayed(): Array<WeekDay> {
@@ -122,5 +150,6 @@ export class AgendaHelperService {
 
   set firstDayDisplayed(value: WeekDay) {
     this._firstDayDisplayed = value;
+    this.ejsSchedule.firstDayOfWeek = value.value;
   }
 }

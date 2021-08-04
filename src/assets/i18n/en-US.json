@@ -76,6 +76,8 @@
         },
         "SETTINGS": {
           "TITLE": "Agenda settings",
+          "STARTTIME": "Start time displayed",
+          "ENDTIME": "End time displayed",
           "TIMESLOTS": {
             "TITLE": "Slot duration",
             "15": "15 minutes",
@@ -85,6 +87,7 @@
             "120": "2 hours"
           },
           "DAYS": {
+            "FIRSTDAYDISPLAYED": "First day displayed",
             "0": "Sunday",
             "1": "Monday",
             "2": "Tuesday",

@@ -19,7 +19,7 @@ import * as numberingSystems from 'cldr-data/supplemental/numberingSystems.json'
 import {SharedModule} from '../../@shared/shared.module';
 import {AgendaToolbarComponent} from './@shared/components/agenda-toolbar/agenda-toolbar.component';
 import {AgendaContainerComponent} from './agenda-container.component';
-import {AgendaHelperService} from './agenda-helper.service';
+import {AgendaHelperService} from './@shared/services/agenda-helper.service';
 import {AgendaComponent} from './agenda/agenda.component';
 import {AgendaRouting} from './agenda.routing';
 import {EventFormComponent} from './@shared/components/forms/event-form/event-form.component';

@@ -10,6 +10,7 @@ export class DialogActionBtnComponent implements OnInit {
 
   @Input() public stepper: NbStepperComponent | undefined;
   @Output() public close: EventEmitter<any> = new EventEmitter<any>();
+  @Output() public submit: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 
