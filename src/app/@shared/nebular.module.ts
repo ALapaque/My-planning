@@ -17,14 +17,15 @@ import {
   NbRouteTabsetModule,
   NbSearchModule,
   NbSelectModule,
-  NbSidebarModule, NbSpinnerModule,
-  NbTabsetModule,
+  NbSidebarModule, NbSpinnerModule, NbStepperModule,
+  NbTabsetModule, NbTimepickerModule,
   NbToastrModule,
   NbToggleModule,
   NbUserModule,
   NbWindowModule,
   NbWindowState,
 } from '@nebular/theme';
+import {NbDialogCustomService} from './services/nb-dialog-custom.service';
 
 const nebularModule = [
   NbSidebarModule,
@@ -50,6 +51,8 @@ const nebularModule = [
   NbRouteTabsetModule,
   NbDatepickerModule,
   NbSpinnerModule,
+  NbStepperModule,
+  NbTimepickerModule,
 ];
 
 @NgModule({
@@ -74,13 +77,17 @@ const nebularModule = [
         dialogClass: 'nebular-dialog'
       },
     ),
-    NbDatepickerModule.forRoot()
+    NbDatepickerModule.forRoot(),
+    NbTimepickerModule.forRoot()
   ],
   exports: [
     ...nebularModule,
     NbToastrModule,
     NbWindowModule,
   ],
+  providers: [
+    NbDialogCustomService,
+  ]
 })
 export class NebularModule {
 }

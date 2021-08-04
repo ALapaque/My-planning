@@ -1,0 +1,21 @@
+<nb-card>
+  <nb-card-header>
+    <app-dialog-header (close)="dialogRef.close()">
+      {{ 'APP.AGENDA.FORM.SETTINGS.TITLE' | translate }}
+    </app-dialog-header>
+  </nb-card-header>
+
+  <nb-card-body>
+    <app-agenda-settings-content #agendaSettingsContentComponent
+                                 [form]="form">
+    </app-agenda-settings-content>
+  </nb-card-body>
+
+  <nb-card-footer>
+    <app-dialog-action-btn (submit)="submit()"
+                           (close)="dialogRef.close()"
+                           [stepper]="agendaSettingsContentComponent.nbStepper">
+    </app-dialog-action-btn>
+  </nb-card-footer>
+</nb-card>
+

@@ -9,7 +9,8 @@
                   nbButton
                   shape="round"
                   size="small"
-                  status="primary">
+                  status="primary"
+                  (click)="navigatePrevious()">
             <nb-icon icon="arrow-left-outline"></nb-icon>
           </button>
 
@@ -30,7 +31,8 @@
                   nbButton
                   shape="round"
                   size="small"
-                  status="primary">
+                  status="primary"
+                  (click)="navigateNext()">
             <nb-icon icon="arrow-right-outline"></nb-icon>
           </button>
 
@@ -40,10 +42,22 @@
 
     <span [fxFlex]="'auto'"></span>
 
-    <nb-actions [size]="'small'">
+    <nb-actions [size]="'small'"
+                fxLayoutGap="16px">
+
+      <nb-action>
+        <button ghost
+                nbButton
+                shape="round"
+                size="medium"
+                status="primary"
+                (click)="agendaSettings()">
+          <nb-icon icon="settings-2-outline"></nb-icon>
+        </button>
+      </nb-action>
 
       <nb-action [fxHide.lt-md]="true">
-        <nb-select [(ngModel)]="agendaHelperService.currentView"
+        <nb-select [(ngModel)]="agendaHelperService.currentViewDisplayed"
                    [size]="'tiny'"
                    filled
                    placeholder="Selectionner une vue"

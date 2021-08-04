@@ -6,9 +6,9 @@
     <ejs-schedule #ejsSchedule
                   [locale]='getAgendaLocale()'
                   [views]="agendaHelperService.views"
-                  [currentView]="agendaHelperService.currentView"
+                  [currentView]="agendaHelperService.currentViewDisplayed"
                   [eventSettings]="eventSettings"
-                  [height]="'calc(((100vh - 76px) - 60px) - 4.5rem)'"
+                  [height]="'calc(((100vh - 76px) - 36px) - 4.5rem)'"
                   [selectedDate]="agendaHelperService.viewDate"
                   [showHeaderBar]="false"
                   [width]="'100%'"

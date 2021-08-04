@@ -1,0 +1,155 @@
+import {Injectable} from '@angular/core';
+import {View} from '@syncfusion/ej2-angular-schedule';
+import {ScheduleComponent} from '@syncfusion/ej2-angular-schedule/src/schedule/schedule.component';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {delay, map} from 'rxjs/operators';
+import {TranslateService} from '@ngx-translate/core';
+import {set} from 'date-fns';
+
+export interface TimeSlot {
+  name: string;
+  value: number;
+};
+
+export interface WeekDay {
+  name: string;
+  value: number;
+}
+
+@Injectable()
+export class AgendaHelperService {
+
+  public ejsSchedule: ScheduleComponent | undefined;
+  public isAgendaLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private _viewDate: Date = new Date();
+  private _views: Array<View> = ['Day', 'Week', 'WorkWeek', 'Month', 'Year', 'Agenda'];
+  private _timelineViews: Array<View> = ['TimelineDay', 'TimelineWeek', 'TimelineWorkWeek', 'TimelineMonth', 'TimelineYear'];
+  private _timeSlotDuration: Array<TimeSlot> = [
+    {name: 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS', value: 15},
+    {name: 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS', value: 30},
+    {name: 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS', value: 60},
+    {name: 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS', value: 90},
+    {name: 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS', value: 120},
+  ];
+  private _weekDays: Array<WeekDay> = [
+    {name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 0},
+    {name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 1},
+    {name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 2},
+    {name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 3},
+    {name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 4},
+    {name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 5},
+    {name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 6}
+  ];
+  private _currentViewDisplayed: View = 'Week';
+  private _timeSlotDisplayed: TimeSlot;
+  private _weekDaysDisplayed: Array<WeekDay>;
+  private _firstDayDisplayed: WeekDay;
+  private _startTime: Date = set(new Date(), {hours: 8, minutes: 0});
+  private _endTime: Date = set(new Date(), {hours: 17, minutes: 0});
+
+  constructor(
+    private _translateService: TranslateService
+  ) {
+    this._timeSlotDisplayed = this._timeSlotDuration[2];
+    this._weekDaysDisplayed = this._weekDays;
+    this._firstDayDisplayed = this._weekDays[0];
+  }
+
+
+
+  get startTime(): Date {
+    return this._startTime;
+  }
+
+  set startTime(value: Date) {
+    this._startTime = value;
+    this.ejsSchedule.startHour = value.toDateString();
+  }
+
+  get endTime(): Date {
+    return this._endTime;
+  }
+
+  set endTime(value: Date) {
+    this._endTime = value;
+    this.ejsSchedule.endHour = value.toDateString();
+  }
+
+  get viewDate(): Date {
+    return this._viewDate;
+  }
+
+  set viewDate(value: Date) {
+    this._viewDate = value;
+  }
+
+  get views(): Array<View> {
+    return this._views;
+  }
+
+  set views(value: Array<View>) {
+    this._views = value;
+  }
+
+  get timelineViews(): Array<View> {
+    return this._timelineViews;
+  }
+
+  set timelineViews(value: Array<View>) {
+    this._timelineViews = value;
+  }
+
+  get timeSlotDuration(): Array<TimeSlot> {
+    return this._timeSlotDuration;
+  }
+
+  set timeSlotDuration(value: Array<TimeSlot>) {
+    this._timeSlotDuration = value;
+  }
+
+  get weekDays(): Array<WeekDay> {
+    return this._weekDays;
+  }
+
+  get workDays(): Array<number> {
+    return this._weekDays.map((weekDay: WeekDay) => weekDay.value);
+  }
+
+  set weekDays(value: Array<WeekDay>) {
+    this._weekDays = value;
+  }
+
+  get currentViewDisplayed(): View {
+    return this._currentViewDisplayed;
+  }
+
+  set currentViewDisplayed(value: View) {
+    this._currentViewDisplayed = value;
+  }
+
+  get timeSlotDisplayed(): TimeSlot {
+    return this._timeSlotDisplayed;
+  }
+
+  set timeSlotDisplayed(value: TimeSlot) {
+    this._timeSlotDisplayed = value;
+    this.ejsSchedule.timeScale.interval = value.value;
+  }
+
+  get weekDaysDisplayed(): Array<WeekDay> {
+    return this._weekDaysDisplayed;
+  }
+
+  set weekDaysDisplayed(value: Array<WeekDay>) {
+    this._weekDaysDisplayed = value;
+  }
+
+  get firstDayDisplayed(): WeekDay {
+    return this._firstDayDisplayed;
+  }
+
+  set firstDayDisplayed(value: WeekDay) {
+    this._firstDayDisplayed = value;
+    this.ejsSchedule.firstDayOfWeek = value.value;
+  }
+}

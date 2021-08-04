@@ -1,3 +1,24 @@
+<div *ngIf="stepper"
+     fxLayoutAlign="start center"
+     fxLayoutGap="16px">
+  <button nbButton
+          size="small"
+          shape="round"
+          [disabled]="stepper.selectedIndex === 0"
+          (click)="stepper.previous()">
+    <nb-icon icon="arrow-back-outline"></nb-icon>
+  </button>
+  <button nbButton
+          size="small"
+          shape="round"
+          [disabled]="stepper.selectedIndex === (stepper.steps.length - 1)"
+          (click)="stepper.next()">
+    <nb-icon icon="arrow-forward-outline"></nb-icon>
+  </button>
+</div>
+
+<span fxFlex="auto"></span>
+
 <div fxLayoutAlign="end center"
      fxLayoutGap="16px">
 
@@ -16,7 +37,8 @@
           type="submit"
           shape="semi-round"
           size="small"
-          status="success">
+          status="success"
+          (click)="submit.emit()">
     {{ 'GLOBAL.OK' | translate }}
   </button>
 

@@ -19,10 +19,13 @@ import * as numberingSystems from 'cldr-data/supplemental/numberingSystems.json'
 import {SharedModule} from '../../@shared/shared.module';
 import {AgendaToolbarComponent} from './@shared/components/agenda-toolbar/agenda-toolbar.component';
 import {AgendaContainerComponent} from './agenda-container.component';
-import {AgendaHelperService} from './agenda-helper.service';
+import {AgendaHelperService} from './@shared/services/agenda-helper.service';
 import {AgendaComponent} from './agenda/agenda.component';
 import {AgendaRouting} from './agenda.routing';
 import {EventFormComponent} from './@shared/components/forms/event-form/event-form.component';
+import { AgendaSettingsComponent } from './@shared/components/agenda-settings/agenda-settings.component';
+import { AgendaSettingsContentComponent } from './@shared/components/agenda-settings/agenda-settings-content/agenda-settings-content.component';
+import { EventFormContentComponent } from './@shared/components/forms/event-form/event-form-content/event-form-content.component';
 
 loadCldr(numberingSystems, gregorian, numbers, timeZoneNames);
 
@@ -32,6 +35,9 @@ loadCldr(numberingSystems, gregorian, numbers, timeZoneNames);
     AgendaComponent,
     AgendaToolbarComponent,
     EventFormComponent,
+    AgendaSettingsComponent,
+    AgendaSettingsContentComponent,
+    EventFormContentComponent,
   ],
   imports: [
     CommonModule,

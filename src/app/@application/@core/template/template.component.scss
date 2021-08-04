@@ -1,7 +1,7 @@
 :host ::ng-deep {
   nb-layout {
     nb-layout-column {
-      padding: 2.25rem !important;
+      padding: 1.5rem !important;
     }
 
     nb-layout-footer {
@@ -37,6 +37,7 @@
     height: 100vh !important;
 
     nb-card {
+      width: 100vw !important;
       height: 100% !important;
     }
   }
