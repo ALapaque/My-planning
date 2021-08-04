@@ -1,0 +1,26 @@
+<nb-stepper #stepper orientation="vertical">
+
+  <!-- CALENDARS -->
+  <nb-step [label]="'APP.AGENDA.FORM.SETTINGS.STEPS.STEP-1.LABEL' | translate">
+    <h4>{{ 'APP.AGENDA.FORM.SETTINGS.STEPS.STEP-1.TITLE' | translate }}</h4>
+  </nb-step>
+
+  <!-- PLAGE HORAIRE -->
+  <nb-step [label]="'APP.AGENDA.FORM.SETTINGS.STEPS.STEP-2.LABEL' | translate">
+    <h4>{{ 'APP.AGENDA.FORM.SETTINGS.STEPS.STEP-2.TITLE' | translate }}</h4>
+
+    <div fxLayout.lt-md="column"
+         fxLayoutAlign="start center"
+         fxLayoutAlign.lt-md="center start"
+         fxLayoutGap="8px">
+      <span>{{ 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS.TITLE' | translate }}:</span>
+      <nb-select [placeholder]="'APP.AGENDA.FORM.SETTINGS.TIMESLOTS.TITLE' | translate"
+                 [(ngModel)]="agendaHelperService.timeSlotDisplayed">
+        <nb-option *ngFor="let timeSlot of agendaHelperService.timeSlotDuration"
+                   [value]="timeSlot">
+          {{ timeSlot.name + '.' + timeSlot.value | translate }}
+        </nb-option>
+      </nb-select>
+    </div>
+  </nb-step>
+</nb-stepper>

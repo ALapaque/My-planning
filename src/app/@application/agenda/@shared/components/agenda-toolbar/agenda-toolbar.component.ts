@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AgendaHelperService} from '../../../agenda-helper.service';
 import {subDays, addDays, addWeeks, subWeeks, addMonths, subMonths, addYears, subYears} from 'date-fns';
+import {NbDialogService} from '@nebular/theme';
+import {AgendaSettingsComponent} from '../agenda-settings/agenda-settings.component';
 
 @Component({
   selector: 'app-agenda-toolbar',
@@ -11,6 +13,7 @@ export class AgendaToolbarComponent implements OnInit {
 
   constructor(
     public agendaHelperService: AgendaHelperService,
+    private _dialogService: NbDialogService,
   ) {
   }
 
@@ -25,8 +28,12 @@ export class AgendaToolbarComponent implements OnInit {
     this._navigate('next');
   }
 
+  agendaSettings(): void {
+    this._dialogService.open(AgendaSettingsComponent);
+  }
+
   private _navigate(type: 'previous' | 'next'): void {
-    switch (this.agendaHelperService.currentView) {
+    switch (this.agendaHelperService.currentViewDisplayed) {
       case 'Day':
       case 'Agenda':
       case 'TimelineDay':

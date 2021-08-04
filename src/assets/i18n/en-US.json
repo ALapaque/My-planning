@@ -73,6 +73,36 @@
           "CREATE": "New meeting",
           "UPDATE": "Update meeting",
           "DELETE": "Delete meeting"
+        },
+        "SETTINGS": {
+          "TITLE": "Agenda settings",
+          "TIMESLOTS": {
+            "TITLE": "Slot duration",
+            "15": "15 minutes",
+            "30": "30 minutes",
+            "60": "1 hour",
+            "90": "1,5 hour",
+            "120": "2 hours"
+          },
+          "DAYS": {
+            "0": "Sunday",
+            "1": "Monday",
+            "2": "Tuesday",
+            "3": "Wednesday",
+            "4": "Thursday",
+            "5": "Friday",
+            "6": "Saturday"
+          },
+          "STEPS": {
+            "STEP-1": {
+              "LABEL": "Calendars",
+              "TITLE": "Select the calendars to be displayed"
+            },
+            "STEP-2": {
+              "LABEL": "Time slots",
+              "TITLE": "Select the time slots to be displayed"
+            }
+          }
         }
       }
     },

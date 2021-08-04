@@ -73,6 +73,36 @@
           "CREATE": "Nouveau rendez-vous",
           "UPDATE": "Modifier le rendez-vous",
           "DELETE": "Supprimer le rendez-vous"
+        },
+        "SETTINGS": {
+          "TITLE": "Paramètres de l'agenda",
+          "TIMESLOTS": {
+            "TITLE": "Durée d'un segment",
+            "15": "15 minutes",
+            "30": "30 minutes",
+            "60": "1 heure",
+            "90": "1,5 heure",
+            "120": "2 heures"
+          },
+          "DAYS": {
+            "0": "Dimanche",
+            "1": "Lundi",
+            "2": "Mardi",
+            "3": "Mercredi",
+            "4": "Jeudi",
+            "5": "Vendredi",
+            "6": "Samedi"
+          },
+          "STEPS": {
+            "STEP-1": {
+              "LABEL": "Calendrier",
+              "TITLE": "Sélectionner les calendriers à afficher"
+            },
+            "STEP-2": {
+              "LABEL": "Plage horaire",
+              "TITLE": "Sélectionner votre plage horraire de travail"
+            }
+          }
         }
       }
     },

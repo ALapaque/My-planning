@@ -17,7 +17,7 @@ import {
   NbRouteTabsetModule,
   NbSearchModule,
   NbSelectModule,
-  NbSidebarModule, NbSpinnerModule,
+  NbSidebarModule, NbSpinnerModule, NbStepperModule,
   NbTabsetModule,
   NbToastrModule,
   NbToggleModule,
@@ -50,6 +50,7 @@ const nebularModule = [
   NbRouteTabsetModule,
   NbDatepickerModule,
   NbSpinnerModule,
+  NbStepperModule,
 ];
 
 @NgModule({

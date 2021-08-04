@@ -30,9 +30,9 @@ export class AgendaComponent implements AfterViewInit {
     const width: number = event.target.innerWidth;
 
     if (width <= 960) {
-      this.agendaHelperService.currentView = 'Day';
+      this.agendaHelperService.currentViewDisplayed = 'Day';
     } else {
-      this.agendaHelperService.currentView = 'Week';
+      this.agendaHelperService.currentViewDisplayed = 'Week';
     }
   }
 

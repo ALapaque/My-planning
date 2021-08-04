@@ -1,4 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {NbStepperComponent} from '@nebular/theme';
 
 @Component({
   selector: 'app-dialog-action-btn',
@@ -7,6 +8,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class DialogActionBtnComponent implements OnInit {
 
+  @Input() public stepper: NbStepperComponent | undefined;
   @Output() public close: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
