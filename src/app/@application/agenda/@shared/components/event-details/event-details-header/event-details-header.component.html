@@ -1,0 +1,40 @@
+<div fxLayout="column">
+  <div fxLayoutAlign="end center"
+       fxLayoutGap="8px">
+    <button nbButton
+            ghost
+            type="button"
+            shape="round"
+            size="small"
+            status="basic"
+            (click)="delete.emit()">
+      <nb-icon icon="trash-2-outline"></nb-icon>
+    </button>
+
+    <button nbButton
+            ghost
+            type="button"
+            shape="round"
+            size="small"
+            status="basic"
+            (click)="edit.emit()">
+      <nb-icon icon="edit-2-outline"></nb-icon>
+    </button>
+
+    <button nbButton
+            ghost
+            type="button"
+            shape="round"
+            size="small"
+            status="danger"
+            autofocus
+            (click)="close.emit()">
+      <nb-icon icon="close-outline"></nb-icon>
+    </button>
+  </div>
+
+  <div fxLayoutAlign="start center"
+       fxLayoutGap="8px">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<nb-card>
+  <nb-card-header>
+    <app-event-details-header (close)="dialogRef.close()"
+                              (delete)="delete()"
+                              (edit)="edit()"
+                              [event]="event">
+      {{ event.Subject }}
+    </app-event-details-header>
+  </nb-card-header>
+
+  <nb-card-body>
+    <app-event-details-content [event]="event"
+                               [fxFlex.gt-sm]="'50vw'"
+                               [fxFlex.lt-sm]="'100vw'">
+    </app-event-details-content>
+  </nb-card-body>
+</nb-card>
