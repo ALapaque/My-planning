@@ -16,8 +16,24 @@
                   (cellClick)="cellClicked($event)"
                   (eventClick)="eventClicked($event)"
                   (dragStop)="eventDropped($event)">
+      <e-views>
+        <e-view *ngFor="let view of agendaHelperService.views"
+                [option]="view">
+          <ng-template #eventTemplate
+                       let-data>
+            <ng-container [ngTemplateOutlet]="customEventTemplate"
+                          [ngTemplateOutletContext]="{data: data}">
+            </ng-container>
+          </ng-template>
+        </e-view>
+      </e-views>
     </ejs-schedule>
   </nb-card-body>
 </nb-card>
+
+<ng-template #customEventTemplate
+             let-data="data">
+  <app-event-template [event]="data"></app-event-template>
+</ng-template>
 
 

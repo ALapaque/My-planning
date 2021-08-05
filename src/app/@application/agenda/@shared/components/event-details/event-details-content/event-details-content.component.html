@@ -1,0 +1,13 @@
+<div fxLayout="row"
+     fxLayoutGap="8px"
+     *ngIf="event.StartTime && event.EndTime">
+  <nb-icon icon="clock-outline"></nb-icon>
+  <span>{{event.StartTime | date: 'HH:mm'}} - {{event.EndTime | date: 'HH:mm'}}</span>
+</div>
+
+<div fxLayout="row"
+     fxLayoutGap="8px"
+     *ngIf="event.Description">
+  <nb-icon icon="menu-outline"></nb-icon>
+  <p>{{event.Description}}</p>
+</div>

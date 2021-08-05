@@ -7,6 +7,10 @@ import {EventFormComponent} from '../@shared/components/forms/event-form/event-f
 import {TranslateService} from '@ngx-translate/core';
 import {NbDialogCustomService} from '../../../@shared/services/nb-dialog-custom.service';
 import {NbDialogService} from '@nebular/theme';
+import {EventDetailsComponent} from '../@shared/components/event-details/event-details.component';
+import {EventService} from '../../@shared/services/event.service';
+import {SchedulerEvent} from '../@shared/models/scheduler-event.model';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-agenda',
@@ -14,16 +18,17 @@ import {NbDialogService} from '@nebular/theme';
   styleUrls: ['./agenda.component.scss'],
 })
 export class AgendaComponent implements AfterViewInit {
+  @ViewChild('ejsSchedule') public ejsSchedule: ScheduleComponent | undefined;
 
   public eventSettings: EventSettingsModel = {dataSource: scheduleData};
 
-  @ViewChild('ejsSchedule') public ejsSchedule: ScheduleComponent | undefined;
-
   constructor(
     public agendaHelperService: AgendaHelperService,
+    private _eventService: EventService,
     private _dialogService: NbDialogService,
     private _dialogServiceCustom: NbDialogCustomService,
     private _translateService: TranslateService,
+    private _toastrService: ToastrService,
   ) {
   }
 
@@ -43,13 +48,21 @@ export class AgendaComponent implements AfterViewInit {
   }
 
   public cellClicked($event: CellClickEventArgs): void {
+    if ($event.isAllDay) return;
+    console.log($event);
     this._dialogService.open(EventFormComponent,
       {dialogClass: this._dialogServiceCustom.isFullscreen}
     );
   }
 
   public eventClicked($event: EventClickArgs): void {
-    console.log($event);
+    const event: SchedulerEvent = $event.event as SchedulerEvent;
+    this.agendaHelperService.isAgendaLoading.next(true);
+    this._eventService.getById(event.Id).subscribe(
+      (eventReceived: SchedulerEvent) => this._openEventDetailsDialog(eventReceived),
+      () => this._toastrService.error('Une erreur est survenue')
+    );
+
   }
 
   public eventDropped($event: DragEventArgs): void {
@@ -68,5 +81,17 @@ export class AgendaComponent implements AfterViewInit {
     }
 
     return languageUsed;
+  }
+
+  private _openEventDetailsDialog(event: SchedulerEvent): void {
+    this._dialogService.open(EventDetailsComponent,
+      {
+        context: {
+          // @ts-ignore
+          event: event
+        },
+        dialogClass: this._dialogServiceCustom.isFullscreen
+      }
+    );
   }
 }
