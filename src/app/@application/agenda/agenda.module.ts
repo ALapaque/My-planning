@@ -26,11 +26,6 @@ import {EventFormComponent} from './@shared/components/forms/event-form/event-fo
 import { AgendaSettingsComponent } from './@shared/components/agenda-settings/agenda-settings.component';
 import { AgendaSettingsContentComponent } from './@shared/components/agenda-settings/agenda-settings-content/agenda-settings-content.component';
 import { EventFormContentComponent } from './@shared/components/forms/event-form/event-form-content/event-form-content.component';
-import { EventTemplateComponent } from './@shared/components/event-template/event-template.component';
-import { EventDetailsComponent } from './@shared/components/event-details/event-details.component';
-import { EventDetailsContentComponent } from './@shared/components/event-details/event-details-content/event-details-content.component';
-import { EventDetailsHeaderComponent } from './@shared/components/event-details/event-details-header/event-details-header.component';
-import {EventService} from '../@shared/services/event.service';
 
 loadCldr(numberingSystems, gregorian, numbers, timeZoneNames);
 
@@ -43,10 +38,6 @@ loadCldr(numberingSystems, gregorian, numbers, timeZoneNames);
     AgendaSettingsComponent,
     AgendaSettingsContentComponent,
     EventFormContentComponent,
-    EventTemplateComponent,
-    EventDetailsComponent,
-    EventDetailsContentComponent,
-    EventDetailsHeaderComponent,
   ],
   imports: [
     CommonModule,
@@ -56,7 +47,6 @@ loadCldr(numberingSystems, gregorian, numbers, timeZoneNames);
   ],
   providers: [
     AgendaHelperService,
-    EventService,
     DayService,
     WeekService,
     WorkWeekService,
