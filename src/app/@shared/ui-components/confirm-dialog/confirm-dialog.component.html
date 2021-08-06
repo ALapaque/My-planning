@@ -1,17 +1,17 @@
 <nb-card>
-  <nb-card-header>Confirmation</nb-card-header>
+  <nb-card-header>
+    <app-dialog-header (close)="dialogRef.close()">
+      {{ 'GLOBAL.CONFIRM' | translate }}
+    </app-dialog-header>
+  </nb-card-header>
+
   <nb-card-body>
-    <p>BLAHBLAHBLAH</p>
+    <p>{{ 'GLOBAL.CONFIRM_DELETE' | translate }}</p>
   </nb-card-body>
-  <nb-card-footer fxLayout="row"
-                  fxLayoutAlign="space-between center">
-    <button nbButton
-            status="danger"
-            (click)="cancel()">Annuler
-    </button>
-    <button nbButton
-            status="success"
-            (click)="submit()">OK
-    </button>
+
+  <nb-card-footer>
+    <app-dialog-action-btn (close)="dialogRef.close()"
+                           (submit)="submit()">
+    </app-dialog-action-btn>
   </nb-card-footer>
 </nb-card>

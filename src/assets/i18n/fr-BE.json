@@ -8,7 +8,9 @@
   "GLOBAL": {
     "CANCEL": "Annuler",
     "OK": "Ok",
-    "SAVE": "Enregistrer"
+    "SAVE": "Enregistrer",
+    "CONFIRM": "Confirmer",
+    "CONFIRM_DELETE": "Êtes-vous sûr de vouloir supprimer cet élément ?"
   },
   "AUTH": {
     "LOGIN": "Connexion",

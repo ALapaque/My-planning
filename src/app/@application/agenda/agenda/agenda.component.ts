@@ -6,7 +6,7 @@ import {AgendaHelperService} from '../@shared/services/agenda-helper.service';
 import {EventFormComponent} from '../@shared/components/forms/event-form/event-form.component';
 import {TranslateService} from '@ngx-translate/core';
 import {NbDialogCustomService} from '../../../@shared/services/nb-dialog-custom.service';
-import {NbDialogService} from '@nebular/theme';
+import {NbDialogRef, NbDialogService} from '@nebular/theme';
 import {EventDetailsComponent} from '../@shared/components/event-details/event-details.component';
 import {EventService} from '../../@shared/services/event.service';
 import {SchedulerEvent} from '../@shared/models/scheduler-event.model';
@@ -50,16 +50,14 @@ export class AgendaComponent implements AfterViewInit {
   public cellClicked($event: CellClickEventArgs): void {
     if ($event.isAllDay) return;
     console.log($event);
-    this._dialogService.open(EventFormComponent,
-      {dialogClass: this._dialogServiceCustom.isFullscreen}
-    );
+    this.agendaHelperService.openEventFormDialog(new SchedulerEvent());
   }
 
   public eventClicked($event: EventClickArgs): void {
     const event: SchedulerEvent = $event.event as SchedulerEvent;
     this.agendaHelperService.isAgendaLoading.next(true);
     this._eventService.getById(event.Id).subscribe(
-      (eventReceived: SchedulerEvent) => this._openEventDetailsDialog(eventReceived),
+      (eventReceived: SchedulerEvent) => this.agendaHelperService.openEventDetailsDialog(eventReceived),
       () => this._toastrService.error('Une erreur est survenue')
     );
 
@@ -81,17 +79,5 @@ export class AgendaComponent implements AfterViewInit {
     }
 
     return languageUsed;
-  }
-
-  private _openEventDetailsDialog(event: SchedulerEvent): void {
-    this._dialogService.open(EventDetailsComponent,
-      {
-        context: {
-          // @ts-ignore
-          event: event
-        },
-        dialogClass: this._dialogServiceCustom.isFullscreen
-      }
-    );
   }
 }
