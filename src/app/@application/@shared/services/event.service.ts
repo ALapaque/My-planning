@@ -29,12 +29,13 @@ export class EventService {
 
     // return this._httpClient.get<Array<Event>>(`${environment.apiUrl}/events`, {params})
     //   .pipe(
-    //     map((events: Array<Event>) => events.map((event: Event) => ({
+    //     map((events: Array<Event>) => events.map((event: Event) => (new SchedulerEvent({
     //       Id: event.idEvent,
     //       Subject: event.title,
     //       StartTime: new Date(event.startDate),
-    //       EndTime: new Date(event.endDate)
-    //     }))),
+    //       EndTime: new Date(event.endDate),
+    //       Meta: event
+    //     })))),
     //     tap(() => this._agendaHelperService.isAgendaLoading.next(false)),
     //     catchError((error) => {
     //       this._agendaHelperService.isAgendaLoading.next(false);
@@ -51,12 +52,13 @@ export class EventService {
 
     // return this._httpClient.get<Event>(`${environment.apiUrl}/events/${id.toString(10)}`)
     //   .pipe(
-    //     map((event: Event) => ({
+    //     map((event: Event) => (new SchedulerEvent({
     //       Id: event.idEvent,
     //       Subject: event.title,
     //       StartTime: new Date(event.startDate),
-    //       EndTime: new Date(event.endDate)
-    //     })),
+    //       EndTime: new Date(event.endDate),
+    //       Meta: event
+    //     }))),
     //     tap(() => this._agendaHelperService.isAgendaLoading.next(false)),
     //     catchError((error) => {
     //       this._agendaHelperService.isAgendaLoading.next(false);

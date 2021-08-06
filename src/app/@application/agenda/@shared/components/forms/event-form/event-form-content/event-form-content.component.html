@@ -1,1 +1,47 @@
-<p>event-form-content works!</p>
+<form [formGroup]="form">
+
+  <nb-stepper #stepper
+              [orientation]="breakpointObserver.isMatched('(max-width: 960px)') ? 'horizontal' : 'vertical'">
+
+    <!-- CALENDARS -->
+    <nb-step [label]="'APP.AGENDA.FORM.EVENT.STEPS.STEP-1.LABEL' | translate">
+      <h4>{{ 'APP.AGENDA.FORM.EVENT.STEPS.STEP-1.TITLE' | translate }}</h4>
+    </nb-step>
+
+    <!-- PLAGE HORAIRE -->
+    <nb-step [label]="'APP.AGENDA.FORM.EVENT.STEPS.STEP-2.LABEL' | translate">
+      <h4>{{ 'APP.AGENDA.FORM.EVENT.STEPS.STEP-2.TITLE' | translate }}</h4>
+      <div fxLayout.lt-sm="column"
+           fxLayoutAlign="start center"
+           fxLayoutAlign.lt-sm="center start"
+           fxLayoutGap="8px">
+        <span fxFlex.gt-sm="33%">{{ 'APP.AGENDA.FORM.EVENT.STARTTIME' | translate }}:</span>
+
+        <input nbInput
+               fullWidth
+               [nbTimepicker]="startTimePicker"
+               [formControlName]="'startTime'"/>
+        <nb-timepicker #startTimePicker
+                       style="display: none"
+                       [date]="form.get('startTime').value">
+        </nb-timepicker>
+      </div>
+
+      <div fxLayout.lt-sm="column"
+           fxLayoutAlign="start center"
+           fxLayoutAlign.lt-sm="center start"
+           fxLayoutGap="8px">
+        <span fxFlex.gt-sm="33%">{{ 'APP.AGENDA.FORM.EVENT.ENDTIME' | translate }}:</span>
+
+        <input nbInput
+               fullWidth
+               [nbTimepicker]="endTimePicker"
+               [formControlName]="'endTime'"/>
+        <nb-timepicker #endTimePicker
+                       style="display: none"
+                       [date]="form.get('endTime').value">
+        </nb-timepicker>
+      </div>
+    </nb-step>
+  </nb-stepper>
+</form>

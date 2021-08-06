@@ -26,7 +26,6 @@ export class AppComponent {
     private _nbDialogService: NbDialogService,
     private _swUpdateService: SwUpdate,
     private _sessionService: SessionService,
-
   ) {
     this._checkForUpdates();
   }
@@ -34,14 +33,17 @@ export class AppComponent {
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
     const width: number = event.target.innerWidth;
-    const dialog: HTMLCollection = document.getElementsByClassName('cdk-overlay-pane');
+    const dialogs: HTMLCollectionOf<any> = document.getElementsByClassName('cdk-overlay-pane');
 
-    if (!dialog) return;
-    else if (width <= 960) {
-      dialog[0].classList.replace('nebular-dialog', 'nebular-dialog-fullscreen');
-    } else {
-      dialog[0].classList.replace('nebular-dialog-fullscreen', 'nebular-dialog');
+    if (!dialogs) return;
+    for (let i: number = 0; i < dialogs.length; i++) {
+      if (width <= 960) {
+        dialogs[i].classList.replace('nebular-dialog', 'nebular-dialog-fullscreen');
+      } else {
+        dialogs[i].classList.replace('nebular-dialog-fullscreen', 'nebular-dialog');
+      }
     }
+
   }
 
   /**

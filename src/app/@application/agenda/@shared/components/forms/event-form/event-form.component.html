@@ -1,15 +1,26 @@
 <nb-card>
   <nb-card-header>
     <app-dialog-header (close)="dialogRef.close()">
-      {{ 'APP.AGENDA.FORM.EVENT.CREATE' | translate }}
+      <ng-container *ngIf="event?.Id; else createTitle">
+        {{ 'APP.AGENDA.FORM.EVENT.UPDATE' | translate }}
+      </ng-container>
+      <ng-template #createTitle>
+        {{ 'APP.AGENDA.FORM.EVENT.CREATE' | translate }}
+      </ng-template>
     </app-dialog-header>
   </nb-card-header>
 
   <nb-card-body>
-    <app-event-form-content></app-event-form-content>
+    <app-event-form-content #eventFormContentComponent
+                            [event]="event"
+                            [form]="form">
+    </app-event-form-content>
   </nb-card-body>
 
   <nb-card-footer>
-    <app-dialog-action-btn (close)="dialogRef.close()"></app-dialog-action-btn>
+    <app-dialog-action-btn (submit)="submit()"
+                           (close)="dialogRef.close()"
+                           [stepper]="eventFormContentComponent.nbStepper">
+    </app-dialog-action-btn>
   </nb-card-footer>
 </nb-card>

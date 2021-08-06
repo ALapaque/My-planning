@@ -1,10 +1,15 @@
 import {Injectable} from '@angular/core';
 import {View} from '@syncfusion/ej2-angular-schedule';
 import {ScheduleComponent} from '@syncfusion/ej2-angular-schedule/src/schedule/schedule.component';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {delay, map} from 'rxjs/operators';
+import {BehaviorSubject} from 'rxjs';
 import {TranslateService} from '@ngx-translate/core';
 import {set} from 'date-fns';
+import {NbDialogRef, NbDialogService} from '@nebular/theme';
+import {NbDialogCustomService} from '../../../../@shared/services/nb-dialog-custom.service';
+import {SchedulerEvent} from '../models/scheduler-event.model';
+import {EventFormComponent} from '../components/forms/event-form/event-form.component';
+import {EventDetailsComponent} from '../components/event-details/event-details.component';
+import {ConfirmDialogComponent} from '../../../../@shared/ui-components/confirm-dialog/confirm-dialog.component';
 
 export interface TimeSlot {
   name: string;
@@ -48,13 +53,14 @@ export class AgendaHelperService {
   private _endTime: Date = set(new Date(), {hours: 17, minutes: 0});
 
   constructor(
-    private _translateService: TranslateService
+    private _translateService: TranslateService,
+    private _dialogService: NbDialogService,
+    private _dialogCustomService: NbDialogCustomService,
   ) {
     this._timeSlotDisplayed = this._timeSlotDuration[2];
     this._weekDaysDisplayed = this._weekDays;
     this._firstDayDisplayed = this._weekDays[0];
   }
-
 
 
   get startTime(): Date {
@@ -151,5 +157,34 @@ export class AgendaHelperService {
   set firstDayDisplayed(value: WeekDay) {
     this._firstDayDisplayed = value;
     this.ejsSchedule.firstDayOfWeek = value.value;
+  }
+
+  openEventDetailsDialog(event: SchedulerEvent): NbDialogRef<EventDetailsComponent> {
+    return this._dialogService.open(EventDetailsComponent,
+      {
+        context: {
+          // @ts-ignore
+          event: event
+        },
+        dialogClass: this._dialogCustomService.isFullscreen
+      }
+    );
+  }
+
+  openEventFormDialog(event: SchedulerEvent): NbDialogRef<EventFormComponent> {
+    return this._dialogService.open(EventFormComponent,
+      {
+        context: {
+          event: event
+        },
+        dialogClass: this._dialogCustomService.isFullscreen
+      }
+    );
+  }
+
+  openConfirmActionDialog(): NbDialogRef<ConfirmDialogComponent> {
+    return this._dialogService.open(ConfirmDialogComponent,
+      {dialogClass: this._dialogCustomService.isFullscreen}
+    );
   }
 }

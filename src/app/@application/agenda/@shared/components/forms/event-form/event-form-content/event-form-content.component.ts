@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {SchedulerEvent} from '../../../../models/scheduler-event.model';
+import {FormGroup} from '@angular/forms';
+import {BreakpointObserver} from '@angular/cdk/layout';
+import {NbStepperComponent} from '@nebular/theme';
 
 @Component({
   selector: 'app-event-form-content',
@@ -6,10 +10,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./event-form-content.component.scss']
 })
 export class EventFormContentComponent implements OnInit {
+  @ViewChild('stepper') public nbStepper: NbStepperComponent;
+  @Input() public event!: SchedulerEvent;
+  @Input() public form!: FormGroup;
 
-  constructor() { }
+  constructor(
+    public breakpointObserver: BreakpointObserver
+  ) {
+  }
 
   ngOnInit(): void {
   }
-
 }
