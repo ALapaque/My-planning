@@ -13,7 +13,7 @@ import {
   NbLayoutModule,
   NbListModule,
   NbMenuModule,
-  NbPopoverModule,
+  NbPopoverModule, NbRadioModule,
   NbRouteTabsetModule,
   NbSearchModule,
   NbSelectModule,
@@ -27,7 +27,7 @@ import {
 } from '@nebular/theme';
 import {NbDialogCustomService} from './services/nb-dialog-custom.service';
 
-const nebularModule = [
+const nebularModule: Array<any> = [
   NbSidebarModule,
   NbLayoutModule,
   NbButtonModule,
@@ -53,6 +53,8 @@ const nebularModule = [
   NbSpinnerModule,
   NbStepperModule,
   NbTimepickerModule,
+  NbDatepickerModule,
+  NbRadioModule,
 ];
 
 @NgModule({

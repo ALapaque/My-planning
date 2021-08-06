@@ -1,4 +1,4 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Inject, Input, OnInit} from '@angular/core';
 import {NbDialogRef} from '@nebular/theme';
 import {SchedulerEvent} from '../../../models/scheduler-event.model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
@@ -9,17 +9,24 @@ import {addHours} from 'date-fns';
   templateUrl: './event-form.component.html',
   styleUrls: ['./event-form.component.scss']
 })
-export class EventFormComponent implements OnInit {
+export class EventFormComponent implements AfterViewInit {
 
-  @Input() public event: SchedulerEvent | undefined;
-  public form: FormGroup = new FormGroup({});
+  @Input() public event!: SchedulerEvent | undefined;
+  public form: FormGroup = new FormGroup({
+    title: new FormControl('', [Validators.required]),
+    startTime: new FormControl(new Date(), [Validators.required]),
+    endTime: new FormControl(addHours(new Date(), 1), [Validators.required]),
+    description: new FormControl(''),
+    isPrivate: new FormControl(false),
+    statusDisplayed: new FormControl('BUSY'),
+  });
 
   constructor(
     public dialogRef: NbDialogRef<EventFormComponent>
   ) {
   }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this._initForm();
   }
 
@@ -28,13 +35,13 @@ export class EventFormComponent implements OnInit {
   }
 
   private _initForm(): void {
-    this.form = new FormGroup({
-      title: new FormControl(this.event.Subject ?? '', [Validators.required]),
-      startTime: new FormControl(this.event.StartTime ?? new Date(), [Validators.required]),
-      endTime: new FormControl(this.event.EndTime ?? addHours(new Date(), 1), [Validators.required]),
-      description: new FormControl(this.event.Description ?? ''),
-      isPrivate: new FormControl(this.event.Meta.isPrivate),
-      statusDisplayed: new FormControl(this.event.Meta.statusDisplayed ?? 'BUSY'),
+    this.form.patchValue({
+      title: this.event.Subject ?? '',
+      startTime: this.event.StartTime ?? new Date(),
+      endTime: this.event.EndTime ?? new Date(),
+      description: this.event.Description ?? '',
+      isPrivate: this.event.Meta.isPrivate ?? false,
+      statusDisplayed: this.event.Meta.statusDisplayed ?? 'BUSY'
     });
   }
 }

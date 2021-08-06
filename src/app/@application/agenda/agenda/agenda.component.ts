@@ -28,6 +28,7 @@ export class AgendaComponent implements AfterViewInit {
     private _translateService: TranslateService,
     private _toastrService: ToastrService,
   ) {
+    this.onResize({target: {innerWidth: window.innerWidth}});
   }
 
   @HostListener('window:resize', ['$event'])
@@ -48,7 +49,7 @@ export class AgendaComponent implements AfterViewInit {
   public cellClicked($event: CellClickEventArgs): void {
     if ($event.isAllDay) return;
     console.log($event);
-    this.agendaHelperService.openEventFormDialog(new SchedulerEvent());
+    this.agendaHelperService.openEventFormDialog(new SchedulerEvent({StartTime: $event.startTime, EndTime: $event.endTime}));
   }
 
   public eventClicked($event: EventClickArgs): void {

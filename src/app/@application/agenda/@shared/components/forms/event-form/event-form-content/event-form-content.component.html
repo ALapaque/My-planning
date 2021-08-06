@@ -5,25 +5,57 @@
 
     <!-- CALENDARS -->
     <nb-step [label]="'APP.AGENDA.FORM.EVENT.STEPS.STEP-1.LABEL' | translate">
-      <h4>{{ 'APP.AGENDA.FORM.EVENT.STEPS.STEP-1.TITLE' | translate }}</h4>
-    </nb-step>
+      <h6>
+        <nb-icon [icon]="'calendar-outline'"></nb-icon>
+        {{ 'APP.AGENDA.FORM.EVENT.STEPS.STEP-1.TITLE' | translate }}
+      </h6>
 
-    <!-- PLAGE HORAIRE -->
-    <nb-step [label]="'APP.AGENDA.FORM.EVENT.STEPS.STEP-2.LABEL' | translate">
-      <h4>{{ 'APP.AGENDA.FORM.EVENT.STEPS.STEP-2.TITLE' | translate }}</h4>
       <div fxLayout.lt-sm="column"
            fxLayoutAlign="start center"
            fxLayoutAlign.lt-sm="center start"
            fxLayoutGap="8px">
-        <span fxFlex.gt-sm="33%">{{ 'APP.AGENDA.FORM.EVENT.STARTTIME' | translate }}:</span>
+        <span>{{ 'APP.AGENDA.FORM.EVENT.CALENDARS' | translate }}:</span>
 
-        <input nbInput
+        <nb-select placeholder="Select Showcase"
+                   [status]="'primary'"
+                   multiple>
+          <nb-option value="">Option empty</nb-option>
+          <nb-option value="0">Option 0</nb-option>
+          <nb-option value="1">Option 1</nb-option>
+          <nb-option value="2">Option 2</nb-option>
+          <nb-option value="3">Option 3</nb-option>
+          <nb-option value="4">Option 4</nb-option>
+        </nb-select>
+      </div>
+    </nb-step>
+
+    <!-- PLAGE HORAIRE -->
+    <nb-step [label]="'APP.AGENDA.FORM.EVENT.STEPS.STEP-2.LABEL' | translate">
+      <h6>
+        <nb-icon [icon]="'clock-outline'"></nb-icon>
+        {{ 'APP.AGENDA.FORM.EVENT.STEPS.STEP-2.TITLE' | translate }}
+      </h6>
+      <div fxLayout.lt-sm="column"
+           fxLayoutAlign="start center"
+           fxLayoutAlign.lt-sm="center start"
+           fxLayoutGap="8px">
+        <span>{{ 'APP.AGENDA.FORM.EVENT.STARTTIME' | translate }}:</span>
+
+        <input [style.width]="'155px'"
+               nbInput
                fullWidth
-               [nbTimepicker]="startTimePicker"
+               [status]="'primary'"
+               [nbDatepicker]="startTimePicker"
                [formControlName]="'startTime'"/>
-        <nb-timepicker #startTimePicker
-                       style="display: none"
-                       [date]="form.get('startTime').value">
+        <nb-date-timepicker
+          #startTimePicker
+          style="display: none"
+          [singleColumn]="true"
+          [applyButtonText]="'GLOBAL.OK' | translate"
+          [currentTimeButtonText]="'GLOBAL.NOW' | translate"
+          [step]="10">
+        </nb-date-timepicker>
+        <nb-timepicker>
         </nb-timepicker>
       </div>
 
@@ -31,16 +63,60 @@
            fxLayoutAlign="start center"
            fxLayoutAlign.lt-sm="center start"
            fxLayoutGap="8px">
-        <span fxFlex.gt-sm="33%">{{ 'APP.AGENDA.FORM.EVENT.ENDTIME' | translate }}:</span>
+        <span>{{ 'APP.AGENDA.FORM.EVENT.ENDTIME' | translate }}:</span>
 
-        <input nbInput
+        <input [style.width]="'155px'"
+               nbInput
                fullWidth
-               [nbTimepicker]="endTimePicker"
+               [status]="'primary'"
+               [nbDatepicker]="endTimePicker"
                [formControlName]="'endTime'"/>
-        <nb-timepicker #endTimePicker
-                       style="display: none"
-                       [date]="form.get('endTime').value">
-        </nb-timepicker>
+        <nb-date-timepicker
+          #endTimePicker
+          style="display: none"
+          [applyButtonText]="'GLOBAL.OK' | translate"
+          [currentTimeButtonText]="'GLOBAL.NOW' | translate"
+          [singleColumn]="true"
+          [step]="10">
+        </nb-date-timepicker>
+      </div>
+    </nb-step>
+
+    <nb-step [label]="'APP.AGENDA.FORM.EVENT.STEPS.STEP-3.LABEL' | translate">
+      <h6>
+        <nb-icon [icon]="'briefcase-outline'"></nb-icon>
+        {{ 'APP.AGENDA.FORM.EVENT.STEPS.STEP-3.TITLE' | translate }}
+      </h6>
+
+      <div fxLayout.lt-sm="column"
+           fxLayoutAlign="start center"
+           fxLayoutAlign.lt-sm="center start"
+           fxLayoutGap="8px">
+        <nb-checkbox [status]="'primary'"
+                     [formControlName]="'isPrivate'">
+          {{ 'APP.AGENDA.FORM.EVENT.IS_PRIVATE' | translate }}
+        </nb-checkbox>
+      </div>
+
+      <div fxLayout.lt-sm="column"
+           fxLayoutAlign="start center"
+           fxLayoutAlign.lt-sm="center start"
+           fxLayoutGap="8px">
+        <span>{{ 'APP.AGENDA.FORM.EVENT.STATUS.TITLE' | translate }}</span>
+
+        <nb-radio-group fxLayout.gt-sm="row"
+                        fxLayoutAlign.gt-sm="start center"
+                        fxLayoutGap.gt-sm="16px"
+                        [name]="'statusSelector'"
+                        [status]="'primary'"
+                        [formControlName]="'statusDisplayed'">
+          <nb-radio [value]="'BUSY'">
+            {{ 'APP.AGENDA.FORM.EVENT.STATUS.BUSY' | translate }}
+          </nb-radio>
+          <nb-radio [value]="'FREE'">
+            {{ 'APP.AGENDA.FORM.EVENT.STATUS.FREE' | translate }}
+          </nb-radio>
+        </nb-radio-group>
       </div>
     </nb-step>
   </nb-stepper>
