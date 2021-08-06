@@ -8,7 +8,9 @@
   "GLOBAL": {
     "CANCEL": "Annuler",
     "OK": "Ok",
-    "SAVE": "Enregistrer"
+    "SAVE": "Enregistrer",
+    "CONFIRM": "Confirmer",
+    "CONFIRM_DELETE": "Êtes-vous sûr de vouloir supprimer cet élément ?"
   },
   "AUTH": {
     "LOGIN": "Connexion",
@@ -72,7 +74,19 @@
         "EVENT": {
           "CREATE": "Nouveau rendez-vous",
           "UPDATE": "Modifier le rendez-vous",
-          "DELETE": "Supprimer le rendez-vous"
+          "DELETE": "Supprimer le rendez-vous",
+          "STARTTIME": "Heure de début affiché",
+          "ENDTIME": "Heure de fin affiché",
+          "STEPS": {
+            "STEP-1": {
+              "LABEL": "Calendrier",
+              "TITLE": "Sélectionner les calendriers à afficher"
+            },
+            "STEP-2": {
+              "LABEL": "Plage horaire",
+              "TITLE": "Détails sur la durée de l'événement"
+            }
+          }
         },
         "SETTINGS": {
           "TITLE": "Paramètres de l'agenda",
