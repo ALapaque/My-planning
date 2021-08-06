@@ -21,18 +21,30 @@ export class AuthService {
   }
 
   public login(loginRequest: { usernameOrEmail: string, password: string }): Observable<JwtHelper> {
-    return this.http.post<string>(`${environment.apiUrl}/auth/login`, loginRequest)
-      .pipe(
-        map((token: string) => new JwtHelper({token, isAuthenticated: true, expired: false})),
-        map((jwtHelper: JwtHelper) => {
+    return of('COUCOU_JE_SUIS_LE_TOKEN').pipe(
+      map((token: string) => new JwtHelper({token, isAuthenticated: true, expired: false})),
+      map((jwtHelper: JwtHelper) => {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           sessionStorage.setItem('jwtHelper', JSON.stringify(jwtHelper));
           this.jwtHelper$.next(jwtHelper);
           return jwtHelper;
-        }));
+        }
+      )
+    );
+    // return this.http.post<string>(`${environment.apiUrl}/auth/login`, loginRequest)
+    //   .pipe(
+    //     map((token: string) => new JwtHelper({token, isAuthenticated: true, expired: false})),
+    //     map((jwtHelper: JwtHelper) => {
+    //         // store user details and jwt token in local storage to keep user logged in between page refreshes
+    //         sessionStorage.setItem('jwtHelper', JSON.stringify(jwtHelper));
+    //         this.jwtHelper$.next(jwtHelper);
+    //         return jwtHelper;
+    //       }
+    //     )
+    //   );
   }
 
-  public register(registerRequest: {username: string, email: string, password: string, confirmPassword: string}): Observable<any> {
+  public register(registerRequest: { username: string, email: string, password: string, confirmPassword: string }): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/auth/register`, registerRequest);
   }
 

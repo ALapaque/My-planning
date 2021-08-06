@@ -3,11 +3,9 @@ import {CellClickEventArgs, DragEventArgs, EventClickArgs, EventSettingsModel} f
 import {ScheduleComponent} from '@syncfusion/ej2-angular-schedule/src/schedule/schedule.component';
 import {scheduleData} from '../../../@shared/datasources/agenda.datasource';
 import {AgendaHelperService} from '../@shared/services/agenda-helper.service';
-import {EventFormComponent} from '../@shared/components/forms/event-form/event-form.component';
 import {TranslateService} from '@ngx-translate/core';
 import {NbDialogCustomService} from '../../../@shared/services/nb-dialog-custom.service';
 import {NbDialogRef, NbDialogService} from '@nebular/theme';
-import {EventDetailsComponent} from '../@shared/components/event-details/event-details.component';
 import {EventService} from '../../@shared/services/event.service';
 import {SchedulerEvent} from '../@shared/models/scheduler-event.model';
 import {ToastrService} from 'ngx-toastr';

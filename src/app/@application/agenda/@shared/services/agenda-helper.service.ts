@@ -159,7 +159,7 @@ export class AgendaHelperService {
     this.ejsSchedule.firstDayOfWeek = value.value;
   }
 
-  openEventDetailsDialog(event: SchedulerEvent): NbDialogRef<EventFormComponent> {
+  openEventDetailsDialog(event: SchedulerEvent): NbDialogRef<EventDetailsComponent> {
     return this._dialogService.open(EventDetailsComponent,
       {
         context: {
