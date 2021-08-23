@@ -59,6 +59,40 @@
       </nb-form-field>
 
       <nb-form-field>
+        <nb-icon nbPrefix icon="email-outline" pack="eva"></nb-icon>
+        <input nbInput
+               name="firstName"
+               fullWidth
+               [placeholder]="'FORM.INPUT.FIRSTNAME' | translate"
+               [status]="(checkFieldForError('firstName')) ?
+               'danger' : 'basic'"
+               [type]="'text'"
+               [formControlName]="'firstName'">
+        <nb-error *ngIf="checkFieldForError('firstName')">
+          <ng-container *ngIf="registerForm.get('firstName').errors.required">
+            {{'FORM.INPUT.ERRORS.REQUIRED' | translate}}
+          </ng-container>
+        </nb-error>
+      </nb-form-field>
+
+      <nb-form-field>
+        <nb-icon nbPrefix icon="email-outline" pack="eva"></nb-icon>
+        <input nbInput
+               name="lastName"
+               fullWidth
+               [placeholder]="'FORM.INPUT.LASTNAME' | translate"
+               [status]="(checkFieldForError('lastName')) ?
+               'danger' : 'basic'"
+               [type]="'text'"
+               [formControlName]="'lastName'">
+        <nb-error *ngIf="checkFieldForError('lastName')">
+          <ng-container *ngIf="registerForm.get('lastName').errors.required">
+            {{'FORM.INPUT.ERRORS.REQUIRED' | translate}}
+          </ng-container>
+        </nb-error>
+      </nb-form-field>
+
+      <nb-form-field>
         <nb-icon nbPrefix icon="unlock-outline" pack="eva"></nb-icon>
 
         <input nbInput

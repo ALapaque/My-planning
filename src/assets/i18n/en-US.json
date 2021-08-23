@@ -121,6 +121,8 @@
   "FORM": {
     "INPUT": {
       "USERNAME": "Username",
+      "FIRSTNAME": "Firstname",
+      "LASTNAME": "Lastname",
       "PASSWORD": "Password",
       "EMAIL": "Email adress",
       "CONFIRM_PASSWORD": "Password confirmation",

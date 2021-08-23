@@ -147,6 +147,8 @@
   "FORM": {
     "INPUT": {
       "USERNAME": "Nom d'utilisateur",
+      "FIRSTNAME": "Prénom",
+      "LASTNAME": "Nom de famille",
       "PASSWORD": "Mot de passe",
       "EMAIL": "Adresse email",
       "CONFIRM_PASSWORD": "Confirmation du mot de passe",
