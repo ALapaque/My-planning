@@ -10,6 +10,7 @@
     "OK": "Ok",
     "SAVE": "Enregistrer",
     "CONFIRM": "Confirmer",
+    "TODAY": "Aujourd'hui",
     "CONFIRM_DELETE": "Êtes-vous sûr de vouloir supprimer cet élément ?"
   },
   "AUTH": {
@@ -75,8 +76,15 @@
           "CREATE": "Nouveau rendez-vous",
           "UPDATE": "Modifier le rendez-vous",
           "DELETE": "Supprimer le rendez-vous",
-          "STARTTIME": "Heure de début affiché",
-          "ENDTIME": "Heure de fin affiché",
+          "CALENDARS": "Calendrier",
+          "STARTTIME": "Date de début",
+          "ENDTIME": "Date de fin",
+          "IS_PRIVATE": "Evénement privée",
+          "STATUS": {
+            "TITLE": "Appraître comme ",
+            "BUSY": "Occupé",
+            "FREE": "Libre"
+          },
           "STEPS": {
             "STEP-1": {
               "LABEL": "Calendrier",
@@ -85,6 +93,10 @@
             "STEP-2": {
               "LABEL": "Plage horaire",
               "TITLE": "Détails sur la durée de l'événement"
+            },
+            "STEP-3": {
+              "LABEL": "Visibilité",
+              "TITLE": "Paramètres de la visibilités"
             }
           }
         },
@@ -135,6 +147,8 @@
   "FORM": {
     "INPUT": {
       "USERNAME": "Nom d'utilisateur",
+      "FIRSTNAME": "Prénom",
+      "LASTNAME": "Nom de famille",
       "PASSWORD": "Mot de passe",
       "EMAIL": "Adresse email",
       "CONFIRM_PASSWORD": "Confirmation du mot de passe",

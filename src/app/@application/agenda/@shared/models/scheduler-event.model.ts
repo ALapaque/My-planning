@@ -17,6 +17,8 @@ export class SchedulerEvent {
       Object.assign(this, schedulerEvent);
       if (schedulerEvent.Meta) {
         this.Meta = new Event(schedulerEvent.Meta);
+        this.Meta.startDate = this.StartTime;
+        this.Meta.endDate = this.EndTime;
       }
     } else {
       Object.create(this);
