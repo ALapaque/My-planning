@@ -2,11 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { JwtHelper } from '../models/jwt-helper.model';
 import { environment } from '../../../environments/environment';
 import { User } from '../models/user.model';
-import { UserService } from './user.service';
+
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -16,7 +16,6 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private _userService: UserService,
   ) {
     if (sessionStorage.getItem('jwtHelper')) {
       this.jwtHelper$.next(new JwtHelper(JSON.parse(<string>sessionStorage.getItem('jwtHelper'))));

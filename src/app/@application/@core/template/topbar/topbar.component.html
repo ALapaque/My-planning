@@ -1,0 +1,25 @@
+<button nbButton
+        ghost
+        status="primary"
+        shape="semi-round"
+        size="large"
+        (click)="toggle.emit()">
+  <nb-icon [icon]="nbSidebarComponent.compacted ? 'menu-outline' : 'menu-arrow-outline'"></nb-icon>
+</button>
+<nb-search [type]="'modal-zoomin'"
+           [hint]="'APP.SEARCH.HINT' | translate"
+           [placeholder]="'APP.SEARCH.PLACEHOLDER' | translate"
+           [tag]="'topbar-search'">
+</nb-search>
+
+<span [fxFlex]="'auto'"></span>
+
+<button nbButton
+        ghost
+        status="primary"
+        shape="semi-round"
+        size="large"
+        (click)="logout.emit()"
+        [routerLink]="'/homepage'">
+  <nb-icon icon="power-outline"></nb-icon>
+</button>
