@@ -5,13 +5,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { JwtHelper } from '../models/jwt-helper.model';
 import { environment } from '../../../environments/environment';
+import { User } from '../models/user.model';
 import { UserService } from './user.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private jwtHelper$: BehaviorSubject<JwtHelper> = new BehaviorSubject(new JwtHelper());
   private _jwtService: JwtHelperService = new JwtHelperService();
-  public user: any;
+  public user: User;
 
   constructor(
     private http: HttpClient,

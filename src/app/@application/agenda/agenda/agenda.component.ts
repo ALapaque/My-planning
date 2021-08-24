@@ -1,24 +1,29 @@
-import {AfterViewInit, Component, HostListener, ViewChild} from '@angular/core';
-import {CellClickEventArgs, DragEventArgs, EventClickArgs, EventSettingsModel} from '@syncfusion/ej2-angular-schedule';
-import {ScheduleComponent} from '@syncfusion/ej2-angular-schedule/src/schedule/schedule.component';
-import {scheduleData} from '../../../@shared/datasources/agenda.datasource';
-import {AgendaHelperService} from '../@shared/services/agenda-helper.service';
-import {TranslateService} from '@ngx-translate/core';
-import {NbDialogCustomService} from '../../../@shared/services/nb-dialog-custom.service';
-import {NbDialogRef, NbDialogService} from '@nebular/theme';
-import {EventService} from '../../@shared/services/event.service';
-import {SchedulerEvent} from '../@shared/models/scheduler-event.model';
-import {ToastrService} from 'ngx-toastr';
+import { AfterViewInit, Component, HostListener, ViewChild } from '@angular/core';
+import {
+  CellClickEventArgs,
+  DragEventArgs,
+  EventClickArgs,
+  EventSettingsModel
+} from '@syncfusion/ej2-angular-schedule';
+import { ScheduleComponent } from '@syncfusion/ej2-angular-schedule/src/schedule/schedule.component';
+import { scheduleData } from '../../../@shared/datasources/agenda.datasource';
+import { AgendaHelperService } from '../@shared/services/agenda-helper.service';
+import { TranslateService } from '@ngx-translate/core';
+import { NbDialogCustomService } from '../../../@shared/services/nb-dialog-custom.service';
+import { NbDialogService } from '@nebular/theme';
+import { EventService } from '../../@shared/services/event.service';
+import { SchedulerEvent } from '../@shared/models/scheduler-event.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-agenda',
   templateUrl: './agenda.component.html',
-  styleUrls: ['./agenda.component.scss'],
+  styleUrls: [ './agenda.component.scss' ],
 })
 export class AgendaComponent implements AfterViewInit {
   @ViewChild('ejsSchedule') public ejsSchedule: ScheduleComponent | undefined;
 
-  public eventSettings: EventSettingsModel = {dataSource: scheduleData};
+  public eventSettings: EventSettingsModel = { dataSource: scheduleData };
 
   constructor(
     public agendaHelperService: AgendaHelperService,
@@ -28,10 +33,10 @@ export class AgendaComponent implements AfterViewInit {
     private _translateService: TranslateService,
     private _toastrService: ToastrService,
   ) {
-    this.onResize({target: {innerWidth: window.innerWidth}});
+    this.onResize({ target: { innerWidth: window.innerWidth } });
   }
 
-  @HostListener('window:resize', ['$event'])
+  @HostListener('window:resize', [ '$event' ])
   onResize(event: any) {
     const width: number = event.target.innerWidth;
 
@@ -49,7 +54,10 @@ export class AgendaComponent implements AfterViewInit {
   public cellClicked($event: CellClickEventArgs): void {
     if ($event.isAllDay) return;
     console.log($event);
-    this.agendaHelperService.openEventFormDialog(new SchedulerEvent({StartTime: $event.startTime, EndTime: $event.endTime}));
+    this.agendaHelperService.openEventFormDialog(new SchedulerEvent({
+      StartTime: $event.startTime.toISOString(),
+      EndTime: $event.endTime.toISOString()
+    }));
   }
 
   public eventClicked($event: EventClickArgs): void {

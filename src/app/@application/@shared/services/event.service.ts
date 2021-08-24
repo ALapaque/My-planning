@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
-import {Event} from '../models/Event.model';
-import {environment} from '../../../../environments/environment';
-import {catchError, delay, map, tap} from 'rxjs/operators';
+import {delay, tap} from 'rxjs/operators';
 import {SchedulerEvent} from '../../agenda/@shared/models/scheduler-event.model';
 import {AgendaHelperService} from '../../agenda/@shared/services/agenda-helper.service';
 import {scheduleData} from '../../../@shared/datasources/agenda.datasource';

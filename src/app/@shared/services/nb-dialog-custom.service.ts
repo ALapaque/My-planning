@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {NbDialogService} from '@nebular/theme';
+import { Injectable } from '@angular/core';
+import { NbDialogService } from '@nebular/theme';
 
 @Injectable()
 export class NbDialogCustomService {
@@ -9,6 +9,7 @@ export class NbDialogCustomService {
   ) {
   }
 
-  public get isFullscreen(): string  {
-    return (window.innerWidth <= 960) ? 'nebular-dialog-fullscreen' : 'nebular-dialog' };
+  public get isFullscreen(): string {
+    return (window.innerWidth <= 960) ? 'nebular-dialog-fullscreen' : 'nebular-dialog';
+  }
 }

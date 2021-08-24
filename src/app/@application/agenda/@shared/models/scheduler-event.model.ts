@@ -1,11 +1,11 @@
-import {Event} from '../../../@shared/models/Event.model';
-import {addHours} from 'date-fns';
+import { addHours } from 'date-fns';
+import { Event } from '../../../../@shared/models/event.model';
 
 export class SchedulerEvent {
   public Id: number = 0;
   public Subject: string = '';
-  public StartTime: string | Date = new Date();
-  public EndTime: string | Date = addHours(new Date(), 1);
+  public StartTime: string = new Date().toISOString();
+  public EndTime: string = addHours(new Date(), 1).toISOString();
   public Description?: string;
   public CategoryColor?: string;
   public PrimaryColor?: string;
