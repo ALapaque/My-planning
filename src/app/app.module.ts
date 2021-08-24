@@ -1,23 +1,25 @@
-import {HashLocationStrategy, LocationStrategy, registerLocaleData} from '@angular/common';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import localeEn from '@angular/common/locales/en';
 import localeFrBeExtra from '@angular/common/locales/extra/fr-BE';
 import localeFr from '@angular/common/locales/fr';
-import {LOCALE_ID, NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {JwtModule} from '@auth0/angular-jwt';
-import {NbThemeModule} from '@nebular/theme';
-import {ToastrModule} from 'ngx-toastr';
-import {SharedModule} from './@shared/shared.module';
-import {AppComponent} from './app.component';
-import {AppRouting} from './app.routing';
-import {ServiceWorkerModule} from '@angular/service-worker';
-import {environment} from '../environments/environment';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { JwtModule } from '@auth0/angular-jwt';
+import { NbThemeModule } from '@nebular/theme';
+import { ToastrModule } from 'ngx-toastr';
+import { ErrorInterceptor } from './@shared/interceptors/error.interceptor';
+import { JwtInterceptor } from './@shared/interceptors/jwt.interceptor';
+import { SharedModule } from './@shared/shared.module';
+import { AppComponent } from './app.component';
+import { AppRouting } from './app.routing';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {SessionService} from './@shared/services/session.service';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { SessionService } from './@shared/services/session.service';
 
 registerLocaleData(localeFr, 'fr-BE', localeFrBeExtra);
 registerLocaleData(localeEn, 'en-US');
@@ -37,7 +39,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     AppRouting,
     BrowserAnimationsModule,
     HttpClientModule,
-    NbThemeModule.forRoot({name: 'default'}),
+    NbThemeModule.forRoot({ name: 'default' }),
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
@@ -64,18 +66,28 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
+        deps: [ HttpClient ]
       },
     }),
   ],
   providers: [
     {
       provide: LOCALE_ID,
-      deps: [SessionService],
+      deps: [ SessionService ],
       useFactory: (sessionService: SessionService) => sessionService.locale
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [ AppComponent ],
 })
 export class AppModule {
 }

@@ -5,5 +5,10 @@
 
   .dashboard-container {
     height: calc(100vh - 126px);
+
+    .recap-card-container, .normal-card-container {
+      padding: 0 12px;
+    }
+
   }
 }

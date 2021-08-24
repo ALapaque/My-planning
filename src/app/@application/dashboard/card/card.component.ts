@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NbComponentSize } from '@nebular/theme';
 import { Card } from '../../../@shared/models/card.model';
 
 @Component({
@@ -15,4 +16,7 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get cardSize(): NbComponentSize {
+    return this.card.size.toLowerCase() as NbComponentSize;
+  }
 }

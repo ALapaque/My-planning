@@ -1,0 +1,9 @@
+<nb-card class="card"
+         [class.success]="content === 0"
+         [nbSpinner]="contentLoading$ | async"
+         [nbSpinnerStatus]="'info'"
+         fxLayout="row"
+         fxLayoutAlign="space-between center">
+  <p class="title">{{ "APP.DASHBOARD.RECAP." + card.type | translate }}</p>
+  <span class="content">{{ content }}</span>
+</nb-card>

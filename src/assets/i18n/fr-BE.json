@@ -136,6 +136,12 @@
         }
       }
     },
+    "DASHBOARD": {
+      "RECAP": {
+        "MEETING": "Vos réunions à venir",
+        "APPOINTMENT": "Vos rendez-vous restant"
+      }
+    },
     "SEARCH": {
       "HINT": "Appuyer sur entrer pour rechercher",
       "PLACEHOLDER": "Rechercher"

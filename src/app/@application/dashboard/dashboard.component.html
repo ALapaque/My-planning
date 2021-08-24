@@ -1,17 +1,21 @@
 <div class="dashboard-container"
      *ngIf="cards$ | async as cards">
   <ng-container *ngIf="getRecapCards(cards) as repeatCards">
-    <div gdColumns="repeat(auto-fill, minmax(600px, 1fr))"
+    <div class="recap-card-container"
+         gdColumns="repeat(auto-fill, minmax(550px, 1fr))"
+         gdColumns.lt-sm="1fr"
          gdGap="12px"
          style="margin-bottom: 12px">
       <app-recap-card *ngFor="let card of repeatCards" [card]="card"></app-recap-card>
     </div>
   </ng-container>
 
-  <ng-container *ngIf="getNormalCards(cards)">
-    <div gdColumns="repeat(auto-fill, minmax(500px, 1fr))"
+  <ng-container *ngIf="getGiantCards(cards) as giantCards">
+    <div class="normal-card-container"
+         gdColumns="repeat(auto-fill, minmax(550px, 1fr))"
+         gdColumns.lt-sm="1fr"
          gdGap="12px">
-      <app-card *ngFor="let card of cards" [card]="card"></app-card>
+      <app-card *ngFor="let card of giantCards" [card]="card"></app-card>
     </div>
   </ng-container>
 </div>
