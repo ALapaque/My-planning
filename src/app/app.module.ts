@@ -43,7 +43,6 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         tokenGetter: () => {
           return sessionStorage.getItem('jwt_token');
         },
-        allowedDomains: ['example.com'],
       },
     }),
     ToastrModule.forRoot({
