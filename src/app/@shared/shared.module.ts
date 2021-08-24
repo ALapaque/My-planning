@@ -5,6 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {NebularModule} from './nebular.module';
 import {ConfirmDialogComponent} from './ui-components/confirm-dialog/confirm-dialog.component';
+import { DateLabelComponent } from './ui-components/date-label/date-label.component';
 import {ScrollToTopComponent} from './ui-components/scroll-to-top/scroll-to-top.component';
 import {NbErrorComponent} from './ui-components/nb-error/nb-error.component';
 import {TranslateModule} from '@ngx-translate/core';
@@ -32,7 +33,8 @@ const UI_COMPONENTS: Array<any> = [
   LanguageSelectorComponent,
   FooterComponent,
   DialogHeaderComponent,
-  DialogActionBtnComponent
+  DialogActionBtnComponent,
+  DateLabelComponent
 ];
 
 const DIRECTIVES: Array<any> = [];

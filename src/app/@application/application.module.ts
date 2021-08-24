@@ -8,6 +8,7 @@ import { EventService } from './@shared/services/event.service';
 import { LoaderService } from './@shared/services/loader.service';
 import { ApplicationRouting } from './application.routing';
 import { LeftMenuComponent } from './@core/left-menu/left-menu.component';
+import { DateLabelComponent } from '../@shared/ui-components/date-label/date-label.component';
 
 @NgModule(
   {

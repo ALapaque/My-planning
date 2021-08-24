@@ -6,6 +6,7 @@ import { EventType } from './types/event-type.type';
 
 export class Event implements AbstractEntity<number> {
   public id: number;
+  public name: string = null;
   public isADayOff: boolean = false;
   public isPrivate: boolean = false;
   public statusDisplayed: EventStatus = 'FREE';

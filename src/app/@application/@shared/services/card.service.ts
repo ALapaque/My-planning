@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { endOfDay, setHours } from 'date-fns';
+import { endOfDay, setHours, startOfDay } from 'date-fns';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment, generateCompleteUrl } from '../../../../environments/environment';
@@ -35,7 +35,7 @@ export class CardService {
     const params: HttpParams = new HttpParams()
       .set('userId', this._authService.user.id.toString(10))
       .set('type', cardType)
-      .set('start', new Date().toISOString())
+      .set('start', startOfDay(new Date()).toISOString())
       .set('end', endOfDay(new Date()).toISOString());
 
     return this._http.get<Array<Event>>(`${ this._baseUrl }/incoming`, { params }).pipe(

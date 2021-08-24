@@ -301,3 +301,8 @@ $transitionAccelerate: cubic-bezier(0.4, 0.0, 1, 1);
 .contrast-bg {
   background: rgba(0, 0, 0, .20) !important;
 }
+
+.ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

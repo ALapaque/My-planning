@@ -1,0 +1,15 @@
+<nb-list *ngIf="(content$ | async)?.length; else noEvents">
+  <nb-list-item *ngFor="let event of content$ | async">
+    <span class="ellipsis"
+          [class.in-progress]="isInProgress(event)">
+      <app-date-label [startDate]="event.startDate" [endDate]="event.endDate"></app-date-label>
+      {{event.name}}
+    </span>
+  </nb-list-item>
+</nb-list>
+
+<ng-template #noEvents>
+  <div fxLayoutAlign="center center">
+    <i>{{ "GLOBAL.EMPTY" | translate}}</i>
+  </div>
+</ng-template>

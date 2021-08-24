@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { map, takeUntil, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
+import { catchError, map, takeUntil, tap } from 'rxjs/operators';
 import { Card } from '../../../@shared/models/card.model';
 import { Event } from '../../../@shared/models/event.model';
 import { CardService } from '../../@shared/services/card.service';
@@ -10,12 +10,10 @@ import { CardService } from '../../@shared/services/card.service';
   templateUrl: './recap-card.component.html',
   styleUrls: [ './recap-card.component.scss' ]
 })
-export class RecapCardComponent implements OnInit, OnDestroy {
+export class RecapCardComponent implements OnInit {
   @Input() card!: Card;
-  public content: number;
+  public content$: Observable<number>;
   public contentLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
-
-  private destroy$: Subject<any> = new Subject<any>();
 
   constructor(
     private _cardService: CardService,
@@ -23,23 +21,14 @@ export class RecapCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
-    this._cardService.getContentIncoming(this.card.type).pipe(
-      takeUntil(this.destroy$),
+    this.content$ = this._cardService.getContentIncoming(this.card.type).pipe(
       map((events: Array<Event>) => events.length)
-    ).subscribe(
-      (content: number) => {
-        this.content = content;
+    ).pipe(
+      tap(() => this.contentLoading$.next(false)),
+      catchError(e => {
         this.contentLoading$.next(false);
-      },
-      () => {
-        this.contentLoading$.next(false);
-      }
+        return of(e);
+      })
     );
   }
-
-  ngOnDestroy() {
-    this.destroy$.next();
-  }
-
 }

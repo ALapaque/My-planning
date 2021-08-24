@@ -1,0 +1,7 @@
+<ng-container *ngIf="isSameDay(); else notSameDayTemplate">
+  {{ startDate | date: 'short' }} → {{ endDate | date: 'HH:mm' }}
+</ng-container>
+
+<ng-template #notSameDayTemplate>
+  {{ startDate | date: 'short' }} → {{ endDate | date: 'short' }}
+</ng-template>
