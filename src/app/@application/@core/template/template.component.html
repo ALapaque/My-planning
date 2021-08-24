@@ -20,6 +20,10 @@
   </nb-sidebar>
 
   <nb-layout-column>
-    <router-outlet></router-outlet>
+    <nb-card [nbSpinner]="loaderService.isLoading$ | async"
+             nbSpinnerSize="giant"
+             nbSpinnerStatus="primary">
+      <router-outlet></router-outlet>
+    </nb-card>
   </nb-layout-column>
 </nb-layout>

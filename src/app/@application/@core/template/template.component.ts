@@ -3,6 +3,7 @@ import {NbSidebarService} from '@nebular/theme';
 import {NbSidebarState} from '@nebular/theme/components/sidebar/sidebar.component';
 import {AuthService} from '../../../@shared/services/auth.service';
 import {Subject} from 'rxjs';
+import { LoaderService } from '../../@shared/services/loader.service';
 
 @Component({
   selector: 'app-template',
@@ -17,6 +18,7 @@ export class TemplateComponent implements OnDestroy {
 
   constructor(
     public sidebarService: NbSidebarService,
+    public loaderService: LoaderService,
     private _authService: AuthService,
   ) {
   }

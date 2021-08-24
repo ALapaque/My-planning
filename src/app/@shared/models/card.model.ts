@@ -5,6 +5,7 @@ import { User } from './user.model';
 export class Card implements AbstractEntity<number> {
   public id: number = 0;
   public cardType: CardType = null;
+  public isRecap: boolean = false;
   public users: Array<User> = null;
 
   constructor(card?: Partial<Card>) {

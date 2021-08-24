@@ -2,6 +2,14 @@
   nb-layout {
     nb-layout-column {
       padding: 1.5rem !important;
+
+      > nb-card {
+        background: transparent !important;
+      }
+
+      nb-card {
+        margin-bottom: 0 !important;
+      }
     }
 
     nb-layout-footer {
