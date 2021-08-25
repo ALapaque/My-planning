@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { LoaderService } from '../../../../@shared/services/loader.service';
 import { AgendaHelperService } from '../../services/agenda-helper.service';
 import { subDays, addDays, addWeeks, subWeeks, addMonths, subMonths, addYears, subYears } from 'date-fns';
-import { EventFormComponent } from '../forms/event-form/event-form.component';
 import { NbDialogCustomService } from '../../../../../@shared/services/nb-dialog-custom.service';
 import { AgendaSettingsComponent } from '../agenda-settings/agenda-settings.component';
 import { NbDialogService } from '@nebular/theme';
@@ -78,5 +77,6 @@ export class AgendaToolbarComponent implements OnInit {
         }
         break;
     }
+    this.agendaHelperService.refreshAgenda$.next(true);
   }
 }

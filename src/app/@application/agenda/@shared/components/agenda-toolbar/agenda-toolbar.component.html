@@ -58,6 +58,7 @@
 
       <nb-action [fxHide.lt-md]="true">
         <nb-select [(ngModel)]="agendaHelperService.currentViewDisplayed"
+                   (ngModelChange)="agendaHelperService.refreshAgenda$.next(true)"
                    [size]="'tiny'"
                    filled
                    placeholder="Selectionner une vue"

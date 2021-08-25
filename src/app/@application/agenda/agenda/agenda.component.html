@@ -7,7 +7,7 @@
                   [locale]='getAgendaLocale()'
                   [views]="agendaHelperService.views"
                   [currentView]="agendaHelperService.currentViewDisplayed"
-                  [eventSettings]="eventSettings"
+                  [eventSettings]="eventSettings | async"
                   [height]="'calc(((100vh - 76px) - 36px) - 4.5rem)'"
                   [selectedDate]="agendaHelperService.viewDate"
                   [showHeaderBar]="false"

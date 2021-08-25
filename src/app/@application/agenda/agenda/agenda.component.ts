@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostListener, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnDestroy, ViewChild } from '@angular/core';
 import {
   CellClickEventArgs,
   DragEventArgs,
@@ -6,6 +6,8 @@ import {
   EventSettingsModel
 } from '@syncfusion/ej2-angular-schedule';
 import { ScheduleComponent } from '@syncfusion/ej2-angular-schedule/src/schedule/schedule.component';
+import { Observable, of, Subject } from 'rxjs';
+import { delay, takeUntil, tap } from 'rxjs/operators';
 import { scheduleData } from '../../../@shared/datasources/agenda.datasource';
 import { AgendaHelperService } from '../@shared/services/agenda-helper.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -20,10 +22,12 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './agenda.component.html',
   styleUrls: [ './agenda.component.scss' ],
 })
-export class AgendaComponent implements AfterViewInit {
+export class AgendaComponent implements AfterViewInit, OnDestroy {
   @ViewChild('ejsSchedule') public ejsSchedule: ScheduleComponent | undefined;
 
-  public eventSettings: EventSettingsModel = { dataSource: scheduleData };
+  public eventSettings: Observable<EventSettingsModel>;
+
+  private _destroy: Subject<any> = new Subject<any>();
 
   constructor(
     public agendaHelperService: AgendaHelperService,
@@ -34,6 +38,10 @@ export class AgendaComponent implements AfterViewInit {
     private _toastrService: ToastrService,
   ) {
     this.onResize({ target: { innerWidth: window.innerWidth } });
+
+    this.agendaHelperService.isAgendaLoading.next(true);
+    this._refreshEvents();
+    this._initRefreshListener();
   }
 
   @HostListener('window:resize', [ '$event' ])
@@ -49,6 +57,10 @@ export class AgendaComponent implements AfterViewInit {
 
   public ngAfterViewInit(): void {
     this.agendaHelperService.ejsSchedule = this.ejsSchedule;
+  }
+
+  public ngOnDestroy() {
+    this._destroy.next();
   }
 
   public cellClicked($event: CellClickEventArgs): void {
@@ -86,5 +98,15 @@ export class AgendaComponent implements AfterViewInit {
     }
 
     return languageUsed;
+  }
+
+  private _refreshEvents() {
+    this.eventSettings = this._eventService.getEvents();
+  }
+
+  private _initRefreshListener() {
+    this.agendaHelperService.refreshAgenda$.pipe(
+      takeUntil(this._destroy)
+    ).subscribe((refresh: true) => this._refreshEvents());
   }
 }

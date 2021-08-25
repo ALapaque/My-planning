@@ -140,11 +140,11 @@
     "DASHBOARD": {
       "RECAP": {
         "MEETING": "Vos réunions à venir",
-        "APPOINTMENT": "Vos rendez-vous restant"
+        "APPOINTMENT": "Vos événements restant"
       },
       "CARD": {
         "MEETING": "Réunions",
-        "APPOINTMENT": "Rendez-vous"
+        "APPOINTMENT": "Événements"
       }
     },
     "SEARCH": {
