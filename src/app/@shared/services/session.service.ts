@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {registerLocaleData} from '@angular/common';
 import localeFrench from '@angular/common/locales/fr-BE';
 import localeEnglish from '@angular/common/locales/en';
-import {LangChangeEvent, TranslateService, TranslationChangeEvent} from '@ngx-translate/core';
+import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 
 export type Locale = 'fr-BE' | 'en-US';
 

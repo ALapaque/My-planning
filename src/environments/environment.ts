@@ -5,8 +5,13 @@
 export const environment = {
   // apiUrl: 'http://amaury.must.be:32768',
   apiUrl: 'http://localhost:8081',
+  apiUrlSuffix: '/api',
   production: false,
 };
+
+export function generateCompleteUrl(): string {
+  return environment.apiUrl + environment.apiUrlSuffix;
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

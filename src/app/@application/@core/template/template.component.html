@@ -1,30 +1,12 @@
 <nb-layout>
   <nb-layout-header fixed>
-    <button nbButton
-            ghost
-            status="primary"
-            shape="semi-round"
-            size="large"
-            (click)="toggle()">
-      <nb-icon [icon]="nbSidebarComponent.compacted ? 'menu-outline' : 'menu-arrow-outline'"></nb-icon>
-    </button>
-    <nb-search [type]="'modal-zoomin'"
-               [hint]="'APP.SEARCH.HINT' | translate"
-               [placeholder]="'APP.SEARCH.PLACEHOLDER' | translate"
-               [tag]="'topbar-search'">
-    </nb-search>
-
-    <span [fxFlex]="'auto'"></span>
-
-    <button nbButton
-            ghost
-            status="primary"
-            shape="semi-round"
-            size="large"
-            (click)="logout()"
-            [routerLink]="'/homepage'">
-      <nb-icon icon="power-outline"></nb-icon>
-    </button>
+    <app-topbar fxFlex="auto"
+                fxLayoutAlign="start center"
+                fxLayoutGap="16px"
+                [nbSidebarComponent]="nbSidebarComponent"
+                (toggle)="toggle()"
+                (logout)="logout()">
+    </app-topbar>
   </nb-layout-header>
 
   <nb-sidebar #nbSidebarComponent
@@ -38,6 +20,10 @@
   </nb-sidebar>
 
   <nb-layout-column>
-    <router-outlet></router-outlet>
+    <nb-card [nbSpinner]="loaderService.isLoading$ | async"
+             nbSpinnerSize="giant"
+             nbSpinnerStatus="primary">
+      <router-outlet></router-outlet>
+    </nb-card>
   </nb-layout-column>
 </nb-layout>

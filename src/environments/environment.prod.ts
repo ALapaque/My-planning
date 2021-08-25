@@ -1,4 +1,11 @@
 export const environment = {
   apiUrl: 'http://amaury.must.be:32768',
-  production: true
+  apiUrlSuffix: '/api',
+  production: false,
 };
+
+function generateCompleteUrl(): string {
+  return environment.apiUrl + environment.apiUrlSuffix;
+}
+
+

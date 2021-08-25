@@ -1,0 +1,14 @@
+@import "../../../../../theme/theme";
+
+:host ::ng-deep {
+  nb-list {
+    nb-list-item {
+      span {
+        &.in-progress {
+          color: nb-theme(color-danger-default);
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

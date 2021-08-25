@@ -1,0 +1,7 @@
+<nb-card status="info"
+         [size]="cardSize">
+  <nb-card-header>{{ "APP.DASHBOARD.CARD." + card.type | translate }}</nb-card-header>
+  <nb-card-body>
+    <app-event-card-content [type]="card.type"></app-event-card-content>
+  </nb-card-body>
+</nb-card>

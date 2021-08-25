@@ -1,0 +1,30 @@
+@import "../../../../helper";
+@import "../../../../theme/theme";
+
+:host ::ng-deep {
+  .card {
+    padding: 12px 30px;
+    border-radius: 25px;
+    height: auto;
+    color: nb-theme(text-alternate-color);
+    @extend .full-width;
+
+    &.success {
+      background: nb-theme(color-success-default);
+    }
+    &:not(.success) {
+      background: nb-theme(color-primary-default);
+    }
+
+    .title {
+      color: inherit;
+      font-size: 1.5em;
+    }
+
+    .content {
+      font-family: "Dancing Script", cursive !important;
+      font-size: 3.5em;
+      color: inherit;
+    }
+  }
+}

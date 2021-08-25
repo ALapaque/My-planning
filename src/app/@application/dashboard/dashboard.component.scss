@@ -2,14 +2,13 @@
   display: block;
   overflow-x: hidden;
   overflow-y: auto;
-}
 
-.card-row {
-  display: flex;
-  margin: 0 -0.5rem;
-}
+  .dashboard-container {
+    height: calc(100vh - 126px);
 
-.card-col {
-  flex: 1 0 calc(50% - 1rem);
-  margin: 0 0.5rem;
+    .recap-card-container, .normal-card-container {
+      padding: 0 12px;
+    }
+
+  }
 }

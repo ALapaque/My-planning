@@ -1,82 +1,23 @@
-<div class="card-row">
-  <div class="card-col">
-    <nb-card size="tiny">
-      <nb-card-header>Tiny card</nb-card-header>
-    </nb-card>
-    <nb-card size="tiny">
-      <nb-card-header>Tiny card</nb-card-header>
-    </nb-card>
-  </div>
-  <div class="card-col">
-    <nb-card size="medium">
-      <nb-card-header>Medium card</nb-card-header>
-    </nb-card>
-  </div>
+<div class="dashboard-container"
+     *ngIf="cards$ | async as cards">
+  <ng-container *ngIf="getRecapCards(cards) as repeatCards">
+    <div class="recap-card-container"
+         gdColumns="repeat(auto-fill, minmax(550px, 1fr))"
+         gdColumns.lt-sm="1fr"
+         gdGap="12px"
+         style="margin-bottom: 12px">
+      <app-recap-card *ngFor="let card of repeatCards" [card]="card"></app-recap-card>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="getGiantCards(cards) as giantCards">
+    <div class="normal-card-container"
+         gdColumns="repeat(auto-fill, minmax(550px, 1fr))"
+         gdColumns.lt-sm="1fr"
+         gdGap="12px">
+      <app-card *ngFor="let card of giantCards" [card]="card"></app-card>
+    </div>
+  </ng-container>
 </div>
 
-<div class="card-row">
-  <div class="card-col">
-    <nb-card size="tiny">
-      <nb-card-header>Tiny card</nb-card-header>
-    </nb-card>
-    <nb-card size="small">
-      <nb-card-header>Small card</nb-card-header>
-    </nb-card>
-  </div>
-  <div class="card-col">
-    <nb-card size="large">
-      <nb-card-header>Large card</nb-card-header>
-    </nb-card>
-  </div>
-</div>
 
-<div class="card-row">
-  <div class="card-col">
-    <nb-card size="tiny">
-      <nb-card-header>Tiny card</nb-card-header>
-    </nb-card>
-    <nb-card size="medium">
-      <nb-card-header>Medium card</nb-card-header>
-    </nb-card>
-  </div>
-  <div class="card-col">
-    <nb-card size="giant">
-      <nb-card-header>Giant card</nb-card-header>
-    </nb-card>
-  </div>
-</div>
-
-<div class="card-row">
-  <div class="card-col">
-    <nb-card size="tiny">
-      <nb-card-header>Tiny card</nb-card-header>
-    </nb-card>
-    <nb-card size="tiny">
-      <nb-card-header>Tiny card</nb-card-header>
-    </nb-card>
-    <nb-card size="tiny">
-      <nb-card-header>Tiny card</nb-card-header>
-    </nb-card>
-  </div>
-  <div class="card-col">
-    <nb-card size="giant">
-      <nb-card-header>Giant card</nb-card-header>
-    </nb-card>
-  </div>
-</div>
-
-<div class="card-row">
-  <div class="card-col">
-    <nb-card size="small">
-      <nb-card-header>Small card</nb-card-header>
-    </nb-card>
-    <nb-card size="small">
-      <nb-card-header>Small card</nb-card-header>
-    </nb-card>
-  </div>
-  <div class="card-col">
-    <nb-card size="giant">
-      <nb-card-header>Giant card</nb-card-header>
-    </nb-card>
-  </div>
-</div>
