@@ -4,8 +4,9 @@ export const environment = {
   production: false,
 };
 
-function generateCompleteUrl(): string {
+export function generateCompleteUrl(): string {
   return environment.apiUrl + environment.apiUrlSuffix;
 }
+
 
 
