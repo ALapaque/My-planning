@@ -22,11 +22,11 @@ export class EventCardContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.content$ = this._cardService.getContentIncoming(this.type).pipe(
+    this.content$ = this._cardService.getNormalIncoming(this.type).pipe(
       tap(() => this.contentLoading$.next(false)),
       catchError(e => {
         this.contentLoading$.next(false);
-        return of(e);
+        return of([]);
       })
     );
   }

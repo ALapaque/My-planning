@@ -21,13 +21,13 @@ export class RecapCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.content$ = this._cardService.getContentIncoming(this.card.type).pipe(
+    this.content$ = this._cardService.getRecapIncoming(this.card.type).pipe(
       map((events: Array<Event>) => events.length)
     ).pipe(
       tap(() => this.contentLoading$.next(false)),
       catchError(e => {
         this.contentLoading$.next(false);
-        return of(e);
+        return of(null);
       })
     );
   }

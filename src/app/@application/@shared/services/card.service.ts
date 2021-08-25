@@ -31,13 +31,27 @@ export class CardService {
     );
   }
 
-  public getContentIncoming(cardType: CardType): Observable<Array<Event>> {
+  public getRecapIncoming(cardType: CardType): Observable<Array<Event>> {
+    const params: HttpParams = new HttpParams()
+      .set('userId', this._authService.user.id.toString(10))
+      .set('type', cardType)
+      .set('start', new Date().toISOString())
+      .set('end', endOfDay(new Date()).toISOString());
+
+    return this._getEventsIncoming(params);
+  }
+
+  public getNormalIncoming(cardType: CardType): Observable<Array<Event>> {
     const params: HttpParams = new HttpParams()
       .set('userId', this._authService.user.id.toString(10))
       .set('type', cardType)
       .set('start', startOfDay(new Date()).toISOString())
       .set('end', endOfDay(new Date()).toISOString());
 
+    return this._getEventsIncoming(params);
+  }
+
+  private _getEventsIncoming(params: HttpParams): Observable<Array<Event>> {
     return this._http.get<Array<Event>>(`${ this._baseUrl }/incoming`, { params }).pipe(
       map((events: Array<Event>) => events.map((event: Event) => new Event(event)))
     );
