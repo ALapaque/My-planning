@@ -1,0 +1,35 @@
+::ng-deep {
+  .e-appointment {
+    .e-appointment-details {
+      padding: 0 !important;
+      height: 100% !important;
+
+      .template-wrap {
+        border-left: solid 6px grey !important;
+        height: 100% !important;
+        white-space: normal !important;
+
+        .subject {
+          padding-left: 6px !important;
+          text-overflow: ellipsis !important;
+          white-space: nowrap !important;
+          overflow: hidden !important;
+        }
+
+        .time {
+          padding-left: 6px !important;
+        }
+
+        .footer {
+          height: 100%;
+        }
+      }
+
+      .e-indicator.e-icons {
+        background-color: white !important;
+        color: black !important;
+      }
+    }
+  }
+}
+

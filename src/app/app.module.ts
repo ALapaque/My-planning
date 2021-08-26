@@ -49,7 +49,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     }),
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
-      timeOut: 1000000,
+      timeOut: 2500,
       tapToDismiss: true,
       closeButton: true,
       autoDismiss: false,

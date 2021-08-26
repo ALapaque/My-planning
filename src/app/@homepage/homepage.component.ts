@@ -1,14 +1,15 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router }                                 from '@angular/router';
-import { Section }                                                from './@shared/models/section.model';
-import {TranslateService} from '@ngx-translate/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NbThemeService } from '@nebular/theme';
+import { Section } from './@shared/models/section.model';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-             selector: 'app-homepage',
-             templateUrl: './homepage.component.html',
-             styleUrls: [ './homepage.component.scss' ],
-           })
-export class HomepageComponent implements OnInit {
+  selector: 'app-homepage',
+  templateUrl: './homepage.component.html',
+  styleUrls: [ './homepage.component.scss' ],
+})
+export class HomepageComponent implements OnInit, AfterViewInit {
 
   public sections: Array<Section> | undefined;
   public scrollYPosition: number = 0;
@@ -20,11 +21,15 @@ export class HomepageComponent implements OnInit {
     private _router: Router,
     private _translateService: TranslateService,
   ) {
-    this._initSections()
+    this._initSections();
   }
 
   public ngOnInit(): void {
     this._router.navigate([ '' ], { fragment: 'home' });
+  }
+
+  public ngAfterViewInit(): void {
+    console.log('afterViewInit');
   }
 
   public get displayScrollToTop(): boolean {
