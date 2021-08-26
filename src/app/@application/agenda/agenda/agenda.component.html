@@ -11,9 +11,11 @@
                   [height]="'calc(((100vh - 76px) - 36px) - 4.5rem)'"
                   [selectedDate]="agendaHelperService.viewDate"
                   [showHeaderBar]="false"
+                  [firstDayOfWeek]="1"
                   [width]="'100%'"
                   (popupOpen)="$event.cancel = true"
                   (cellClick)="cellClicked($event)"
+                  (resizeStop)="eventResized($event)"
                   (eventClick)="eventClicked($event)"
                   (dragStop)="eventDropped($event)">
       <e-views>

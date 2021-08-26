@@ -3,7 +3,7 @@ import {
   CellClickEventArgs,
   DragEventArgs,
   EventClickArgs,
-  EventSettingsModel
+  EventSettingsModel, ResizeEventArgs
 } from '@syncfusion/ej2-angular-schedule';
 import { ScheduleComponent } from '@syncfusion/ej2-angular-schedule/src/schedule/schedule.component';
 import { Observable, of, Subject } from 'rxjs';
@@ -84,6 +84,11 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
 
   public eventDropped($event: DragEventArgs): void {
     console.log($event);
+    this._eventService.save(new SchedulerEvent($event.data)).subscribe();
+  }
+
+  public eventResized($event: ResizeEventArgs) {
+    this._eventService.save(new SchedulerEvent($event.data)).subscribe();
   }
 
   public getAgendaLocale() {
@@ -99,6 +104,7 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
 
     return languageUsed;
   }
+
 
   private _refreshEvents() {
     this.eventSettings = this._eventService.getEvents();

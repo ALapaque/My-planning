@@ -28,15 +28,13 @@ export class Event implements AbstractEntity<number> {
     }
   }
 
-  public transformIntoSchedulerEvent(): SchedulerEvent {
-    return new SchedulerEvent({
-      Description: this.name,
-      Subject: this.name,
-      CategoryColor: '#1aaa55',
-      Id: this.id,
-      StartTime: new Date(this.startDate),
-      EndTime: new Date(this.endDate),
-      Meta: this,
+  public static transformIntoEvent(schedulerEvent: SchedulerEvent): Event {
+    return new Event({
+      ...schedulerEvent.Meta,
+      id: schedulerEvent.Id,
+      startDate: schedulerEvent.StartTime,
+      endDate: schedulerEvent.EndTime,
+      name: schedulerEvent.Subject,
     });
   }
 }

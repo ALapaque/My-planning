@@ -29,15 +29,13 @@ export class EventService {
   public getEvents(): Observable<EventSettingsModel> {
     const parameters: { startDate: string, endDate: string } = this._generateHttpParams;
     const params: HttpParams = new HttpParams()
+      .set('userId', this._authService.user.id.toString(10))
       .set('startDate', parameters.startDate)
       .set('endDate', parameters.endDate);
 
-    return this._http.get<Page<Event>>(`${ this._baseUrl }`, { params }).pipe(
-      map((pagination: Page<Event>) => {
-        const transformedEvents: Array<SchedulerEvent> = pagination.content.map((event: Event) => {
-          const newEvent: Event = new Event(event);
-          return newEvent.transformIntoSchedulerEvent();
-        });
+    return this._http.get<Array<Event>>(`${ this._baseUrl }`, { params }).pipe(
+      map((events: Array<Event>) => {
+        const transformedEvents: Array<SchedulerEvent> = events.map((event: Event) => SchedulerEvent.transformIntoSchedulerEvent(event));
 
         return { dataSource: transformedEvents };
       }),
@@ -50,20 +48,35 @@ export class EventService {
   }
 
   public getById(id: number): Observable<SchedulerEvent> {
-    return this._http.get<Event>(`${ this._baseUrl }/${ id.toString(10) }`)
-      .pipe(
-        map((event: Event) => new Event(event).transformIntoSchedulerEvent()),
-        tap(() => this._agendaHelperService.isAgendaLoading.next(false)),
-        catchError((error) => {
-          this._agendaHelperService.isAgendaLoading.next(false);
-          throw of(error);
-        }),
-      );
+    return this._http.get<Event>(`${ this._baseUrl }/${ id.toString(10) }`).pipe(
+      map((event: Event) => SchedulerEvent.transformIntoSchedulerEvent(event)),
+      tap(() => this._agendaHelperService.isAgendaLoading.next(false)),
+      catchError((error) => {
+        this._agendaHelperService.isAgendaLoading.next(false);
+        throw of(error);
+      }),
+    );
+  }
+
+  public save(schedulerEvent: SchedulerEvent): Observable<SchedulerEvent> {
+    const event: Event = Event.transformIntoEvent(schedulerEvent);
+
+    return schedulerEvent.Id ? this.update(event) : this.create(event);
+  }
+
+  public create(event: Event): Observable<SchedulerEvent> {
+    return this._http.post<Event>(`${ this._baseUrl }`, event).pipe(
+      map((eventReceived: Event) => SchedulerEvent.transformIntoSchedulerEvent(eventReceived))
+    );
+  }
+
+  public update(event: Event): Observable<SchedulerEvent> {
+    return this._http.put<Event>(`${ this._baseUrl }/${ event.id }`, event).pipe(
+      map((eventReceived: Event) => SchedulerEvent.transformIntoSchedulerEvent(eventReceived))
+    );
   }
 
   private get _generateHttpParams(): { startDate: string, endDate: string } {
-
-
     switch (this._agendaHelperService.currentViewDisplayed) {
       case 'Day':
       case 'Agenda':
