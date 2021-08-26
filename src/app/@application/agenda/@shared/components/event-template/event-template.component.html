@@ -1,9 +1,4 @@
-<!--<div class='template-wrap' [style.background]="event.SecondaryColor">-->
-<!--  <div class="subject" [style.background]="event.PrimaryColor">{{event.Subject}}</div>-->
-<!--  <div class="time" [style.background]="event.PrimaryColor">{{event.StartTime | date: 'HH:mm'}} - {{event.EndTime | date: 'HH:mm'}}</div>-->
-<!--</div>-->
-
-<div class='template-wrap' style="border-color: {{event.SecondaryColor}} !important">
+<div class='template-wrap' style="border-color: {{event.Meta.agenda.color}} !important">
   <div class="subject" [style.background]="event.PrimaryColor">{{event.Subject}}</div>
   <div class="time" [style.background]="event.PrimaryColor">{{event.StartTime | date: 'HH:mm'}} - {{event.EndTime | date: 'HH:mm'}}</div>
   <div class="footer" [style.background]="event.PrimaryColor"></div>

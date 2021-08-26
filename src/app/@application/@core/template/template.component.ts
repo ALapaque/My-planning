@@ -10,7 +10,7 @@ import { LoaderService } from '../../@shared/services/loader.service';
   templateUrl: './template.component.html',
   styleUrls: [ './template.component.scss' ],
 })
-export class TemplateComponent implements AfterViewInit, OnDestroy {
+export class TemplateComponent implements OnInit, OnDestroy {
 
   public nbSidebarState: NbSidebarState = 'expanded';
 
@@ -24,8 +24,8 @@ export class TemplateComponent implements AfterViewInit, OnDestroy {
   ) {
   }
 
-  ngAfterViewInit() {
-    this._nbThemeService.changeTheme('cosmic');
+  ngOnInit() {
+    this._initTheme();
   }
 
   ngOnDestroy(): void {
@@ -38,5 +38,10 @@ export class TemplateComponent implements AfterViewInit, OnDestroy {
 
   public logout(): void {
     this._authService.logout();
+  }
+
+  private _initTheme() {
+    this._nbThemeService.changeTheme(sessionStorage.getItem('theme') ?? 'default');
+    sessionStorage.setItem('theme', this._nbThemeService.currentTheme);
   }
 }

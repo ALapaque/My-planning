@@ -30,6 +30,9 @@ export class TopbarComponent implements OnInit {
     return this._nbThemeService.currentTheme === 'cosmic';
   }
 
+  /**
+   * this switches the theme displayed and set the new theme into the sessionStorage
+   */
   public toggleTheme(): void {
     const currentTheme: string = this._nbThemeService.currentTheme;
 
@@ -38,5 +41,7 @@ export class TopbarComponent implements OnInit {
     } else {
       this._nbThemeService.changeTheme('cosmic');
     }
+
+    sessionStorage.setItem('theme', this._nbThemeService.currentTheme);
   }
 }

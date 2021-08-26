@@ -9,7 +9,7 @@ export class SchedulerEvent {
   public Description?: string;
   public CategoryColor?: string;
   public PrimaryColor: string = '#1aaa7f';
-  public SecondaryColor: string = '#aa811a';
+  public SecondaryColor: string = '#aa811a'; // AGENDA BORDER COLOR
   public Meta?: Event;
 
   constructor(schedulerEvent?: Partial<SchedulerEvent>) {
@@ -32,6 +32,7 @@ export class SchedulerEvent {
       Id: event.id,
       StartTime: event.startDate,
       EndTime: event.endDate,
+      SecondaryColor: event.agenda.color,
       Meta: new Event(event),
     });
   }

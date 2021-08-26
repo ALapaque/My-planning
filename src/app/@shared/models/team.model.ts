@@ -12,6 +12,10 @@ export class Team implements AbstractEntity<number> {
   constructor(team?: Partial<Team>) {
     if (team) {
       Object.assign(this, team);
+
+      if (team?.agendas?.length) this.agendas = team.agendas.map((agenda: Agenda) => new Agenda(agenda));
+      if (team?.users?.length) this.users = team.users.map((user: User) => new User(user));
+      if (team?.sharedAgendas?.length) this.sharedAgendas = team.sharedAgendas.map((sharedAgenda: Agenda) => new Agenda(sharedAgenda));
     } else {
       Object.create(this);
     }
