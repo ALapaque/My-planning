@@ -6,9 +6,8 @@ import {
   EventSettingsModel, ResizeEventArgs
 } from '@syncfusion/ej2-angular-schedule';
 import { ScheduleComponent } from '@syncfusion/ej2-angular-schedule/src/schedule/schedule.component';
-import { Observable, of, Subject } from 'rxjs';
-import { delay, takeUntil, tap } from 'rxjs/operators';
-import { scheduleData } from '../../../@shared/datasources/agenda.datasource';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil, tap } from 'rxjs/operators';
 import { AgendaHelperService } from '../@shared/services/agenda-helper.service';
 import { TranslateService } from '@ngx-translate/core';
 import { NbDialogCustomService } from '../../../@shared/services/nb-dialog-custom.service';
@@ -25,7 +24,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AgendaComponent implements AfterViewInit, OnDestroy {
   @ViewChild('ejsSchedule') public ejsSchedule: ScheduleComponent | undefined;
 
-  public eventSettings: Observable<EventSettingsModel>;
+  public events$: Observable<EventSettingsModel>;
 
   private _destroy: Subject<any> = new Subject<any>();
 
@@ -59,7 +58,7 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
     this.agendaHelperService.ejsSchedule = this.ejsSchedule;
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     this._destroy.next();
   }
 
@@ -74,11 +73,9 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
 
   public eventClicked($event: EventClickArgs): void {
     const event: SchedulerEvent = $event.event as SchedulerEvent;
-    this.agendaHelperService.isAgendaLoading.next(true);
-    this._eventService.getById(event.Id).subscribe(
-      (eventReceived: SchedulerEvent) => this.agendaHelperService.openEventDetailsDialog(eventReceived),
-      () => this._toastrService.error('Une erreur est survenue')
-    );
+    this._eventService.getById(event.Id).pipe(
+      tap((eventReceived: SchedulerEvent) => this.agendaHelperService.openEventDetailsDialog(eventReceived))
+    ).subscribe();
 
   }
 
@@ -107,7 +104,10 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
 
 
   private _refreshEvents() {
-    this.eventSettings = this._eventService.getEvents();
+    this.events$ = this._eventService.getEvents().pipe(
+      tap(console.log),
+      takeUntil(this._destroy)
+    );
   }
 
   private _initRefreshListener() {

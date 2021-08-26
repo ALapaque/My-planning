@@ -135,6 +135,20 @@
             }
           }
         }
+      },
+      "TOASTR": {
+        "ERROR": {
+          "GET_EVENTS": "Impossible de récupérer les événements",
+          "GET_EVENT": "Impossible de récupérer l'événement",
+          "SAVE": "Erreur lors de l'enregistrement",
+          "DELETE": "Erreur lors de la suppression"
+        },
+        "SUCCESS": {
+          "GET_EVENTS": "Événements récupérés",
+          "GET_EVENT": "Événement récupéré",
+          "SAVE": "Enregistrement éffectué",
+          "DELETE": "Événement supprimé"
+        }
       }
     },
     "DASHBOARD": {

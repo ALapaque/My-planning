@@ -27,7 +27,7 @@ export class SchedulerEvent {
 
   public static transformIntoSchedulerEvent(event: Event): SchedulerEvent {
     return new SchedulerEvent({
-      Description: event.name,
+      Description: null,
       Subject: event.name,
       CategoryColor: '#1aaa55',
       Id: event.id,
