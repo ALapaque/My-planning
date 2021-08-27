@@ -11,7 +11,7 @@
                   [height]="'calc(((100vh - 76px) - 36px) - 4.5rem)'"
                   [selectedDate]="agendaHelperService.viewDate"
                   [showHeaderBar]="false"
-                  [firstDayOfWeek]="1"
+                  [firstDayOfWeek]="agendaHelperService.firstDayDisplayed.value"
                   [width]="'100%'"
                   (popupOpen)="$event.cancel = true"
                   (cellClick)="cellClicked($event)"

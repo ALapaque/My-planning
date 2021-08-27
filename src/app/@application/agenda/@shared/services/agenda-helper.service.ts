@@ -1,15 +1,15 @@
-import {Injectable} from '@angular/core';
-import {View} from '@syncfusion/ej2-angular-schedule';
-import {ScheduleComponent} from '@syncfusion/ej2-angular-schedule/src/schedule/schedule.component';
-import {BehaviorSubject} from 'rxjs';
-import {TranslateService} from '@ngx-translate/core';
-import {set} from 'date-fns';
-import {NbDialogRef, NbDialogService} from '@nebular/theme';
-import {NbDialogCustomService} from '../../../../@shared/services/nb-dialog-custom.service';
-import {SchedulerEvent} from '../models/scheduler-event.model';
-import {EventFormComponent} from '../components/forms/event-form/event-form.component';
-import {EventDetailsComponent} from '../components/event-details/event-details.component';
-import {ConfirmDialogComponent} from '../../../../@shared/ui-components/confirm-dialog/confirm-dialog.component';
+import { Injectable } from '@angular/core';
+import { View } from '@syncfusion/ej2-angular-schedule';
+import { ScheduleComponent } from '@syncfusion/ej2-angular-schedule/src/schedule/schedule.component';
+import { BehaviorSubject } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
+import { set } from 'date-fns';
+import { NbDialogRef, NbDialogService } from '@nebular/theme';
+import { NbDialogCustomService } from '../../../../@shared/services/nb-dialog-custom.service';
+import { SchedulerEvent } from '../models/scheduler-event.model';
+import { EventFormComponent } from '../components/forms/event-form/event-form.component';
+import { EventDetailsComponent } from '../components/event-details/event-details.component';
+import { ConfirmDialogComponent } from '../../../../@shared/ui-components/confirm-dialog/confirm-dialog.component';
 
 export interface TimeSlot {
   name: string;
@@ -28,30 +28,30 @@ export class AgendaHelperService {
   public ejsSchedule: ScheduleComponent | undefined;
   public isAgendaLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private _viewDate: Date = new Date();
-  private _views: Array<View> = ['Day', 'Week', 'WorkWeek', 'Month', 'Year', 'Agenda'];
-  private _timelineViews: Array<View> = ['TimelineDay', 'TimelineWeek', 'TimelineWorkWeek', 'TimelineMonth', 'TimelineYear'];
+  private _views: Array<View> = [ 'Day', 'Week', 'WorkWeek', 'Month', 'Year', 'Agenda' ];
+  private _timelineViews: Array<View> = [ 'TimelineDay', 'TimelineWeek', 'TimelineWorkWeek', 'TimelineMonth', 'TimelineYear' ];
   private _timeSlotDuration: Array<TimeSlot> = [
-    {name: 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS', value: 15},
-    {name: 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS', value: 30},
-    {name: 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS', value: 60},
-    {name: 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS', value: 90},
-    {name: 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS', value: 120},
+    { name: 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS', value: 15 },
+    { name: 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS', value: 30 },
+    { name: 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS', value: 60 },
+    { name: 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS', value: 90 },
+    { name: 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS', value: 120 },
   ];
   private _weekDays: Array<WeekDay> = [
-    {name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 0},
-    {name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 1},
-    {name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 2},
-    {name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 3},
-    {name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 4},
-    {name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 5},
-    {name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 6}
+    { name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 0 },
+    { name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 1 },
+    { name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 2 },
+    { name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 3 },
+    { name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 4 },
+    { name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 5 },
+    { name: 'APP.AGENDA.FORM.SETTINGS.DAYS', value: 6 }
   ];
   private _currentViewDisplayed: View = 'Week';
   private _timeSlotDisplayed: TimeSlot;
   private _weekDaysDisplayed: Array<WeekDay>;
-  private _firstDayDisplayed: WeekDay;
-  private _startTime: Date = set(new Date(), {hours: 8, minutes: 0});
-  private _endTime: Date = set(new Date(), {hours: 17, minutes: 0});
+  private _firstDayDisplayed: WeekDay = { name: 'Lundi', value: 1 };
+  private _startTime: Date = set(new Date(), { hours: 8, minutes: 0 });
+  private _endTime: Date = set(new Date(), { hours: 17, minutes: 0 });
 
   constructor(
     private _translateService: TranslateService,
@@ -185,7 +185,7 @@ export class AgendaHelperService {
 
   openConfirmActionDialog(): NbDialogRef<ConfirmDialogComponent> {
     return this._dialogService.open(ConfirmDialogComponent,
-      {dialogClass: this._dialogCustomService.isFullscreen}
+      { dialogClass: this._dialogCustomService.isFullscreen }
     );
   }
 }
