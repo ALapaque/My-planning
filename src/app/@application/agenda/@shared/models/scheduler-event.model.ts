@@ -8,8 +8,8 @@ export class SchedulerEvent {
   public EndTime: string = addHours(new Date(), 1).toISOString();
   public Description?: string;
   public CategoryColor?: string;
-  public PrimaryColor?: string;
-  public SecondaryColor?: string;
+  public PrimaryColor: string = '#1aaa7f';
+  public SecondaryColor: string = '#aa811a'; // AGENDA BORDER COLOR
   public Meta?: Event;
 
   constructor(schedulerEvent?: Partial<SchedulerEvent>) {
@@ -17,11 +17,23 @@ export class SchedulerEvent {
       Object.assign(this, schedulerEvent);
       if (schedulerEvent.Meta) {
         this.Meta = new Event(schedulerEvent.Meta);
-        this.Meta.startDate = this.StartTime;
-        this.Meta.endDate = this.EndTime;
+        this.Meta.startDate = this.StartTime.toString();
+        this.Meta.endDate = this.EndTime.toString();
       }
     } else {
       Object.create(this);
     }
+  }
+
+  public static transformIntoSchedulerEvent(event: Event): SchedulerEvent {
+    return new SchedulerEvent({
+      Description: null,
+      Subject: event.name,
+      Id: event.id,
+      StartTime: event.startDate,
+      EndTime: event.endDate,
+      SecondaryColor: event.agenda.color,
+      Meta: new Event(event),
+    });
   }
 }

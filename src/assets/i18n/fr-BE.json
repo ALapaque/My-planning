@@ -135,16 +135,30 @@
             }
           }
         }
+      },
+      "TOASTR": {
+        "ERROR": {
+          "GET_EVENTS": "Impossible de récupérer les événements",
+          "GET_EVENT": "Impossible de récupérer l'événement",
+          "SAVE": "Erreur lors de l'enregistrement",
+          "DELETE": "Erreur lors de la suppression"
+        },
+        "SUCCESS": {
+          "GET_EVENTS": "Événements récupérés",
+          "GET_EVENT": "Événement récupéré",
+          "SAVE": "Enregistrement éffectué",
+          "DELETE": "Événement supprimé"
+        }
       }
     },
     "DASHBOARD": {
       "RECAP": {
         "MEETING": "Vos réunions à venir",
-        "APPOINTMENT": "Vos rendez-vous restant"
+        "APPOINTMENT": "Vos événements restant"
       },
       "CARD": {
         "MEETING": "Réunions",
-        "APPOINTMENT": "Rendez-vous"
+        "APPOINTMENT": "Événements"
       }
     },
     "SEARCH": {

@@ -1,0 +1,50 @@
+::ng-deep {
+  .e-appointment {
+    border-radius: 8px !important;
+
+    .e-appointment-details {
+      padding: 0 !important;
+      height: 100% !important;
+
+      .template-wrap {
+        border-left: solid 6px grey !important;
+        height: 100% !important;
+        white-space: normal !important;
+
+        .subject {
+          font-size: 14px !important;
+          padding: 6px 0 0 6px !important;
+          font-weight: 500 !important;
+          text-overflow: ellipsis !important;
+          white-space: nowrap !important;
+          overflow: hidden !important;
+        }
+
+        .time {
+          padding-left: 6px !important;
+        }
+
+        .footer {
+          height: 100%;
+        }
+      }
+
+      .e-indicator.e-icons {
+        background-color: white !important;
+        color: black !important;
+      }
+    }
+
+    &.e-all-day-appointment {
+      .e-appointment-details {
+        .template-wrap {
+          .subject {
+            padding: 0 !important;
+            padding-left: 6px !important;
+          }
+        }
+      }
+    }
+  }
+}
+

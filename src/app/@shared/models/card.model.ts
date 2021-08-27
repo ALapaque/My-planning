@@ -13,6 +13,8 @@ export class Card implements AbstractEntity<number> {
   constructor(card?: Partial<Card>) {
     if (card) {
       Object.assign(this, card);
+
+      if (card?.users?.length) this.users = card.users.map((user: User) => new User(user));
     } else {
       Object.create(this);
     }
