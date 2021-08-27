@@ -11,6 +11,9 @@ export class Role implements AbstractEntity<number> {
   constructor(role?: Partial<Role>) {
     if (role) {
       Object.assign(this, role);
+
+      if (role?.users?.length) this.users = role.users.map((user: User) => new User(user));
+      if (role?.authorities?.length) this.authorities = role.authorities.map((authority: Authority) => new Authority(authority));
     } else {
       Object.create(this);
     }

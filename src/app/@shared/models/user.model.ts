@@ -21,6 +21,8 @@ export class User implements AbstractEntity<number> {
   constructor(user?: Partial<User>) {
     if (user) {
       Object.assign(this, user);
+
+      if (user?.role) this.role = new Role(user.role);
     } else {
       Object.create(this);
     }

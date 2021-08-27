@@ -14,6 +14,8 @@ export class Schedule implements AbstractEntity<number> {
   constructor(schedule?: Partial<Schedule>) {
     if (schedule) {
       Object.assign(this, schedule);
+
+      if (schedule?.agenda) this.agenda = new Agenda(schedule.agenda);
     } else {
       Object.create(this);
     }

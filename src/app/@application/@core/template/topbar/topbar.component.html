@@ -19,6 +19,15 @@
         status="primary"
         shape="semi-round"
         size="large"
+        (click)="toggleTheme()">
+  <nb-icon [icon]="isDarkTheme ? 'sun-outline' : 'moon-outline'"></nb-icon>
+</button>
+
+<button nbButton
+        ghost
+        status="primary"
+        shape="semi-round"
+        size="large"
         (click)="logout.emit()"
         [routerLink]="'/homepage'">
   <nb-icon icon="power-outline"></nb-icon>

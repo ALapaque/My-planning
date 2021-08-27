@@ -1,0 +1,64 @@
+@import "theme";
+
+/* OVERRIDE OF ngx-toastr style */
+div.toast-container {
+  div.ngx-toastr {
+    color: nb-theme(text-basic-color);
+
+    &.toast-success {
+      background-color: nb-theme(color-success-default);
+      background-image: none;
+      color: inherit;
+
+      button {
+        color: inherit;
+
+        span {
+          color: inherit;
+        }
+      }
+    }
+
+    &.toast-warn {
+      background-color: nb-theme(color-warning-default);
+      background-image: none;
+      color: inherit;
+
+      button {
+        color: inherit;
+
+        span {
+          color: inherit;
+        }
+      }
+    }
+
+    &.toast-info {
+      background-color: nb-theme(color-info-default);
+      background-image: none;
+      color: inherit;
+
+      button {
+        color: inherit;
+
+        span {
+          color: inherit;
+        }
+      }
+    }
+
+    &.toast-error {
+      background-color: nb-theme(color-danger-default);
+      background-image: none;
+      color: inherit;
+
+      button {
+        color: inherit;
+
+        span {
+          color: inherit;
+        }
+      }
+    }
+  }
+}

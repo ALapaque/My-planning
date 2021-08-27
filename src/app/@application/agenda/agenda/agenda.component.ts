@@ -1,12 +1,13 @@
-import { AfterViewInit, Component, HostListener, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnDestroy, ViewChild } from '@angular/core';
 import {
   CellClickEventArgs,
   DragEventArgs,
   EventClickArgs,
-  EventSettingsModel
+  EventSettingsModel, ResizeEventArgs
 } from '@syncfusion/ej2-angular-schedule';
 import { ScheduleComponent } from '@syncfusion/ej2-angular-schedule/src/schedule/schedule.component';
-import { scheduleData } from '../../../@shared/datasources/agenda.datasource';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil, tap } from 'rxjs/operators';
 import { AgendaHelperService } from '../@shared/services/agenda-helper.service';
 import { TranslateService } from '@ngx-translate/core';
 import { NbDialogCustomService } from '../../../@shared/services/nb-dialog-custom.service';
@@ -20,10 +21,12 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './agenda.component.html',
   styleUrls: [ './agenda.component.scss' ],
 })
-export class AgendaComponent implements AfterViewInit {
+export class AgendaComponent implements AfterViewInit, OnDestroy {
   @ViewChild('ejsSchedule') public ejsSchedule: ScheduleComponent | undefined;
 
-  public eventSettings: EventSettingsModel = { dataSource: scheduleData };
+  public events$: Observable<EventSettingsModel>;
+
+  private _destroy: Subject<any> = new Subject<any>();
 
   constructor(
     public agendaHelperService: AgendaHelperService,
@@ -34,6 +37,10 @@ export class AgendaComponent implements AfterViewInit {
     private _toastrService: ToastrService,
   ) {
     this.onResize({ target: { innerWidth: window.innerWidth } });
+
+    this.agendaHelperService.isAgendaLoading.next(true);
+    this._refreshEvents();
+    this._initRefreshListener();
   }
 
   @HostListener('window:resize', [ '$event' ])
@@ -51,6 +58,10 @@ export class AgendaComponent implements AfterViewInit {
     this.agendaHelperService.ejsSchedule = this.ejsSchedule;
   }
 
+  public ngOnDestroy(): void {
+    this._destroy.next();
+  }
+
   public cellClicked($event: CellClickEventArgs): void {
     if ($event.isAllDay) return;
     console.log($event);
@@ -62,16 +73,19 @@ export class AgendaComponent implements AfterViewInit {
 
   public eventClicked($event: EventClickArgs): void {
     const event: SchedulerEvent = $event.event as SchedulerEvent;
-    this.agendaHelperService.isAgendaLoading.next(true);
-    this._eventService.getById(event.Id).subscribe(
-      (eventReceived: SchedulerEvent) => this.agendaHelperService.openEventDetailsDialog(eventReceived),
-      () => this._toastrService.error('Une erreur est survenue')
-    );
+    this._eventService.getById(event.Id).pipe(
+      tap((eventReceived: SchedulerEvent) => this.agendaHelperService.openEventDetailsDialog(eventReceived))
+    ).subscribe();
 
   }
 
   public eventDropped($event: DragEventArgs): void {
     console.log($event);
+    this._eventService.save(new SchedulerEvent($event.data)).subscribe();
+  }
+
+  public eventResized($event: ResizeEventArgs) {
+    this._eventService.save(new SchedulerEvent($event.data)).subscribe();
   }
 
   public getAgendaLocale() {
@@ -86,5 +100,19 @@ export class AgendaComponent implements AfterViewInit {
     }
 
     return languageUsed;
+  }
+
+
+  private _refreshEvents() {
+    this.events$ = this._eventService.getEvents().pipe(
+      tap(console.log),
+      takeUntil(this._destroy)
+    );
+  }
+
+  private _initRefreshListener() {
+    this.agendaHelperService.refreshAgenda$.pipe(
+      takeUntil(this._destroy)
+    ).subscribe((refresh: true) => this._refreshEvents());
   }
 }

@@ -9,6 +9,8 @@ export class Authority implements AbstractEntity<number> {
   constructor(authority?: Partial<Authority>) {
     if (authority) {
       Object.assign(this, authority);
+
+      if (authority?.roles?.length) this.roles = authority.roles.map((role: Role) => new Role(role));
     } else {
       Object.create(this);
     }

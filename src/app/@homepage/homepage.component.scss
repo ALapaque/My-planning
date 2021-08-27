@@ -69,6 +69,7 @@
 
               a:hover:not(.active) {
                 color: #ffffff;
+
                 &:after {
                   background: #ffffff;
                 }
@@ -95,7 +96,7 @@
     }
 
     nb-layout-footer {
-
+      background: #ffffff !important;
     }
   }
 }

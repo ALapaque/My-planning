@@ -5,7 +5,7 @@ import {
   OnInit,
   Output
 } from '@angular/core';
-import { NbSidebarComponent} from '@nebular/theme';
+import { NbSidebarComponent, NbThemeService } from '@nebular/theme';
 
 @Component({
   selector: 'app-topbar',
@@ -18,10 +18,30 @@ export class TopbarComponent implements OnInit {
   @Output() toggle: EventEmitter<any> = new EventEmitter<any>();
   @Output() logout: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() {
+  constructor(
+    private _nbThemeService: NbThemeService
+  ) {
   }
 
   ngOnInit(): void {
   }
 
+  get isDarkTheme(): boolean {
+    return this._nbThemeService.currentTheme === 'cosmic';
+  }
+
+  /**
+   * this switches the theme displayed and set the new theme into the sessionStorage
+   */
+  public toggleTheme(): void {
+    const currentTheme: string = this._nbThemeService.currentTheme;
+
+    if (currentTheme === 'cosmic') {
+      this._nbThemeService.changeTheme('default');
+    } else {
+      this._nbThemeService.changeTheme('cosmic');
+    }
+
+    sessionStorage.setItem('theme', this._nbThemeService.currentTheme);
+  }
 }

@@ -7,13 +7,15 @@
                   [locale]='getAgendaLocale()'
                   [views]="agendaHelperService.views"
                   [currentView]="agendaHelperService.currentViewDisplayed"
-                  [eventSettings]="eventSettings"
+                  [eventSettings]="events$ | async"
                   [height]="'calc(((100vh - 76px) - 36px) - 4.5rem)'"
                   [selectedDate]="agendaHelperService.viewDate"
                   [showHeaderBar]="false"
+                  [firstDayOfWeek]="agendaHelperService.firstDayDisplayed.value"
                   [width]="'100%'"
                   (popupOpen)="$event.cancel = true"
                   (cellClick)="cellClicked($event)"
+                  (resizeStop)="eventResized($event)"
                   (eventClick)="eventClicked($event)"
                   (dragStop)="eventDropped($event)">
       <e-views>
@@ -33,7 +35,7 @@
 
 <ng-template #customEventTemplate
              let-data="data">
-  <app-event-template [event]="data"></app-event-template>
+  <app-event-template fxFlex="auto" [event]="data"></app-event-template>
 </ng-template>
 
 
