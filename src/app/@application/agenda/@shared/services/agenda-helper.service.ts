@@ -10,6 +10,7 @@ import { SchedulerEvent } from '../models/scheduler-event.model';
 import { EventFormComponent } from '../components/forms/event-form/event-form.component';
 import { EventDetailsComponent } from '../components/event-details/event-details.component';
 import { ConfirmDialogComponent } from '../../../../@shared/ui-components/confirm-dialog/confirm-dialog.component';
+import {DateFnsWorkDay} from '../../../@shared/services/event.service';
 
 export interface TimeSlot {
   name: string;
@@ -18,7 +19,7 @@ export interface TimeSlot {
 
 export interface WeekDay {
   name: string;
-  value: number;
+  value: DateFnsWorkDay;
 }
 
 @Injectable()
@@ -49,7 +50,7 @@ export class AgendaHelperService {
   private _currentViewDisplayed: View = 'Week';
   private _timeSlotDisplayed: TimeSlot;
   private _weekDaysDisplayed: Array<WeekDay>;
-  private _firstDayDisplayed: WeekDay = { name: 'Lundi', value: 1 };
+  private _firstDayDisplayed: WeekDay;
   private _startTime: Date = set(new Date(), { hours: 8, minutes: 0 });
   private _endTime: Date = set(new Date(), { hours: 17, minutes: 0 });
 
@@ -60,7 +61,7 @@ export class AgendaHelperService {
   ) {
     this._timeSlotDisplayed = this._timeSlotDuration[2];
     this._weekDaysDisplayed = this._weekDays;
-    this._firstDayDisplayed = this._weekDays[0];
+    this._firstDayDisplayed = this._weekDays[1];
   }
 
 
