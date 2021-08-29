@@ -27,4 +27,8 @@ export class User implements AbstractEntity<number> {
       Object.create(this);
     }
   }
+
+  public displayFormattedName(): string {
+    return this.firstName + ' ' + this.lastName;
+  }
 }

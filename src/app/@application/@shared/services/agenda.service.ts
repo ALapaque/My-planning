@@ -17,8 +17,14 @@ export class AgendaService {
   ) {
   }
 
-  getUsersAgendas(): Observable<Array<Agenda>> {
+  getUserAgendas(): Observable<Array<Agenda>> {
     return this._http.get<Array<Agenda>>(`${this._baseUrl}/user/${this._authService.user.id.toString(10)}`).pipe(
+      map((agendas: Array<Agenda>) => agendas.map((agenda: Agenda) => new Agenda(agenda))),
+    );
+  }
+
+  getUserSharedAgendas(): Observable<Array<Agenda>> {
+    return this._http.get<Array<Agenda>>(`${this._baseUrl}/shared/user/${this._authService.user.id.toString(10)}`).pipe(
       map((agendas: Array<Agenda>) => agendas.map((agenda: Agenda) => new Agenda(agenda))),
     );
   }

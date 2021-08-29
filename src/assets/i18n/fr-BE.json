@@ -87,6 +87,8 @@
             "BUSY": "Occupé",
             "FREE": "Libre"
           },
+          "MY_CALENDARS": "Mes agendas",
+          "SHARED_CALENDARS": "Mes agendas partagés",
           "STEPS": {
             "STEP-1": {
               "LABEL": "Calendrier",

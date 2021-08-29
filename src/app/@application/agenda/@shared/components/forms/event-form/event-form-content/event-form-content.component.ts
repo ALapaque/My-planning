@@ -22,6 +22,7 @@ export class EventFormContentComponent implements OnInit {
   compareFn = (o1: any, o2: any) => CompareStateMatcher.compareWith(o1, o2);
 
   agendas$: Observable<Array<Agenda>>;
+  sharedAgendas$: Observable<Array<Agenda>>;
 
   constructor(
     public breakpointObserver: BreakpointObserver,
@@ -30,7 +31,8 @@ export class EventFormContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.agendas$ = this._agendaService.getUsersAgendas();
+    this.agendas$ = this._agendaService.getUserAgendas();
+    this.sharedAgendas$ = this._agendaService.getUserSharedAgendas();
   }
 
   checkFieldForError(fieldName: string) {

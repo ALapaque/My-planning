@@ -5,5 +5,7 @@
           class="agenda-color"
           [style.backgroundColor]="agenda.color">
     </span>
-  <span>{{ agenda.name }}</span>
+  <span>
+    <ng-content></ng-content>
+  </span>
 </div>

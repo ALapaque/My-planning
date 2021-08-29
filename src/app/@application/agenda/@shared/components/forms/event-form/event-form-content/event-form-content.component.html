@@ -19,10 +19,24 @@
                    [status]="(checkFieldForError('agenda')) ? 'danger' : 'primary'"
                    [formControlName]="'agenda'"
                    [compareWith]="compareFn">
-          <nb-option *ngFor="let agenda of agendas$ | async"
-                     [value]="agenda">
-            <app-agenda-label [agenda]="agenda"></app-agenda-label>
-          </nb-option>
+          <nb-option-group [title]="'APP.AGENDA.FORM.EVENT.MY_CALENDARS'  | translate"
+                           *ngIf="(agendas$ | async) as myAgendas">
+            <nb-option *ngFor="let agenda of myAgendas"
+                       [value]="agenda">
+              <app-agenda-label [agenda]="agenda">
+                {{ agenda.name }}
+              </app-agenda-label>
+            </nb-option>
+          </nb-option-group>
+          <nb-option-group [title]="'APP.AGENDA.FORM.EVENT.SHARED_CALENDARS'  | translate"
+                           *ngIf="sharedAgendas$ | async as mySharedAgendas">
+            <nb-option *ngFor="let agenda of mySharedAgendas"
+                       [value]="agenda">
+              <app-agenda-label [agenda]="agenda">
+                {{ agenda.user.displayFormattedName() }}
+              </app-agenda-label>
+            </nb-option>
+          </nb-option-group>
         </nb-select>
         <nb-error *ngIf="checkFieldForError('agenda')">
           <ng-container *ngIf="form.get('agenda').errors.required">

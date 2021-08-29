@@ -7,7 +7,6 @@ export abstract class DateValidators {
       const startDate: Date = new Date(form.get('startDate').value);
       const endDate: Date = new Date(form.get('endDate').value);
 
-      console.log(isBefore(startDate, endDate));
       if (isBefore(startDate, endDate)) {
         form.get('startDate').setErrors(null);
         form.get('endDate').setErrors(null);
