@@ -81,7 +81,7 @@ export class EventService {
     const action: Observable<SchedulerEvent> = schedulerEvent.Id ? this.update(event) : this.create(event);
 
     return action.pipe(
-      tap(() => {
+      tap((event: SchedulerEvent) => {
         this._agendaHelperService.isAgendaLoading.next(false);
         this._taostrService.success(this._translateService.instant('APP.AGENDA.TOASTR.SUCCESS.SAVE'));
       }),
@@ -95,7 +95,8 @@ export class EventService {
 
   public create(event: Event): Observable<SchedulerEvent> {
     return this._http.post<Event>(`${this._baseUrl}`, event).pipe(
-      map((eventReceived: Event) => SchedulerEvent.transformIntoSchedulerEvent(eventReceived))
+      map((eventReceived: Event) => SchedulerEvent.transformIntoSchedulerEvent(eventReceived)),
+      tap((eventReceived: SchedulerEvent) => this._agendaHelperService.ejsSchedule.addEvent(eventReceived))
     );
   }
 

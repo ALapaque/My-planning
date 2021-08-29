@@ -7,7 +7,7 @@ import {EventStatus} from './types/event-status.type';
 import {EventType} from './types/event-type.type';
 
 export class Event implements AbstractEntity<number> {
-  public id: number;
+  public id: number = 0;
   public name: string = null;
   public adayOff: boolean = false;
   public private: boolean = false;

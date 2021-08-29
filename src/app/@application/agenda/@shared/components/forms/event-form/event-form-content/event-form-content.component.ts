@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {SchedulerEvent} from '../../../../models/scheduler-event.model';
-import {FormGroup} from '@angular/forms';
+import {FormGroup, Validators} from '@angular/forms';
 import {BreakpointObserver} from '@angular/cdk/layout';
 import {NbStepperComponent} from '@nebular/theme';
 import {Agenda} from '../../../../../../../@shared/models/agenda.model';
@@ -35,7 +35,34 @@ export class EventFormContentComponent implements OnInit {
     this.sharedAgendas$ = this._agendaService.getUserSharedAgendas();
   }
 
+  get hasMeeting(): boolean {
+    console.log(this.form.value.eventType === 'MEETING');
+    if (this.form.value.eventType === 'MEETING') {
+      this.hasMeetingChanged(true);
+      return true;
+    } else {
+      this.hasMeetingChanged(false);
+      return false;
+    }
+  }
+
   checkFieldForError(fieldName: string) {
     return ErrorStateMatcher.checkField(fieldName, this.form);
+  }
+
+  hasMeetingChanged(checked: boolean) {
+    if (checked) {
+      this.form.get('eventType').setValue('MEETING');
+      this.form.get('meetingUrl').setValidators(
+        [
+          Validators.required,
+          Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')
+        ]
+      );
+    } else {
+      this.form.get('eventType').setValue('APPOINTMENT');
+      this.form.get('meetingUrl').clearValidators();
+      this.form.get('meetingUrl').updateValueAndValidity({emitEvent: true, onlySelf: false});
+    }
   }
 }

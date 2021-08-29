@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {
-  NbActionsModule,
+  NbActionsModule, NbButtonGroupModule,
   NbButtonModule,
   NbCardModule,
   NbCheckboxModule,
@@ -55,6 +55,7 @@ const nebularModule: Array<any> = [
   NbTimepickerModule,
   NbDatepickerModule,
   NbRadioModule,
+  NbButtonGroupModule,
 ];
 
 @NgModule({

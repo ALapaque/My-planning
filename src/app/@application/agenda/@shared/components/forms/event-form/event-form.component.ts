@@ -4,6 +4,9 @@ import {SchedulerEvent} from '../../../models/scheduler-event.model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {addHours} from 'date-fns';
 import {DateValidators} from '../../../../../../@shared/helpers/validators/date-validators';
+import {Event} from '../../../../../../@shared/models/event.model';
+import {EventService} from '../../../../../@shared/services/event.service';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-event-form',
@@ -14,17 +17,21 @@ export class EventFormComponent implements AfterViewInit {
 
   @Input() public event!: SchedulerEvent | undefined;
   public form: FormGroup = new FormGroup({
+    eventType: new FormControl('APPOINTMENT', [Validators.required]),
+    name: new FormControl(null, [Validators.required]),
     agenda: new FormControl(null, [Validators.required]),
-    title: new FormControl('', [Validators.required]),
     startDate: new FormControl(new Date(), [Validators.required]),
     endDate: new FormControl(addHours(new Date(), 1), [Validators.required]),
     description: new FormControl(''),
     private: new FormControl(false),
+    adayOff: new FormControl(false),
+    meetingUrl: new FormControl(null),
     statusDisplayed: new FormControl('BUSY'),
   }, [DateValidators.validateDate()]);
 
   constructor(
-    public dialogRef: NbDialogRef<EventFormComponent>
+    public dialogRef: NbDialogRef<EventFormComponent>,
+    private _eventService: EventService,
   ) {
   }
 
@@ -33,18 +40,25 @@ export class EventFormComponent implements AfterViewInit {
   }
 
   submit(): void {
-
+    this._eventService.save(
+      new SchedulerEvent(SchedulerEvent.transformIntoSchedulerEvent(this.form.value))
+    ).subscribe(
+      (event: SchedulerEvent) => this.dialogRef.close(event)
+    );
   }
 
   private _initForm(): void {
     this.form.patchValue({
+      name: this.event.Subject ?? '',
       agenda: this.event.Meta.agenda ?? null,
-      title: this.event.Subject ?? '',
       startDate: this.event.StartTime ? new Date(this.event.StartTime) : new Date(),
       endDate: this.event.EndTime ? new Date(this.event.EndTime) : new Date(),
       description: this.event.Description ?? '',
       private: this.event?.Meta?.private ?? false,
-      statusDisplayed: this.event?.Meta?.statusDisplayed ?? 'BUSY'
+      statusDisplayed: this.event?.Meta?.statusDisplayed ?? 'BUSY',
+      adayOff: this.event?.Meta?.adayOff ?? false,
+      meetingUrl: this.event?.Meta?.meetingUrl ?? null,
+      eventType: this.event?.Meta?.eventType ?? 'APPOINTMENT'
     });
   }
 }

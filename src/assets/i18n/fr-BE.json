@@ -93,8 +93,8 @@
           "NO_SHARED_CALENDARS": "Aucun agendas partagés",
           "STEPS": {
             "STEP-1": {
-              "LABEL": "Calendrier",
-              "TITLE": "Sélectionner les calendriers à afficher"
+              "LABEL": "Info. nécéssaires",
+              "TITLE": "Renseigner les informations nécéssaires"
             },
             "STEP-2": {
               "LABEL": "Plage horaire",
@@ -186,7 +186,10 @@
         "REQUIRED": "Ce champ est requis !",
         "PASSWORD_NO_MATCH": "Les mots de passe ne correspondent pas !",
         "FORMAT": "Format incorrect",
-        "INCORRECT_DATE": "Date incorrect"
+        "INCORRECT_DATE": "Date incorrect",
+        "PATTERN": {
+          "URL": "Ce n'est pas une url !"
+        }
       }
     },
     "BTN": {
