@@ -1,5 +1,5 @@
-import { addHours } from 'date-fns';
-import { Event } from '../../../../@shared/models/event.model';
+import {addHours} from 'date-fns';
+import {Event} from '../../../../@shared/models/event.model';
 
 export class SchedulerEvent {
   public Id: number = 0;
@@ -19,6 +19,8 @@ export class SchedulerEvent {
         this.Meta = new Event(schedulerEvent.Meta);
         this.Meta.startDate = this.StartTime.toString();
         this.Meta.endDate = this.EndTime.toString();
+      } else {
+        this.Meta = new Event();
       }
     } else {
       Object.create(this);

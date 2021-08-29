@@ -13,11 +13,12 @@ export class EventFormComponent implements AfterViewInit {
 
   @Input() public event!: SchedulerEvent | undefined;
   public form: FormGroup = new FormGroup({
+    agenda: new FormControl(null, [Validators.required]),
     title: new FormControl('', [Validators.required]),
     startTime: new FormControl(new Date(), [Validators.required]),
     endTime: new FormControl(addHours(new Date(), 1), [Validators.required]),
     description: new FormControl(''),
-    isPrivate: new FormControl(false),
+    private: new FormControl(false),
     statusDisplayed: new FormControl('BUSY'),
   });
 
@@ -36,12 +37,13 @@ export class EventFormComponent implements AfterViewInit {
 
   private _initForm(): void {
     this.form.patchValue({
+      agenda: this.event.Meta.agenda ?? null,
       title: this.event.Subject ?? '',
       startTime: this.event.StartTime ?? new Date(),
       endTime: this.event.EndTime ?? new Date(),
       description: this.event.Description ?? '',
-      isPrivate: this.event.Meta.isPrivate ?? false,
-      statusDisplayed: this.event.Meta.statusDisplayed ?? 'BUSY'
+      private: this.event?.Meta?.private ?? false,
+      statusDisplayed: this.event?.Meta?.statusDisplayed ?? 'BUSY'
     });
   }
 }

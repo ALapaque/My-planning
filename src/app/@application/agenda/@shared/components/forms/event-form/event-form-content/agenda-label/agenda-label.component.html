@@ -1,0 +1,9 @@
+<div fxLayout="row"
+     fxLayoutAlign="start center"
+     fxLayoutGap="8px">
+    <span *ngIf="displayColor"
+          class="agenda-color"
+          [style.backgroundColor]="agenda.color">
+    </span>
+  <span>{{ agenda.name }}</span>
+</div>

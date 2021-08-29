@@ -1,16 +1,16 @@
-import { addHours, setDate } from 'date-fns';
-import { SchedulerEvent } from '../../@application/agenda/@shared/models/scheduler-event.model';
-import { AbstractEntity } from './abstract-entity.model';
-import { Agenda } from './agenda.model';
-import { Comment } from './comment.model';
-import { EventStatus } from './types/event-status.type';
-import { EventType } from './types/event-type.type';
+import {addHours, setDate} from 'date-fns';
+import {SchedulerEvent} from '../../@application/agenda/@shared/models/scheduler-event.model';
+import {AbstractEntity} from './abstract-entity.model';
+import {Agenda} from './agenda.model';
+import {Comment} from './comment.model';
+import {EventStatus} from './types/event-status.type';
+import {EventType} from './types/event-type.type';
 
 export class Event implements AbstractEntity<number> {
   public id: number;
   public name: string = null;
   public adayOff: boolean = false;
-  public isPrivate: boolean = false;
+  public private: boolean = false;
   public statusDisplayed: EventStatus = 'FREE';
   public eventType: EventType = 'APPOINTMENT';
   public startDate: string = new Date().toISOString();
@@ -25,8 +25,8 @@ export class Event implements AbstractEntity<number> {
     if (event) {
       Object.assign(this, event);
       this.agenda = new Agenda(event.agenda);
-      this.comments = event.comments.map((comment: Comment) => new Comment(comment));
-      this.sharedAgendas = event.sharedAgendas.map((agenda: Agenda) => new Agenda(agenda));
+      if (event?.comments?.length) this.comments = event.comments.map((comment: Comment) => new Comment(comment));
+      if (event?.sharedAgendas?.length) this.sharedAgendas = event.sharedAgendas.map((agenda: Agenda) => new Agenda(agenda));
     } else {
       Object.create(this);
     }

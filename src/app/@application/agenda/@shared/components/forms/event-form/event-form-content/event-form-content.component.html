@@ -16,15 +16,14 @@
            fxLayoutGap="8px">
         <span>{{ 'APP.AGENDA.FORM.EVENT.CALENDARS' | translate }}:</span>
 
-        <nb-select placeholder="Select Showcase"
+        <nb-select placeholder="Agenda"
                    [status]="'primary'"
-                   multiple>
-          <nb-option value="">Option empty</nb-option>
-          <nb-option value="0">Option 0</nb-option>
-          <nb-option value="1">Option 1</nb-option>
-          <nb-option value="2">Option 2</nb-option>
-          <nb-option value="3">Option 3</nb-option>
-          <nb-option value="4">Option 4</nb-option>
+                   [formControlName]="'agenda'"
+                   [compareWith]="compareFn">
+          <nb-option *ngFor="let agenda of agendas$ | async"
+                     [value]="agenda">
+            <app-agenda-label [agenda]="agenda"></app-agenda-label>
+          </nb-option>
         </nb-select>
       </div>
     </nb-step>
@@ -93,7 +92,7 @@
            fxLayoutAlign.lt-sm="center start"
            fxLayoutGap="8px">
         <nb-checkbox [status]="'primary'"
-                     [formControlName]="'isPrivate'">
+                     [formControlName]="'private'">
           {{ 'APP.AGENDA.FORM.EVENT.IS_PRIVATE' | translate }}
         </nb-checkbox>
       </div>

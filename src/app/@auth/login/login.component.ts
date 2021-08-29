@@ -6,7 +6,7 @@ import {ToastrService} from 'ngx-toastr';
 import {AuthService} from '../../@shared/services/auth.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {HttpErrorResponse} from '@angular/common/http';
-import {ErrorStateMatcher} from '../../@shared/helpers/error-state-matcher/error-state-matcher';
+import {ErrorStateMatcher} from '../../@shared/helpers/matchers/error-state-matcher';
 
 @Component({
   selector: 'app-login',
