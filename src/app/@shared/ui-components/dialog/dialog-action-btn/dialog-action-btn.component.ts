@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NbStepperComponent} from '@nebular/theme';
+import {FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-dialog-action-btn',
@@ -9,6 +10,7 @@ import {NbStepperComponent} from '@nebular/theme';
 export class DialogActionBtnComponent implements OnInit {
 
   @Input() public stepper: NbStepperComponent | undefined;
+  @Input() public form!: FormGroup;
   @Output() public close: EventEmitter<any> = new EventEmitter<any>();
   @Output() public submit: EventEmitter<any> = new EventEmitter<any>();
 

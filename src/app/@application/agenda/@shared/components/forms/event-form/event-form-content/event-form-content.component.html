@@ -1,6 +1,7 @@
 <form [formGroup]="form">
 
   <nb-stepper #stepper
+              [linear]="true"
               [orientation]="breakpointObserver.isMatched('(max-width: 960px)') ? 'horizontal' : 'vertical'">
 
     <!-- CALENDARS -->
@@ -10,14 +11,12 @@
         {{ 'APP.AGENDA.FORM.EVENT.STEPS.STEP-1.TITLE' | translate }}
       </h6>
 
-      <div fxLayout.lt-sm="column"
-           fxLayoutAlign="start center"
-           fxLayoutAlign.lt-sm="center start"
-           fxLayoutGap="8px">
-        <span>{{ 'APP.AGENDA.FORM.EVENT.CALENDARS' | translate }}:</span>
+      <nb-form-field>
+        <label for="agenda-select">{{ 'APP.AGENDA.FORM.EVENT.CALENDARS' | translate }}:</label>
 
         <nb-select placeholder="Agenda"
-                   [status]="'primary'"
+                   id="agenda-select"
+                   [status]="(checkFieldForError('agenda')) ? 'danger' : 'primary'"
                    [formControlName]="'agenda'"
                    [compareWith]="compareFn">
           <nb-option *ngFor="let agenda of agendas$ | async"
@@ -25,7 +24,12 @@
             <app-agenda-label [agenda]="agenda"></app-agenda-label>
           </nb-option>
         </nb-select>
-      </div>
+        <nb-error *ngIf="checkFieldForError('agenda')">
+          <ng-container *ngIf="form.get('agenda').errors.required">
+            {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+          </ng-container>
+        </nb-error>
+      </nb-form-field>
     </nb-step>
 
     <!-- PLAGE HORAIRE -->
@@ -34,53 +38,68 @@
         <nb-icon [icon]="'clock-outline'"></nb-icon>
         {{ 'APP.AGENDA.FORM.EVENT.STEPS.STEP-2.TITLE' | translate }}
       </h6>
-      <div fxLayout.lt-sm="column"
-           fxLayoutAlign="start center"
-           fxLayoutAlign.lt-sm="center start"
-           fxLayoutGap="8px">
-        <span>{{ 'APP.AGENDA.FORM.EVENT.STARTTIME' | translate }}:</span>
+      <div fxLayout="column"
+           fxLayoutAlign="center start">
+        <label for="startDate-select">{{ 'APP.AGENDA.FORM.EVENT.STARTTIME' | translate }}:</label>
+        <nb-form-field [style.marginBottom]="(checkFieldForError('startDate')) ? '32px' : '16px'">
 
-        <input [style.width]="'155px'"
-               nbInput
-               fullWidth
-               [status]="'primary'"
-               [nbDatepicker]="startTimePicker"
-               [formControlName]="'startTime'"/>
-        <nb-date-timepicker
-          #startTimePicker
-          style="display: none"
-          [singleColumn]="true"
-          [applyButtonText]="'GLOBAL.OK' | translate"
-          [currentTimeButtonText]="'GLOBAL.NOW' | translate"
-          [step]="10">
-        </nb-date-timepicker>
-        <nb-timepicker>
-        </nb-timepicker>
-      </div>
+          <input [style.width]="'155px'"
+                 id="startDate-select"
+                 nbInput
+                 fullWidth
+                 [status]="(checkFieldForError('startDate')) ? 'danger' : 'primary'"
+                 [nbDatepicker]="startDatePicker"
+                 [formControlName]="'startDate'"/>
+          <nb-date-timepicker
+            #startDatePicker
+            style="display: none"
+            [singleColumn]="true"
+            [applyButtonText]="'GLOBAL.OK' | translate"
+            [currentTimeButtonText]="'GLOBAL.NOW' | translate"
+            [step]="10">
+          </nb-date-timepicker>
+          <nb-error *ngIf="checkFieldForError('startDate')">
+            <ng-container *ngIf="form.get('startDate').errors.required">
+              {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+            </ng-container>
+            <ng-container *ngIf="form.get('startDate').hasError('incorrectDate')">
+              {{ 'FORM.INPUT.ERRORS.INCORRECT_DATE' | translate }}
+            </ng-container>
+          </nb-error>
 
-      <div fxLayout.lt-sm="column"
-           fxLayoutAlign="start center"
-           fxLayoutAlign.lt-sm="center start"
-           fxLayoutGap="8px">
-        <span>{{ 'APP.AGENDA.FORM.EVENT.ENDTIME' | translate }}:</span>
+        </nb-form-field>
 
-        <input [style.width]="'155px'"
-               nbInput
-               fullWidth
-               [status]="'primary'"
-               [nbDatepicker]="endTimePicker"
-               [formControlName]="'endTime'"/>
-        <nb-date-timepicker
-          #endTimePicker
-          style="display: none"
-          [applyButtonText]="'GLOBAL.OK' | translate"
-          [currentTimeButtonText]="'GLOBAL.NOW' | translate"
-          [singleColumn]="true"
-          [step]="10">
-        </nb-date-timepicker>
+        <label for="endDate-select">{{ 'APP.AGENDA.FORM.EVENT.ENDTIME' | translate }}:</label>
+        <nb-form-field [style.marginBottom]="(checkFieldForError('endDate')) ? '32px' : '16px'">
+
+          <input [style.width]="'155px'"
+                 id="endDate-select"
+                 nbInput
+                 fullWidth
+                 [status]="(checkFieldForError('endDate')) ? 'danger' : 'primary'"
+                 [nbDatepicker]="endDatePicker"
+                 [formControlName]="'endDate'"/>
+          <nb-date-timepicker
+            #endDatePicker
+            style="display: none"
+            [applyButtonText]="'GLOBAL.OK' | translate"
+            [currentTimeButtonText]="'GLOBAL.NOW' | translate"
+            [singleColumn]="true"
+            [step]="10">
+          </nb-date-timepicker>
+          <nb-error *ngIf="checkFieldForError('endDate')">
+            <ng-container *ngIf="form.get('endDate').errors.required">
+              {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+            </ng-container>
+            <ng-container *ngIf="form.get('endDate').hasError('incorrectDate')">
+              {{ 'FORM.INPUT.ERRORS.INCORRECT_DATE' | translate }}
+            </ng-container>
+          </nb-error>
+        </nb-form-field>
       </div>
     </nb-step>
 
+    <!-- VISIBILITY -->
     <nb-step [label]="'APP.AGENDA.FORM.EVENT.STEPS.STEP-3.LABEL' | translate">
       <h6>
         <nb-icon [icon]="'briefcase-outline'"></nb-icon>

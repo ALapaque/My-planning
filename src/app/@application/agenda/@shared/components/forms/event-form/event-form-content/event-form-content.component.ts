@@ -7,6 +7,7 @@ import {Agenda} from '../../../../../../../@shared/models/agenda.model';
 import {Observable} from 'rxjs';
 import {AgendaService} from '../../../../../../@shared/services/agenda.service';
 import {CompareStateMatcher} from '../../../../../../../@shared/helpers/matchers/compare-state-matcher';
+import {ErrorStateMatcher} from '../../../../../../../@shared/helpers/matchers/error-state-matcher';
 
 @Component({
   selector: 'app-event-form-content',
@@ -20,7 +21,7 @@ export class EventFormContentComponent implements OnInit {
 
   compareFn = (o1: any, o2: any) => CompareStateMatcher.compareWith(o1, o2);
 
-  public agendas$: Observable<Array<Agenda>>;
+  agendas$: Observable<Array<Agenda>>;
 
   constructor(
     public breakpointObserver: BreakpointObserver,
@@ -30,5 +31,9 @@ export class EventFormContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.agendas$ = this._agendaService.getUsersAgendas();
+  }
+
+  checkFieldForError(fieldName: string) {
+    return ErrorStateMatcher.checkField(fieldName, this.form);
   }
 }

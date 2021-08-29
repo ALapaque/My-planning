@@ -181,7 +181,8 @@
       "ERRORS": {
         "REQUIRED": "Ce champ est requis !",
         "PASSWORD_NO_MATCH": "Les mots de passe ne correspondent pas !",
-        "FORMAT": "Format incorrect"
+        "FORMAT": "Format incorrect",
+        "INCORRECT_DATE": "Date incorrect"
       }
     },
     "BTN": {
