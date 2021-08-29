@@ -21,6 +21,12 @@
                    [compareWith]="compareFn">
           <nb-option-group [title]="'APP.AGENDA.FORM.EVENT.MY_CALENDARS'  | translate"
                            *ngIf="(agendas$ | async) as myAgendas">
+            <nb-option *ngIf="!myAgendas.length"
+                       [disabled]="true">
+              <small>
+                <i>{{ 'APP.AGENDA.FORM.EVENT.NO_CALENDARS' | translate}}</i>
+              </small>
+            </nb-option>
             <nb-option *ngFor="let agenda of myAgendas"
                        [value]="agenda">
               <app-agenda-label [agenda]="agenda">
@@ -29,7 +35,13 @@
             </nb-option>
           </nb-option-group>
           <nb-option-group [title]="'APP.AGENDA.FORM.EVENT.SHARED_CALENDARS'  | translate"
-                           *ngIf="sharedAgendas$ | async as mySharedAgendas">
+                           *ngIf="(sharedAgendas$ | async) as mySharedAgendas">
+            <nb-option *ngIf="!mySharedAgendas.length"
+                       [disabled]="true">
+              <small>
+                <i>{{ 'APP.AGENDA.FORM.EVENT.NO_SHARED_CALENDARS' | translate}}</i>
+              </small>
+            </nb-option>
             <nb-option *ngFor="let agenda of mySharedAgendas"
                        [value]="agenda">
               <app-agenda-label [agenda]="agenda">

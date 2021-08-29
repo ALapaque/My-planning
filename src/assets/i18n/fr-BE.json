@@ -88,7 +88,9 @@
             "FREE": "Libre"
           },
           "MY_CALENDARS": "Mes agendas",
-          "SHARED_CALENDARS": "Mes agendas partagés",
+          "NO_CALENDARS": "Aucun agenda",
+          "SHARED_CALENDARS": "Agendas partagés",
+          "NO_SHARED_CALENDARS": "Aucun agendas partagés",
           "STEPS": {
             "STEP-1": {
               "LABEL": "Calendrier",
