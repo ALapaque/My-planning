@@ -87,10 +87,14 @@
             "BUSY": "Occupé",
             "FREE": "Libre"
           },
+          "MY_CALENDARS": "Mes agendas",
+          "NO_CALENDARS": "Aucun agenda",
+          "SHARED_CALENDARS": "Agendas partagés",
+          "NO_SHARED_CALENDARS": "Aucun agendas partagés",
           "STEPS": {
             "STEP-1": {
-              "LABEL": "Calendrier",
-              "TITLE": "Sélectionner les calendriers à afficher"
+              "LABEL": "Info. nécéssaires",
+              "TITLE": "Renseigner les informations nécéssaires"
             },
             "STEP-2": {
               "LABEL": "Plage horaire",
@@ -181,7 +185,11 @@
       "ERRORS": {
         "REQUIRED": "Ce champ est requis !",
         "PASSWORD_NO_MATCH": "Les mots de passe ne correspondent pas !",
-        "FORMAT": "Format incorrect"
+        "FORMAT": "Format incorrect",
+        "INCORRECT_DATE": "Date incorrect",
+        "PATTERN": {
+          "URL": "Ce n'est pas une url !"
+        }
       }
     },
     "BTN": {
