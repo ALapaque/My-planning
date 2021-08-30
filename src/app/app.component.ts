@@ -6,7 +6,6 @@ import {
   ConfirmDialogComponent,
   ConfirmDialogResult,
 } from './@shared/ui-components/confirm-dialog/confirm-dialog.component';
-import {TranslateService} from '@ngx-translate/core';
 import {Locale, SessionService} from './@shared/services/session.service';
 
 @Component(

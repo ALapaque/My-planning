@@ -1,6 +1,6 @@
 import {AbstractControl, FormGroup, ValidationErrors, ValidatorFn} from '@angular/forms';
 
-export abstract class CustomValidators {
+export abstract class PasswordValidators {
   static passwordMatch(): ValidatorFn {
     // @ts-ignore
     return (group: FormGroup): ValidationErrors | null => {
