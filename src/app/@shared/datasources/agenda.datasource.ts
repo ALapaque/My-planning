@@ -16,7 +16,7 @@ export let scheduleData: SchedulerEvent[] = [
     'Meta': {
       'name': 'test',
       'adayOff': false,
-      'isPrivate': false,
+      'private': false,
       'statusDisplayed': 'BUSY',
       'eventType': 'APPOINTMENT',
       'startDate': 'Wed Aug 25 2021 19:51:56 GMT+0200 (Central European Summer Time)',

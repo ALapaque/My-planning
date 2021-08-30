@@ -20,6 +20,7 @@
   <nb-card-footer>
     <app-dialog-action-btn (submit)="submit()"
                            (close)="dialogRef.close()"
+                           [form]="form"
                            [stepper]="eventFormContentComponent.nbStepper">
     </app-dialog-action-btn>
   </nb-card-footer>

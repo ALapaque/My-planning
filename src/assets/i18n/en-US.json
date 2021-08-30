@@ -133,7 +133,8 @@
       "ERRORS": {
         "REQUIRED": "Required field !",
         "PASSWORD_NO_MATCH": "The passwords doesn't match !",
-        "FORMAT": "Incorrect format"
+        "FORMAT": "Incorrect format",
+        "INCORRECT_DATE": "Date incorrect"
       }
     },
     "BTN": {
