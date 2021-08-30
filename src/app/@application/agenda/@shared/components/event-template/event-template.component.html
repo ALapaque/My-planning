@@ -1,5 +1,16 @@
 <div class='template-wrap' style="border-color: {{event.Meta.agenda.color}} !important">
-  <div class="subject" [style.background]="event.PrimaryColor">{{event.Subject}}</div>
-  <div class="time" [style.background]="event.PrimaryColor">{{event.StartTime | date: 'HH:mm'}} - {{event.EndTime | date: 'HH:mm'}}</div>
+  <div class="subject" [style.background]="event.PrimaryColor"
+       fxLayoutGap="8px"
+       fxLayoutAlign="start center">
+    <a *ngIf="event.Meta.eventType === 'MEETING'"
+       [href]="event.Meta.meetingUrl"
+       target="_blank"
+       (click)="$event.stopImmediatePropagation()">
+      <nb-icon [icon]="'video-outline'"></nb-icon>
+    </a>
+    <span>{{event.Subject}}</span>
+  </div>
+  <div class="time" [style.background]="event.PrimaryColor">{{event.StartTime | date: 'HH:mm'}}
+    - {{event.EndTime | date: 'HH:mm'}}</div>
   <div class="footer" [style.background]="event.PrimaryColor"></div>
 </div>

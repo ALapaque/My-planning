@@ -40,6 +40,11 @@
       height: 100% !important;
       max-height: calc(100vh - 200px) !important;
     }
+
+    nb-chat {
+      height: calc(100vh - 400px) !important;
+      box-shadow: none !important;
+    }
   }
 
   .nebular-dialog-fullscreen {
@@ -49,6 +54,11 @@
     nb-card {
       width: 100vw !important;
       height: 100% !important;
+    }
+
+    nb-chat {
+      height: calc(100vh - 232px) !important;
+      box-shadow: none !important;
     }
   }
 }

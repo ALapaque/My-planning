@@ -1,5 +1,10 @@
 @import "theme";
 
+/* DISABLE horizontal resize of textarea */
+textarea {
+  resize: vertical !important;
+}
+
 /* OVERRIDE OF ngx-toastr style */
 div.toast-container {
   div.ngx-toastr {

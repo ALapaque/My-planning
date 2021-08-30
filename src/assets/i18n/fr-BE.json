@@ -97,8 +97,8 @@
               "TITLE": "Renseigner les informations nécéssaires"
             },
             "STEP-2": {
-              "LABEL": "Plage horaire",
-              "TITLE": "Détails sur la durée de l'événement"
+              "LABEL": "Discussion",
+              "TITLE": "Fil de discussion"
             },
             "STEP-3": {
               "LABEL": "Visibilité",

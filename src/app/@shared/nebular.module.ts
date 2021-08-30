@@ -3,7 +3,7 @@ import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {
   NbActionsModule, NbButtonGroupModule,
   NbButtonModule,
-  NbCardModule,
+  NbCardModule, NbChatModule,
   NbCheckboxModule,
   NbContextMenuModule, NbDatepickerModule,
   NbDialogModule,
@@ -56,6 +56,7 @@ const nebularModule: Array<any> = [
   NbDatepickerModule,
   NbRadioModule,
   NbButtonGroupModule,
+  NbChatModule,
 ];
 
 @NgModule({
