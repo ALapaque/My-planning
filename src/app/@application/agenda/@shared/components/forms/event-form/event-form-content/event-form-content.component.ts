@@ -36,7 +36,6 @@ export class EventFormContentComponent implements OnInit {
   }
 
   get hasMeeting(): boolean {
-    console.log(this.form.value.eventType === 'MEETING');
     if (this.form.value.eventType === 'MEETING') {
       this.hasMeetingChanged(true);
       return true;

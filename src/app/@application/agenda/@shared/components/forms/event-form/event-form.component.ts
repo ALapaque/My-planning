@@ -41,7 +41,12 @@ export class EventFormComponent implements AfterViewInit {
 
   submit(): void {
     this._eventService.save(
-      new SchedulerEvent(SchedulerEvent.transformIntoSchedulerEvent(this.form.value))
+      new SchedulerEvent(SchedulerEvent.transformIntoSchedulerEvent(
+        {
+          ...this.form.value,
+          id: this.event.Id
+        }
+      ))
     ).subscribe(
       (event: SchedulerEvent) => this.dialogRef.close(event)
     );

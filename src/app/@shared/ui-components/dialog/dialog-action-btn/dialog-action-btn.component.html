@@ -38,7 +38,7 @@
           shape="semi-round"
           size="small"
           status="success"
-          [disabled]="(stepper?.selectedIndex !== stepper?.steps?.length - 1) || form.invalid"
+          [disabled]="(stepper || form) ? form.invalid : false"
           (click)="submit.emit()">
     {{ 'GLOBAL.OK' | translate }}
   </button>

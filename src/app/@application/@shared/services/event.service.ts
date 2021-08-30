@@ -102,7 +102,8 @@ export class EventService {
 
   public update(event: Event): Observable<SchedulerEvent> {
     return this._http.put<Event>(`${this._baseUrl}/${event.id}`, event).pipe(
-      map((eventReceived: Event) => SchedulerEvent.transformIntoSchedulerEvent(eventReceived))
+      map((eventReceived: Event) => SchedulerEvent.transformIntoSchedulerEvent(eventReceived)),
+      tap((eventReceived: SchedulerEvent) => this._agendaHelperService.ejsSchedule.saveEvent(eventReceived))
     );
   }
 

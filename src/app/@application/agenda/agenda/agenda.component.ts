@@ -64,7 +64,6 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
 
   public cellClicked($event: CellClickEventArgs): void {
     if ($event.isAllDay) return;
-    console.log($event);
     this.agendaHelperService.openEventFormDialog(new SchedulerEvent({
       StartTime: $event.startTime.toISOString(),
       EndTime: $event.endTime.toISOString()
@@ -80,7 +79,6 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
   }
 
   public eventDropped($event: DragEventArgs): void {
-    console.log($event);
     this._eventService.save(new SchedulerEvent($event.data)).subscribe();
   }
 
@@ -105,7 +103,6 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
 
   private _refreshEvents() {
     this.events$ = this._eventService.getEvents().pipe(
-      tap(console.log),
       takeUntil(this._destroy)
     );
   }

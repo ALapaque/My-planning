@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { NbDialogRef, NbDialogService } from '@nebular/theme';
-import { EventService } from '../../../../@shared/services/event.service';
-import { SchedulerEvent } from '../../models/scheduler-event.model';
-import { NbDialogCustomService } from '../../../../../@shared/services/nb-dialog-custom.service';
-import { AgendaHelperService } from '../../services/agenda-helper.service';
+import {Component, OnInit} from '@angular/core';
+import {NbDialogRef, NbDialogService} from '@nebular/theme';
+import {EventService} from '../../../../@shared/services/event.service';
+import {SchedulerEvent} from '../../models/scheduler-event.model';
+import {NbDialogCustomService} from '../../../../../@shared/services/nb-dialog-custom.service';
+import {AgendaHelperService} from '../../services/agenda-helper.service';
 
 @Component({
   selector: 'app-event-details',
   templateUrl: './event-details.component.html',
-  styleUrls: [ './event-details.component.scss' ]
+  styleUrls: ['./event-details.component.scss']
 })
 export class EventDetailsComponent implements OnInit {
   public event: SchedulerEvent = new SchedulerEvent();
@@ -30,7 +30,7 @@ export class EventDetailsComponent implements OnInit {
       (schedulerEvent: SchedulerEvent) => {
         if (!schedulerEvent) return;
 
-        this._eventService.save(schedulerEvent).subscribe();
+        this._eventService.save(schedulerEvent).subscribe(() => this.dialogRef.close());
       }
     );
   }
@@ -40,8 +40,7 @@ export class EventDetailsComponent implements OnInit {
       (result: { confirmed: boolean }) => {
         if (!result.confirmed) return;
 
-        this._eventService.delete(this.event.Meta.id).subscribe();
-        this.dialogRef.close();
+        this._eventService.delete(this.event.Meta.id).subscribe(() => this.dialogRef.close());
       }
     );
   }

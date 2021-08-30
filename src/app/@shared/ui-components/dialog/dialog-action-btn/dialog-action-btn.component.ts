@@ -10,7 +10,7 @@ import {FormGroup} from '@angular/forms';
 export class DialogActionBtnComponent implements OnInit {
 
   @Input() public stepper: NbStepperComponent | undefined;
-  @Input() public form!: FormGroup;
+  @Input() public form: FormGroup | undefined;
   @Output() public close: EventEmitter<any> = new EventEmitter<any>();
   @Output() public submit: EventEmitter<any> = new EventEmitter<any>();
 
