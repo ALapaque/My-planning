@@ -59,9 +59,9 @@ export class EventFormComponent implements AfterViewInit {
       startDate: this.event.StartTime ? new Date(this.event.StartTime) : new Date(),
       endDate: this.event.EndTime ? new Date(this.event.EndTime) : new Date(),
       description: this.event.Description ?? '',
-      private: this.event?.Meta?.private ?? false,
+      private: this.event?.Meta?.privateEvent ?? false,
       statusDisplayed: this.event?.Meta?.statusDisplayed ?? 'BUSY',
-      adayOff: this.event?.Meta?.adayOff ?? false,
+      adayOff: this.event?.Meta?.dayOff ?? false,
       meetingUrl: this.event?.Meta?.meetingUrl ?? null,
       eventType: this.event?.Meta?.eventType ?? 'APPOINTMENT'
     });

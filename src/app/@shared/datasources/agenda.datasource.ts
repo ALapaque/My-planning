@@ -15,8 +15,8 @@ export let scheduleData: SchedulerEvent[] = [
     'CategoryColor': '#1aaa55',
     'Meta': {
       'name': 'test',
-      'adayOff': false,
-      'private': false,
+      'dayOff': false,
+      'privateEvent': false,
       'statusDisplayed': 'BUSY',
       'eventType': 'APPOINTMENT',
       'startDate': 'Wed Aug 25 2021 19:51:56 GMT+0200 (Central European Summer Time)',

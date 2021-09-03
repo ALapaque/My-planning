@@ -35,7 +35,7 @@ export class SchedulerEvent {
       StartTime: event.startDate,
       EndTime: event.endDate,
       SecondaryColor: event.agenda.color,
-      PrimaryColor: event.eventType === 'MEETING' ? '#e3a73f': '#5987bb',
+      PrimaryColor: event.eventType === 'MEETING' ? '#e3a73f' : '#5987bb',
       Meta: new Event(event),
     });
   }

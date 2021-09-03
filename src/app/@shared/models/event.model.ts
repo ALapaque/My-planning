@@ -9,8 +9,8 @@ import {EventType} from './types/event-type.type';
 export class Event implements AbstractEntity<number> {
   public id: number = 0;
   public name: string = null;
-  public adayOff: boolean = false;
-  public private: boolean = false;
+  public dayOff: boolean = false;
+  public privateEvent: boolean = false;
   public statusDisplayed: EventStatus = 'FREE';
   public eventType: EventType = 'APPOINTMENT';
   public startDate: string = new Date().toISOString();
@@ -18,8 +18,8 @@ export class Event implements AbstractEntity<number> {
   public meetingUrl: string = null;
   public report: string = null;
   public agenda: Agenda = null;
-  public comments: Array<Comment> = null;
-  public sharedAgendas: Array<Agenda> = null;
+  public comments: Array<Comment> = [];
+  public sharedAgendas: Array<Agenda> = [];
 
   constructor(event?: Partial<Event>) {
     if (event) {
