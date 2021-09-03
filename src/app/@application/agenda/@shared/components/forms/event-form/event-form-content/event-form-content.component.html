@@ -197,23 +197,6 @@
 
     </nb-step>
 
-    <nb-step [label]="'APP.AGENDA.FORM.EVENT.STEPS.STEP-2.LABEL' | translate">
-
-      <nb-chat [title]="'APP.AGENDA.FORM.EVENT.STEPS.STEP-2.TITLE' | translate"
-               size="large"
-               [scrollBottom]="true"
-               status="primary">
-        <nb-chat-message *ngFor="let msg of event.Meta.comments"
-                         [type]="'text'"
-                         [message]="msg.content"
-                         [reply]="isSameUser(msg)"
-                         [sender]="msg.user.displayFormattedName()"
-                         [date]="msg.createdAt">
-        </nb-chat-message>
-        <nb-chat-form></nb-chat-form>
-      </nb-chat>
-    </nb-step>
-
     <!-- VISIBILITY -->
     <nb-step [label]="'APP.AGENDA.FORM.EVENT.STEPS.STEP-3.LABEL' | translate">
       <h6>

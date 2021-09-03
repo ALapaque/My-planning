@@ -1,13 +1,43 @@
-<div fxLayout="row"
-     fxLayoutGap="8px"
-     *ngIf="event.StartTime && event.EndTime">
-  <nb-icon icon="clock-outline"></nb-icon>
-  <span>{{event.StartTime | date: 'HH:mm'}} - {{event.EndTime | date: 'HH:mm'}}</span>
-</div>
+<nb-stepper #stepper
+            [linear]="true"
+            [orientation]="breakpointObserver.isMatched('(max-width: 960px)') ? 'horizontal' : 'vertical'">
 
-<div fxLayout="row"
-     fxLayoutGap="8px"
-     *ngIf="event.Description">
-  <nb-icon icon="menu-outline"></nb-icon>
-  <p>{{event.Description}}</p>
-</div>
+  <nb-step [label]="'APP.AGENDA.FORM.EVENT.STEPS.STEP-1.LABEL' | translate">
+    <h6>
+      <nb-icon [icon]="'info-outline'"></nb-icon>
+      {{ 'APP.AGENDA.FORM.DETAILS.STEPS.STEP-1.TITLE' | translate }}
+    </h6>
+
+    <div fxLayout="row"
+         fxLayoutGap="8px"
+         *ngIf="event.StartTime && event.EndTime">
+      <nb-icon icon="clock-outline"></nb-icon>
+      <span>{{event.StartTime | date: 'HH:mm'}} - {{event.EndTime | date: 'HH:mm'}}</span>
+    </div>
+
+    <div fxLayout="row"
+         fxLayoutGap="8px"
+         *ngIf="event.Description">
+      <nb-icon icon="menu-outline"></nb-icon>
+      <p>{{event.Description}}</p>
+    </div>
+  </nb-step>
+
+
+  <nb-step [label]="'APP.AGENDA.FORM.EVENT.STEPS.STEP-2.LABEL' | translate">
+
+    <nb-chat [title]="'APP.AGENDA.FORM.EVENT.STEPS.STEP-2.TITLE' | translate"
+             size="large"
+             [scrollBottom]="true"
+             status="primary">
+      <nb-chat-message *ngFor="let msg of event.Meta.comments"
+                       [type]="'text'"
+                       [message]="msg.content"
+                       [reply]="isSameUser(msg)"
+                       [sender]="msg.user.displayFormattedName()"
+                       [date]="msg.createdAt">
+      </nb-chat-message>
+      <nb-chat-form></nb-chat-form>
+    </nb-chat>
+  </nb-step>
+</nb-stepper>

@@ -42,7 +42,7 @@
     }
 
     nb-chat {
-      height: calc(100vh - 400px) !important;
+      height: calc(100vh - 424px) !important;
       box-shadow: none !important;
     }
   }
@@ -57,7 +57,8 @@
     }
 
     nb-chat {
-      height: calc(100vh - 232px) !important;
+      height: calc(100vh - 295px) !important;
+      min-height: calc(100vh - 295px) !important;
       box-shadow: none !important;
     }
   }

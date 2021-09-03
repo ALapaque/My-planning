@@ -9,9 +9,17 @@
   </nb-card-header>
 
   <nb-card-body>
-    <app-event-details-content [event]="event"
+    <app-event-details-content #eventDetailsContentComponent
+                               [event]="event"
                                [fxFlex.gt-sm]="'50vw'"
                                [fxFlex.lt-sm]="'100vw'">
     </app-event-details-content>
   </nb-card-body>
+
+  <nb-card-footer>
+    <app-dialog-action-btn (close)="dialogRef.close()"
+                           [stepper]="eventDetailsContentComponent.nbStepper"
+                           [hideRightButtons]="true">
+    </app-dialog-action-btn>
+  </nb-card-footer>
 </nb-card>

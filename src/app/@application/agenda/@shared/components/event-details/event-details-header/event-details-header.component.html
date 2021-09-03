@@ -1,4 +1,12 @@
-<div fxLayout="column">
+<div fxLayout="row">
+  <div fxLayoutAlign="start center"
+       fxLayoutGap="8px">
+    <ng-content></ng-content>
+  </div>
+
+  <span fxFlex="auto"></span>
+
+
   <div fxLayoutAlign="end center"
        fxLayoutGap="8px">
     <button nbButton
@@ -31,10 +39,5 @@
             (click)="close.emit()">
       <nb-icon icon="close-outline"></nb-icon>
     </button>
-  </div>
-
-  <div fxLayoutAlign="start center"
-       fxLayoutGap="8px">
-    <ng-content></ng-content>
   </div>
 </div>
