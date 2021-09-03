@@ -4,7 +4,7 @@ import {SchedulerEvent} from '../../../models/scheduler-event.model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DateValidators} from '../../../../../../@shared/helpers/validators/date-validators';
 import {EventService} from '../../../../../@shared/services/event.service';
-import * as moment from 'moment';;
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-event-form',

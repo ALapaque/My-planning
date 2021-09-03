@@ -10,7 +10,7 @@ import { EventFormComponent } from '../components/forms/event-form/event-form.co
 import { EventDetailsComponent } from '../components/event-details/event-details.component';
 import { ConfirmDialogComponent } from '../../../../@shared/ui-components/confirm-dialog/confirm-dialog.component';
 import {DateFnsWorkDay} from '../../../@shared/services/event.service';
-import * as moment from 'moment';;
+import * as moment from 'moment';
 
 export interface TimeSlot {
   name: string;

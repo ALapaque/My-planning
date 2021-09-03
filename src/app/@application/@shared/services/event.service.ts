@@ -11,7 +11,7 @@ import {Event} from '../../../@shared/models/event.model';
 import {AuthService} from '../../../@shared/services/auth.service';
 import {SchedulerEvent} from '../../agenda/@shared/models/scheduler-event.model';
 import {AgendaHelperService} from '../../agenda/@shared/services/agenda-helper.service';
-import * as moment from 'moment';;
+import * as moment from 'moment';
 
 export type DateFnsWorkDay = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -128,39 +128,40 @@ export class EventService {
       case 'Agenda':
       case 'TimelineDay':
         return {
-          'startDate': moment(this._agendaHelperService.viewDate).startOf('day').toISOString(true),
-          'endDate': moment(this._agendaHelperService.viewDate).endOf('day').toISOString(true)
+          'startDate': moment(this._agendaHelperService.viewDate).startOf('day').toISOString(false),
+          'endDate': moment(this._agendaHelperService.viewDate).endOf('day').toISOString(false)
         };
       case 'Week':
       case 'WorkWeek':
       case 'TimelineWeek':
       case 'TimelineWorkWeek':
+        console.log(moment());
         return {
           'startDate': moment(startOfWeek(
             this._agendaHelperService.viewDate,
             {
               weekStartsOn: this._agendaHelperService.firstDayDisplayed.value
             }
-          )).toISOString(true),
+          )).toISOString(false),
           'endDate': moment(endOfWeek(
             this._agendaHelperService.viewDate,
             {
               weekStartsOn: this._agendaHelperService.firstDayDisplayed.value
             }
-          )).toISOString(true)
+          )).toISOString(false)
         };
       case 'Month':
       case 'MonthAgenda':
       case 'TimelineMonth':
         return {
-          'startDate': moment(this._agendaHelperService.viewDate).startOf('month').toISOString(true),
-          'endDate': moment(this._agendaHelperService.viewDate).endOf('month').toISOString(true)
+          'startDate': moment(this._agendaHelperService.viewDate).startOf('month').toISOString(false),
+          'endDate': moment(this._agendaHelperService.viewDate).endOf('month').toISOString(false)
         };
       case 'Year':
       case 'TimelineYear':
         return {
-          'startDate': moment(this._agendaHelperService.viewDate).startOf('year').toISOString(true),
-          'endDate': moment(this._agendaHelperService.viewDate).endOf('year').toISOString(true)
+          'startDate': moment(this._agendaHelperService.viewDate).startOf('year').toISOString(false),
+          'endDate': moment(this._agendaHelperService.viewDate).endOf('year').toISOString(false)
         };
     }
   }

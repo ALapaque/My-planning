@@ -7,7 +7,7 @@ import { Card } from '../../../@shared/models/card.model';
 import { Event } from '../../../@shared/models/event.model';
 import { CardType } from '../../../@shared/models/types/card-type.type';
 import { AuthService } from '../../../@shared/services/auth.service';
-import * as moment from 'moment';;
+import * as moment from 'moment';
 
 @Injectable()
 export class CardService {
@@ -35,8 +35,8 @@ export class CardService {
     const params: HttpParams = new HttpParams()
       .set('userId', this._authService.user.id.toString(10))
       .set('type', cardType)
-      .set('start', moment().toISOString(true))
-      .set('end', moment().endOf('day').toISOString(true));
+      .set('start', moment().toISOString(false))
+      .set('end', moment().endOf('day').toISOString(false));
 
     return this._getEventsIncoming(params);
   }
@@ -45,8 +45,8 @@ export class CardService {
     const params: HttpParams = new HttpParams()
       .set('userId', this._authService.user.id.toString(10))
       .set('type', cardType)
-      .set('start', moment().startOf('day').toISOString(true))
-      .set('end', moment().endOf('day').toISOString(true));
+      .set('start', moment().startOf('day').toISOString(false))
+      .set('end', moment().endOf('day').toISOString(false));
 
     return this._getEventsIncoming(params);
   }

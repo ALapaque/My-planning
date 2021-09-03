@@ -1,11 +1,11 @@
 import {Event} from '../../../../@shared/models/event.model';
-import * as moment from 'moment';;
+import * as moment from 'moment';
 
 export class SchedulerEvent {
   public Id: number = 0;
   public Subject: string = '';
-  public StartTime: string = moment().toISOString(true);
-  public EndTime: string = moment().add(1, 'hours').toISOString(true);
+  public StartTime: string = moment().toISOString(false);
+  public EndTime: string = moment().add(1, 'hours').toISOString(false);
   public Description?: string;
   public CategoryColor?: string;
   public PrimaryColor: string = '#1aaa7f';

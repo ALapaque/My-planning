@@ -4,7 +4,7 @@ import { catchError, map, takeUntil, tap } from 'rxjs/operators';
 import { Event } from '../../../../@shared/models/event.model';
 import { CardType } from '../../../../@shared/models/types/card-type.type';
 import { CardService } from '../../../@shared/services/card.service';
-import * as moment from 'moment';;
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-event-card-content',

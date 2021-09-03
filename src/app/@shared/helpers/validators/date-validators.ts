@@ -1,5 +1,5 @@
 import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
-import * as moment from 'moment';;
+import * as moment from 'moment';
 
 export abstract class DateValidators {
   static validateDate(): ValidatorFn {

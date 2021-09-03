@@ -4,7 +4,7 @@ import { AgendaHelperService } from '../../services/agenda-helper.service';
 import { NbDialogCustomService } from '../../../../../@shared/services/nb-dialog-custom.service';
 import { AgendaSettingsComponent } from '../agenda-settings/agenda-settings.component';
 import { NbDialogService } from '@nebular/theme';
-import * as moment from 'moment';;
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-agenda-toolbar',
