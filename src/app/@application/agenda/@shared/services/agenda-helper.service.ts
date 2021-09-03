@@ -3,7 +3,6 @@ import { View } from '@syncfusion/ej2-angular-schedule';
 import { ScheduleComponent } from '@syncfusion/ej2-angular-schedule/src/schedule/schedule.component';
 import { BehaviorSubject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { set } from 'date-fns';
 import { NbDialogRef, NbDialogService } from '@nebular/theme';
 import { NbDialogCustomService } from '../../../../@shared/services/nb-dialog-custom.service';
 import { SchedulerEvent } from '../models/scheduler-event.model';
@@ -11,6 +10,7 @@ import { EventFormComponent } from '../components/forms/event-form/event-form.co
 import { EventDetailsComponent } from '../components/event-details/event-details.component';
 import { ConfirmDialogComponent } from '../../../../@shared/ui-components/confirm-dialog/confirm-dialog.component';
 import {DateFnsWorkDay} from '../../../@shared/services/event.service';
+import * as moment from 'moment';;
 
 export interface TimeSlot {
   name: string;
@@ -51,8 +51,8 @@ export class AgendaHelperService {
   private _timeSlotDisplayed: TimeSlot;
   private _weekDaysDisplayed: Array<WeekDay>;
   private _firstDayDisplayed: WeekDay;
-  private _startTime: Date = set(new Date(), { hours: 8, minutes: 0 });
-  private _endTime: Date = set(new Date(), { hours: 17, minutes: 0 });
+  private _startTime: Date = moment().hours(8).minutes(0).seconds(0).toDate();
+  private _endTime: Date = moment().hours(17).minutes(0).seconds(0).toDate();
 
   constructor(
     private _translateService: TranslateService,

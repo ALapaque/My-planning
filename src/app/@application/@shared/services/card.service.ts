@@ -1,13 +1,13 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { endOfDay, setHours, startOfDay } from 'date-fns';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment, generateCompleteUrl } from '../../../../environments/environment';
+import { generateCompleteUrl } from '../../../../environments/environment';
 import { Card } from '../../../@shared/models/card.model';
 import { Event } from '../../../@shared/models/event.model';
 import { CardType } from '../../../@shared/models/types/card-type.type';
 import { AuthService } from '../../../@shared/services/auth.service';
+import * as moment from 'moment';;
 
 @Injectable()
 export class CardService {
@@ -35,8 +35,8 @@ export class CardService {
     const params: HttpParams = new HttpParams()
       .set('userId', this._authService.user.id.toString(10))
       .set('type', cardType)
-      .set('start', new Date().toISOString())
-      .set('end', endOfDay(new Date()).toISOString());
+      .set('start', moment().toISOString(true))
+      .set('end', moment().endOf('day').toISOString(true));
 
     return this._getEventsIncoming(params);
   }
@@ -45,8 +45,8 @@ export class CardService {
     const params: HttpParams = new HttpParams()
       .set('userId', this._authService.user.id.toString(10))
       .set('type', cardType)
-      .set('start', startOfDay(new Date()).toISOString())
-      .set('end', endOfDay(new Date()).toISOString());
+      .set('start', moment().startOf('day').toISOString(true))
+      .set('end', moment().endOf('day').toISOString(true));
 
     return this._getEventsIncoming(params);
   }

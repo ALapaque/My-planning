@@ -2,10 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {TranslateService} from '@ngx-translate/core';
 import {EventSettingsModel} from '@syncfusion/ej2-angular-schedule';
-import {
-  endOfDay, endOfMonth, endOfWeek, endOfYear,
-  startOfDay, startOfMonth, startOfWeek, startOfYear,
-} from 'date-fns';
+import { endOfWeek, startOfWeek } from 'date-fns';
 import {ToastrService} from 'ngx-toastr';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {catchError, map, tap} from 'rxjs/operators';
@@ -14,6 +11,7 @@ import {Event} from '../../../@shared/models/event.model';
 import {AuthService} from '../../../@shared/services/auth.service';
 import {SchedulerEvent} from '../../agenda/@shared/models/scheduler-event.model';
 import {AgendaHelperService} from '../../agenda/@shared/services/agenda-helper.service';
+import * as moment from 'moment';;
 
 export type DateFnsWorkDay = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -130,39 +128,39 @@ export class EventService {
       case 'Agenda':
       case 'TimelineDay':
         return {
-          'startDate': startOfDay(this._agendaHelperService.viewDate).toISOString(),
-          'endDate': endOfDay(this._agendaHelperService.viewDate).toISOString()
+          'startDate': moment(this._agendaHelperService.viewDate).startOf('day').toISOString(true),
+          'endDate': moment(this._agendaHelperService.viewDate).endOf('day').toISOString(true)
         };
       case 'Week':
       case 'WorkWeek':
       case 'TimelineWeek':
       case 'TimelineWorkWeek':
         return {
-          'startDate': startOfWeek(
+          'startDate': moment(startOfWeek(
             this._agendaHelperService.viewDate,
             {
               weekStartsOn: this._agendaHelperService.firstDayDisplayed.value
             }
-          ).toISOString(),
-          'endDate': endOfWeek(
+          )).toISOString(true),
+          'endDate': moment(endOfWeek(
             this._agendaHelperService.viewDate,
             {
               weekStartsOn: this._agendaHelperService.firstDayDisplayed.value
             }
-          ).toISOString()
+          )).toISOString(true)
         };
       case 'Month':
       case 'MonthAgenda':
       case 'TimelineMonth':
         return {
-          'startDate': startOfMonth(this._agendaHelperService.viewDate).toISOString(),
-          'endDate': endOfMonth(this._agendaHelperService.viewDate).toISOString()
+          'startDate': moment(this._agendaHelperService.viewDate).startOf('month').toISOString(true),
+          'endDate': moment(this._agendaHelperService.viewDate).endOf('month').toISOString(true)
         };
       case 'Year':
       case 'TimelineYear':
         return {
-          'startDate': startOfYear(this._agendaHelperService.viewDate).toISOString(),
-          'endDate': endOfYear(this._agendaHelperService.viewDate).toISOString()
+          'startDate': moment(this._agendaHelperService.viewDate).startOf('year').toISOString(true),
+          'endDate': moment(this._agendaHelperService.viewDate).endOf('year').toISOString(true)
         };
     }
   }

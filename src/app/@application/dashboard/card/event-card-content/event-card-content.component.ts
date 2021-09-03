@@ -1,10 +1,10 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { isAfter, isBefore } from 'date-fns';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
 import { catchError, map, takeUntil, tap } from 'rxjs/operators';
 import { Event } from '../../../../@shared/models/event.model';
 import { CardType } from '../../../../@shared/models/types/card-type.type';
 import { CardService } from '../../../@shared/services/card.service';
+import * as moment from 'moment';;
 
 @Component({
   selector: 'app-event-card-content',
@@ -32,6 +32,6 @@ export class EventCardContentComponent implements OnInit {
   }
 
   public isInProgress(event: Event): boolean {
-    return isBefore(new Date(event.startDate), new Date());
+    return moment(event.startDate).isBefore(new Date());
   }
 }

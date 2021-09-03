@@ -1,10 +1,10 @@
-import {addHours, setDate} from 'date-fns';
 import {SchedulerEvent} from '../../@application/agenda/@shared/models/scheduler-event.model';
 import {AbstractEntity} from './abstract-entity.model';
 import {Agenda} from './agenda.model';
 import {Comment} from './comment.model';
 import {EventStatus} from './types/event-status.type';
 import {EventType} from './types/event-type.type';
+import * as moment from 'moment';;
 
 export class Event implements AbstractEntity<number> {
   public id: number = 0;
@@ -13,8 +13,8 @@ export class Event implements AbstractEntity<number> {
   public privateEvent: boolean = false;
   public statusDisplayed: EventStatus = 'FREE';
   public eventType: EventType = 'APPOINTMENT';
-  public startDate: string = new Date().toISOString();
-  public endDate: string = addHours(new Date(), 1).toISOString();
+  public startDate: string = moment().toISOString(true);
+  public endDate: string = moment().add(1, 'hours').toISOString(true);
   public meetingUrl: string = null;
   public report: string = null;
   public agenda: Agenda = null;

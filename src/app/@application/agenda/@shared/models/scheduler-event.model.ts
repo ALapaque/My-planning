@@ -1,11 +1,11 @@
-import {addHours} from 'date-fns';
 import {Event} from '../../../../@shared/models/event.model';
+import * as moment from 'moment';;
 
 export class SchedulerEvent {
   public Id: number = 0;
   public Subject: string = '';
-  public StartTime: string = new Date().toISOString();
-  public EndTime: string = addHours(new Date(), 1).toISOString();
+  public StartTime: string = moment().toISOString(true);
+  public EndTime: string = moment().add(1, 'hours').toISOString(true);
   public Description?: string;
   public CategoryColor?: string;
   public PrimaryColor: string = '#1aaa7f';

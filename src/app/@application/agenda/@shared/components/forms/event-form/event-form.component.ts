@@ -2,11 +2,9 @@ import {AfterViewInit, Component, Inject, Input, OnInit} from '@angular/core';
 import {NbDialogRef} from '@nebular/theme';
 import {SchedulerEvent} from '../../../models/scheduler-event.model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {addHours} from 'date-fns';
 import {DateValidators} from '../../../../../../@shared/helpers/validators/date-validators';
-import {Event} from '../../../../../../@shared/models/event.model';
 import {EventService} from '../../../../../@shared/services/event.service';
-import {tap} from 'rxjs/operators';
+import * as moment from 'moment';;
 
 @Component({
   selector: 'app-event-form',
@@ -21,7 +19,7 @@ export class EventFormComponent implements AfterViewInit {
     name: new FormControl(null, [Validators.required]),
     agenda: new FormControl(null, [Validators.required]),
     startDate: new FormControl(new Date(), [Validators.required]),
-    endDate: new FormControl(addHours(new Date(), 1), [Validators.required]),
+    endDate: new FormControl(moment().add(1, 'hour').toDate(), [Validators.required]),
     description: new FormControl(''),
     private: new FormControl(false),
     adayOff: new FormControl(false),

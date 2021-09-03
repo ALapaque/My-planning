@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { isSameDay } from 'date-fns';
+import * as moment from 'moment';;
 
 @Component({
   selector: 'app-date-label',
@@ -16,7 +16,7 @@ export class DateLabelComponent implements OnInit {
   }
 
   public isSameDay(): boolean {
-    return isSameDay(new Date(this.startDate), new Date(this.endDate));
+    return moment(this.startDate).isSame(this.endDate, 'day');
   }
 
 }

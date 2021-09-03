@@ -37,6 +37,7 @@
     "date-fns": "^2.23.0",
     "eva-icons": "^1.1.2",
     "http-server": "^0.12.3",
+    "moment": "^2.29.1",
     "ngx-toastr": "^13.2.1",
     "rxjs": "^6.6.7",
     "tslib": "^2.0.0",
