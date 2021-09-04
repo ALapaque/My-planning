@@ -153,6 +153,24 @@
           "SAVE": "Enregistrement éffectué",
           "DELETE": "Événement supprimé"
         }
+      },
+      "DETAILS": {
+        "STEPS": {
+          "1": {
+            "TITLE": "Info. Générales",
+            "LABEL": "Informations générales"
+          },
+          "2": {
+            "TITLE": "Discussion",
+            "LABEL": "Fil de duscussion",
+            "NO_MESSAGE": "Aucun message",
+            "SEND_MESSAGE": "Envoyer un message"
+          },
+          "3": {
+            "TITLE": "Document",
+            "LABEL": "Rapport de réunion"
+          }
+        }
       }
     },
     "DASHBOARD": {

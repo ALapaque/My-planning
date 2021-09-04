@@ -1,11 +1,10 @@
 <nb-stepper #stepper
-            [linear]="true"
             [orientation]="breakpointObserver.isMatched('(max-width: 960px)') ? 'horizontal' : 'vertical'">
 
-  <nb-step [label]="'APP.AGENDA.FORM.EVENT.STEPS.STEP-1.LABEL' | translate">
+  <nb-step [label]="'APP.AGENDA.DETAILS.STEPS.1.TITLE' | translate">
     <h6>
       <nb-icon [icon]="'info-outline'"></nb-icon>
-      {{ 'APP.AGENDA.FORM.DETAILS.STEPS.STEP-1.TITLE' | translate }}
+      {{ 'APP.AGENDA.DETAILS.STEPS.1.LABEL' | translate }}
     </h6>
 
     <div fxLayout="row"
@@ -24,9 +23,31 @@
   </nb-step>
 
 
-  <nb-step [label]="'APP.AGENDA.FORM.EVENT.STEPS.STEP-2.LABEL' | translate">
+  <nb-step [label]="'APP.AGENDA.DETAILS.STEPS.2.TITLE' | translate">
 
-    <nb-chat [title]="'APP.AGENDA.FORM.EVENT.STEPS.STEP-2.TITLE' | translate"
+    <nb-chat #chat
+             [title]="'APP.AGENDA.DETAILS.STEPS.2.LABEL' | translate"
+             [scrollBottom]="true"
+             size="large"
+             status="primary"
+             [noMessagesPlaceholder]="'APP.AGENDA.DETAILS.STEPS.2.NO_MESSAGE' | translate">
+      <nb-chat-message *ngFor="let msg of event.Meta.comments"
+                       [type]="'text'"
+                       [message]="msg.content"
+                       [reply]="isSameUser(msg)"
+                       [sender]="msg.user.displayFormattedName()"
+                       [date]="msg.createdAt"
+                       [dateFormat]="'short'">
+      </nb-chat-message>
+      <nb-chat-form [dropFiles]="false"
+                    [messagePlaceholder]="'APP.AGENDA.DETAILS.STEPS.2.SEND_MESSAGE' | translate"
+                    (send)="sendMessage($event)"></nb-chat-form>
+    </nb-chat>
+  </nb-step>
+
+  <nb-step [label]="'APP.AGENDA.DETAILS.STEPS.3.TITLE' | translate">
+
+    <nb-chat [title]="'APP.AGENDA.DETAILS.STEPS.3.LABEL' | translate"
              size="large"
              [scrollBottom]="true"
              status="primary">

@@ -1,4 +1,11 @@
-app-event-details-content {
-  padding: 12px;
-  width: 100%;
+nb-card {
+  nb-card-body {
+    padding: 1rem 1.5rem 0.2rem 1.5rem !important;
+
+    app-event-details-content {
+      width: 100%;
+    }
+  }
 }
+
+
