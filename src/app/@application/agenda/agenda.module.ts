@@ -32,6 +32,11 @@ import { EventDetailsContentComponent } from './@shared/components/event-details
 import { EventDetailsHeaderComponent } from './@shared/components/event-details/event-details-header/event-details-header.component';
 import {EventService} from '../@shared/services/event.service';
 import { AgendaLabelComponent } from './@shared/components/forms/event-form/event-form-content/agenda-label/agenda-label.component';
+import { DocumentEditorComponent } from './@shared/components/document-editor/document-editor.component';
+import {
+  DocumentEditorAllModule,
+  DocumentEditorContainerAllModule,
+} from '@syncfusion/ej2-angular-documenteditor';
 
 loadCldr(numberingSystems, gregorian, numbers, timeZoneNames);
 
@@ -49,12 +54,15 @@ loadCldr(numberingSystems, gregorian, numbers, timeZoneNames);
     EventDetailsContentComponent,
     EventDetailsHeaderComponent,
     AgendaLabelComponent,
+    DocumentEditorComponent,
   ],
   imports: [
     CommonModule,
     AgendaRouting,
     ScheduleAllModule,
     SharedModule,
+    DocumentEditorAllModule,
+    DocumentEditorContainerAllModule,
   ],
   providers: [
     AgendaHelperService,

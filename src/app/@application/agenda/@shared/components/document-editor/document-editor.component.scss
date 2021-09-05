@@ -1,0 +1,24 @@
+nb-card {
+
+  &.fullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100% !important;
+    max-height: 100vh !important;
+  }
+
+  nb-card-header {
+    padding: 1rem 0 !important;
+  }
+
+  nb-card-body {
+    padding: 0 !important;
+
+    ejs-documenteditorcontainer {
+      display: block;
+      height: 100%;
+    }
+  }
+}

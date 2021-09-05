@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {
-  NbActionsModule, NbButtonGroupModule,
+  NbAccordionModule,
+  NbActionsModule, NbBadgeModule, NbButtonGroupModule,
   NbButtonModule,
   NbCardModule, NbChatModule,
   NbCheckboxModule,
@@ -20,7 +21,7 @@ import {
   NbSidebarModule, NbSpinnerModule, NbStepperModule,
   NbTabsetModule, NbTimepickerModule,
   NbToastrModule,
-  NbToggleModule,
+  NbToggleModule, NbTooltipModule,
   NbUserModule,
   NbWindowModule,
   NbWindowState,
@@ -57,6 +58,9 @@ const nebularModule: Array<any> = [
   NbRadioModule,
   NbButtonGroupModule,
   NbChatModule,
+  NbAccordionModule,
+  NbBadgeModule,
+  NbTooltipModule
 ];
 
 @NgModule({
