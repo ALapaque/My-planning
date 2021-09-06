@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {DocumentEditorContainerComponent, ToolbarService} from '@syncfusion/ej2-angular-documenteditor';
 import {AuthService} from '../../../../../@shared/services/auth.service';
+import { SchedulerEvent } from '../../models/scheduler-event.model';
 import {defaultDocument} from './data';
 
 @Component({
@@ -10,7 +11,7 @@ import {defaultDocument} from './data';
   providers: [ToolbarService]
 })
 export class DocumentEditorComponent implements OnInit {
-  @Input() public document?: string;
+  @Input() public event?: SchedulerEvent;
   @ViewChild('documenteditor_default') public container: DocumentEditorContainerComponent;
   public culture: string = 'fr-BE';
   public isEdited: boolean = false;
@@ -24,7 +25,7 @@ export class DocumentEditorComponent implements OnInit {
   }
 
   onCreate() {
-    this.container.documentEditor.open(this.document);
+    this.container.documentEditor.open(this.event.Meta.report);
     this.isEdited = false;
   }
 
@@ -35,5 +36,13 @@ export class DocumentEditorComponent implements OnInit {
 
   onContentChange() {
     this.isEdited = true;
+  }
+
+  onPrint() {
+    this.container.documentEditor.print();
+  }
+
+  onDownload() {
+    this.container.documentEditor.save(this.event.Subject, 'Docx');
   }
 }

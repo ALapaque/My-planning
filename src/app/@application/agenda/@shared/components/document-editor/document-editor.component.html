@@ -1,16 +1,22 @@
-<nb-card [class.fullscreen]="isFullscreen">
+<nb-card [class.fullscreen]="isFullscreen" status="primary">
   <nb-card-header fxLayoutAlign="space-between center">
     <nb-actions size="tiny">
       <nb-action icon="save-outline"
                  [badgeDot]="isEdited"
-                 [badgeStatus]="isEdited ? 'danger' : 'primary'">
+                 [badgeStatus]="isEdited ? 'danger' : 'primary'"
+                 [badgePosition]="'top right'">
+      </nb-action>
+      <nb-action icon="printer-outline"
+                 (click)="onPrint()">
+      </nb-action>
+      <nb-action icon="download-outline"
+                 (click)="onDownload()">
       </nb-action>
     </nb-actions>
 
     <nb-actions size="tiny">
       <nb-action (click)="toggleFullscreen()"
-                 [icon]="isFullscreen ? 'collapse-outline' : 'expand-outline'"
-                 [nbTooltip]="'Mettre en plein écran'">
+                 [icon]="isFullscreen ? 'collapse-outline' : 'expand-outline'">
       </nb-action>
     </nb-actions>
   </nb-card-header>
@@ -18,7 +24,7 @@
   <nb-card-body>
     <ejs-documenteditorcontainer #documenteditor_default
                                  [enableToolbar]=true
-                                 [locale]="culture"
+                                 [showPropertiesPane]="false"
                                  (created)="onCreate()"
                                  (contentChange)="onContentChange()">
     </ejs-documenteditorcontainer>

@@ -1,3 +1,5 @@
+@import "../../../../../../theme/theme";
+
 nb-card {
 
   &.fullscreen {
@@ -7,10 +9,43 @@ nb-card {
     width: 100vw !important;
     height: 100% !important;
     max-height: 100vh !important;
+
+    nb-card-body {
+      ejs-documenteditorcontainer {
+        display: block;
+        height: 100%;
+      }
+    }
+  }
+
+  &:not(.fullscreen) {
+    nb-card-body {
+      ejs-documenteditorcontainer {
+        display: block;
+        height: calc(100vh - 550px) !important;
+      }
+    }
   }
 
   nb-card-header {
     padding: 1rem 0 !important;
+
+    ::ng-deep nb-actions {
+      nb-action {
+        color: nb-theme(text-basic-color);
+
+        &:first-child {
+          nb-badge {
+            top: -4px;
+            right: -4px;
+          }
+        }
+
+        nb-icon {
+          color: inherit !important;
+        }
+      }
+    }
   }
 
   nb-card-body {

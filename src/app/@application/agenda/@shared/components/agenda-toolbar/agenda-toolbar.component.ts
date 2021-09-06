@@ -44,9 +44,9 @@ export class AgendaToolbarComponent implements OnInit {
       case 'Agenda':
       case 'TimelineDay':
         if (type === 'next') {
-          this.agendaHelperService.viewDate = moment().add(1, 'day').toDate();
+          this.agendaHelperService.viewDate = moment(this.agendaHelperService.viewDate).add(1, 'day').toDate();
         } else {
-          this.agendaHelperService.viewDate = moment().subtract(1, 'day').toDate();
+          this.agendaHelperService.viewDate = moment(this.agendaHelperService.viewDate).subtract(1, 'day').toDate();
         }
         break;
       case 'Week':
@@ -54,26 +54,26 @@ export class AgendaToolbarComponent implements OnInit {
       case 'TimelineWeek':
       case 'TimelineWorkWeek':
         if (type === 'next') {
-          this.agendaHelperService.viewDate = moment().add(1, 'week').toDate();
+          this.agendaHelperService.viewDate = moment(this.agendaHelperService.viewDate).add(1, 'week').toDate();
         } else {
-          this.agendaHelperService.viewDate = moment().subtract(1, 'week').toDate();
+          this.agendaHelperService.viewDate = moment(this.agendaHelperService.viewDate).subtract(1, 'week').toDate();
         }
         break;
       case 'Month':
       case 'MonthAgenda':
       case 'TimelineMonth':
         if (type === 'next') {
-          this.agendaHelperService.viewDate = moment().add(1, 'month').toDate();
+          this.agendaHelperService.viewDate = moment(this.agendaHelperService.viewDate).add(1, 'month').toDate();
         } else {
-          this.agendaHelperService.viewDate = moment().subtract(1, 'month').toDate();
+          this.agendaHelperService.viewDate = moment(this.agendaHelperService.viewDate).subtract(1, 'month').toDate();
         }
         break;
       case 'Year':
       case 'TimelineYear':
         if (type === 'next') {
-          this.agendaHelperService.viewDate = moment().add(1, 'year').toDate();
+          this.agendaHelperService.viewDate = moment(this.agendaHelperService.viewDate).add(1, 'year').toDate();
         } else {
-          this.agendaHelperService.viewDate = moment().subtract(1, 'year').toDate();
+          this.agendaHelperService.viewDate = moment(this.agendaHelperService.viewDate).subtract(1, 'year').toDate();
         }
         break;
     }

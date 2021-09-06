@@ -33,6 +33,7 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "@syncfusion/ej2-angular-documenteditor": "^19.2.59",
     "@syncfusion/ej2-angular-schedule": "^19.1.63",
+    "@syncfusion/ej2-locale": "^19.1.54",
     "@zeit/ng-deploy": "^0.3.0",
     "cldr-data": "^36.0.0",
     "date-fns": "^2.23.0",
