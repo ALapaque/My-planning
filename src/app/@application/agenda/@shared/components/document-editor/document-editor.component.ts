@@ -1,17 +1,17 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {DocumentEditorContainerComponent, ToolbarService} from '@syncfusion/ej2-angular-documenteditor';
-import {AuthService} from '../../../../../@shared/services/auth.service';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { DocumentEditorContainerComponent, FormatType, ToolbarService } from '@syncfusion/ej2-angular-documenteditor';
+import { AuthService } from '../../../../../@shared/services/auth.service';
 import { SchedulerEvent } from '../../models/scheduler-event.model';
-import {defaultDocument} from './data';
 
 @Component({
   selector: 'app-document-editor',
   templateUrl: './document-editor.component.html',
-  styleUrls: ['./document-editor.component.scss'],
-  providers: [ToolbarService]
+  styleUrls: [ './document-editor.component.scss' ],
+  providers: [ ToolbarService ]
 })
 export class DocumentEditorComponent implements OnInit {
   @Input() public event?: SchedulerEvent;
+  @Output() public saveReport: EventEmitter<true> = new EventEmitter<true>();
   @ViewChild('documenteditor_default') public container: DocumentEditorContainerComponent;
   public culture: string = 'fr-BE';
   public isEdited: boolean = false;
@@ -19,13 +19,14 @@ export class DocumentEditorComponent implements OnInit {
 
   constructor(
     public authService: AuthService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
   }
 
   onCreate() {
-    this.container.documentEditor.open(this.event.Meta.report);
+    this.container.documentEditor.open(JSON.parse(this.event.Meta.report));
     this.isEdited = false;
   }
 
@@ -42,7 +43,14 @@ export class DocumentEditorComponent implements OnInit {
     this.container.documentEditor.print();
   }
 
-  onDownload() {
-    this.container.documentEditor.save(this.event.Subject, 'Docx');
+  onDownload(format: FormatType = 'Docx') {
+    this.container.documentEditor.save(this.event.Subject, format);
+  }
+
+  onSave(format: FormatType = 'Sfdt') {
+    console.log(this.container.documentEditor);
+    this.event.Meta.report = this.container.documentEditor.serialize();
+
+    this.saveReport.emit(true);
   }
 }

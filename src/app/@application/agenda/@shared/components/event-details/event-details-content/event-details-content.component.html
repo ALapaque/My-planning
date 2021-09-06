@@ -1,56 +1,3 @@
-<!--<nb-stepper #stepper-->
-<!--            [orientation]="breakpointObserver.isMatched('(max-width: 960px)') ? 'horizontal' : 'vertical'">-->
-
-<!--  <nb-step [label]="'APP.AGENDA.DETAILS.STEPS.1.TITLE' | translate">-->
-<!--    <h6>-->
-<!--      <nb-icon [icon]="'info-outline'"></nb-icon>-->
-<!--      {{ 'APP.AGENDA.DETAILS.STEPS.1.LABEL' | translate }}-->
-<!--    </h6>-->
-
-<!--    <div fxLayout="row"-->
-<!--         fxLayoutGap="8px"-->
-<!--         *ngIf="event.StartTime && event.EndTime">-->
-<!--      <nb-icon icon="clock-outline"></nb-icon>-->
-<!--      <span>{{event.StartTime | date: 'HH:mm'}} - {{event.EndTime | date: 'HH:mm'}}</span>-->
-<!--    </div>-->
-
-<!--    <div fxLayout="row"-->
-<!--         fxLayoutGap="8px"-->
-<!--         *ngIf="event.Description">-->
-<!--      <nb-icon icon="menu-outline"></nb-icon>-->
-<!--      <p>{{event.Description}}</p>-->
-<!--    </div>-->
-<!--  </nb-step>-->
-
-
-<!--  <nb-step [label]="'APP.AGENDA.DETAILS.STEPS.2.TITLE' | translate">-->
-<!--    <nb-chat #chat-->
-<!--             [title]="'APP.AGENDA.DETAILS.STEPS.2.LABEL' | translate"-->
-<!--             [scrollBottom]="true"-->
-<!--             size="large"-->
-<!--             status="primary"-->
-<!--             [noMessagesPlaceholder]="'APP.AGENDA.DETAILS.STEPS.2.NO_MESSAGE' | translate">-->
-<!--      <nb-chat-message *ngFor="let msg of event.Meta.comments"-->
-<!--                       [type]="'text'"-->
-<!--                       [message]="msg.content"-->
-<!--                       [reply]="isSameUser(msg)"-->
-<!--                       [sender]="msg.user.displayFormattedName()"-->
-<!--                       [date]="msg.createdAt"-->
-<!--                       [dateFormat]="'short'">-->
-<!--      </nb-chat-message>-->
-<!--      <nb-chat-form [dropFiles]="false"-->
-<!--                    [messagePlaceholder]="'APP.AGENDA.DETAILS.STEPS.2.SEND_MESSAGE' | translate"-->
-<!--                    (send)="sendMessage($event)"></nb-chat-form>-->
-<!--    </nb-chat>-->
-<!--  </nb-step>-->
-
-<!--  <nb-step [label]="'APP.AGENDA.DETAILS.STEPS.3.TITLE' | translate">-->
-<!--    <ng-template #stepContent>-->
-<!--      <app-document-editor></app-document-editor>-->
-<!--    </ng-template>-->
-<!--  </nb-step>-->
-<!--</nb-stepper>-->
-
 <nb-accordion multi>
   <nb-accordion-item>
     <nb-badge text="new" status="success" position="top right"></nb-badge>
@@ -99,7 +46,21 @@
   <nb-accordion-item>
     <nb-accordion-item-header>{{ 'APP.AGENDA.DETAILS.STEPS.3.TITLE' | translate }}</nb-accordion-item-header>
     <nb-accordion-item-body>
-      <app-document-editor [event]="event"></app-document-editor>
+      <button nbButton
+              outline
+              status="primary"
+              fxHide.gt-sm
+              [disabled]="!event?.Meta?.report"
+              (click)="documentEditorComponent.onDownload()">
+        <nb-icon [icon]="'download-outline'"></nb-icon>
+        {{ 'APP.AGENDA.DETAILS.STEPS.3.VIEW_FILE' | translate }}
+      </button>
+
+      <app-document-editor #documentEditorComponent
+                           fxHide.lt-md
+                           [event]="event"
+                           (saveReport)="saveDocument()">
+      </app-document-editor>
     </nb-accordion-item-body>
   </nb-accordion-item>
 </nb-accordion>

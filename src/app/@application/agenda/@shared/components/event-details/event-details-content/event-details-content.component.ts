@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import { EventService } from '../../../../../@shared/services/event.service';
 import {SchedulerEvent} from '../../../models/scheduler-event.model';
 import {Comment} from '../../../../../../@shared/models/comment.model';
 import {AuthService} from '../../../../../../@shared/services/auth.service';
@@ -23,6 +24,7 @@ export class EventDetailsContentComponent {
     public breakpointObserver: BreakpointObserver,
     private _authService: AuthService,
     private _commentService: CommentService,
+    private _eventService: EventService,
   ) {
   }
 
@@ -43,5 +45,9 @@ export class EventDetailsContentComponent {
       this.event.Meta.comments.push(comment);
       this.nbChat.scrollBottom = true;
     });
+  }
+
+  saveDocument() {
+    this._eventService.save(this.event).subscribe();
   }
 }

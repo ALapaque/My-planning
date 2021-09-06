@@ -4,7 +4,8 @@
       <nb-action icon="save-outline"
                  [badgeDot]="isEdited"
                  [badgeStatus]="isEdited ? 'danger' : 'primary'"
-                 [badgePosition]="'top right'">
+                 [badgePosition]="'top right'"
+                 (click)="onSave()">
       </nb-action>
       <nb-action icon="printer-outline"
                  (click)="onPrint()">
