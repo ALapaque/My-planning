@@ -49,7 +49,7 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
   onResize(event: any): void {
     const width: number = event.target.innerWidth;
 
-    if (width <= 960) {
+    if (width <= 960 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       if (this.agendaHelperService.currentViewDisplayed !== 'Day') {
         this.agendaHelperService.currentViewDisplayed = 'Day';
         this.agendaHelperService.refreshAgenda$.next(true);
