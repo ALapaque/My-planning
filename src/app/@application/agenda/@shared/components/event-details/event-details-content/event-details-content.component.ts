@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { EventService } from '../../../../../@shared/services/event.service';
 import { SchedulerEvent } from '../../../models/scheduler-event.model';
 import { Comment } from '../../../../../../@shared/models/comment.model';
@@ -15,7 +15,7 @@ import { tap } from 'rxjs/operators';
   templateUrl: './event-details-content.component.html',
   styleUrls: [ './event-details-content.component.scss' ]
 })
-export class EventDetailsContentComponent {
+export class EventDetailsContentComponent implements AfterViewInit {
   @ViewChild('stepper') public nbStepper: NbStepperComponent;
   @ViewChild('chat') public nbChat: NbChatComponent;
   @Input() public event!: SchedulerEvent;
@@ -28,9 +28,13 @@ export class EventDetailsContentComponent {
   ) {
   }
 
+  ngAfterViewInit(): void {
+    if (this.nbChat) this.nbChat.scrollBottom = true;
+  }
 
-  sendMessage(comment: Comment): void {
-    this._commentService.save(comment).subscribe(
+
+  sendMessage(commentToAdd: Comment): void {
+    this._commentService.save(commentToAdd).subscribe(
       (comment: Comment) => {
         if (!comment) return;
         this.event.Meta.comments.push(comment);
