@@ -31,12 +31,13 @@ import { EventDetailsComponent } from './@shared/components/event-details/event-
 import { EventDetailsContentComponent } from './@shared/components/event-details/event-details-content/event-details-content.component';
 import { EventDetailsHeaderComponent } from './@shared/components/event-details/event-details-header/event-details-header.component';
 import { EventService } from '../@shared/services/event.service';
-import { AgendaLabelComponent } from './@shared/components/forms/event-form/event-form-content/agenda-label/agenda-label.component';
+import { AgendaLabelComponent } from './@shared/components/agenda-label/agenda-label.component';
 import { DocumentEditorComponent } from './@shared/components/document-editor/document-editor.component';
 import {
   DocumentEditorAllModule,
   DocumentEditorContainerAllModule,
 } from '@syncfusion/ej2-angular-documenteditor';
+import { EventChatComponent } from './@shared/components/event-chat/event-chat.component';
 
 const fr_Local: any = '@syncfusion/ej2-locale/src/fr.json';
 
@@ -272,6 +273,7 @@ setCulture('fr');
     EventDetailsHeaderComponent,
     AgendaLabelComponent,
     DocumentEditorComponent,
+    EventChatComponent,
   ],
   imports: [
     CommonModule,

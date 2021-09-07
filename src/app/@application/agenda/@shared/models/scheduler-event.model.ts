@@ -1,4 +1,4 @@
-import {Event} from '../../../../@shared/models/event.model';
+import { Event } from '../../../../@shared/models/event.model';
 import * as moment from 'moment';
 
 export class SchedulerEvent {
@@ -35,7 +35,7 @@ export class SchedulerEvent {
       StartTime: event.startDate,
       EndTime: event.endDate,
       SecondaryColor: event.agenda.color,
-      PrimaryColor: event.eventType === 'MEETING' ? '#e3a73f' : '#5987bb',
+      PrimaryColor: event.eventType === 'MEETING' ? '#e3b83f' : '#3366ff',
       Meta: new Event(event),
     });
   }

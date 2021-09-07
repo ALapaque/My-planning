@@ -1,5 +1,5 @@
-<nb-card>
-  <nb-card-header>
+<nb-card [style.borderColor]="event.Meta.agenda.color">
+  <nb-card-header [style.backgroundColor]="event.PrimaryColor">
     <app-event-details-header (close)="dialogRef.close()"
                               (delete)="delete()"
                               (edit)="edit()"

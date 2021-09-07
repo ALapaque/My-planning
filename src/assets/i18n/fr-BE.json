@@ -158,7 +158,8 @@
         "STEPS": {
           "1": {
             "TITLE": "Info. Générales",
-            "LABEL": "Informations générales"
+            "LABEL": "Informations générales",
+            "JOIN_MEETING": "Participer à la réunion"
           },
           "2": {
             "TITLE": "Discussion",

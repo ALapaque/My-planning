@@ -1,0 +1,12 @@
+nb-accordion {
+  nb-accordion-item:first-child {
+    ::ng-deep nb-accordion-item-body {
+      padding-left: 8px;
+      .item-body {
+        > * {
+          margin-bottom: 8px;
+        }
+      }
+    }
+  }
+}

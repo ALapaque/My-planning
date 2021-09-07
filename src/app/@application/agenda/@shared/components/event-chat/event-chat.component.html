@@ -1,0 +1,19 @@
+<nb-chat #chat
+         [title]="'APP.AGENDA.DETAILS.STEPS.2.LABEL' | translate"
+         [scrollBottom]="true"
+         size="large"
+         status="primary"
+         [noMessagesPlaceholder]="'APP.AGENDA.DETAILS.STEPS.2.NO_MESSAGE' | translate">
+  <nb-chat-message *ngFor="let msg of event.Meta.comments"
+                   [type]="'text'"
+                   [message]="msg.content"
+                   [reply]="isSameUser(msg.user.id)"
+                   [sender]="msg.user.displayFormattedName()"
+                   [date]="msg.createdAt"
+                   [dateFormat]="'short'">
+  </nb-chat-message>
+  <nb-chat-form [dropFiles]="false"
+                [messagePlaceholder]="'APP.AGENDA.DETAILS.STEPS.2.SEND_MESSAGE' | translate"
+                (send)="onSend($event.message)">
+  </nb-chat-form>
+</nb-chat>

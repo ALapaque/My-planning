@@ -1,22 +1,19 @@
 @import '../../../../../../theme/theme';
 
 nb-card {
+  border-width: 0 !important;
+  border-left-width: 8px !important;
+
+  ::ng-deep nb-card-header {
+    border-top-left-radius: 0;
+    color: #ffffff;
+  }
+
   nb-card-body {
     padding: 1.5rem !important;
-    background-color: nb-theme(color-basic-300);
 
     ::ng-deep app-event-details-content {
       width: 100%;
-
-      nb-accordion {
-        box-shadow: none !important;
-
-        nb-accordion-item {
-          nb-accordion-item-body {
-            background-color: nb-theme(color-basic-300) !important;
-          }
-        }
-      }
     }
   }
 }
