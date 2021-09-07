@@ -15,7 +15,7 @@ import { tap } from 'rxjs/operators';
   templateUrl: './event-details-content.component.html',
   styleUrls: [ './event-details-content.component.scss' ]
 })
-export class EventDetailsContentComponent implements AfterViewInit {
+export class EventDetailsContentComponent {
   @ViewChild('stepper') public nbStepper: NbStepperComponent;
   @ViewChild('chat') public nbChat: NbChatComponent;
   @Input() public event!: SchedulerEvent;
@@ -26,10 +26,6 @@ export class EventDetailsContentComponent implements AfterViewInit {
     private _commentService: CommentService,
     private _eventService: EventService,
   ) {
-  }
-
-  ngAfterViewInit(): void {
-    if (this.nbChat) this.nbChat.scrollBottom = true;
   }
 
 
