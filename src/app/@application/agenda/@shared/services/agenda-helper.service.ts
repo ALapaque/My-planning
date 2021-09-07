@@ -9,7 +9,7 @@ import { SchedulerEvent } from '../models/scheduler-event.model';
 import { EventFormComponent } from '../components/forms/event-form/event-form.component';
 import { EventDetailsComponent } from '../components/event-details/event-details.component';
 import { ConfirmDialogComponent } from '../../../../@shared/ui-components/confirm-dialog/confirm-dialog.component';
-import {DateFnsWorkDay} from '../../../@shared/services/event.service';
+import { DateFnsWorkDay } from '../../../@shared/services/event.service';
 import * as moment from 'moment';
 
 export interface TimeSlot {
@@ -29,8 +29,7 @@ export class AgendaHelperService {
   public ejsSchedule: ScheduleComponent | undefined;
   public isAgendaLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private _viewDate: Date = new Date();
-  private _views: Array<View> = [ 'Day', 'Week', 'WorkWeek', 'Month', 'Year', 'Agenda' ];
-  private _timelineViews: Array<View> = [ 'TimelineDay', 'TimelineWeek', 'TimelineWorkWeek', 'TimelineMonth', 'TimelineYear' ];
+  private _views: Array<View> = [ 'Day', 'Week', 'WorkWeek', 'Month', 'Year', 'TimelineDay', 'TimelineWeek', 'TimelineWorkWeek', 'TimelineMonth', 'TimelineYear' ];
   private _timeSlotDuration: Array<TimeSlot> = [
     { name: 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS', value: 15 },
     { name: 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS', value: 30 },
@@ -99,14 +98,6 @@ export class AgendaHelperService {
     this._views = value;
   }
 
-  get timelineViews(): Array<View> {
-    return this._timelineViews;
-  }
-
-  set timelineViews(value: Array<View>) {
-    this._timelineViews = value;
-  }
-
   get timeSlotDuration(): Array<TimeSlot> {
     return this._timeSlotDuration;
   }
@@ -132,6 +123,7 @@ export class AgendaHelperService {
   }
 
   set currentViewDisplayed(value: View) {
+    console.log(value);
     this._currentViewDisplayed = value;
   }
 

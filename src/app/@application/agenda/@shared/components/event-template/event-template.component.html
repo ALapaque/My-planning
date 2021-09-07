@@ -1,4 +1,6 @@
-<div class='template-wrap' style="border-color: {{event.Meta.agenda.color}} !important">
+<div [class]="'template-wrap ' + view.toLowerCase()"
+     [nbTooltip]="event.Subject"
+     style="border-color: {{event.Meta.agenda.color}} !important">
   <div class="subject" [style.background]="event.PrimaryColor"
        fxLayoutGap="8px"
        fxLayoutAlign="start center">

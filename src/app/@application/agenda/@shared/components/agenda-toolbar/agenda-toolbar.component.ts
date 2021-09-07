@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
+import { View } from '@syncfusion/ej2-angular-schedule';
 import { LoaderService } from '../../../../@shared/services/loader.service';
 import { AgendaHelperService } from '../../services/agenda-helper.service';
 import { NbDialogCustomService } from '../../../../../@shared/services/nb-dialog-custom.service';
@@ -78,5 +79,18 @@ export class AgendaToolbarComponent implements OnInit {
         break;
     }
     this.agendaHelperService.refreshAgenda$.next(true);
+  }
+
+  onViewChange(view: View): void {
+    this.agendaHelperService.currentViewDisplayed = view;
+    this.agendaHelperService.refreshAgenda$.next(true);
+  }
+
+  normalViews(): Array<View> {
+    return this.agendaHelperService.views.filter((view: string) => !view.toLowerCase().includes('timeline'));
+  }
+
+  timeLineViews(): Array<View> {
+    return this.agendaHelperService.views.filter((view: string) => view.toLowerCase().includes('timeline'));
   }
 }

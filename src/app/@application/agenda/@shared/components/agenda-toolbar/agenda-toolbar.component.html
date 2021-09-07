@@ -61,25 +61,21 @@
                    (ngModelChange)="agendaHelperService.refreshAgenda$.next(true)"
                    [size]="'tiny'"
                    filled
-                   placeholder="Selectionner une vue"
                    shape="semi-round"
                    status="primary">
-
-          <nb-option *ngFor="let view of agendaHelperService.views"
+          <nb-option *ngFor="let view of normalViews()"
                      [value]="view">
             {{ 'APP.AGENDA.VIEWS.' + view.toUpperCase() | translate }}
           </nb-option>
 
-          <!--          <nb-option-group title="Ligne du temps">-->
-          <!--            <nb-option *ngFor="let view of agendaHelperService.timelineViews"-->
-          <!--                       [value]="view">-->
-          <!--              {{ 'APP.AGENDA.VIEWS.' + view.toUpperCase() | translate }}-->
-          <!--            </nb-option>-->
-          <!--          </nb-option-group>-->
-
+          <nb-option-group title="Ligne du temps">
+            <nb-option *ngFor="let timeLineView of timeLineViews()"
+                       [value]="timeLineView">
+              {{ 'APP.AGENDA.VIEWS.' + timeLineView.toUpperCase() | translate }}
+            </nb-option>
+          </nb-option-group>
         </nb-select>
       </nb-action>
     </nb-actions>
-
   </nb-card-body>
 </nb-card>
