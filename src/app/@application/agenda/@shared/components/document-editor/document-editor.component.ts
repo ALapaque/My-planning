@@ -50,7 +50,6 @@ export class DocumentEditorComponent implements OnInit {
   }
 
   onSave(format: FormatType = 'Sfdt') {
-    console.log(this.container.documentEditor);
     this.event.Meta.report = this.container.documentEditor.serialize();
 
     this.saveReport.emit(true);

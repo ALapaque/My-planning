@@ -95,7 +95,6 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
   }
 
   public eventResized($event: ResizeEventArgs): void {
-    console.log($event.data);
     this._eventService.save(new SchedulerEvent($event.data)).subscribe();
   }
 
