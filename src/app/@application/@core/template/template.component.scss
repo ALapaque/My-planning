@@ -57,8 +57,8 @@
     }
 
     nb-chat {
-      height: auto;
-      min-height: calc(100vh - 350px) !important;
+      min-height: 300px;
+      height: calc(100vh - 348px);
       box-shadow: none !important;
     }
   }

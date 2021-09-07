@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { DocumentEditorContainerComponent, FormatType, ToolbarService } from '@syncfusion/ej2-angular-documenteditor';
 import { AuthService } from '../../../../../@shared/services/auth.service';
+import { LocaleService } from '../../../../@shared/services/locale.service';
 import { SchedulerEvent } from '../../models/scheduler-event.model';
 
 @Component({
@@ -18,7 +19,8 @@ export class DocumentEditorComponent implements OnInit {
   public isFullscreen: boolean = false;
 
   constructor(
-    public authService: AuthService
+    public authService: AuthService,
+    public localeService: LocaleService,
   ) {
   }
 

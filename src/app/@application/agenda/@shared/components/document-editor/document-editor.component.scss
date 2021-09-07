@@ -1,6 +1,7 @@
 @import "../../../../../../theme/theme";
 
 nb-card {
+  margin: 0;
 
   &.fullscreen {
     position: fixed !important;

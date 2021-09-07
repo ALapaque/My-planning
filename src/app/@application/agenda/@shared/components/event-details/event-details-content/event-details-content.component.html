@@ -1,4 +1,5 @@
-<nb-accordion>
+<nb-accordion [fxFlex.gt-sm]="'80vw'"
+              [fxFlex.lt-sm]="'100%'">
   <nb-accordion-item [expanded]="true">
     <nb-badge text="new" status="success" position="top right"></nb-badge>
     <nb-accordion-item-header>{{ 'APP.AGENDA.DETAILS.STEPS.1.TITLE' | translate }}</nb-accordion-item-header>

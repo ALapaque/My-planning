@@ -24,6 +24,7 @@
 
   <nb-card-body>
     <ejs-documenteditorcontainer #documenteditor_default
+                                 [locale]="localeService.locale"
                                  [enableToolbar]=true
                                  [showPropertiesPane]="false"
                                  (created)="onCreate()"

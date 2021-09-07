@@ -8,6 +8,7 @@ import {
 import { ScheduleComponent } from '@syncfusion/ej2-angular-schedule/src/schedule/schedule.component';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
+import { LocaleService } from '../../@shared/services/locale.service';
 import { AgendaHelperService } from '../@shared/services/agenda-helper.service';
 import { TranslateService } from '@ngx-translate/core';
 import { NbDialogCustomService } from '../../../@shared/services/nb-dialog-custom.service';
@@ -30,6 +31,7 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
 
   constructor(
     public agendaHelperService: AgendaHelperService,
+    public localeService: LocaleService,
     private _eventService: EventService,
     private _dialogService: NbDialogService,
     private _dialogServiceCustom: NbDialogCustomService,
@@ -44,14 +46,22 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
   }
 
   @HostListener('window:resize', [ '$event' ])
-  onResize(event: any) {
+  onResize(event: any): void {
     const width: number = event.target.innerWidth;
 
     if (width <= 960) {
-      this.agendaHelperService.currentViewDisplayed = 'Day';
+      if (this.agendaHelperService.currentViewDisplayed !== 'Day') {
+        this.agendaHelperService.currentViewDisplayed = 'Day';
+        this.agendaHelperService.refreshAgenda$.next(true);
+      }
     } else {
-      this.agendaHelperService.currentViewDisplayed = 'Week';
+      if (this.agendaHelperService.currentViewDisplayed !== 'Week') {
+        this.agendaHelperService.currentViewDisplayed = 'Week';
+        this.agendaHelperService.refreshAgenda$.next(true);
+      }
     }
+
+    if (this.ejsSchedule) this.ejsSchedule.render();
   }
 
   public ngAfterViewInit(): void {
@@ -72,45 +82,39 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
 
   public eventClicked($event: EventClickArgs): void {
     const event: SchedulerEvent = $event.event as SchedulerEvent;
-    this._eventService.getById(event.Id).pipe(
-      tap((eventReceived: SchedulerEvent) => this.agendaHelperService.openEventDetailsDialog(eventReceived))
-    ).subscribe();
-
+    this._eventService
+      .getById(event.Id)
+      .pipe(tap((eventReceived: SchedulerEvent) => this.agendaHelperService.openEventDetailsDialog(eventReceived)))
+      .subscribe();
   }
 
   public eventDropped($event: DragEventArgs): void {
-    this._eventService.save(new SchedulerEvent($event.data)).subscribe();
+    this._eventService
+      .save(new SchedulerEvent($event.data))
+      .subscribe();
   }
 
-  public eventResized($event: ResizeEventArgs) {
+  public eventResized($event: ResizeEventArgs): void {
     console.log($event.data);
     this._eventService.save(new SchedulerEvent($event.data)).subscribe();
   }
 
-  public getAgendaLocale() {
-    const browserLang: string = this._translateService.getBrowserLang();
-    let languageUsed: string;
-
-    if (sessionStorage.getItem('i18n')) {
-      languageUsed = (sessionStorage.getItem('i18n') as string).match(/fr|fr-FR/) ? 'fr-BE' : 'en-US';
-    } else {
-      languageUsed = browserLang.match(/fr|fr-FR/) ? 'fr-BE' : 'en-US';
-      sessionStorage.setItem('i18n', languageUsed);
-    }
-
-    return languageUsed;
-  }
-
-
-  private _refreshEvents() {
+  private _refreshEvents(): void {
     this.events$ = this._eventService.getEvents().pipe(
       takeUntil(this._destroy)
     );
   }
 
-  private _initRefreshListener() {
-    this.agendaHelperService.refreshAgenda$.pipe(
-      takeUntil(this._destroy)
-    ).subscribe((refresh: true) => this._refreshEvents());
+  private _initRefreshListener(): void {
+    this.agendaHelperService
+      .refreshAgenda$
+      .pipe(
+        takeUntil(this._destroy),
+        tap((refresh: true) => {
+          if (refresh) {
+            this._refreshEvents();
+          }
+        }))
+      .subscribe();
   }
 }
