@@ -38,6 +38,8 @@ import {
   DocumentEditorContainerAllModule,
 } from '@syncfusion/ej2-angular-documenteditor';
 import { EventChatComponent } from './@shared/components/event-chat/event-chat.component';
+import { AgendaSidebarComponent } from './@shared/components/agenda-sidebar/agenda-sidebar.component';
+import { AgendaCalendarSelectorComponent } from './@shared/components/agenda-calendar-selector/agenda-calendar-selector.component';
 
 const fr_Local: any = '@syncfusion/ej2-locale/src/fr.json';
 
@@ -274,6 +276,8 @@ setCulture('fr');
     AgendaLabelComponent,
     DocumentEditorComponent,
     EventChatComponent,
+    AgendaSidebarComponent,
+    AgendaCalendarSelectorComponent,
   ],
   imports: [
     CommonModule,

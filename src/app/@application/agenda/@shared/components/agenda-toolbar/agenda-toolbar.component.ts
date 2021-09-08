@@ -1,10 +1,12 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit } from '@angular/core';
+import { NbSidebarState } from '@nebular/theme/components/sidebar/sidebar.component';
 import { View } from '@syncfusion/ej2-angular-schedule';
+import { Subject } from 'rxjs';
 import { LoaderService } from '../../../../@shared/services/loader.service';
 import { AgendaHelperService } from '../../services/agenda-helper.service';
 import { NbDialogCustomService } from '../../../../../@shared/services/nb-dialog-custom.service';
 import { AgendaSettingsComponent } from '../agenda-settings/agenda-settings.component';
-import { NbDialogService } from '@nebular/theme';
+import { NbDialogService, NbSidebarService } from '@nebular/theme';
 import * as moment from 'moment';
 
 @Component({
@@ -12,10 +14,14 @@ import * as moment from 'moment';
   templateUrl: './agenda-toolbar.component.html',
   styleUrls: [ './agenda-toolbar.component.scss' ],
 })
-export class AgendaToolbarComponent implements OnInit {
+export class AgendaToolbarComponent implements OnInit, OnDestroy {
+  @Input() calendarSidebarState!: NbSidebarState;
+
+  private _destroy$: Subject<any> = new Subject();
 
   constructor(
     public agendaHelperService: AgendaHelperService,
+    public nbSidebarService: NbSidebarService,
     private _loaderService: LoaderService,
     private _dialogService: NbDialogService,
     private _dialogCustomService: NbDialogCustomService,
@@ -23,6 +29,10 @@ export class AgendaToolbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this._destroy$.next();
   }
 
   navigatePrevious(): void {

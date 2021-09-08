@@ -1,5 +1,9 @@
 :host ::ng-deep {
   nb-layout {
+    .layout {
+      min-height: calc(100vh - 200px) !important;
+    }
+
     nb-layout-column {
       padding: 1.5rem !important;
 

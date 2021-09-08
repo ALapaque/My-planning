@@ -1,2 +1,18 @@
-<app-agenda-toolbar></app-agenda-toolbar>
-<router-outlet></router-outlet>
+<nb-layout>
+  <nb-layout-column>
+    <app-agenda-toolbar [calendarSidebarState]="nbSidebarComponent.state"></app-agenda-toolbar>
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+
+  <nb-sidebar #nbSidebarComponent
+              [tag]="'agenda'"
+              [containerFixed]="true"
+              right
+              [responsive]="true"
+              [(state)]="nbSidebarState"
+              (stateChange)="nbSidebarState = $event">
+    <app-agenda-sidebar></app-agenda-sidebar>
+  </nb-sidebar>
+</nb-layout>
+
+

@@ -1,0 +1,17 @@
+<div fxLayoutAlign="space-between center">
+  <span><ng-content></ng-content></span>
+
+  <button nbButton
+          ghost
+          size="tiny"
+          shape="round"
+          (click)="expanded = !expanded">
+    <nb-icon [icon]="expanded ? 'arrow-ios-upward-outline' : 'arrow-ios-downward-outline'"></nb-icon>
+  </button>
+</div>
+
+<div *ngIf="expanded">
+  <nb-checkbox *ngFor="let x of [1,2,3,4,5,6]">
+    {{x}}
+  </nb-checkbox>
+</div>

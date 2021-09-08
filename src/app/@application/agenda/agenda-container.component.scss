@@ -1,2 +1,18 @@
+:host ::ng-deep {
+  nb-layout {
+    height: 100% !important;
 
+    nb-sidebar {
+      .scrollable {
+        padding: 2rem 1rem;
+      }
+    }
 
+    nb-layout-column {
+      padding: 0 !important;
+      nb-card {
+        height: inherit !important;
+      }
+    }
+  }
+}

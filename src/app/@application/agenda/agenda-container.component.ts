@@ -7,7 +7,7 @@ import {NbSidebarState} from '@nebular/theme/components/sidebar/sidebar.componen
              styleUrls: [ './agenda-container.component.scss' ],
            })
 export class AgendaContainerComponent implements OnInit {
-  nbSidebarState: NbSidebarState = 'compacted';
+  nbSidebarState: NbSidebarState = 'collapsed';
 
   constructor() {
   }
