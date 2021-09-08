@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
       );
   }
 
-  checkFieldForError(fieldName: string) {
+  checkFieldForError(fieldName: string): boolean {
     return ErrorStateMatcher.checkField(fieldName, this.loginForm);
   }
 }

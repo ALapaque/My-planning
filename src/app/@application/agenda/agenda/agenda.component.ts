@@ -8,6 +8,7 @@ import {
 import { ScheduleComponent } from '@syncfusion/ej2-angular-schedule/src/schedule/schedule.component';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
+import { ResponsiveService } from '../../../@shared/services/responsive.service';
 import { LocaleService } from '../../@shared/services/locale.service';
 import { AgendaHelperService } from '../@shared/services/agenda-helper.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -37,6 +38,7 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
     private _dialogServiceCustom: NbDialogCustomService,
     private _translateService: TranslateService,
     private _toastrService: ToastrService,
+    private _responsiveService: ResponsiveService,
   ) {
     this.onResize({ target: { innerWidth: window.innerWidth } });
 
@@ -49,7 +51,7 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
   onResize(event: any): void {
     const width: number = event.target.innerWidth;
 
-    if (width <= 960 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    if (this._responsiveService.isMobile) {
       if (this.agendaHelperService.currentViewDisplayed !== 'Day') {
         this.agendaHelperService.currentViewDisplayed = 'Day';
         this.agendaHelperService.refreshAgenda$.next(true);

@@ -11,6 +11,7 @@ import { NbThemeModule } from '@nebular/theme';
 import { ToastrModule } from 'ngx-toastr';
 import { ErrorInterceptor } from './@shared/interceptors/error.interceptor';
 import { JwtInterceptor } from './@shared/interceptors/jwt.interceptor';
+import { ResponsiveService } from './@shared/services/responsive.service';
 import { SharedModule } from './@shared/shared.module';
 import { AppComponent } from './app.component';
 import { AppRouting } from './app.routing';
@@ -89,7 +90,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
       multi: true
-    }
+    },
+    ResponsiveService
   ],
   bootstrap: [ AppComponent ],
 })
