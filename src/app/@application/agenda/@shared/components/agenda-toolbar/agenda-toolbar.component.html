@@ -2,16 +2,6 @@
   <nb-card-body>
     <nb-actions [size]="'small'">
       <nb-action>
-        <button nbButton
-                ghost
-                status="primary"
-                shape="round"
-                size="small"
-                (click)="nbSidebarService.toggle(false, 'agenda')">
-          <nb-icon
-            [icon]="calendarSidebarState !== 'expanded' ? 'menu-outline' : 'menu-arrow-outline'">
-          </nb-icon>
-        </button>
         <div fxLayoutAlign="start center"
              fxLayoutGap="16px">
 
@@ -72,7 +62,8 @@
                    [size]="'tiny'"
                    filled
                    shape="semi-round"
-                   status="primary">
+                   status="primary"
+                   [style.marginLeft]="'16px'">
           <nb-option *ngFor="let view of normalViews()"
                      [value]="view">
             {{ 'APP.AGENDA.VIEWS.' + view.toUpperCase() | translate }}
@@ -85,6 +76,20 @@
             </nb-option>
           </nb-option-group>
         </nb-select>
+      </nb-action>
+
+      <nb-action>
+        <button nbButton
+                ghost
+                status="primary"
+                shape="round"
+                size="small"
+                (click)="nbSidebarService.toggle(false, 'agenda')"
+                [style.marginLeft]="'16px'">
+          <nb-icon [style.transform]="'rotateZ(180deg)'"
+                   [icon]="calendarSidebarState !== 'expanded' ? 'menu-outline' : 'menu-arrow-outline'">
+          </nb-icon>
+        </button>
       </nb-action>
     </nb-actions>
   </nb-card-body>

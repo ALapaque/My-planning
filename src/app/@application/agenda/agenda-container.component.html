@@ -6,9 +6,10 @@
 
   <nb-sidebar #nbSidebarComponent
               [tag]="'agenda'"
-              [containerFixed]="true"
               right
               [responsive]="true"
+              [compactedBreakpoints]="[]"
+              [collapsedBreakpoints]="['xs', 'is', 'sm', 'sm', 'md', 'lg']"
               [(state)]="nbSidebarState"
               (stateChange)="nbSidebarState = $event">
     <app-agenda-sidebar></app-agenda-sidebar>

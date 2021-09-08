@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Agenda } from '../../../../../@shared/models/agenda.model';
 
 @Component({
   selector: 'app-agenda-calendar-selector',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./agenda-calendar-selector.component.scss']
 })
 export class AgendaCalendarSelectorComponent implements OnInit {
-  public expanded: boolean = false;
+  @Input() public expanded: boolean = false;
+  @Input() public agendas: Array<Agenda>;
 
   constructor() { }
 

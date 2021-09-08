@@ -1,4 +1,5 @@
-<div fxLayoutAlign="space-between center">
+<div class="title"
+     fxLayoutAlign="space-between center">
   <span><ng-content></ng-content></span>
 
   <button nbButton
@@ -10,8 +11,9 @@
   </button>
 </div>
 
-<div *ngIf="expanded">
-  <nb-checkbox *ngFor="let x of [1,2,3,4,5,6]">
-    {{x}}
+<div *ngIf="expanded"
+     class="calendars-container">
+  <nb-checkbox *ngFor="let x of [1,2,3,4,5,6,8,9,10,11,12]">
+    <span>test test test test test test test test </span>
   </nb-checkbox>
 </div>

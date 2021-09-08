@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NbSidebarService } from '@nebular/theme';
 
 @Component({
   selector: 'app-agenda-sidebar',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgendaSidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public nbSidebarService: NbSidebarService,
+  ) { }
 
   ngOnInit(): void {
   }

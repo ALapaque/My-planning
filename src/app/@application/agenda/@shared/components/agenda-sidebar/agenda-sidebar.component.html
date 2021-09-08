@@ -1,13 +1,37 @@
-<div fxLayout="column" fxLayoutGap="6px">
+<div class="sidenav-container"
+     fxLayout="column"
+     fxLayoutGap="1rem">
 
-  <app-agenda-calendar-selector>
-    Mes agendas
-  </app-agenda-calendar-selector>
+  <nb-sidebar-header fxLayout="row"
+                     fxLayoutAlign="space-between center">
+    <h6>Filtrer par calendrier</h6>
+    <button nbButton
+            ghost
+            shape="round"
+            size="tiny"
+            (click)="nbSidebarService.toggle(false, 'agenda')">
+      <nb-icon [icon]="'close-outline'"></nb-icon>
+    </button>
+  </nb-sidebar-header>
 
+  <div class="calendars-selector-container">
+    <app-agenda-calendar-selector [expanded]="true">
+      Mes agendas
+    </app-agenda-calendar-selector>
+  </div>
 
-  <app-agenda-calendar-selector>
-    Agendas partagés
-  </app-agenda-calendar-selector>
+  <div class="calendars-selector-container">
+    <app-agenda-calendar-selector [expanded]="false">
+      Agendas partagés
+    </app-agenda-calendar-selector>
+  </div>
+
+  <nb-sidebar-footer fxLayoutAlign="center center">
+    <button nbButton outline status="success" shape="round" size="medium">
+      <nb-icon [icon]="'checkmark-outline'"></nb-icon>
+      <span fxHide.lt-sm>Filtrer</span>
+    </button>
+  </nb-sidebar-footer>
 </div>
 
 
