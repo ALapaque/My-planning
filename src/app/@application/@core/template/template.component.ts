@@ -11,8 +11,7 @@ import { LoaderService } from '../../@shared/services/loader.service';
   styleUrls: [ './template.component.scss' ],
 })
 export class TemplateComponent implements OnInit, OnDestroy {
-
-  public nbSidebarState: NbSidebarState = 'expanded';
+  public nbSidebarState: NbSidebarState = 'collapsed';
 
   private _destroy: Subject<any> = new Subject<any>();
 
@@ -24,7 +23,7 @@ export class TemplateComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this._initTheme();
   }
 
