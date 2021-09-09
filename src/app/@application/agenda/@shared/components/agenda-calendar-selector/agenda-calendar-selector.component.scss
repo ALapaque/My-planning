@@ -3,7 +3,8 @@
 }
 
 .calendars-container {
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
   height: 90%;
   padding-left: 0.5rem;
 }

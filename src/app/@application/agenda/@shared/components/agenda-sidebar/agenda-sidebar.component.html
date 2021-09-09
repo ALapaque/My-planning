@@ -4,32 +4,60 @@
 
   <nb-sidebar-header fxLayout="row"
                      fxLayoutAlign="space-between center">
-    <h6>Filtrer par calendrier</h6>
-    <button nbButton
-            ghost
-            shape="round"
-            size="tiny"
-            (click)="nbSidebarService.toggle(false, 'agenda')">
-      <nb-icon [icon]="'close-outline'"></nb-icon>
-    </button>
+    <h6>Filtres :</h6>
+
+    <div fxLayoutGap="6px">
+      <button nbButton
+              ghost
+              shape="round"
+              size="small"
+              (click)="nbSidebarService.toggle(false, 'agenda')">
+        <nb-icon [icon]="'plus-outline'"
+                 status="success">
+        </nb-icon>
+      </button>
+      <button *ngIf="responsiveService.isMobile"
+              nbButton
+              outline
+              status="danger"
+              shape="round"
+              size="small"
+              (click)="nbSidebarService.toggle(false, 'agenda')">
+        <nb-icon [icon]="'close-outline'"
+                 status="danger">
+        </nb-icon>
+      </button>
+    </div>
   </nb-sidebar-header>
 
   <div class="calendars-selector-container">
-    <app-agenda-calendar-selector [expanded]="true">
+    <app-agenda-calendar-selector [expanded]="true"
+                                  [agendas$]="agendas$">
       Mes agendas
     </app-agenda-calendar-selector>
   </div>
 
   <div class="calendars-selector-container">
-    <app-agenda-calendar-selector [expanded]="false">
+    <app-agenda-calendar-selector [expanded]="false"
+                                  [agendas$]="sharedAgendas$">
       Agendas partagés
     </app-agenda-calendar-selector>
   </div>
 
   <nb-sidebar-footer fxLayoutAlign="center center">
-    <button nbButton outline status="success" shape="round" size="medium">
-      <nb-icon [icon]="'checkmark-outline'"></nb-icon>
-      <span fxHide.lt-sm>Filtrer</span>
+    <button nbButton
+            outline
+            status="success"
+            shape="round"
+            size="medium">
+      <ng-container *ngIf="responsiveService.isMobile; else desktopFilterBtnTemplate">
+        <nb-icon [icon]="'checkmark-outline'"></nb-icon>
+      </ng-container>
+
+      <ng-template #desktopFilterBtnTemplate>
+        <nb-icon [icon]="'checkmark-outline'"></nb-icon>
+        Appliquer
+      </ng-template>
     </button>
   </nb-sidebar-footer>
 </div>

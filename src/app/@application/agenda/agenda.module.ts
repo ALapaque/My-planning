@@ -40,6 +40,7 @@ import {
 import { EventChatComponent } from './@shared/components/event-chat/event-chat.component';
 import { AgendaSidebarComponent } from './@shared/components/agenda-sidebar/agenda-sidebar.component';
 import { AgendaCalendarSelectorComponent } from './@shared/components/agenda-calendar-selector/agenda-calendar-selector.component';
+import { AgendaCalendarBtnComponent } from './@shared/components/agenda-calendar-selector/agenda-calendar-btn/agenda-calendar-btn.component';
 
 const fr_Local: any = '@syncfusion/ej2-locale/src/fr.json';
 
@@ -278,6 +279,7 @@ setCulture('fr');
     EventChatComponent,
     AgendaSidebarComponent,
     AgendaCalendarSelectorComponent,
+    AgendaCalendarBtnComponent,
   ],
   imports: [
     CommonModule,

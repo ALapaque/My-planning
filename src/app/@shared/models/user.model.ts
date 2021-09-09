@@ -31,4 +31,5 @@ export class User implements AbstractEntity<number> {
   public displayFormattedName(): string {
     return this.firstName + ' ' + this.lastName;
   }
+
 }

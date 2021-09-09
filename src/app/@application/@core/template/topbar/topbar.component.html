@@ -1,10 +1,14 @@
 <button nbButton
-        ghost
-        status="primary"
+        [ghost]="!nbSidebarComponent.expanded"
+        [outline]="nbSidebarComponent.expanded"
+        [status]="!nbSidebarComponent.expanded ? 'primary' : 'danger'"
         shape="semi-round"
         size="large"
-        (click)="toggle.emit()">
-  <nb-icon [icon]="nbSidebarComponent.compacted ? 'menu-outline' : 'menu-arrow-outline'"></nb-icon>
+        (click)="toggle.emit()"
+        [style.marginLeft]="'16px'">
+  <nb-icon [icon]="!nbSidebarComponent.expanded ? 'menu-outline' : 'close-outline'"
+           [status]="!nbSidebarComponent.expanded ? 'primary' : 'danger'">
+  </nb-icon>
 </button>
 <nb-search [type]="'modal-zoomin'"
            [hint]="'APP.SEARCH.HINT' | translate"

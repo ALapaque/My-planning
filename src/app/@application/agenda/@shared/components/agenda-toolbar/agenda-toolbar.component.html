@@ -80,14 +80,15 @@
 
       <nb-action>
         <button nbButton
-                ghost
-                status="primary"
+                [ghost]="calendarSidebarState !== 'expanded'"
+                [outline]="calendarSidebarState === 'expanded'"
+                [status]="calendarSidebarState !== 'expanded' ? 'basic' : 'danger'"
                 shape="round"
                 size="small"
                 (click)="nbSidebarService.toggle(false, 'agenda')"
                 [style.marginLeft]="'16px'">
-          <nb-icon [style.transform]="'rotateZ(180deg)'"
-                   [icon]="calendarSidebarState !== 'expanded' ? 'menu-outline' : 'menu-arrow-outline'">
+          <nb-icon [icon]="calendarSidebarState !== 'expanded' ? 'funnel-outline' : 'close-outline'"
+                   [status]="calendarSidebarState !== 'expanded' ? 'basic' : 'danger'">
           </nb-icon>
         </button>
       </nb-action>
