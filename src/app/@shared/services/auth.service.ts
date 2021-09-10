@@ -47,8 +47,9 @@ export class AuthService {
   }
 
   public logout() {
-    // remove user from local storage to log user out
+    // remove elements from local storage to log user out
     sessionStorage.removeItem('jwtHelper');
+    sessionStorage.removeItem('calendarsSelected');
     this.jwtHelper$.next(new JwtHelper());
   }
 }

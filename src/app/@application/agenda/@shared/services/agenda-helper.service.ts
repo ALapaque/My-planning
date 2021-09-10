@@ -4,6 +4,7 @@ import { ScheduleComponent } from '@syncfusion/ej2-angular-schedule/src/schedule
 import { BehaviorSubject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { NbDialogRef, NbDialogService } from '@nebular/theme';
+import { Agenda } from '../../../../@shared/models/agenda.model';
 import { NbDialogCustomService } from '../../../../@shared/services/nb-dialog-custom.service';
 import { SchedulerEvent } from '../models/scheduler-event.model';
 import { EventFormComponent } from '../components/forms/event-form/event-form.component';
@@ -25,9 +26,10 @@ export interface WeekDay {
 @Injectable()
 export class AgendaHelperService {
   public refreshAgenda$: BehaviorSubject<true> = new BehaviorSubject<true>(null);
-
-  public ejsSchedule: ScheduleComponent | undefined;
   public isAgendaLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public ejsSchedule: ScheduleComponent | undefined;
+
+  private _calendarsSelected: Array<number>;
   private _viewDate: Date = new Date();
   private _views: Array<View> = [ 'Day', 'Week', 'WorkWeek', 'Month', 'Year', 'TimelineDay', 'TimelineWeek', 'TimelineWorkWeek', 'TimelineMonth', 'TimelineYear' ];
   private _timeSlotDuration: Array<TimeSlot> = [
@@ -58,6 +60,7 @@ export class AgendaHelperService {
     private _dialogService: NbDialogService,
     private _dialogCustomService: NbDialogCustomService,
   ) {
+    this.calendarsSelected = JSON.parse(sessionStorage.getItem('calendarsSelected'));
     this._timeSlotDisplayed = this._timeSlotDuration[2];
     this._weekDaysDisplayed = this._weekDays;
     this._firstDayDisplayed = this._weekDays[1];
@@ -151,6 +154,16 @@ export class AgendaHelperService {
   set firstDayDisplayed(value: WeekDay) {
     this._firstDayDisplayed = value;
     this.ejsSchedule.firstDayOfWeek = value.value;
+  }
+
+  get calendarsSelected(): Array<number> {
+    return this._calendarsSelected;
+  }
+
+  set calendarsSelected(value: Array<number>) {
+    this._calendarsSelected = value;
+    sessionStorage.setItem('calendarsSelected', JSON.stringify(value));
+    this.refreshAgenda$.next(true);
   }
 
   openEventDetailsDialog(event: SchedulerEvent): NbDialogRef<EventDetailsComponent> {

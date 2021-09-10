@@ -6,7 +6,7 @@ import {
   EventSettingsModel, ResizeEventArgs
 } from '@syncfusion/ej2-angular-schedule';
 import { ScheduleComponent } from '@syncfusion/ej2-angular-schedule/src/schedule/schedule.component';
-import { Observable, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 import { ResponsiveService } from '../../../@shared/services/responsive.service';
 import { LocaleService } from '../../@shared/services/locale.service';
@@ -26,7 +26,7 @@ import { ToastrService } from 'ngx-toastr';
 export class AgendaComponent implements AfterViewInit, OnDestroy {
   @ViewChild('ejsSchedule') public ejsSchedule: ScheduleComponent | undefined;
 
-  public events$: Observable<EventSettingsModel>;
+  public events$: Observable<EventSettingsModel> = of({ dataSource: [] });
 
   private _destroy: Subject<any> = new Subject<any>();
 
@@ -42,8 +42,6 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
   ) {
     this.onResize({ target: { innerWidth: window.innerWidth } });
 
-    this.agendaHelperService.isAgendaLoading.next(true);
-    this._refreshEvents();
     this._initRefreshListener();
   }
 
@@ -113,6 +111,7 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
         takeUntil(this._destroy),
         tap((refresh: true) => {
           if (refresh) {
+            this.agendaHelperService.isAgendaLoading.next(true);
             this._refreshEvents();
           }
         }))

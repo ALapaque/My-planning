@@ -34,6 +34,7 @@ export class EventService {
     const parameters: { startDate: string, endDate: string } = this._generateHttpParams;
     const params: HttpParams = new HttpParams()
       .set('userId', this._authService.user.id.toString(10))
+      .set('agendaIds', this._agendaHelperService.calendarsSelected.toString())
       .set('startDate', parameters.startDate)
       .set('endDate', parameters.endDate);
 

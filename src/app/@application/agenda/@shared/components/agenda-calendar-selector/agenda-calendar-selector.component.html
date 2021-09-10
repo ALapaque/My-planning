@@ -18,17 +18,20 @@
   <div *ngFor="let agenda of agendas$ | async; let index = index"
        fxLayoutAlign="space-between center"
        fxLayoutGap="8px">
-    <nb-checkbox>
+    <ng-container *ngIf="isDefaultUserAgenda(agenda); else selectableAgendaTemplate">
       <app-agenda-label [agenda]="agenda"
                         [fxFlex]="'calc(100% - 7rem)'">
-        <ng-container *ngIf="isDefaultUserAgenda(agenda); else formattedNameTemplate">
-          {{ agenda.name | translate }}
-        </ng-container>
-        <ng-template #formattedNameTemplate>
-          {{ agenda.displayFormattedName() }}
-        </ng-template>
+        {{ agenda.name | translate }}
       </app-agenda-label>
-    </nb-checkbox>
+    </ng-container>
+    <ng-template #selectableAgendaTemplate>
+      <nb-checkbox [checked]="isSelected(agenda)">
+        <app-agenda-label [agenda]="agenda"
+                          [fxFlex]="'calc(100% - 7rem)'">
+          {{ agenda.displayFormattedName() }}
+        </app-agenda-label>
+      </nb-checkbox>
+    </ng-template>
 
     <app-agenda-calendar-btn [agenda]="agenda" [index]="index"></app-agenda-calendar-btn>
   </div>
