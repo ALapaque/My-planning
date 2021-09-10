@@ -7,6 +7,7 @@ import { AuthService } from '../../../../../@shared/services/auth.service';
 import { ResponsiveService } from '../../../../../@shared/services/responsive.service';
 import { AgendaService } from '../../../../@shared/services/agenda.service';
 import { AgendaHelperService } from '../../services/agenda-helper.service';
+import { CalendarCheckedState } from '../agenda-calendar-selector/agenda-calendar-selector.component';
 
 @Component({
   selector: 'app-agenda-sidebar',
@@ -17,6 +18,8 @@ export class AgendaSidebarComponent implements OnInit {
   public agendas$: Observable<Array<Agenda>>;
   public sharedAgendas$: Observable<Array<Agenda>>;
 
+  private _calendarsSelected: Array<number>;
+
   constructor(
     public responsiveService: ResponsiveService,
     public nbSidebarService: NbSidebarService,
@@ -24,6 +27,7 @@ export class AgendaSidebarComponent implements OnInit {
     private _agendaHelperService: AgendaHelperService,
     private _authService: AuthService,
   ) {
+    this._calendarsSelected = this._agendaHelperService.calendarsSelected;
     this.agendas$ = _agendaService.getUserAgendas().pipe(
       tap((agendas: Array<Agenda>) => {
         if (!this._agendaHelperService.calendarsSelected?.length) {
@@ -40,4 +44,17 @@ export class AgendaSidebarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  calendarSelectedOnChange($event: CalendarCheckedState): void {
+    if ($event.checked) {
+      this._calendarsSelected.push($event.agenda.id);
+    } else {
+      const index: number = this._calendarsSelected.findIndex((id: number) => id === $event.agenda.id);
+
+      this._calendarsSelected.splice(index, 1);
+    }
+  }
+
+  applyFilter(): void {
+    this._agendaHelperService.calendarsSelected = this._calendarsSelected;
+  }
 }

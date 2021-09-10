@@ -4,7 +4,7 @@
 
   <nb-sidebar-header fxLayout="row"
                      fxLayoutAlign="space-between center">
-    <h6>Filtres :</h6>
+    <h6>{{ 'APP.AGENDA.SIDEBAR.FILTER' | translate }} :</h6>
 
     <div fxLayoutGap="6px">
       <button nbButton
@@ -32,15 +32,19 @@
 
   <div class="calendars-selector-container">
     <app-agenda-calendar-selector [expanded]="true"
-                                  [agendas$]="agendas$">
-      Mes agendas
+                                  [type]="'user'"
+                                  [agendas$]="agendas$"
+                                  (checkedOnChange)="calendarSelectedOnChange($event)">
+      {{ 'APP.AGENDA.SIDEBAR.MY' | translate }}:
     </app-agenda-calendar-selector>
   </div>
 
   <div class="calendars-selector-container">
     <app-agenda-calendar-selector [expanded]="false"
-                                  [agendas$]="sharedAgendas$">
-      Agendas partagés
+                                  [type]="'shared'"
+                                  [agendas$]="sharedAgendas$"
+                                  (checkedOnChange)="calendarSelectedOnChange($event)">
+      {{ 'APP.AGENDA.SIDEBAR.SHARED' | translate }} :
     </app-agenda-calendar-selector>
   </div>
 
@@ -49,14 +53,15 @@
             outline
             status="success"
             shape="round"
-            size="medium">
+            size="medium"
+            (click)="applyFilter()">
       <ng-container *ngIf="responsiveService.isMobile; else desktopFilterBtnTemplate">
         <nb-icon [icon]="'checkmark-outline'"></nb-icon>
       </ng-container>
 
       <ng-template #desktopFilterBtnTemplate>
         <nb-icon [icon]="'checkmark-outline'"></nb-icon>
-        Appliquer
+        {{ 'APP.AGENDA.SIDEBAR.APPLY_FILTER' | translate }}
       </ng-template>
     </button>
   </nb-sidebar-footer>

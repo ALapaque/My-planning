@@ -61,6 +61,12 @@
   "APP": {
     "AGENDA": {
       "DEFAULT_NAME": "Mon agenda",
+      "SIDEBAR": {
+        "FILTER": "Filtres",
+        "MY": "Mes agendas",
+        "SHARED": "Agendas partagés",
+        "APPLY_FILTER": "Appliquer"
+      },
       "VIEWS": {
         "DAY": "Journée",
         "WEEK": "Semaine",
