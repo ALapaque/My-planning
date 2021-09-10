@@ -6,6 +6,7 @@ import { User } from './user.model';
 
 export class Agenda implements AbstractEntity<number> {
   public id: number = 0;
+  public byDefault: boolean = false;
   public name: string = null;
   public color: string = '#de5c08';
   public user: User = null;

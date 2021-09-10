@@ -52,7 +52,7 @@
     </nb-accordion-item-body>
   </nb-accordion-item>
 
-  <nb-accordion-item>
+  <nb-accordion-item *ngIf="event.Meta.eventType === 'MEETING'">
     <nb-accordion-item-header>{{ 'APP.AGENDA.DETAILS.STEPS.3.TITLE' | translate }}</nb-accordion-item-header>
     <nb-accordion-item-body>
       <button nbButton

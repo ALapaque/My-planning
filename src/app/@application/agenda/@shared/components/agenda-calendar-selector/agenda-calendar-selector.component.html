@@ -21,7 +21,12 @@
     <nb-checkbox>
       <app-agenda-label [agenda]="agenda"
                         [fxFlex]="'calc(100% - 7rem)'">
-        {{ agenda.displayFormattedName() }}
+        <ng-container *ngIf="isDefaultUserAgenda(agenda); else formattedNameTemplate">
+          {{ agenda.name | translate }}
+        </ng-container>
+        <ng-template #formattedNameTemplate>
+          {{ agenda.displayFormattedName() }}
+        </ng-template>
       </app-agenda-label>
     </nb-checkbox>
 

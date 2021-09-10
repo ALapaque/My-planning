@@ -60,6 +60,7 @@
   },
   "APP": {
     "AGENDA": {
+      "DEFAULT_NAME": "Mon agenda",
       "VIEWS": {
         "DAY": "Journée",
         "WEEK": "Semaine",
