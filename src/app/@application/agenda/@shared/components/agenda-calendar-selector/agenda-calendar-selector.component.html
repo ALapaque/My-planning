@@ -19,12 +19,12 @@
        fxLayoutAlign="space-between center"
        fxLayoutGap="8px">
     <ng-container *ngIf="isDefaultUserAgenda(agenda); else selectableAgendaTemplate">
-      <nb-checkbox [checked]="true" [disabled]="true"></nb-checkbox>
-      <app-agenda-label [agenda]="agenda"
-                        [fxFlex]="'calc(100% - 7rem)'"
-                        [style.paddingLeft]="'0.19rem'">
-        {{ agenda.name | translate }}
-      </app-agenda-label>
+      <nb-checkbox [checked]="true" [disabled]="true">
+        <app-agenda-label [agenda]="agenda"
+                          [fxFlex]="'calc(100% - 7rem)'">
+          {{ agenda.name | translate }}
+        </app-agenda-label>
+      </nb-checkbox>
     </ng-container>
     <ng-template #selectableAgendaTemplate>
       <nb-checkbox [checked]="isSelected(agenda)"
