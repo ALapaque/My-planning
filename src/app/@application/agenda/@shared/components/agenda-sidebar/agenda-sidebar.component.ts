@@ -27,18 +27,20 @@ export class AgendaSidebarComponent implements OnInit {
     private _agendaHelperService: AgendaHelperService,
     private _authService: AuthService,
   ) {
-    this._calendarsSelected = this._agendaHelperService.calendarsSelected;
     this.agendas$ = _agendaService.getUserAgendas().pipe(
       tap((agendas: Array<Agenda>) => {
-        if (!this._agendaHelperService.calendarsSelected?.length) {
+        if (!this._agendaHelperService.calendarsSelected || !this._agendaHelperService.calendarsSelected.length) {
           const defaultUserAgenda: Agenda = agendas.find((agenda: Agenda) => (agenda.user.id === _authService.user.id) && agenda.byDefault);
           if (defaultUserAgenda) this._agendaHelperService.calendarsSelected = [ defaultUserAgenda.id ];
         } else {
+          console.log(1);
           this._agendaHelperService.refreshAgenda$.next(true);
         }
+        this._calendarsSelected = this._agendaHelperService.calendarsSelected;
       })
     );
     this.sharedAgendas$ = _agendaService.getUserSharedAgendas();
+
   }
 
   ngOnInit(): void {

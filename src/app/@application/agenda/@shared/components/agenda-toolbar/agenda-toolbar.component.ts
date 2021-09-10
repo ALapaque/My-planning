@@ -15,7 +15,7 @@ import * as moment from 'moment';
   styleUrls: [ './agenda-toolbar.component.scss' ],
 })
 export class AgendaToolbarComponent implements OnInit, OnDestroy {
-  @Input() calendarSidebarState!: NbSidebarState;
+  @Input() calendarSidebarState: NbSidebarState = 'collapsed';
 
   private _destroy$: Subject<any> = new Subject();
 
@@ -88,11 +88,13 @@ export class AgendaToolbarComponent implements OnInit, OnDestroy {
         }
         break;
     }
+    console.log(2);
     this.agendaHelperService.refreshAgenda$.next(true);
   }
 
   onViewChange(view: View): void {
     this.agendaHelperService.currentViewDisplayed = view;
+    console.log(3);
     this.agendaHelperService.refreshAgenda$.next(true);
   }
 

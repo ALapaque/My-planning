@@ -49,7 +49,7 @@
             <nb-option *ngFor="let agenda of myAgendas"
                        [value]="agenda">
               <app-agenda-label [agenda]="agenda">
-                {{ agenda.name }}
+                {{ agenda.name | translate }}
               </app-agenda-label>
             </nb-option>
           </nb-option-group>

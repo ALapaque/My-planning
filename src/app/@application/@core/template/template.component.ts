@@ -4,6 +4,7 @@ import { NbSidebarState } from '@nebular/theme/components/sidebar/sidebar.compon
 import { AuthService } from '../../../@shared/services/auth.service';
 import { Subject } from 'rxjs';
 import { LoaderService } from '../../@shared/services/loader.service';
+import { AgendaHelperService } from '../../agenda/@shared/services/agenda-helper.service';
 
 @Component({
   selector: 'app-template',
@@ -11,7 +12,7 @@ import { LoaderService } from '../../@shared/services/loader.service';
   styleUrls: [ './template.component.scss' ],
 })
 export class TemplateComponent implements OnInit, OnDestroy {
-  public nbSidebarState: NbSidebarState = 'collapsed';
+  public nbSidebarState: NbSidebarState = 'expanded';
 
   private _destroy: Subject<any> = new Subject<any>();
 
@@ -20,6 +21,7 @@ export class TemplateComponent implements OnInit, OnDestroy {
     public loaderService: LoaderService,
     private _nbThemeService: NbThemeService,
     private _authService: AuthService,
+    private _agendaHelperService: AgendaHelperService,
   ) {
   }
 
@@ -37,6 +39,7 @@ export class TemplateComponent implements OnInit, OnDestroy {
 
   public logout(): void {
     this._authService.logout();
+    this._agendaHelperService.calendarsSelected = undefined;
   }
 
   private _initTheme() {

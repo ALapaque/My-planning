@@ -25,7 +25,7 @@ export interface WeekDay {
 
 @Injectable()
 export class AgendaHelperService {
-  public refreshAgenda$: BehaviorSubject<true> = new BehaviorSubject<true>(null);
+  public refreshAgenda$: BehaviorSubject<true> = new BehaviorSubject<true>(undefined);
   public isAgendaLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public ejsSchedule: ScheduleComponent | undefined;
 
@@ -162,8 +162,16 @@ export class AgendaHelperService {
 
   set calendarsSelected(value: Array<number>) {
     this._calendarsSelected = value;
+    if (value === undefined) {
+      sessionStorage.removeItem('calendarsSelected');
+      return;
+    }
+
     sessionStorage.setItem('calendarsSelected', JSON.stringify(value));
-    this.refreshAgenda$.next(true);
+    console.log(4, this.calendarsSelected);
+    if (!!this.calendarsSelected?.length) {
+      this.refreshAgenda$.next(true);
+    }
   }
 
   openEventDetailsDialog(event: SchedulerEvent): NbDialogRef<EventDetailsComponent> {

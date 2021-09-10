@@ -1,6 +1,6 @@
 <nb-layout>
   <nb-layout-column>
-    <app-agenda-toolbar [calendarSidebarState]="nbSidebarComponent.state"></app-agenda-toolbar>
+    <app-agenda-toolbar [calendarSidebarState]="nbSidebarComponent?.state ?? 'collapsed'"></app-agenda-toolbar>
     <router-outlet></router-outlet>
   </nb-layout-column>
 

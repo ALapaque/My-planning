@@ -12,6 +12,7 @@
   <nb-sidebar #nbSidebarComponent
               [tag]="'left'"
               [responsive]="true"
+              [state]="nbSidebarState"
               (stateChange)="nbSidebarState = $event">
     <app-left-menu></app-left-menu>
     <nb-sidebar-footer>

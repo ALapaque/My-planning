@@ -290,7 +290,6 @@ setCulture('fr');
     DocumentEditorContainerAllModule,
   ],
   providers: [
-    AgendaHelperService,
     EventService,
     DayService,
     WeekService,

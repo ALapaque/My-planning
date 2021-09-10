@@ -52,12 +52,18 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
     if (this._responsiveService.isMobile) {
       if (this.agendaHelperService.currentViewDisplayed !== 'Day') {
         this.agendaHelperService.currentViewDisplayed = 'Day';
-        this.agendaHelperService.refreshAgenda$.next(true);
+        if (!!this.agendaHelperService.calendarsSelected?.length) {
+          console.log(5);
+          this.agendaHelperService.refreshAgenda$.next(true);
+        }
       }
     } else {
       if (this.agendaHelperService.currentViewDisplayed !== 'Week') {
         this.agendaHelperService.currentViewDisplayed = 'Week';
-        this.agendaHelperService.refreshAgenda$.next(true);
+        if (!!this.agendaHelperService.calendarsSelected?.length) {
+          console.log(6);
+          this.agendaHelperService.refreshAgenda$.next(true);
+        }
       }
     }
 
@@ -70,6 +76,7 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this._destroy.next();
+    this.agendaHelperService.refreshAgenda$.next(undefined);
   }
 
   public cellClicked($event: CellClickEventArgs): void {
@@ -110,8 +117,9 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
       .pipe(
         takeUntil(this._destroy),
         tap((refresh: true) => {
+          console.log(refresh);
           if (refresh) {
-            this.agendaHelperService.isAgendaLoading.next(true);
+            console.log(refresh);
             this._refreshEvents();
           }
         }))
