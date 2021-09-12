@@ -11,7 +11,7 @@
               ghost
               shape="round"
               size="small"
-              (click)="addAgenda()">
+              (click)="addOrEditAgenda()">
         <nb-icon [icon]="'plus-outline'"
                  status="success">
         </nb-icon>
@@ -35,7 +35,9 @@
                                   [expanded]="true"
                                   [type]="'user'"
                                   [getAgendas$]="agendas$"
-                                  (checkedOnChange)="calendarSelectedOnChange($event)">
+                                  (checkedOnChange)="calendarSelectedOnChange($event)"
+                                  (editEmitter)="addOrEditAgenda($event)"
+                                  (deleteEmitter)="delete($event)">
       {{ 'APP.AGENDA.SIDEBAR.MY' | translate }}:
     </app-agenda-calendar-selector>
   </div>

@@ -22,6 +22,7 @@ export class AgendaCalendarSelectorComponent implements OnInit {
   @Input() public type!: 'shared' | 'user';
 
   @Output() public editEmitter: EventEmitter<Agenda> = new EventEmitter<Agenda>();
+  @Output() public deleteEmitter: EventEmitter<Agenda> = new EventEmitter<Agenda>();
   @Output() public checkedOnChange: EventEmitter<CalendarCheckedState> = new EventEmitter<CalendarCheckedState>();
 
   constructor(

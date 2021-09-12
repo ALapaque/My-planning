@@ -37,8 +37,8 @@ export class AgendaSidebarComponent implements OnInit, OnDestroy {
     private _dialogCustomService: NbDialogCustomService,
     private _dialogService: NbDialogService,
   ) {
-    this._refreshUsersAgendas();
-    this._refreshSharedAgendas();
+    this._initUserAgendas();
+    this._initUserSharedAgendas();
   }
 
   ngOnInit(): void {
@@ -62,18 +62,34 @@ export class AgendaSidebarComponent implements OnInit, OnDestroy {
     this._agendaHelperService.calendarsSelected = this._calendarsSelected;
   }
 
-  addAgenda(): void {
+  addOrEditAgenda(agenda?: Agenda): void {
+    console.log('addOrEdit', agenda);
     this._dialogService
-      .open(AgendaFormComponent, {dialogClass: this._dialogCustomService.isFullscreen, closeOnEsc: true})
+      .open(AgendaFormComponent, {
+        context: {
+          // @ts-ignore
+          agenda: agenda ?? new Agenda(),
+        },
+        dialogClass: this._dialogCustomService.isFullscreen,
+        closeOnEsc: true
+      })
       .onClose
       .pipe(takeUntil(this._destroy$))
       .subscribe((agenda: Agenda) => {
-        this._refreshUsersAgendas();
-        this._userAgendas.refreshAgenda(this.agendas$);
+        this._refreshUserAgendas();
       });
   }
 
-  private _refreshUsersAgendas(): void {
+  delete(agenda: Agenda): void {
+    console.log('delete');
+  }
+
+  private _refreshUserAgendas(): void {
+    this._initUserAgendas();
+    this._userAgendas.refreshAgenda(this.agendas$);
+  }
+
+  private _initUserAgendas(): void {
     this.agendas$ = this._agendaService.getUserAgendas().pipe(
       tap((agendas: Array<Agenda>) => {
         if (!this._agendaHelperService.calendarsSelected || !this._agendaHelperService.calendarsSelected.length) {
@@ -85,10 +101,10 @@ export class AgendaSidebarComponent implements OnInit, OnDestroy {
         this._calendarsSelected = this._agendaHelperService.calendarsSelected;
       })
     );
+
   }
 
-  private _refreshSharedAgendas(): void {
+  private _initUserSharedAgendas(): void {
     this.sharedAgendas$ = this._agendaService.getUserSharedAgendas();
-
   }
 }

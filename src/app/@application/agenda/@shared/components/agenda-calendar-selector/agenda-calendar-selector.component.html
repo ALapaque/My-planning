@@ -43,7 +43,9 @@
 
     <app-agenda-calendar-btn *ngIf="type === 'user'"
                              [agenda]="agenda"
-                             [index]="index">
+                             [index]="index"
+                             (delete)="deleteEmitter.emit($event)"
+                             (edit)="editEmitter.emit($event)">
     </app-agenda-calendar-btn>
   </div>
 </div>
