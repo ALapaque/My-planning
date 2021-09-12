@@ -9,7 +9,8 @@
 
   <div fxLayoutAlign="end center"
        fxLayoutGap="8px">
-    <button nbButton
+    <button *ngIf="isOwner()"
+            nbButton
             ghost
             type="button"
             shape="round"
@@ -19,7 +20,8 @@
       <nb-icon icon="trash-2-outline"></nb-icon>
     </button>
 
-    <button nbButton
+    <button *ngIf="isOwner()"
+            nbButton
             ghost
             type="button"
             shape="round"
