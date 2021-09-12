@@ -30,7 +30,7 @@ export class EventDetailsComponent implements OnInit {
       (schedulerEvent: SchedulerEvent) => {
         if (!schedulerEvent) return;
 
-        this._eventService.save(schedulerEvent).subscribe(() => this.dialogRef.close());
+        this._eventService.save(schedulerEvent).subscribe((updatedEvent: SchedulerEvent) => this.dialogRef.close());
       }
     );
   }

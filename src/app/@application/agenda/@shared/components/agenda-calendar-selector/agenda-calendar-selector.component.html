@@ -41,6 +41,9 @@
       </nb-checkbox>
     </ng-template>
 
-    <app-agenda-calendar-btn [agenda]="agenda" [index]="index"></app-agenda-calendar-btn>
+    <app-agenda-calendar-btn *ngIf="type === 'user'"
+                             [agenda]="agenda"
+                             [index]="index">
+    </app-agenda-calendar-btn>
   </div>
 </div>

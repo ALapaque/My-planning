@@ -41,6 +41,7 @@ import { EventChatComponent } from './@shared/components/event-chat/event-chat.c
 import { AgendaSidebarComponent } from './@shared/components/agenda-sidebar/agenda-sidebar.component';
 import { AgendaCalendarSelectorComponent } from './@shared/components/agenda-calendar-selector/agenda-calendar-selector.component';
 import { AgendaCalendarBtnComponent } from './@shared/components/agenda-calendar-selector/agenda-calendar-btn/agenda-calendar-btn.component';
+import { AgendaFormComponent } from './@shared/components/forms/agenda-form/agenda-form.component';
 
 const fr_Local: any = '@syncfusion/ej2-locale/src/fr.json';
 
@@ -280,6 +281,7 @@ setCulture('fr');
     AgendaSidebarComponent,
     AgendaCalendarSelectorComponent,
     AgendaCalendarBtnComponent,
+    AgendaFormComponent,
   ],
   imports: [
     CommonModule,
@@ -290,7 +292,6 @@ setCulture('fr');
     DocumentEditorContainerAllModule,
   ],
   providers: [
-    EventService,
     DayService,
     WeekService,
     WorkWeekService,

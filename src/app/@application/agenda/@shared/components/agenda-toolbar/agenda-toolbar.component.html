@@ -23,7 +23,8 @@
                    fieldSize="tiny"
                    shape="round"
                    [nbDatepicker]="viewDatePicker"
-                   [(ngModel)]="agendaHelperService.viewDate">
+                   [(ngModel)]="agendaHelperService.viewDate"
+                   (ngModelChange)="agendaHelperService.refreshAgenda$.next(true)">
             <nb-datepicker #viewDatePicker></nb-datepicker>
           </div>
 

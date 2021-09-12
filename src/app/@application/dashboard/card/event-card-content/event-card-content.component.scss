@@ -3,6 +3,11 @@
 :host ::ng-deep {
   nb-list {
     nb-list-item {
+      &:hover {
+        cursor: pointer;
+        font-weight: 600;
+      }
+
       span {
         &.in-progress {
           color: nb-theme(color-danger-default);

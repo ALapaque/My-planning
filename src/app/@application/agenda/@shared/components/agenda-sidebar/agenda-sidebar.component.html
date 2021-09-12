@@ -11,7 +11,7 @@
               ghost
               shape="round"
               size="small"
-              (click)="nbSidebarService.toggle(false, 'agenda')">
+              (click)="addAgenda()">
         <nb-icon [icon]="'plus-outline'"
                  status="success">
         </nb-icon>
@@ -31,18 +31,20 @@
   </nb-sidebar-header>
 
   <div class="calendars-selector-container">
-    <app-agenda-calendar-selector [expanded]="true"
+    <app-agenda-calendar-selector #userAgendas
+                                  [expanded]="true"
                                   [type]="'user'"
-                                  [agendas$]="agendas$"
+                                  [getAgendas$]="agendas$"
                                   (checkedOnChange)="calendarSelectedOnChange($event)">
       {{ 'APP.AGENDA.SIDEBAR.MY' | translate }}:
     </app-agenda-calendar-selector>
   </div>
 
   <div class="calendars-selector-container">
-    <app-agenda-calendar-selector [expanded]="false"
+    <app-agenda-calendar-selector #sharedAgendas
+                                  [expanded]="false"
                                   [type]="'shared'"
-                                  [agendas$]="sharedAgendas$"
+                                  [getAgendas$]="sharedAgendas$"
                                   (checkedOnChange)="calendarSelectedOnChange($event)">
       {{ 'APP.AGENDA.SIDEBAR.SHARED' | translate }} :
     </app-agenda-calendar-selector>
