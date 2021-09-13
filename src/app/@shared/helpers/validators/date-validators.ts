@@ -1,6 +1,9 @@
 import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
 import * as moment from 'moment';
 
+/**
+ * date validators in order to check if the startDate is Before the endDate
+ */
 export abstract class DateValidators {
   static validateDate(): ValidatorFn {
     return (form: AbstractControl): ValidationErrors | null => {

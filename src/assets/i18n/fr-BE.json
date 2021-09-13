@@ -113,6 +113,23 @@
             }
           }
         },
+        "AGENDA": {
+          "CREATE": "Nouveau rendez-vous",
+          "UPDATE": "Modifier le rendez-vous",
+          "SHAREDUSERS": "Partager avec les utilisateurs suivants :",
+          "SHAREDTEAMS": "Partager avec les équipes suivants :",
+          "STEPS": {
+            "STEP-1": {
+              "LABEL": "Info. nécéssaires",
+              "TITLE": "Renseigner les informations nécéssaires"
+            },
+            "STEP-2": {
+              "LABEL": "Partage",
+              "TITLE": "Informations de partages",
+              "HINT-SHAREDUSERS": "Saisissez le nom d'utilisateur ou l'email puis appuyer sur entrer"
+            }
+          }
+        },
         "SETTINGS": {
           "TITLE": "Paramètres de l'agenda",
           "STARTTIME": "Heure de début affiché",
@@ -149,6 +166,8 @@
       },
       "TOASTR": {
         "ERROR": {
+          "NOT_FOUND": "Element introuvable",
+          "ALREADY_IN": "L'élément fait déjà parti de la liste",
           "GET_EVENTS": "Impossible de récupérer les événements",
           "GET_EVENT": "Impossible de récupérer l'événement",
           "SAVE": "Erreur lors de l'enregistrement",

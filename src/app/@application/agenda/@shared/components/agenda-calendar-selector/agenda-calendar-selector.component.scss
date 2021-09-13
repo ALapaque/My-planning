@@ -11,6 +11,12 @@
   padding-left: 0.5rem;
 }
 
+::ng-deep {
+  app-agenda-label {
+    width: 160px !important;
+  }
+}
+
 ::ng-deep nb-checkbox.status-basic .native-input:disabled ~ .text {
   color: nb-theme(color-basic-800) !important;
 }

@@ -42,6 +42,7 @@ import { AgendaSidebarComponent } from './@shared/components/agenda-sidebar/agen
 import { AgendaCalendarSelectorComponent } from './@shared/components/agenda-calendar-selector/agenda-calendar-selector.component';
 import { AgendaCalendarBtnComponent } from './@shared/components/agenda-calendar-selector/agenda-calendar-btn/agenda-calendar-btn.component';
 import { AgendaFormComponent } from './@shared/components/forms/agenda-form/agenda-form.component';
+import { AgendaFormContentComponent } from './@shared/components/forms/agenda-form/agenda-form-content/agenda-form-content.component';
 
 const fr_Local: any = '@syncfusion/ej2-locale/src/fr.json';
 
@@ -282,6 +283,7 @@ setCulture('fr');
     AgendaCalendarSelectorComponent,
     AgendaCalendarBtnComponent,
     AgendaFormComponent,
+    AgendaFormContentComponent,
   ],
   imports: [
     CommonModule,

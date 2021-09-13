@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Inject, Input, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input} from '@angular/core';
 import {NbDialogRef} from '@nebular/theme';
 import {SchedulerEvent} from '../../../models/scheduler-event.model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';

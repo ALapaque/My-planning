@@ -1,15 +1,15 @@
-import {AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {NbDialogService, NbMenuItem, NbMenuService} from '@nebular/theme';
-import {Subject} from 'rxjs';
-import {filter, map, takeUntil, tap} from 'rxjs/operators';
-import {Agenda} from '../../../../../../@shared/models/agenda.model';
-import {NbDialogCustomService} from '../../../../../../@shared/services/nb-dialog-custom.service';
-import {ConfirmDialogComponent} from '../../../../../../@shared/ui-components/confirm-dialog/confirm-dialog.component';
+import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { NbDialogService, NbMenuItem, NbMenuService } from '@nebular/theme';
+import { Subject } from 'rxjs';
+import { filter, first, map, take, takeUntil, tap } from 'rxjs/operators';
+import { Agenda } from '../../../../../../@shared/models/agenda.model';
+import { NbDialogCustomService } from '../../../../../../@shared/services/nb-dialog-custom.service';
+import { ConfirmDialogComponent } from '../../../../../../@shared/ui-components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-agenda-calendar-btn',
   templateUrl: './agenda-calendar-btn.component.html',
-  styleUrls: ['./agenda-calendar-btn.component.scss']
+  styleUrls: [ './agenda-calendar-btn.component.scss' ]
 })
 export class AgendaCalendarBtnComponent implements OnInit, OnDestroy {
   @Input() public agenda!: Agenda;
@@ -22,19 +22,8 @@ export class AgendaCalendarBtnComponent implements OnInit, OnDestroy {
     tag: string,
     items: Array<NbMenuItem>
   } = {
-    tag: 'calendar-context-menu-' + this.index,
-    items: [
-      {
-        title: 'Modifier',
-        icon: 'edit-outline',
-        data: this.agenda
-      },
-      {
-        title: 'Supprimer',
-        icon: 'trash-outline',
-        data: this.agenda
-      }
-    ]
+    tag: '',
+    items: []
   };
 
   private _destroy$: Subject<any> = new Subject<any>();
@@ -48,6 +37,21 @@ export class AgendaCalendarBtnComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._initMenuListeners();
+    this.contextMenu = {
+      tag: 'calendar-context-menu-' + this.index,
+      items: [
+        {
+          title: 'Modifier',
+          icon: 'edit-outline',
+          data: this.agenda
+        },
+        {
+          title: 'Supprimer',
+          icon: 'trash-outline',
+          data: this.agenda
+        }
+      ]
+    };
   }
 
   ngOnDestroy(): void {
@@ -58,22 +62,27 @@ export class AgendaCalendarBtnComponent implements OnInit, OnDestroy {
     this._nbMenuService
       .onItemClick()
       .pipe(
+        take(1),
         takeUntil(this._destroy$),
         tap(console.log),
-        filter(({tag}) => tag === this.contextMenu.tag),
-        filter(({item}) => item.icon === 'edit-outline'),
-        map(({item}) => item.data),
-        tap((agenda: Agenda) => this._editAgenda(agenda))
+        filter(({ tag }) => tag === this.contextMenu.tag),
+        filter(({ item }) => item.icon === 'edit-outline'),
+        map(({ item }) => item.data),
+        tap((agenda: Agenda) => {
+          console.log(agenda);
+          this._editAgenda(agenda);
+        })
       ).subscribe();
 
     this._nbMenuService
       .onItemClick()
       .pipe(
+        take(1),
         takeUntil(this._destroy$),
         tap(console.log),
-        filter(({tag}) => tag === this.contextMenu.tag),
-        filter(({item}) => item.icon === 'trash-outline'),
-        map(({item}) => item.data),
+        filter(({ tag }) => tag === this.contextMenu.tag),
+        filter(({ item }) => item.icon === 'trash-outline'),
+        map(({ item }) => item.data),
         tap((agenda: Agenda) => this._deleteAgenda(agenda))
       ).subscribe();
   }
@@ -89,7 +98,7 @@ export class AgendaCalendarBtnComponent implements OnInit, OnDestroy {
 
     this._nbDialogService
       .open(ConfirmDialogComponent,
-        {dialogClass: this._nbDialogCustomService.isFullscreen})
+        { dialogClass: this._nbDialogCustomService.isFullscreen })
       .onClose.subscribe((result: { confirmed: boolean }) => {
         if (!result.confirmed) return;
         this.delete.emit(agenda);

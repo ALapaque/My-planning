@@ -1,16 +1,11 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   CanActivate,
-  CanLoad,
-  Route,
-  UrlSegment,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  UrlTree,
   Router
 } from '@angular/router';
-import {JwtHelper} from '../models/jwt-helper.model';
-import {AuthService} from '../services/auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +18,7 @@ export class AuthenticatedGuard implements CanActivate {
   ) {
   }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const isAuthenticated: boolean = this._authService.jwtHelper.isAuthenticated;
 
     if (isAuthenticated) {
@@ -32,7 +27,7 @@ export class AuthenticatedGuard implements CanActivate {
     }
 
     // not logged in so redirect to login page with the return url
-    this._router.navigate(['/auth/login'], {queryParams: {returnUrl: state.url}});
+    this._router.navigate([ '/auth/login' ], { queryParams: { returnUrl: state.url } });
     return false;
   }
 }

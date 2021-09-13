@@ -8,6 +8,7 @@ import { TopbarComponent } from './@core/template/topbar/topbar.component';
 import { AgendaService } from './@shared/services/agenda.service';
 import { EventService } from './@shared/services/event.service';
 import { LoaderService } from './@shared/services/loader.service';
+import { UserService } from './@shared/services/user.service';
 import { AgendaHelperService } from './agenda/@shared/services/agenda-helper.service';
 import { ApplicationRouting } from './application.routing';
 import { LeftMenuComponent } from './@core/template/left-menu/left-menu.component';
@@ -29,7 +30,8 @@ import { LeftMenuComponent } from './@core/template/left-menu/left-menu.componen
       AgendaHelperService,
       AgendaService,
       EventService,
-      LoaderService
+      LoaderService,
+      UserService
     ]
   },
 )

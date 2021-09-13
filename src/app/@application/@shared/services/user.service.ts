@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -21,8 +21,8 @@ export class UserService {
     );
   }
 
-  public getUser(id: string): Observable<User> {
-    return this._http.get<User>(`${ environment.apiUrl }${ this._baseUrl }/${ id }`).pipe(
+  public getUser(value: number | string): Observable<User> {
+    return this._http.get<User>(`${ environment.apiUrl }${ this._baseUrl }/${ value }`).pipe(
       map((user: User) => new User(user))
     );
   }

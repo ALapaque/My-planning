@@ -1,23 +1,23 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {NbDialogService, NbSidebarService} from '@nebular/theme';
-import {Observable, Subject} from 'rxjs';
-import {takeUntil, tap} from 'rxjs/operators';
-import {Agenda} from '../../../../../@shared/models/agenda.model';
-import {AuthService} from '../../../../../@shared/services/auth.service';
-import {ResponsiveService} from '../../../../../@shared/services/responsive.service';
-import {AgendaService} from '../../../../@shared/services/agenda.service';
-import {AgendaHelperService} from '../../services/agenda-helper.service';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { NbDialogService, NbSidebarService } from '@nebular/theme';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil, tap } from 'rxjs/operators';
+import { Agenda } from '../../../../../@shared/models/agenda.model';
+import { AuthService } from '../../../../../@shared/services/auth.service';
+import { ResponsiveService } from '../../../../../@shared/services/responsive.service';
+import { AgendaService } from '../../../../@shared/services/agenda.service';
+import { AgendaHelperService } from '../../services/agenda-helper.service';
 import {
   AgendaCalendarSelectorComponent,
   CalendarCheckedState
 } from '../agenda-calendar-selector/agenda-calendar-selector.component';
-import {NbDialogCustomService} from '../../../../../@shared/services/nb-dialog-custom.service';
-import {AgendaFormComponent} from '../forms/agenda-form/agenda-form.component';
+import { NbDialogCustomService } from '../../../../../@shared/services/nb-dialog-custom.service';
+import { AgendaFormComponent } from '../forms/agenda-form/agenda-form.component';
 
 @Component({
   selector: 'app-agenda-sidebar',
   templateUrl: './agenda-sidebar.component.html',
-  styleUrls: ['./agenda-sidebar.component.scss']
+  styleUrls: [ './agenda-sidebar.component.scss' ]
 })
 export class AgendaSidebarComponent implements OnInit, OnDestroy {
   public agendas$: Observable<Array<Agenda>>;
@@ -63,7 +63,7 @@ export class AgendaSidebarComponent implements OnInit, OnDestroy {
   }
 
   addOrEditAgenda(agenda?: Agenda): void {
-    console.log('addOrEdit', agenda);
+    console.log('addorEditAgenda', agenda);
     this._dialogService
       .open(AgendaFormComponent, {
         context: {
@@ -81,7 +81,7 @@ export class AgendaSidebarComponent implements OnInit, OnDestroy {
   }
 
   delete(agenda: Agenda): void {
-    console.log('delete');
+    this._agendaService.delete(agenda).subscribe(() => this._refreshUserAgendas());
   }
 
   private _refreshUserAgendas(): void {
@@ -94,7 +94,7 @@ export class AgendaSidebarComponent implements OnInit, OnDestroy {
       tap((agendas: Array<Agenda>) => {
         if (!this._agendaHelperService.calendarsSelected || !this._agendaHelperService.calendarsSelected.length) {
           const defaultUserAgenda: Agenda = agendas.find((agenda: Agenda) => (agenda.user.id === this._authService.user.id) && agenda.byDefault);
-          if (defaultUserAgenda) this._agendaHelperService.calendarsSelected = [defaultUserAgenda.id];
+          if (defaultUserAgenda) this._agendaHelperService.calendarsSelected = [ defaultUserAgenda.id ];
         } else {
           this._agendaHelperService.refreshAgenda$.next(true);
         }

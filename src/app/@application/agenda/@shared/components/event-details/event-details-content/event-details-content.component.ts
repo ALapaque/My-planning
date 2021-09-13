@@ -28,6 +28,10 @@ export class EventDetailsContentComponent {
   ) {
   }
 
+  public isOwner(): boolean {
+    return this.event.Meta.agenda.user.id === this._authService.user.id;
+  }
+
 
   sendMessage(commentToAdd: Comment): void {
     this._commentService.save(commentToAdd).subscribe(

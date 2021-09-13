@@ -19,13 +19,14 @@ import {
   NbSearchModule,
   NbSelectModule,
   NbSidebarModule, NbSpinnerModule, NbStepperModule,
-  NbTabsetModule, NbTimepickerModule,
+  NbTabsetModule, NbTagModule, NbTimepickerModule,
   NbToastrModule,
   NbToggleModule, NbTooltipModule,
   NbUserModule,
   NbWindowModule,
   NbWindowState,
 } from '@nebular/theme';
+import { ColorPickerModule } from 'ngx-color-picker';
 import {NbDialogCustomService} from './services/nb-dialog-custom.service';
 
 const nebularModule: Array<any> = [
@@ -60,7 +61,9 @@ const nebularModule: Array<any> = [
   NbChatModule,
   NbAccordionModule,
   NbBadgeModule,
-  NbTooltipModule
+  NbTooltipModule,
+  NbTagModule,
+  ColorPickerModule
 ];
 
 @NgModule({

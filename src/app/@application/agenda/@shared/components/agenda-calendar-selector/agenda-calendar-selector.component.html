@@ -20,8 +20,7 @@
        fxLayoutGap="8px">
     <ng-container *ngIf="isDefaultUserAgenda(agenda); else selectableAgendaTemplate">
       <nb-checkbox [checked]="true" [disabled]="true">
-        <app-agenda-label [agenda]="agenda"
-                          [fxFlex]="'calc(100% - 7rem)'">
+        <app-agenda-label [agenda]="agenda">
           {{ agenda.name | translate }}
         </app-agenda-label>
       </nb-checkbox>
@@ -29,8 +28,7 @@
     <ng-template #selectableAgendaTemplate>
       <nb-checkbox [checked]="isSelected(agenda)"
                    (checkedChange)="checkedOnChange.emit({ checked: $event, agenda: agenda })">
-        <app-agenda-label [agenda]="agenda"
-                          [fxFlex]="'calc(100% - 7rem)'">
+        <app-agenda-label [agenda]="agenda">
           <ng-container *ngIf="type === 'shared'; else normalLabel">
             {{ agenda.displayFormattedName() }}
           </ng-container>
@@ -41,7 +39,7 @@
       </nb-checkbox>
     </ng-template>
 
-    <app-agenda-calendar-btn *ngIf="type === 'user'"
+    <app-agenda-calendar-btn *ngIf="type === 'user' && !agenda.byDefault"
                              [agenda]="agenda"
                              [index]="index"
                              (delete)="deleteEmitter.emit($event)"
