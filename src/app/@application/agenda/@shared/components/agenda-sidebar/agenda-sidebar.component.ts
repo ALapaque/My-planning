@@ -94,7 +94,7 @@ export class AgendaSidebarComponent implements OnInit, OnDestroy {
     this.agendas$ = this._agendaService.getUserAgendas().pipe(
       tap((agendas: Array<Agenda>) => {
         if (!this._agendaHelperService.calendarsSelected || !this._agendaHelperService.calendarsSelected.length) {
-          const defaultUserAgenda: Agenda = agendas.find((agenda: Agenda) => (agenda.user.id === this._authService.user.id) && agenda.byDefault);
+          const defaultUserAgenda: Agenda = agendas.find((agenda: Agenda) => (agenda?.user?.id === this._authService?.user?.id) && agenda.byDefault);
           if (defaultUserAgenda) this._agendaHelperService.calendarsSelected = [ defaultUserAgenda.id ];
         } else {
           this._agendaHelperService.refreshAgenda$.next(true);

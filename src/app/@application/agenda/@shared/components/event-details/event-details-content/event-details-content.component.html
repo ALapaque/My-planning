@@ -16,12 +16,17 @@
            *ngIf="event?.Meta?.agenda">
         <nb-icon icon="calendar-outline"></nb-icon>
         <app-agenda-label [agenda]="event.Meta.agenda">
-          <ng-container *ngIf="isOwner(); else userLabel">
+          <ng-container *ngIf="isOwner(); else standardLabel">
             {{ event.Meta.agenda.name }}
           </ng-container>
 
-          <ng-template #userLabel>
-            {{ event.Meta.agenda.user.displayFormattedName() }}
+          <ng-template #standardLabel>
+            <ng-container *ngIf="event.Meta.agenda.user; else teamLabel">
+              {{ event.Meta.agenda.user.displayFormattedName() }}
+            </ng-container>
+            <ng-template #teamLabel>
+              {{ event.Meta.agenda.team.name}}
+            </ng-template>
           </ng-template>
         </app-agenda-label>
       </div>

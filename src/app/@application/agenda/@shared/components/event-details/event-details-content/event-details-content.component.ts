@@ -29,7 +29,8 @@ export class EventDetailsContentComponent {
   }
 
   public isOwner(): boolean {
-    return this.event.Meta.agenda.user.id === this._authService.user.id;
+    if (this.event.Meta?.agenda?.team) return true;
+    return this.event?.Meta?.agenda?.user?.id === this._authService.user.id;
   }
 
 

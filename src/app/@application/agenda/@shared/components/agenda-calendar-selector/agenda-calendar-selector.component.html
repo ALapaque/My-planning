@@ -39,7 +39,7 @@
       </nb-checkbox>
     </ng-template>
 
-    <app-agenda-calendar-btn *ngIf="type === 'user' && !agenda.byDefault"
+    <app-agenda-calendar-btn *ngIf="canPerformAction(agenda)"
                              [agenda]="agenda"
                              [index]="index"
                              (delete)="deleteEmitter.emit($event)"

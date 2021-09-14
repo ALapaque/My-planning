@@ -92,7 +92,7 @@
                    [formControlName]="'sharedTeams'"
                    [compareWith]="compareFn"
                    fullWidth>
-          <nb-option *ngFor="let team of teams">{{ team.name }}</nb-option>
+          <nb-option *ngFor="let team of teams" [value]="team">{{ team.name }}</nb-option>
         </nb-select>
         <nb-error *ngIf="checkFieldForError('sharedTeams')">
           <ng-container *ngIf="form.get('name').errors.required">
