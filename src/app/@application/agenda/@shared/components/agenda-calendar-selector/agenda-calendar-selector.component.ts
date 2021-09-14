@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Agenda } from '../../../../../@shared/models/agenda.model';
-import { AuthService } from '../../../../../@shared/services/auth.service';
-import { AgendaHelperService } from '../../services/agenda-helper.service';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Agenda} from '../../../../../@shared/models/agenda.model';
+import {AuthService} from '../../../../../@shared/services/auth.service';
+import {AgendaHelperService} from '../../services/agenda-helper.service';
 
 export interface CalendarCheckedState {
   checked: boolean;
@@ -12,7 +12,7 @@ export interface CalendarCheckedState {
 @Component({
   selector: 'app-agenda-calendar-selector',
   templateUrl: './agenda-calendar-selector.component.html',
-  styleUrls: [ './agenda-calendar-selector.component.scss' ]
+  styleUrls: ['./agenda-calendar-selector.component.scss']
 })
 export class AgendaCalendarSelectorComponent implements OnInit {
   public agendas$: Observable<Array<Agenda>>;
@@ -48,12 +48,11 @@ export class AgendaCalendarSelectorComponent implements OnInit {
   }
 
   canPerformAction(agenda: Agenda): boolean {
-    if (this.type !== 'user') return false;
-    else if (agenda.byDefault) return true;
+    if (this.type !== 'user' || agenda.byDefault) return false;
     else if (agenda.team) {
       return this._authService.user.role.name.toLowerCase().includes('admin');
     } else {
-      return false;
+      return true;
     }
   }
 }

@@ -217,7 +217,14 @@
     },
     "LEFT_MENU": {
       "DASHBOARD": "Tableau de bord",
-      "AGENDA": "Agenda"
+      "AGENDA": "Agenda",
+      "SETTINGS": "Configuration",
+      "USERS": "Utilisateurs",
+      "TEAMS": "Equipes",
+      "CALENDARS": "Calendriers"
+    },
+    "ERRORS":{
+      "NOT_ALLOWED": "Accès non autorisé !"
     }
   },
   "FORM": {

@@ -1,6 +1,8 @@
-import { NgModule }             from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { TemplateComponent }    from './@core/template/template.component';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {TemplateComponent} from './@core/template/template.component';
+import {AdminGuard} from '../@shared/guards/admin.guard';
+import {AuthenticatedGuard} from '../@shared/guards/authenticated.guard';
 
 const routes: Routes = [
   {
@@ -14,14 +16,20 @@ const routes: Routes = [
       },
       {
         path: 'dashboard',
+        canActivate: [AuthenticatedGuard],
+        canActivateChild: [AuthenticatedGuard],
         loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
       },
       {
         path: 'agenda',
+        canActivate: [AuthenticatedGuard],
+        canActivateChild: [AuthenticatedGuard],
         loadChildren: () => import('./agenda/agenda.module').then((m) => m.AgendaModule),
       },
       {
-        path: 'settings',
+        path: 'configuration',
+        canActivate: [AuthenticatedGuard, AdminGuard],
+        canActivateChild: [AuthenticatedGuard, AdminGuard],
         loadChildren: () => import('./settings/settings.module').then((m) => m.SettingsModule),
       },
     ],
@@ -30,8 +38,9 @@ const routes: Routes = [
 
 @NgModule(
   {
-    imports: [ RouterModule.forChild(routes) ],
-    exports: [ RouterModule ],
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
   },
 )
-export class ApplicationRouting {}
+export class ApplicationRouting {
+}

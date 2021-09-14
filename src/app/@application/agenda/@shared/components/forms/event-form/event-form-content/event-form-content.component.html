@@ -64,7 +64,12 @@
             <nb-option *ngFor="let agenda of mySharedAgendas"
                        [value]="agenda">
               <app-agenda-label [agenda]="agenda">
-                {{ agenda.user.displayFormattedName() }}
+                <ng-container *ngIf="agenda.user; else teamLabel">
+                  {{ agenda.user.displayFormattedName() }}
+                </ng-container>
+                <ng-template #teamLabel>
+                  {{ agenda.team.name }}
+                </ng-template>
               </app-agenda-label>
             </nb-option>
           </nb-option-group>

@@ -1,15 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule }      from '@angular/common';
-import { SettingsComponent } from './settings.component';
+import { SettingsContainerComponent } from './settings-container.component';
+import {SettingsRouting} from './settings.routing';
+import { UserConfigurationComponent } from './user-configuration/user-configuration.component';
+import { AgendaConfigurationComponent } from './agenda-configuration/agenda-configuration.component';
+import { TeamConfigurationComponent } from './team-configuration/team-configuration.component';
 
 
 
 @NgModule({
   declarations: [
-    SettingsComponent
+    SettingsContainerComponent,
+    UserConfigurationComponent,
+    AgendaConfigurationComponent,
+    TeamConfigurationComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SettingsRouting
   ]
 })
 export class SettingsModule { }
