@@ -5,6 +5,8 @@ import {SettingsRouting} from './settings.routing';
 import { UserConfigurationComponent } from './user-configuration/user-configuration.component';
 import { AgendaConfigurationComponent } from './agenda-configuration/agenda-configuration.component';
 import { TeamConfigurationComponent } from './team-configuration/team-configuration.component';
+import { UserConfigurationToolbarComponent } from './user-configuration/user-configuration-toolbar/user-configuration-toolbar.component';
+import {SharedModule} from '../../@shared/shared.module';
 
 
 
@@ -13,10 +15,12 @@ import { TeamConfigurationComponent } from './team-configuration/team-configurat
     SettingsContainerComponent,
     UserConfigurationComponent,
     AgendaConfigurationComponent,
-    TeamConfigurationComponent
+    TeamConfigurationComponent,
+    UserConfigurationToolbarComponent
   ],
   imports: [
     CommonModule,
+    SharedModule,
     SettingsRouting
   ]
 })
