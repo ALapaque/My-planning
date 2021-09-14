@@ -76,6 +76,7 @@ export class AgendaSidebarComponent implements OnInit, OnDestroy {
       .onClose
       .pipe(takeUntil(this._destroy$))
       .subscribe((agenda: Agenda) => {
+        if (!agenda) return;
         this._refreshUserAgendas();
       });
   }

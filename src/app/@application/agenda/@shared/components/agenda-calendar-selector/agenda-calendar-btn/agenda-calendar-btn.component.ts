@@ -62,7 +62,6 @@ export class AgendaCalendarBtnComponent implements OnInit, OnDestroy {
     this._nbMenuService
       .onItemClick()
       .pipe(
-        take(1),
         takeUntil(this._destroy$),
         tap(console.log),
         filter(({ tag }) => tag === this.contextMenu.tag),
@@ -77,7 +76,6 @@ export class AgendaCalendarBtnComponent implements OnInit, OnDestroy {
     this._nbMenuService
       .onItemClick()
       .pipe(
-        take(1),
         takeUntil(this._destroy$),
         tap(console.log),
         filter(({ tag }) => tag === this.contextMenu.tag),

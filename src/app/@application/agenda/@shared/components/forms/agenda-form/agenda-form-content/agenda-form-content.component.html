@@ -58,9 +58,10 @@
         <nb-icon [icon]="'share-outline'"></nb-icon>
         {{ 'APP.AGENDA.FORM.AGENDA.STEPS.STEP-2.TITLE' | translate }}
       </h6>
+
       <!-- SHARED USER -->
       <nb-form-field [style.marginBottom]="(checkFieldForError('sharedUSers')) ? '32px' : '16px'">
-        <label for="name-input">{{ 'APP.AGENDA.FORM.AGENDA.SHAREDTEAMS' | translate }}</label>
+        <label for="name-input">{{ 'APP.AGENDA.FORM.AGENDA.SHAREDUSERS' | translate }}</label>
 
         <nb-tag-list (tagRemove)="onSharedUserRemove($event)">
           <nb-tag *ngFor="let user of getSharedUsers()"
@@ -82,14 +83,16 @@
       </nb-form-field>
 
       <!-- SHARED TEAMS -->
-      <nb-form-field [style.marginBottom]="(checkFieldForError('sharedTeams')) ? '32px' : '16px'">
+      <nb-form-field [style.marginBottom]="(checkFieldForError('sharedTeams')) ? '32px' : '16px'"
+                     *ngIf="(teams$ | async) as teams">
         <label for="name-input">{{ 'APP.AGENDA.FORM.AGENDA.SHAREDTEAMS' | translate }}</label>
 
         <nb-select multiple
+                   [disabled]="!teams?.length"
                    [formControlName]="'sharedTeams'"
                    [compareWith]="compareFn"
                    fullWidth>
-          <nb-option *ngFor="let team of teams$ | async">{{ team.name }}</nb-option>
+          <nb-option *ngFor="let team of teams">{{ team.name }}</nb-option>
         </nb-select>
         <nb-error *ngIf="checkFieldForError('sharedTeams')">
           <ng-container *ngIf="form.get('name').errors.required">

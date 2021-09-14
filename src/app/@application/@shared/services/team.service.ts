@@ -10,16 +10,16 @@ import { AuthService } from '../../../@shared/services/auth.service';
   providedIn: 'root'
 })
 export class TeamService {
-  private _baseUrl: string = generateCompleteUrl() + 'team';
+  private _baseUrl: string = generateCompleteUrl() + '/team';
 
   constructor(
-    private _httpClient: HttpClient,
+    private _http: HttpClient,
     private _authService: AuthService
   ) {
   }
 
   public getUsersTeams(): Observable<Array<Team>> {
-    return this._httpClient.get<Array<Team>>(`${ this._baseUrl }/${ this._authService.user.id }`)
+    return this._http.get<Array<Team>>(`${ this._baseUrl }/user/${ this._authService.user.id }`)
       .pipe(
         map((teams: Array<Team>) => teams.map((team: Team) => new Team(team)))
       );
