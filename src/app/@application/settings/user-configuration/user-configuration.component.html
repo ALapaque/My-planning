@@ -27,7 +27,7 @@
               size="small"
               shape="round"
               status="danger"
-              [disabled]="!selectedUsers?.length"
+              [disabled]="!selectedUsers?.length || selfSelected()"
               (click)="delete()">
         <nb-icon [icon]="'trash-outline'"></nb-icon>
       </button>

@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from '../../../@shared/models/user.model';
+import { AuthService } from '../../../@shared/services/auth.service';
 import { NbDialogCustomService } from '../../../@shared/services/nb-dialog-custom.service';
 import { ConfirmDialogComponent } from '../../../@shared/ui-components/confirm-dialog/confirm-dialog.component';
 import { UserDetailsComponent } from '../../@shared/components/user-details/user-details.component';
@@ -25,6 +26,7 @@ export class UserConfigurationComponent implements OnInit {
     private _nbDialogCustomService: NbDialogCustomService,
     private _toastrService: ToastrService,
     private _translateService: TranslateService,
+    private _authService: AuthService,
   ) {
   }
 
@@ -79,10 +81,6 @@ export class UserConfigurationComponent implements OnInit {
       });
   }
 
-  private _refreshUsers(): void {
-    this.users$ = this._userService.getUsers();
-  }
-
   onCheckedChange($event: { checked: boolean; data: User }): void {
     const index: number = this.selectedUsers.findIndex((u: User) => u.id === $event.data.id);
 
@@ -91,5 +89,13 @@ export class UserConfigurationComponent implements OnInit {
     } else {
       this.selectedUsers.push($event.data);
     }
+  }
+
+  selfSelected(): boolean {
+    return this.selectedUsers.findIndex((user: User) => user.id === this._authService.user.id) !== -1;
+  }
+
+  private _refreshUsers(): void {
+    this.users$ = this._userService.getUsers();
   }
 }
