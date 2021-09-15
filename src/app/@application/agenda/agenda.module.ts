@@ -303,6 +303,10 @@ setCulture('fr');
     TimelineViewsService,
     TimelineMonthService,
   ],
+  exports: [
+    AgendaLabelComponent,
+    AgendaSidebarComponent
+  ]
 })
 export class AgendaModule {
 }

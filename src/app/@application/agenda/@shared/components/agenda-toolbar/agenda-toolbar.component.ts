@@ -1,12 +1,14 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NbSidebarState } from '@nebular/theme/components/sidebar/sidebar.component';
 import { View } from '@syncfusion/ej2-angular-schedule';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { LoaderService } from '../../../../@shared/services/loader.service';
+import { RightMenuService } from '../../../../@shared/services/right-menu.service';
 import { AgendaHelperService } from '../../services/agenda-helper.service';
 import { NbDialogCustomService } from '../../../../../@shared/services/nb-dialog-custom.service';
 import { AgendaSettingsComponent } from '../agenda-settings/agenda-settings.component';
-import { NbDialogService, NbSidebarService } from '@nebular/theme';
+import { NbDialogService, NbSidebarComponent, NbSidebarService } from '@nebular/theme';
 import * as moment from 'moment';
 
 @Component({
@@ -15,13 +17,14 @@ import * as moment from 'moment';
   styleUrls: [ './agenda-toolbar.component.scss' ],
 })
 export class AgendaToolbarComponent implements OnInit, OnDestroy {
-  @Input() calendarSidebarState: NbSidebarState = 'collapsed';
+  @Input() expanded!: boolean;
 
   private _destroy$: Subject<any> = new Subject();
 
   constructor(
     public agendaHelperService: AgendaHelperService,
     public nbSidebarService: NbSidebarService,
+    private _rightMenuService: RightMenuService,
     private _loaderService: LoaderService,
     private _dialogService: NbDialogService,
     private _dialogCustomService: NbDialogCustomService,
@@ -47,6 +50,25 @@ export class AgendaToolbarComponent implements OnInit, OnDestroy {
     this._dialogService.open(AgendaSettingsComponent,
       { dialogClass: this._dialogCustomService.isFullscreen }
     );
+  }
+
+
+  onViewChange(view: View): void {
+    this.agendaHelperService.currentViewDisplayed = view;
+    console.log(3);
+    this.agendaHelperService.refreshAgenda$.next(true);
+  }
+
+  normalViews(): Array<View> {
+    return this.agendaHelperService.views.filter((view: string) => !view.toLowerCase().includes('timeline'));
+  }
+
+  timeLineViews(): Array<View> {
+    return this.agendaHelperService.views.filter((view: string) => view.toLowerCase().includes('timeline'));
+  }
+
+  toggle(): void {
+    this._rightMenuService.expanded$.next(!this._rightMenuService.expanded$.value);
   }
 
   private _navigate(type: 'previous' | 'next'): void {
@@ -92,17 +114,4 @@ export class AgendaToolbarComponent implements OnInit, OnDestroy {
     this.agendaHelperService.refreshAgenda$.next(true);
   }
 
-  onViewChange(view: View): void {
-    this.agendaHelperService.currentViewDisplayed = view;
-    console.log(3);
-    this.agendaHelperService.refreshAgenda$.next(true);
-  }
-
-  normalViews(): Array<View> {
-    return this.agendaHelperService.views.filter((view: string) => !view.toLowerCase().includes('timeline'));
-  }
-
-  timeLineViews(): Array<View> {
-    return this.agendaHelperService.views.filter((view: string) => view.toLowerCase().includes('timeline'));
-  }
 }

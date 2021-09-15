@@ -1,4 +1,5 @@
-import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { registerLocaleData } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import localeEn from '@angular/common/locales/en';
 import localeFrBeExtra from '@angular/common/locales/extra/fr-BE';

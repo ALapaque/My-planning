@@ -6,6 +6,7 @@ import { Agenda } from '../../../../../@shared/models/agenda.model';
 import { AuthService } from '../../../../../@shared/services/auth.service';
 import { ResponsiveService } from '../../../../../@shared/services/responsive.service';
 import { AgendaService } from '../../../../@shared/services/agenda.service';
+import { RightMenuService } from '../../../../@shared/services/right-menu.service';
 import { AgendaHelperService } from '../../services/agenda-helper.service';
 import {
   AgendaCalendarSelectorComponent,
@@ -36,6 +37,7 @@ export class AgendaSidebarComponent implements OnInit, OnDestroy {
     private _authService: AuthService,
     private _dialogCustomService: NbDialogCustomService,
     private _dialogService: NbDialogService,
+    private _rightMenuService: RightMenuService
   ) {
     this._initUserAgendas();
     this._initUserSharedAgendas();
@@ -56,6 +58,10 @@ export class AgendaSidebarComponent implements OnInit, OnDestroy {
 
       this._calendarsSelected.splice(index, 1);
     }
+  }
+
+  close(): void {
+    this._rightMenuService.expanded$.next(false);
   }
 
   applyFilter(): void {

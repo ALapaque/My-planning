@@ -3,21 +3,31 @@
     <app-topbar fxFlex="auto"
                 fxLayoutAlign="start center"
                 fxLayoutGap="16px"
-                [nbSidebarComponent]="nbSidebarComponent"
+                [nbSidebarComponent]="nbSidebarLeftComponent"
                 (toggle)="toggle()"
                 (logout)="logout()">
     </app-topbar>
   </nb-layout-header>
 
-  <nb-sidebar #nbSidebarComponent
+  <nb-sidebar #nbSidebarLeftComponent
               [tag]="'left'"
               [responsive]="true"
-              [state]="nbSidebarState"
-              (stateChange)="nbSidebarState = $event">
+              [state]="nbLeftSidebarState"
+              (stateChange)="nbLeftSidebarState = $event">
     <app-left-menu></app-left-menu>
     <nb-sidebar-footer>
-      <app-language-selector *ngIf="nbSidebarState === 'expanded'"></app-language-selector>
+      <app-language-selector *ngIf="nbLeftSidebarState === 'expanded'"></app-language-selector>
     </nb-sidebar-footer>
+  </nb-sidebar>
+
+  <nb-sidebar [tag]="'right'"
+              right
+              [responsive]="true"
+              (responsiveStateChange)="rightMenuService.expanded$.next(false)"
+              [compactedBreakpoints]="[]"
+              [collapsedBreakpoints]="['xs', 'is', 'sm', 'sm', 'md', 'lg']"
+              [state]="(rightMenuService.expanded$ | async) ? 'expanded' : 'collapsed'">
+    <app-right-menu></app-right-menu>
   </nb-sidebar>
 
   <nb-layout-column>

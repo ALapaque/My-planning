@@ -1,19 +1,4 @@
-<nb-layout>
-  <nb-layout-column>
-    <app-agenda-toolbar [calendarSidebarState]="nbSidebarComponent?.state ?? 'collapsed'"></app-agenda-toolbar>
-    <router-outlet></router-outlet>
-  </nb-layout-column>
-
-  <nb-sidebar #nbSidebarComponent
-              [tag]="'agenda'"
-              right
-              [responsive]="true"
-              [compactedBreakpoints]="[]"
-              [collapsedBreakpoints]="['xs', 'is', 'sm', 'sm', 'md', 'lg']"
-              [(state)]="nbSidebarState"
-              (stateChange)="nbSidebarState = $event">
-    <app-agenda-sidebar></app-agenda-sidebar>
-  </nb-sidebar>
-</nb-layout>
+<app-agenda-toolbar [expanded]="expanded"></app-agenda-toolbar>
+<router-outlet></router-outlet>
 
 

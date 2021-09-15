@@ -13,7 +13,12 @@
     "TODAY": "Aujourd'hui",
     "NOW": "Maintenant",
     "CONFIRM_DELETE": "Êtes-vous sûr de vouloir supprimer cet élément ?",
-    "EMPTY": "Aucun contenu a afficher"
+    "EMPTY": "Aucun contenu a afficher",
+    "ROLE": {
+      "VIEWER": "Visualiseur",
+      "USER": "Utilisateur",
+      "ADMIN": "Administrateur"
+    }
   },
   "AUTH": {
     "LOGIN": "Connexion",
@@ -223,8 +228,35 @@
       "TEAMS": "Equipes",
       "CALENDARS": "Calendriers"
     },
-    "ERRORS":{
+    "ERRORS": {
       "NOT_ALLOWED": "Accès non autorisé !"
+    },
+    "CONFIGURATION": {
+      "USERS": {
+        "DETAILS": {
+          "TITLE": "Fiche détail de : ",
+          "FIRSTNAME": "Prénom : ",
+          "LASTNAME": "Nom : ",
+          "EMAIL": "Email : ",
+          "ROLE": {
+            "LABEL": "Role : "
+          },
+          "AGENDA": "Agendas : ",
+          "SHAREDAGENDAS": "Agendas partagés : "
+        }
+      },
+      "TOASTR": {
+        "ERROR": {
+          "NOT_FOUND": "Element introuvable",
+          "ERROR": "Une erreur est survenue",
+          "SAVE": "Erreur lors de l'enregistrement",
+          "DELETE": "Erreur lors de la suppression"
+        },
+        "SUCCESS": {
+          "SAVE": "Enregistrement éffectué",
+          "DELETE": "Suppression éffectué"
+        }
+      }
     }
   },
   "FORM": {
