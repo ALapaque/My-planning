@@ -1,0 +1,7 @@
+<nb-card fxLayout="row"
+         fxLayoutAlign="start center"
+         fxLayoutGap="12px"
+         [style.padding]="'12px'">
+  <nb-checkbox [checked]="isChecked()" (checkedChange)="onCheckedChanged($event)"></nb-checkbox>
+  <span>{{ team.name }}</span>
+</nb-card>

@@ -44,7 +44,7 @@ export class UserConfigurationComponent implements OnInit {
               {
                 context: {
                   // @ts-ignore
-                  user: this.selectedUsers[0],
+                  user: userComplete,
                 },
                 dialogClass: this._nbDialogCustomService.isFullscreen,
                 closeOnEsc: true,

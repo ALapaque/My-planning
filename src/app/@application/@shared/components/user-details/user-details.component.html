@@ -10,7 +10,10 @@
     <div fxLayout="column"
          fxLayoutAlign="start start"
          fxLayoutGap="8px">
-      <nb-user showInitials="true" showName="false"></nb-user>
+      <nb-user [name]="user.displayFormattedName()"
+               showInitials="true"
+               showName="false">
+      </nb-user>
       <div>
         <span class="section-title">
           {{ 'APP.CONFIGURATION.USERS.DETAILS.FIRSTNAME' | translate }}
@@ -46,14 +49,15 @@
         <span *ngFor="let team of user.teams">{{team.name}}</span>
       </div>
     </div>
-    <div *ngIf="!!user.agendas?.length"
+    <div *ngIf="!!(userAgendas$ | async)?.length"
          fxLayout="row"
          fxLayoutAlign="start start"
          fxLayoutGap="8px">
       <span class="section-title">{{ 'APP.CONFIGURATION.USERS.DETAILS.AGENDA' | translate }}</span>
       <div fxLayout="column"
            fxLayoutGap="8px">
-        <app-agenda-label *ngFor="let agenda of user.agendas" [agenda]="agenda">
+        <app-agenda-label *ngFor="let agenda of userAgendas$ | async"
+                          [agenda]="agenda">
           <ng-container *ngIf="agenda.byDefault; else userLabel">
             {{ agenda.name | translate }}
           </ng-container>
@@ -68,14 +72,15 @@
         </app-agenda-label>
       </div>
     </div>
-    <div *ngIf="!!user.sharedAgendas?.length"
+    <div *ngIf="!!(userSharedAgendas$ | async)?.length"
          fxLayout="row"
          fxLayoutAlign="start start"
          fxLayoutGap="8px">
       <span class="section-title">{{ 'APP.CONFIGURATION.USERS.DETAILS.SHAREDAGENDAS' | translate }}</span>
       <div fxLayout="column"
            fxLayoutGap="8px">
-        <app-agenda-label *ngFor="let agenda of user.sharedAgendas" [agenda]="agenda">
+        <app-agenda-label *ngFor="let agenda of userSharedAgendas$ | async"
+                          [agenda]="agenda">
           <ng-container *ngIf="agenda.byDefault; else userLabel">
             {{ agenda.name | translate }}
           </ng-container>

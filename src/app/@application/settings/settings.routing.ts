@@ -1,9 +1,8 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {SettingsContainerComponent} from './settings-container.component';
-import {UserConfigurationComponent} from './user-configuration/user-configuration.component';
-import {AgendaConfigurationComponent} from './agenda-configuration/agenda-configuration.component';
-import {TeamConfigurationComponent} from './team-configuration/team-configuration.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { SettingsContainerComponent } from './settings-container.component';
+import { UserConfigurationComponent } from './user-configuration/user-configuration.component';
+import { TeamConfigurationComponent } from './team-configuration/team-configuration.component';
 
 const routes: Routes = [
   {
@@ -20,11 +19,6 @@ const routes: Routes = [
         pathMatch: 'full',
       },
       {
-        path: 'agendas',
-        component: AgendaConfigurationComponent,
-        pathMatch: 'full',
-      },
-      {
         path: 'teams',
         component: TeamConfigurationComponent,
         pathMatch: 'full',
@@ -35,8 +29,8 @@ const routes: Routes = [
 
 @NgModule(
   {
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule],
+    imports: [ RouterModule.forChild(routes) ],
+    exports: [ RouterModule ],
   },
 )
 export class SettingsRouting {
