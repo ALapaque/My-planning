@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {NbMenuItem} from '@nebular/theme';
-import {TranslateService} from '@ngx-translate/core';
-import {AuthService} from '../../../../@shared/services/auth.service';
+import { Component, OnInit } from '@angular/core';
+import { NbMenuItem } from '@nebular/theme';
+import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../../../../@shared/services/auth.service';
 
 @Component({
   selector: 'app-left-menu',
   templateUrl: './left-menu.component.html',
-  styleUrls: ['./left-menu.component.scss']
+  styleUrls: [ './left-menu.component.scss' ]
 })
 export class LeftMenuComponent implements OnInit {
 
@@ -52,12 +52,6 @@ export class LeftMenuComponent implements OnInit {
             title: this._translateService.instant('APP.LEFT_MENU.TEAMS'),
             icon: 'people-outline',
             link: '/app/configuration/teams',
-            pathMatch: 'full'
-          },
-          {
-            title: this._translateService.instant('APP.LEFT_MENU.CALENDARS'),
-            icon: 'calendar-outline',
-            link: '/app/configuration/agendas',
             pathMatch: 'full'
           }
         ]

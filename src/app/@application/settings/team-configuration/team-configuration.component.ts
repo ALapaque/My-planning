@@ -9,7 +9,9 @@ import { User } from '../../../@shared/models/user.model';
 import { AuthService } from '../../../@shared/services/auth.service';
 import { NbDialogCustomService } from '../../../@shared/services/nb-dialog-custom.service';
 import { ConfirmDialogComponent } from '../../../@shared/ui-components/confirm-dialog/confirm-dialog.component';
-import { UserDetailsComponent } from '../../@shared/components/user-details/user-details.component';
+import { TeamFormComponent } from '../@shared/components/form/team-form/team-form.component';
+import { TeamDetailsComponent } from '../@shared/components/team-details/team-details.component';
+import { UserDetailsComponent } from '../@shared/components/user-details/user-details.component';
 import { TeamService } from '../../@shared/services/team.service';
 import { UserService } from '../../@shared/services/user.service';
 
@@ -42,7 +44,7 @@ export class TeamConfigurationComponent implements OnInit {
       .pipe(
         tap((teamComplete: Team) => {
           this._nbDialogService
-            .open(UserDetailsComponent,
+            .open(TeamDetailsComponent,
               {
                 context: {
                   // @ts-ignore
@@ -59,7 +61,19 @@ export class TeamConfigurationComponent implements OnInit {
   }
 
   addOrEdit(): void {
-
+    this._nbDialogService
+      .open(TeamFormComponent,
+        {
+          context: {
+            team: this.selectedTeams?.length ? this.selectedTeams[0] : new Team()
+          },
+          dialogClass: this._nbDialogCustomService.isFullscreen
+        })
+      .onClose
+      .subscribe((result: Team) => {
+        if (!result) return;
+        this._refreshTeams();
+      });
   }
 
   delete(): void {
@@ -95,6 +109,8 @@ export class TeamConfigurationComponent implements OnInit {
 
 
   private _refreshTeams(): void {
-    this.teams$ = this._teamService.getUsersTeams();
+    this.teams$ = this._teamService
+      .getUsersTeams()
+      .pipe(tap(() => this.selectedTeams = []));
   }
 }

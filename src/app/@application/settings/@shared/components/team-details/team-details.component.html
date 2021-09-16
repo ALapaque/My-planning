@@ -1,0 +1,78 @@
+<nb-card>
+  <nb-card-header>
+    <app-dialog-header (close)="dialogRef.close()">
+      <span>{{ 'APP.CONFIGURATION.TEAMS.DETAILS.TITLE' | translate }} {{ team.name }}</span>
+    </app-dialog-header>
+  </nb-card-header>
+
+  <nb-card-body fxLayout="column"
+                fxLayoutGap="8px">
+    <div fxLayout="column"
+         fxLayoutAlign="start start"
+         fxLayoutGap="8px">
+      <div>
+        <span class="section-title">
+          {{ 'APP.CONFIGURATION.TEAMS.DETAILS.NAME' | translate }}
+        </span>
+        {{ team.name | titlecase }}
+      </div>
+    </div>
+    <div *ngIf="!!team.users?.length"
+         fxLayout="row"
+         fxLayoutAlign="start start"
+         fxLayoutGap="8px">
+      <span class="section-title">{{ 'APP.CONFIGURATION.TEAMS.DETAILS.USERS' | translate }}</span>
+      <div fxLayout="column"
+           fxLayoutGap="8px">
+        <span *ngFor="let user of team.users">{{user.displayFormattedName()}}</span>
+      </div>
+    </div>
+    <div *ngIf="!!team.agendas?.length"
+         fxLayout="row"
+         fxLayoutAlign="start start"
+         fxLayoutGap="8px">
+      <span class="section-title">{{ 'APP.CONFIGURATION.TEAMS.DETAILS.AGENDA' | translate }}</span>
+      <div fxLayout="column"
+           fxLayoutGap="8px">
+        <app-agenda-label *ngFor="let agenda of team.agendas"
+                          [agenda]="agenda">
+          <ng-container *ngIf="agenda.byDefault; else userLabel">
+            {{ agenda.name | translate }}
+          </ng-container>
+          <ng-template #userLabel>
+            <ng-container *ngIf="agenda.user; else teamLabel">
+              {{ agenda.user.displayFormattedName() }}
+            </ng-container>
+            <ng-template #teamLabel>
+              {{ agenda.team.name }}
+            </ng-template>
+          </ng-template>
+        </app-agenda-label>
+      </div>
+    </div>
+    <div *ngIf="!!team.sharedAgendas?.length"
+         fxLayout="row"
+         fxLayoutAlign="start start"
+         fxLayoutGap="8px">
+      <span class="section-title">{{ 'APP.CONFIGURATION.TEAMS.DETAILS.SHAREDAGENDAS' | translate }}</span>
+      <div fxLayout="column"
+           fxLayoutGap="8px">
+        <app-agenda-label *ngFor="let agenda of team.sharedAgendas"
+                          [agenda]="agenda">
+          <ng-container *ngIf="agenda.byDefault; else userLabel">
+            {{ agenda.name | translate }}
+          </ng-container>
+          <ng-template #userLabel>
+            <ng-container *ngIf="agenda.user; else teamLabel">
+              {{ agenda.user.displayFormattedName() }}
+            </ng-container>
+            <ng-template #teamLabel>
+              {{ agenda.team.name }}
+            </ng-template>
+          </ng-template>
+        </app-agenda-label>
+      </div>
+    </div>
+
+  </nb-card-body>
+</nb-card>

@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NbDialogRef } from '@nebular/theme';
 import { Observable } from 'rxjs';
-import { Agenda } from '../../../../@shared/models/agenda.model';
-import { User } from '../../../../@shared/models/user.model';
-import { AgendaService } from '../../services/agenda.service';
-import { UserService } from '../../services/user.service';
+import { Agenda } from '../../../../../@shared/models/agenda.model';
+import { User } from '../../../../../@shared/models/user.model';
+import { AgendaService } from '../../../../@shared/services/agenda.service';
+import { UserService } from '../../../../@shared/services/user.service';
 
 @Component({
   selector: 'app-user-details',

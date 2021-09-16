@@ -245,6 +245,15 @@
           "SHAREDAGENDAS": "Agendas partagés : "
         }
       },
+      "TEAMS": {
+        "DETAILS": {
+          "TITLE": "Fiche détail de : ",
+          "NAME": "Nom : ",
+          "USERS": "Utilisateurs : ",
+          "AGENDA": "Agendas : ",
+          "SHAREDAGENDAS": "Agendas partagés : "
+        }
+      },
       "TOASTR": {
         "ERROR": {
           "NOT_FOUND": "Element introuvable",
@@ -255,6 +264,12 @@
         "SUCCESS": {
           "SAVE": "Enregistrement éffectué",
           "DELETE": "Suppression éffectué"
+        }
+      },
+      "FORM": {
+        "TEAM": {
+          "CREATE": "Nouvel équipe",
+          "UPDATE": "Modifier l'équipe"
         }
       }
     }

@@ -4,7 +4,7 @@ import { User } from './user.model';
 
 export class Team implements AbstractEntity<number> {
   public id: number = 0;
-  public name: string = null;
+  public name: string = '';
   public agendas: Array<Agenda> = null;
   public users: Array<User> = null;
   public sharedAgendas: Array<Agenda> = null;

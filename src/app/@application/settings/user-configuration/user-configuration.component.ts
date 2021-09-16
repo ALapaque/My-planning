@@ -8,7 +8,7 @@ import { User } from '../../../@shared/models/user.model';
 import { AuthService } from '../../../@shared/services/auth.service';
 import { NbDialogCustomService } from '../../../@shared/services/nb-dialog-custom.service';
 import { ConfirmDialogComponent } from '../../../@shared/ui-components/confirm-dialog/confirm-dialog.component';
-import { UserDetailsComponent } from '../../@shared/components/user-details/user-details.component';
+import { UserDetailsComponent } from '../@shared/components/user-details/user-details.component';
 import { UserService } from '../../@shared/services/user.service';
 
 @Component({
