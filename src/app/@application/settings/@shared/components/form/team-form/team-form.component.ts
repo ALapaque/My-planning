@@ -21,7 +21,6 @@ export class TeamFormComponent implements AfterViewInit {
 
   constructor(
     public dialogRef: NbDialogRef<TeamFormComponent>,
-    private _authService: AuthService,
     private _teamService: TeamService,
     private _toastrService: ToastrService,
     private _translateService: TranslateService,

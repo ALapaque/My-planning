@@ -4,10 +4,13 @@ import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { Team } from '../../../@shared/models/team.model';
 import { User } from '../../../@shared/models/user.model';
 import { AuthService } from '../../../@shared/services/auth.service';
 import { NbDialogCustomService } from '../../../@shared/services/nb-dialog-custom.service';
 import { ConfirmDialogComponent } from '../../../@shared/ui-components/confirm-dialog/confirm-dialog.component';
+import { TeamFormComponent } from '../@shared/components/form/team-form/team-form.component';
+import { UserFormComponent } from '../@shared/components/form/user-form/user-form.component';
 import { UserDetailsComponent } from '../@shared/components/user-details/user-details.component';
 import { UserService } from '../../@shared/services/user.service';
 
@@ -53,11 +56,21 @@ export class UserConfigurationComponent implements OnInit {
         })
       )
       .subscribe();
-
   }
 
   addOrEdit(): void {
-
+    if (!!this.selectedUsers.length) {
+      this._userService
+        .getUser(this.selectedUsers[0].id)
+        .pipe(
+          tap((userComplete: User) => {
+            this._openForm(userComplete);
+          })
+        )
+        .subscribe();
+    } else {
+      this._openForm(new User());
+    }
   }
 
   delete(): void {
@@ -97,5 +110,21 @@ export class UserConfigurationComponent implements OnInit {
 
   private _refreshUsers(): void {
     this.users$ = this._userService.getUsers();
+  }
+
+  private _openForm(user: User): void {
+    this._nbDialogService
+      .open(UserFormComponent,
+        {
+          context: {
+            user
+          },
+          dialogClass: this._nbDialogCustomService.isFullscreen
+        })
+      .onClose
+      .subscribe((result: User) => {
+        if (!result) return;
+        this._refreshUsers();
+      });
   }
 }
