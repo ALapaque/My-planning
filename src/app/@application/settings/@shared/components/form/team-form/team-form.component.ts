@@ -48,7 +48,8 @@ export class TeamFormComponent implements AfterViewInit {
 
   private _initForm(): void {
     this.form.patchValue({
-      name: this.team.name
+      name: this.team.name,
+      users: this.team.users
     });
   }
 

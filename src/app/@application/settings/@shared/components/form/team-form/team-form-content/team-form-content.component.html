@@ -1,7 +1,7 @@
 <form [formGroup]="form">
   <!-- INPUT NAME -->
   <nb-form-field [style.marginBottom]="(checkFieldForError('name')) ? '32px' : '16px'">
-    <label for="name-input">Nom :</label>
+    <label for="name-input">{{ 'APP.CONFIGURATION.FORM.TEAM.NAME' | translate }}</label>
 
     <input [formControlName]="'name'"
            id="name-input"
@@ -32,7 +32,7 @@
              (tagAdd)="onUserAdd($event)"
              fullWidth>
     </nb-tag-list>
-    <small><i>{{ 'APP.AGENDA.FORM.AGENDA.STEPS.STEP-2.HINT-SHAREDUSERS' | translate }}</i></small>
+    <small><i>{{ 'APP.CONFIGURATION.FORM.TEAM.HINT-USERS' | translate }}</i></small>
     <nb-error *ngIf="checkFieldForError('sharedUsers')">
       <ng-container *ngIf="form.get('name').errors.required">
         {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}

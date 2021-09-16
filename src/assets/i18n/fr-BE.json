@@ -269,7 +269,10 @@
       "FORM": {
         "TEAM": {
           "CREATE": "Nouvel équipe",
-          "UPDATE": "Modifier l'équipe"
+          "UPDATE": "Modifier l'équipe",
+          "NAME": "Nom : ",
+          "USERS": "Utilisateurs : ",
+          "HINT-USERS": "Saisissez le nom d'utilisateur ou l'email puis appuyer sur entrer"
         }
       }
     }

@@ -11,9 +11,7 @@ import { NbDialogCustomService } from '../../../@shared/services/nb-dialog-custo
 import { ConfirmDialogComponent } from '../../../@shared/ui-components/confirm-dialog/confirm-dialog.component';
 import { TeamFormComponent } from '../@shared/components/form/team-form/team-form.component';
 import { TeamDetailsComponent } from '../@shared/components/team-details/team-details.component';
-import { UserDetailsComponent } from '../@shared/components/user-details/user-details.component';
 import { TeamService } from '../../@shared/services/team.service';
-import { UserService } from '../../@shared/services/user.service';
 
 @Component({
   selector: 'app-team-configuration',
@@ -61,19 +59,18 @@ export class TeamConfigurationComponent implements OnInit {
   }
 
   addOrEdit(): void {
-    this._nbDialogService
-      .open(TeamFormComponent,
-        {
-          context: {
-            team: this.selectedTeams?.length ? this.selectedTeams[0] : new Team()
-          },
-          dialogClass: this._nbDialogCustomService.isFullscreen
-        })
-      .onClose
-      .subscribe((result: Team) => {
-        if (!result) return;
-        this._refreshTeams();
-      });
+    if (!!this.selectedTeams.length) {
+      this._teamService
+        .getTeam(this.selectedTeams[0].id)
+        .pipe(
+          tap((teamComplete: Team) => {
+            this._openForm(teamComplete);
+          })
+        )
+        .subscribe();
+    } else {
+      this._openForm(new Team());
+    }
   }
 
   delete(): void {
@@ -112,5 +109,21 @@ export class TeamConfigurationComponent implements OnInit {
     this.teams$ = this._teamService
       .getUsersTeams()
       .pipe(tap(() => this.selectedTeams = []));
+  }
+
+  private _openForm(team: Team): void {
+    this._nbDialogService
+      .open(TeamFormComponent,
+        {
+          context: {
+            team
+          },
+          dialogClass: this._nbDialogCustomService.isFullscreen
+        })
+      .onClose
+      .subscribe((result: Team) => {
+        if (!result) return;
+        this._refreshTeams();
+      });
   }
 }
