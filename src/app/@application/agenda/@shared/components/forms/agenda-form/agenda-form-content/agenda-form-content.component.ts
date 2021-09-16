@@ -11,6 +11,7 @@ import { ErrorStateMatcher } from '../../../../../../../@shared/helpers/matchers
 import { Agenda } from '../../../../../../../@shared/models/agenda.model';
 import { Team } from '../../../../../../../@shared/models/team.model';
 import { User } from '../../../../../../../@shared/models/user.model';
+import { AuthService } from '../../../../../../../@shared/services/auth.service';
 import { TeamService } from '../../../../../../@shared/services/team.service';
 import { UserService } from '../../../../../../@shared/services/user.service';
 
@@ -37,6 +38,7 @@ export class AgendaFormContentComponent implements OnInit, OnDestroy {
     private _teamService: TeamService,
     private _toastrService: ToastrService,
     private _translateService: TranslateService,
+    private _authService: AuthService
   ) {
   }
 
@@ -67,8 +69,7 @@ export class AgendaFormContentComponent implements OnInit, OnDestroy {
   }
 
   onSharedUserAdd({ value, input }: NbTagInputAddEvent): void {
-    console.log(value);
-    if (value) {
+    if (value && value !== this._authService.user.username) {
       const sharedUsers: Array<User> = this.form.value.sharedUsers;
       this._userService.getUser(value)
         .pipe(
@@ -87,10 +88,16 @@ export class AgendaFormContentComponent implements OnInit, OnDestroy {
             return of(e);
           })
         ).subscribe();
+    } else {
+      this._toastrService.error(this._translateService.instant('APP.AGENDA.TOASTR.ERROR.NOT_ALLOWED'));
     }
   }
 
   onColorChange(color: string): void {
     this.form.patchValue({ color });
+  }
+
+  isCurrentUser(user: User): boolean {
+    return this._authService.user.id === user.id;
   }
 }

@@ -24,7 +24,7 @@
     <nb-tag-list (tagRemove)="onUserRemove($event)">
       <nb-tag *ngFor="let user of getUsers()"
               [text]="user.email | lowercase"
-              removable>
+              [removable]="!isCurrentUser(user)">
       </nb-tag>
       <input type="text"
              nbTagInput

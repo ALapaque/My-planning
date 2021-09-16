@@ -8,6 +8,7 @@ import { catchError, takeUntil, tap } from 'rxjs/operators';
 import { ErrorStateMatcher } from '../../../../../../../@shared/helpers/matchers/error-state-matcher';
 import { Team } from '../../../../../../../@shared/models/team.model';
 import { User } from '../../../../../../../@shared/models/user.model';
+import { AuthService } from '../../../../../../../@shared/services/auth.service';
 import { UserService } from '../../../../../../@shared/services/user.service';
 
 @Component({
@@ -24,7 +25,8 @@ export class TeamFormContentComponent implements OnInit, OnDestroy {
   constructor(
     private _userService: UserService,
     private _toastrService: ToastrService,
-    private _translateService: TranslateService
+    private _translateService: TranslateService,
+    private _authService: AuthService,
   ) {
   }
 
@@ -44,7 +46,7 @@ export class TeamFormContentComponent implements OnInit, OnDestroy {
   }
 
   onUserRemove({ text }: NbTagComponent): void {
-    const users: Array<User> = this.form.value.sharedUsers;
+    const users: Array<User> = this.form.value.users;
     const index: number = users.findIndex((u: User) => u.email === text);
 
     if (index !== -1) {
@@ -75,5 +77,10 @@ export class TeamFormContentComponent implements OnInit, OnDestroy {
           })
         ).subscribe();
     }
+  }
+
+  isCurrentUser(user: User): boolean {
+    return this._authService.user.id === user.id;
+
   }
 }

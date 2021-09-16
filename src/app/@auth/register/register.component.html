@@ -39,7 +39,41 @@
       </nb-form-field>
 
       <nb-form-field>
-        <nb-icon nbPrefix icon="email-outline" pack="eva"></nb-icon>
+        <nb-icon nbPrefix icon="info-outline" pack="eva"></nb-icon>
+        <input nbInput
+               name="firstName"
+               fullWidth
+               [placeholder]="'FORM.INPUT.FIRSTNAME' | translate"
+               [status]="(checkFieldForError('firstName')) ?
+               'danger' : 'basic'"
+               [type]="'text'"
+               [formControlName]="'firstName'">
+        <nb-error *ngIf="checkFieldForError('firstName')">
+          <ng-container *ngIf="registerForm.get('firstName').errors.required">
+            {{'FORM.INPUT.ERRORS.REQUIRED' | translate}}
+          </ng-container>
+        </nb-error>
+      </nb-form-field>
+
+      <nb-form-field>
+        <nb-icon nbPrefix icon="info-outline" pack="eva"></nb-icon>
+        <input nbInput
+               name="lastName"
+               fullWidth
+               [placeholder]="'FORM.INPUT.LASTNAME' | translate"
+               [status]="(checkFieldForError('lastName')) ?
+               'danger' : 'basic'"
+               [type]="'text'"
+               [formControlName]="'lastName'">
+        <nb-error *ngIf="checkFieldForError('lastName')">
+          <ng-container *ngIf="registerForm.get('lastName').errors.required">
+            {{'FORM.INPUT.ERRORS.REQUIRED' | translate}}
+          </ng-container>
+        </nb-error>
+      </nb-form-field>
+
+      <nb-form-field>
+        <nb-icon nbPrefix icon="at-outline" pack="eva"></nb-icon>
         <input nbInput
                name="email"
                fullWidth
@@ -59,34 +93,16 @@
       </nb-form-field>
 
       <nb-form-field>
-        <nb-icon nbPrefix icon="email-outline" pack="eva"></nb-icon>
+        <nb-icon nbPrefix icon="briefcase-outline" pack="eva"></nb-icon>
         <input nbInput
-               name="firstName"
+               name="organization"
                fullWidth
-               [placeholder]="'FORM.INPUT.FIRSTNAME' | translate"
-               [status]="(checkFieldForError('firstName')) ?
-               'danger' : 'basic'"
+               [placeholder]="'FORM.INPUT.ORGANIZATION' | translate"
+               [status]="(checkFieldForError('organization')) ? 'danger' : 'basic'"
                [type]="'text'"
-               [formControlName]="'firstName'">
-        <nb-error *ngIf="checkFieldForError('firstName')">
-          <ng-container *ngIf="registerForm.get('firstName').errors.required">
-            {{'FORM.INPUT.ERRORS.REQUIRED' | translate}}
-          </ng-container>
-        </nb-error>
-      </nb-form-field>
-
-      <nb-form-field>
-        <nb-icon nbPrefix icon="email-outline" pack="eva"></nb-icon>
-        <input nbInput
-               name="lastName"
-               fullWidth
-               [placeholder]="'FORM.INPUT.LASTNAME' | translate"
-               [status]="(checkFieldForError('lastName')) ?
-               'danger' : 'basic'"
-               [type]="'text'"
-               [formControlName]="'lastName'">
-        <nb-error *ngIf="checkFieldForError('lastName')">
-          <ng-container *ngIf="registerForm.get('lastName').errors.required">
+               [formControlName]="'organization'">
+        <nb-error *ngIf="checkFieldForError('organization')">
+          <ng-container *ngIf="registerForm.get('organization').errors.required">
             {{'FORM.INPUT.ERRORS.REQUIRED' | translate}}
           </ng-container>
         </nb-error>

@@ -66,7 +66,7 @@
         <nb-tag-list (tagRemove)="onSharedUserRemove($event)">
           <nb-tag *ngFor="let user of getSharedUsers()"
                   [text]="user.email | lowercase"
-                  removable>
+                  [removable]="!isCurrentUser(user)">
           </nb-tag>
           <input type="text"
                  nbTagInput

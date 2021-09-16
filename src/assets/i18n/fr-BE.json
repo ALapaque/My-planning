@@ -171,12 +171,13 @@
       },
       "TOASTR": {
         "ERROR": {
-          "NOT_FOUND": "Element introuvable",
-          "ALREADY_IN": "L'élément fait déjà parti de la liste",
-          "GET_EVENTS": "Impossible de récupérer les événements",
-          "GET_EVENT": "Impossible de récupérer l'événement",
-          "SAVE": "Erreur lors de l'enregistrement",
-          "DELETE": "Erreur lors de la suppression"
+          "NOT_FOUND": "Element introuvable !",
+          "NOT_ALLOWED": "Action non autorisé !",
+          "ALREADY_IN": "L'élément fait déjà parti de la liste !",
+          "GET_EVENTS": "Impossible de récupérer les événements !",
+          "GET_EVENT": "Impossible de récupérer l'événement !",
+          "SAVE": "Erreur lors de l'enregistrement !",
+          "DELETE": "Erreur lors de la suppression !"
         },
         "SUCCESS": {
           "GET_EVENTS": "Événements récupérés",
@@ -284,6 +285,7 @@
       "LASTNAME": "Nom de famille",
       "PASSWORD": "Mot de passe",
       "EMAIL": "Adresse email",
+      "ORGANIZATION": "Organisation",
       "CONFIRM_PASSWORD": "Confirmation du mot de passe",
       "ERRORS": {
         "REQUIRED": "Ce champ est requis !",

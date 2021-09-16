@@ -69,7 +69,9 @@ export class TeamConfigurationComponent implements OnInit {
         )
         .subscribe();
     } else {
-      this._openForm(new Team());
+      this._openForm(new Team({
+        users: [ this._authService.user ]
+      }));
     }
   }
 
