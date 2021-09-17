@@ -1,39 +1,48 @@
 <form [formGroup]="form">
-  <!-- INPUT FIRSTNAME -->
-  <nb-form-field [style.marginBottom]="(checkFieldForError('firstName')) ? '32px' : '16px'">
-    <label for="firstname-input">{{ 'APP.CONFIGURATION.FORM.USER.FIRSTNAME' | translate }}</label>
 
-    <input [formControlName]="'firstName'"
-           id="firstname-input"
-           type="text"
-           nbInput
-           fullWidth
-           [status]="(checkFieldForError('firstName')) ? 'danger' : 'primary'"
-           placeholder="Nom">
-    <nb-error *ngIf="checkFieldForError('firstName')">
-      <ng-container *ngIf="form.get('firstName').errors.required">
-        {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
-      </ng-container>
-    </nb-error>
-  </nb-form-field>
+  <div fxLayout="row"
+       fxLayout.lt-md="column"
+       fxLayoutAlign="start center"
+       fxLayoutAlign.lt-md="center space-between"
+       fxLayoutGap="8px"
+       [style.marginBottom]="(checkFieldForError('firstName') || checkFieldForError('lastName')) ? '32px' : '16px'">
 
-  <!-- INPUT LASTNAME -->
-  <nb-form-field [style.marginBottom]="(checkFieldForError('lastName')) ? '32px' : '16px'">
-    <label for="lastname-input">{{ 'APP.CONFIGURATION.FORM.USER.LASTNAME' | translate }}</label>
+    <!-- INPUT FIRSTNAME -->
+    <nb-form-field fxFlex.lt-md="50%"
+    >
+      <label for="firstname-input">{{ 'APP.CONFIGURATION.FORM.USER.FIRSTNAME' | translate }}</label>
 
-    <input [formControlName]="'lastName'"
-           id="lastname-input"
-           type="text"
-           nbInput
-           fullWidth
-           [status]="(checkFieldForError('lastName')) ? 'danger' : 'primary'"
-           placeholder="Nom">
-    <nb-error *ngIf="checkFieldForError('lastName')">
-      <ng-container *ngIf="form.get('lastName').errors.required">
-        {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
-      </ng-container>
-    </nb-error>
-  </nb-form-field>
+      <input [formControlName]="'firstName'"
+             id="firstname-input"
+             type="text"
+             nbInput
+             fullWidth
+             [status]="(checkFieldForError('firstName')) ? 'danger' : 'primary'">
+      <nb-error *ngIf="checkFieldForError('firstName')">
+        <ng-container *ngIf="form.get('firstName').errors.required">
+          {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+        </ng-container>
+      </nb-error>
+    </nb-form-field>
+
+    <!-- INPUT LASTNAME -->
+    <nb-form-field fxFlex.lt-md="50%">
+      <label for="lastname-input">{{ 'APP.CONFIGURATION.FORM.USER.LASTNAME' | translate }}</label>
+
+      <input [formControlName]="'lastName'"
+             id="lastname-input"
+             type="text"
+             nbInput
+             fullWidth
+             [status]="(checkFieldForError('lastName')) ? 'danger' : 'primary'">
+      <nb-error *ngIf="checkFieldForError('lastName')">
+        <ng-container *ngIf="form.get('lastName').errors.required">
+          {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+        </ng-container>
+      </nb-error>
+    </nb-form-field>
+
+  </div>
 
   <!-- INPUT ORGANIZATION -->
   <nb-form-field [style.marginBottom]="(checkFieldForError('organization')) ? '32px' : '16px'">
@@ -44,8 +53,7 @@
            type="text"
            nbInput
            fullWidth
-           [status]="(checkFieldForError('organization')) ? 'danger' : 'primary'"
-           placeholder="Nom">
+           [status]="(checkFieldForError('organization')) ? 'danger' : 'primary'">
     <nb-error *ngIf="checkFieldForError('organization')">
       <ng-container *ngIf="form.get('organization').errors.required">
         {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
@@ -62,8 +70,7 @@
            type="text"
            nbInput
            fullWidth
-           [status]="(checkFieldForError('username')) ? 'danger' : 'primary'"
-           placeholder="Nom">
+           [status]="(checkFieldForError('username')) ? 'danger' : 'primary'">
     <nb-error *ngIf="checkFieldForError('username')">
       <ng-container *ngIf="form.get('username').errors.required">
         {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
@@ -80,8 +87,7 @@
            type="email"
            nbInput
            fullWidth
-           [status]="(checkFieldForError('email')) ? 'danger' : 'primary'"
-           placeholder="Nom">
+           [status]="(checkFieldForError('email')) ? 'danger' : 'primary'">
     <nb-error *ngIf="checkFieldForError('email')">
       <ng-container *ngIf="form.get('email').errors.required">
         {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
@@ -101,8 +107,7 @@
            type="password"
            nbInput
            fullWidth
-           [status]="(checkFieldForError('password')) ? 'danger' : 'primary'"
-           placeholder="Nom">
+           [status]="(checkFieldForError('password')) ? 'danger' : 'primary'">
     <nb-error *ngIf="checkFieldForError('password')">
       <ng-container *ngIf="form.get('password').errors.required">
         {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
@@ -112,13 +117,13 @@
 
   <!-- SELECT ROLE -->
   <nb-form-field [style.marginBottom]="(checkFieldForError('role')) ? '32px' : '16px'">
-    <label for="role-select">{{ 'APP.CONFIGURATION.FORM.USER.ROLE' | translate }}:</label>
+    <label for="role-select">{{ 'APP.CONFIGURATION.FORM.USER.ROLE' | translate }}</label>
 
-    <nb-select placeholder="Role"
-               id="role-select"
+    <nb-select id="role-select"
                [status]="(checkFieldForError('role')) ? 'danger' : 'primary'"
                [formControlName]="'role'"
-               [compareWith]="compareFn">
+               [compareWith]="compareFn"
+               fullWidth>
       <nb-option *ngFor="let role of roles$ | async"
                  [value]="role">
         {{ 'GLOBAL.ROLE.' + role.name.toUpperCase() | translate }}
@@ -133,14 +138,14 @@
 
   <!-- SELECT TEAMS -->
   <nb-form-field [style.marginBottom]="(checkFieldForError('teams')) ? '32px' : '16px'">
-    <label for="role-select">{{ 'APP.CONFIGURATION.FORM.USER.TEAMS' | translate }}:</label>
+    <label for="role-select">{{ 'APP.CONFIGURATION.FORM.USER.TEAMS' | translate }}</label>
 
-    <nb-select placeholder="Equipes"
-               id="teams-select"
+    <nb-select id="teams-select"
                multiple
                [status]="(checkFieldForError('teams')) ? 'danger' : 'primary'"
                [formControlName]="'teams'"
-               [compareWith]="compareFn">
+               [compareWith]="compareFn"
+               fullWidth>
       <nb-option *ngFor="let team of teams$ | async"
                  [value]="team">
         {{ team.name }}

@@ -274,6 +274,18 @@
           "NAME": "Nom : ",
           "USERS": "Utilisateurs : ",
           "HINT-USERS": "Saisissez le nom d'utilisateur ou l'email puis appuyer sur entrer"
+        },
+        "USER": {
+          "CREATE": "Nouvel utilisateur",
+          "UPDATE": "Modifier l'utilisateur",
+          "FIRSTNAME": "Prénom : ",
+          "LASTNAME": "Nom : ",
+          "ORGANIZATION": "Organisation : ",
+          "USERNAME": "Nom d'utilisateur : ",
+          "EMAIL": "Adresse email : ",
+          "PASSWORD": "Mot de passe : ",
+          "ROLE": "Role : ",
+          "TEAMS": "Equipes : "
         }
       }
     }
