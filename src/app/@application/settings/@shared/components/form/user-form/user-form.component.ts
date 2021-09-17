@@ -41,23 +41,27 @@ export class UserFormComponent implements AfterViewInit {
   }
 
   submit(): void {
-    this._userService.save(new User({
-      ...this.user,
-      id: this.form.value.id,
-      firstName: this.form.value.firstName,
-      lastName: this.form.value.lastName,
-      organization: this.form.get('organization').value,
-      username: this.form.value.username,
-      email: this.form.value.email,
-      password: this.form.value.password,
-      role: this.form.value.role,
-      teams: this.form.value.teams,
-    })).subscribe((user: User) => {
-        if (!user) return this.dialogRef.close();
-        this._toastrService.success(this._translateService.instant('APP.CONFIGURATION.TOASTR.SUCCESS.SAVE'));
-        this.dialogRef.close(user);
-      },
-      () => this._toastrService.success(this._translateService.instant('APP.CONFIGURATION.TOASTR.ERRORS.SAVE')));
+    this._userService
+      .save(new User({
+        ...this.user,
+        id: this.form.value.id,
+        firstName: this.form.value.firstName,
+        lastName: this.form.value.lastName,
+        organization: this.form.get('organization').value,
+        username: this.form.value.username,
+        email: this.form.value.email,
+        password: this.form.value.password,
+        role: this.form.value.role,
+        teams: this.form.value.teams,
+      }))
+      .subscribe(
+        (user: User) => {
+          if (!user) return this.dialogRef.close();
+          this._toastrService.success(this._translateService.instant('APP.CONFIGURATION.TOASTR.SUCCESS.SAVE'));
+          this.dialogRef.close(user);
+        },
+        () => this._toastrService.success(this._translateService.instant('APP.CONFIGURATION.TOASTR.ERRORS.SAVE'))
+      );
   }
 
   private _initForm(): void {
