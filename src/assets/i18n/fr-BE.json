@@ -284,6 +284,7 @@
           "USERNAME": "Nom d'utilisateur : ",
           "EMAIL": "Adresse email : ",
           "PASSWORD": "Mot de passe : ",
+          "PASSWORD-HINT": "Laissez vide, si vous souhaitez garder l'ancien mot de passe",
           "ROLE": "Role : ",
           "TEAMS": "Equipes : "
         }

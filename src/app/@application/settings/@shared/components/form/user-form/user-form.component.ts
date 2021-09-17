@@ -22,7 +22,7 @@ export class UserFormComponent implements AfterViewInit {
     organization: new FormControl({ value: null, disabled: true }, [ Validators.required ]),
     username: new FormControl({ value: null, disabled: true }, [ Validators.required ]),
     email: new FormControl(null, [ Validators.required, Validators.email ]),
-    password: new FormControl(null, [ Validators.required ]),
+    password: new FormControl(''),
     role: new FormControl(null, [ Validators.required ]),
     teams: new FormControl([], [ Validators.required, Validators.minLength(1) ])
   });
@@ -75,5 +75,8 @@ export class UserFormComponent implements AfterViewInit {
       role: this.user.role,
       teams: this.user.teams,
     });
+    if (!this.user?.id) {
+      this.form.get('username').enable();
+    }
   }
 }
