@@ -1,5 +1,8 @@
 import {AbstractControl, FormGroup, ValidationErrors, ValidatorFn} from '@angular/forms';
 
+/**
+ * password validator check if the confirm password matches
+ */
 export abstract class PasswordValidators {
   static passwordMatch(): ValidatorFn {
     // @ts-ignore

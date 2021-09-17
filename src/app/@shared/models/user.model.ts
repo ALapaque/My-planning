@@ -8,15 +8,16 @@ export class User implements AbstractEntity<number> {
   public id: number = 0;
   public firstName: string = null;
   public lastName: string = null;
+  public organization: string = null;
   public username: string = null;
   public email: string = null;
   public password: string = null;
   public role: Role = null;
-  public comments: Array<Comment> = null;
-  public agendas: Array<Agenda> = null;
-  public teams: Array<Team> = null;
-  public cards: Array<Card> = null;
-  public sharedAgendas: Array<Agenda> = null;
+  public comments: Array<Comment> = [];
+  public agendas: Array<Agenda> = [];
+  public teams: Array<Team> = [];
+  public cards: Array<Card> = [];
+  public sharedAgendas: Array<Agenda> = [];
 
   constructor(user?: Partial<User>) {
     if (user) {
@@ -31,4 +32,5 @@ export class User implements AbstractEntity<number> {
   public displayFormattedName(): string {
     return this.firstName + ' ' + this.lastName;
   }
+
 }

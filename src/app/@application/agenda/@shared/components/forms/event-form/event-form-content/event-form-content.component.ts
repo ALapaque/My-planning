@@ -8,6 +8,9 @@ import {Observable} from 'rxjs';
 import {AgendaService} from '../../../../../../@shared/services/agenda.service';
 import {CompareStateMatcher} from '../../../../../../../@shared/helpers/matchers/compare-state-matcher';
 import {ErrorStateMatcher} from '../../../../../../../@shared/helpers/matchers/error-state-matcher';
+import {UrlValidators} from '../../../../../../../@shared/helpers/validators/url-validators';
+import {AuthService} from '../../../../../../../@shared/services/auth.service';
+import {Comment} from '../../../../../../../@shared/models/comment.model';
 
 @Component({
   selector: 'app-event-form-content',
@@ -27,6 +30,7 @@ export class EventFormContentComponent implements OnInit {
   constructor(
     public breakpointObserver: BreakpointObserver,
     private _agendaService: AgendaService,
+    private _authService: AuthService,
   ) {
   }
 
@@ -36,7 +40,6 @@ export class EventFormContentComponent implements OnInit {
   }
 
   get hasMeeting(): boolean {
-    console.log(this.form.value.eventType === 'MEETING');
     if (this.form.value.eventType === 'MEETING') {
       this.hasMeetingChanged(true);
       return true;
@@ -44,6 +47,10 @@ export class EventFormContentComponent implements OnInit {
       this.hasMeetingChanged(false);
       return false;
     }
+  }
+
+  isSameUser(msg: Comment): boolean {
+    return this._authService.user.id === msg.user.id;
   }
 
   checkFieldForError(fieldName: string) {
@@ -56,7 +63,7 @@ export class EventFormContentComponent implements OnInit {
       this.form.get('meetingUrl').setValidators(
         [
           Validators.required,
-          Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?')
+          Validators.pattern(UrlValidators.getUrlRegex())
         ]
       );
     } else {

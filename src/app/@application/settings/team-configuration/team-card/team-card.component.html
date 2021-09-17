@@ -1,0 +1,8 @@
+<nb-card>
+  <nb-checkbox #checkbox
+               [checked]="isChecked()"
+               (checkedChange)="onCheckedChanged($event)"
+               [style.padding]="'12px'">
+    <span>{{ team.name }}</span>
+  </nb-checkbox>
+</nb-card>

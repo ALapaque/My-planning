@@ -1,6 +1,4 @@
 import { NgModule }               from '@angular/core';
-import { NbThemeModule } from '@nebular/theme';
-import { NebularModule } from '../@shared/nebular.module';
 import { SharedModule }           from '../@shared/shared.module';
 import { HeaderAppNameComponent } from './header/header-app-name/header-app-name.component';
 import { HeaderGoToAppComponent } from './header/header-go-to-app/header-go-to-app.component';

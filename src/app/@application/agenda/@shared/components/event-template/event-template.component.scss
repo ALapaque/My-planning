@@ -7,13 +7,25 @@
       height: 100% !important;
 
       .template-wrap {
-        border-left: solid 6px grey !important;
+        border-left-style: solid;
+        border-left-width: 6px;
         height: 100% !important;
         white-space: normal !important;
 
+        &.week, &.day, &.workweek {
+          .subject {
+            padding: 6px 0 0 6px !important;
+          }
+        }
+
+        &.month, &.year, &.timelineweek, &.timelineday, &.timelineworkweek, &.timelinemonth, &.timelineyear {
+          .subject {
+            padding: 0 0 0 6px !important;
+          }
+        }
+
         .subject {
           font-size: 14px !important;
-          padding: 6px 0 0 6px !important;
           font-weight: 500 !important;
           text-overflow: ellipsis !important;
           white-space: nowrap !important;

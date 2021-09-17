@@ -1,5 +1,9 @@
 :host ::ng-deep {
   nb-layout {
+    .layout {
+      min-height: calc(100vh - 200px) !important;
+    }
+
     nb-layout-column {
       padding: 1.5rem !important;
 
@@ -40,6 +44,11 @@
       height: 100% !important;
       max-height: calc(100vh - 200px) !important;
     }
+
+    nb-chat {
+      height: calc(100vh - 550px) !important;
+      box-shadow: none !important;
+    }
   }
 
   .nebular-dialog-fullscreen {
@@ -49,6 +58,12 @@
     nb-card {
       width: 100vw !important;
       height: 100% !important;
+    }
+
+    nb-chat {
+      min-height: 300px;
+      height: calc(100vh - 348px);
+      box-shadow: none !important;
     }
   }
 }

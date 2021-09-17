@@ -1,0 +1,105 @@
+<form [formGroup]="form">
+
+  <nb-stepper #stepper
+              [linear]="true"
+              [orientation]="breakpointObserver.isMatched('(max-width: 960px)') ? 'horizontal' : 'vertical'">
+
+    <!-- Principals infos -->
+    <nb-step [label]="'APP.AGENDA.FORM.AGENDA.STEPS.STEP-1.LABEL' | translate">
+      <h6>
+        <nb-icon [icon]="'calendar-outline'"></nb-icon>
+        {{ 'APP.AGENDA.FORM.AGENDA.STEPS.STEP-1.TITLE' | translate }}
+      </h6>
+
+      <!-- INPUT NAME -->
+      <nb-form-field [style.marginBottom]="(checkFieldForError('name')) ? '32px' : '16px'">
+        <label for="name-input">Nom :</label>
+
+        <input [formControlName]="'name'"
+               id="name-input"
+               type="text"
+               nbInput
+               fullWidth
+               [status]="(checkFieldForError('name')) ? 'danger' : 'primary'"
+               placeholder="Nom">
+        <nb-error *ngIf="checkFieldForError('name')">
+          <ng-container *ngIf="form.get('name').errors.required">
+            {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+          </ng-container>
+        </nb-error>
+      </nb-form-field>
+
+      <!-- INPUT COLOR -->
+      <nb-form-field [style.marginBottom]="(checkFieldForError('color')) ? '32px' : '16px'">
+        <label for="color">Couleur :</label>
+
+        <input #colorInput
+               autocomplete="false"
+               [(colorPicker)]="form.value.color"
+               (colorPickerChange)="onColorChange($event)"
+               id="color"
+               nbInput
+               fullWidth
+               [status]="(checkFieldForError('color')) ? 'danger' : 'basic'"
+               [style.backgroundColor]="form.value.color"
+               [style.color]="form.value.color">
+        <nb-error *ngIf="checkFieldForError('color')">
+          <ng-container *ngIf="form.get('color').errors.required">
+            {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+          </ng-container>
+        </nb-error>
+      </nb-form-field>
+
+    </nb-step>
+
+    <!-- SHARE INFORMATIONS -->
+    <nb-step [label]="'APP.AGENDA.FORM.AGENDA.STEPS.STEP-2.LABEL' | translate">
+      <h6>
+        <nb-icon [icon]="'share-outline'"></nb-icon>
+        {{ 'APP.AGENDA.FORM.AGENDA.STEPS.STEP-2.TITLE' | translate }}
+      </h6>
+
+      <!-- SHARED USER -->
+      <nb-form-field [style.marginBottom]="(checkFieldForError('sharedUSers')) ? '32px' : '16px'">
+        <label for="name-input">{{ 'APP.AGENDA.FORM.AGENDA.SHAREDUSERS' | translate }}</label>
+
+        <nb-tag-list (tagRemove)="onSharedUserRemove($event)">
+          <nb-tag *ngFor="let user of getSharedUsers()"
+                  [text]="user.email | lowercase"
+                  [removable]="!isCurrentUser(user)">
+          </nb-tag>
+          <input type="text"
+                 nbTagInput
+                 [status]="(checkFieldForError('sharedUsers')) ? 'danger' : 'primary'"
+                 (tagAdd)="onSharedUserAdd($event)"
+                 fullWidth>
+        </nb-tag-list>
+        <small><i>{{ 'APP.AGENDA.FORM.AGENDA.STEPS.STEP-2.HINT-SHAREDUSERS' | translate }}</i></small>
+        <nb-error *ngIf="checkFieldForError('sharedUsers')">
+          <ng-container *ngIf="form.get('name').errors.required">
+            {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+          </ng-container>
+        </nb-error>
+      </nb-form-field>
+
+      <!-- SHARED TEAMS -->
+      <nb-form-field [style.marginBottom]="(checkFieldForError('sharedTeams')) ? '32px' : '16px'"
+                     *ngIf="(teams$ | async) as teams">
+        <label for="name-input">{{ 'APP.AGENDA.FORM.AGENDA.SHAREDTEAMS' | translate }}</label>
+
+        <nb-select multiple
+                   [disabled]="!teams?.length"
+                   [formControlName]="'sharedTeams'"
+                   [compareWith]="compareFn"
+                   fullWidth>
+          <nb-option *ngFor="let team of teams" [value]="team">{{ team.name }}</nb-option>
+        </nb-select>
+        <nb-error *ngIf="checkFieldForError('sharedTeams')">
+          <ng-container *ngIf="form.get('name').errors.required">
+            {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+          </ng-container>
+        </nb-error>
+      </nb-form-field>
+    </nb-step>
+  </nb-stepper>
+</form>

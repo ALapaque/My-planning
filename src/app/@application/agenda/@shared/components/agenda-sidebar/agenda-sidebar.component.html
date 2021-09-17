@@ -1,0 +1,74 @@
+<div class="sidenav-container"
+     fxLayout="column"
+     fxLayoutGap="1rem">
+
+  <nb-sidebar-header fxLayout="row"
+                     fxLayoutAlign="space-between center">
+    <h6>{{ 'APP.AGENDA.SIDEBAR.FILTER' | translate }} :</h6>
+
+    <div fxLayoutGap="6px">
+      <button nbButton
+              ghost
+              shape="round"
+              size="small"
+              (click)="addOrEditAgenda()">
+        <nb-icon [icon]="'plus-outline'"
+                 status="success">
+        </nb-icon>
+      </button>
+      <button *ngIf="responsiveService.isMobile"
+              nbButton
+              outline
+              status="danger"
+              shape="round"
+              size="small"
+              (click)="close()">
+        <nb-icon [icon]="'close-outline'"
+                 status="danger">
+        </nb-icon>
+      </button>
+    </div>
+  </nb-sidebar-header>
+
+  <div class="calendars-selector-container">
+    <app-agenda-calendar-selector #userAgendas
+                                  [expanded]="true"
+                                  [type]="'user'"
+                                  [getAgendas$]="agendas$"
+                                  (checkedOnChange)="calendarSelectedOnChange($event)"
+                                  (editEmitter)="addOrEditAgenda($event)"
+                                  (deleteEmitter)="delete($event)">
+      {{ 'APP.AGENDA.SIDEBAR.MY' | translate }}:
+    </app-agenda-calendar-selector>
+  </div>
+
+  <div class="calendars-selector-container">
+    <app-agenda-calendar-selector #sharedAgendas
+                                  [expanded]="false"
+                                  [type]="'shared'"
+                                  [getAgendas$]="sharedAgendas$"
+                                  (checkedOnChange)="calendarSelectedOnChange($event)">
+      {{ 'APP.AGENDA.SIDEBAR.SHARED' | translate }} :
+    </app-agenda-calendar-selector>
+  </div>
+
+  <nb-sidebar-footer fxLayoutAlign="center center">
+    <button nbButton
+            outline
+            status="success"
+            shape="round"
+            size="medium"
+            (click)="applyFilter()">
+      <ng-container *ngIf="responsiveService.isMobile; else desktopFilterBtnTemplate">
+        <nb-icon [icon]="'checkmark-outline'"></nb-icon>
+      </ng-container>
+
+      <ng-template #desktopFilterBtnTemplate>
+        <nb-icon [icon]="'checkmark-outline'"></nb-icon>
+        {{ 'APP.AGENDA.SIDEBAR.APPLY_FILTER' | translate }}
+      </ng-template>
+    </button>
+  </nb-sidebar-footer>
+</div>
+
+

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Agenda} from '../../../../../../../../@shared/models/agenda.model';
+import {Agenda} from '../../../../../@shared/models/agenda.model';
 
 @Component({
     selector: 'app-agenda-label',

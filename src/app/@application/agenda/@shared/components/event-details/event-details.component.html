@@ -1,5 +1,5 @@
-<nb-card>
-  <nb-card-header>
+<nb-card [style.borderColor]="event.Meta.agenda.color">
+  <nb-card-header [style.backgroundColor]="event.PrimaryColor">
     <app-event-details-header (close)="dialogRef.close()"
                               (delete)="delete()"
                               (edit)="edit()"
@@ -9,9 +9,8 @@
   </nb-card-header>
 
   <nb-card-body>
-    <app-event-details-content [event]="event"
-                               [fxFlex.gt-sm]="'50vw'"
-                               [fxFlex.lt-sm]="'100vw'">
+    <app-event-details-content #eventDetailsContentComponent
+                               [event]="event">
     </app-event-details-content>
   </nb-card-body>
 </nb-card>

@@ -1,11 +1,29 @@
-import { NgModule }             from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SettingsComponent }    from './settings.component';
+import { SettingsContainerComponent } from './settings-container.component';
+import { UserConfigurationComponent } from './user-configuration/user-configuration.component';
+import { TeamConfigurationComponent } from './team-configuration/team-configuration.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: SettingsComponent,
+    component: SettingsContainerComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'users'
+      },
+      {
+        path: 'users',
+        component: UserConfigurationComponent,
+        pathMatch: 'full',
+      },
+      {
+        path: 'teams',
+        component: TeamConfigurationComponent,
+        pathMatch: 'full',
+      }
+    ]
   },
 ];
 
@@ -15,4 +33,5 @@ const routes: Routes = [
     exports: [ RouterModule ],
   },
 )
-export class SettingsRouting {}
+export class SettingsRouting {
+}

@@ -1,9 +1,12 @@
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { NbSidebarService, NbThemeService } from '@nebular/theme';
 import { NbSidebarState } from '@nebular/theme/components/sidebar/sidebar.component';
+import { filter, takeUntil, tap } from 'rxjs/operators';
 import { AuthService } from '../../../@shared/services/auth.service';
 import { Subject } from 'rxjs';
 import { LoaderService } from '../../@shared/services/loader.service';
+import { RightMenuService } from '../../@shared/services/right-menu.service';
+import { AgendaHelperService } from '../../agenda/@shared/services/agenda-helper.service';
 
 @Component({
   selector: 'app-template',
@@ -11,33 +14,35 @@ import { LoaderService } from '../../@shared/services/loader.service';
   styleUrls: [ './template.component.scss' ],
 })
 export class TemplateComponent implements OnInit, OnDestroy {
+  public nbLeftSidebarState: NbSidebarState = 'expanded';
 
-  public nbSidebarState: NbSidebarState = 'expanded';
-
-  private _destroy: Subject<any> = new Subject<any>();
+  private _destroy$: Subject<any> = new Subject<any>();
 
   constructor(
-    public sidebarService: NbSidebarService,
+    public rightMenuService: RightMenuService,
+    public nbSidebarService: NbSidebarService,
     public loaderService: LoaderService,
     private _nbThemeService: NbThemeService,
     private _authService: AuthService,
+    private _agendaHelperService: AgendaHelperService,
   ) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this._initTheme();
   }
 
   ngOnDestroy(): void {
-    this._destroy.next();
+    this._destroy$.next();
   }
 
   public toggle(): void {
-    this.sidebarService.toggle(true, 'left');
+    this.nbSidebarService.toggle(true, 'left');
   }
 
   public logout(): void {
     this._authService.logout();
+    this._agendaHelperService.calendarsSelected = undefined;
   }
 
   private _initTheme() {

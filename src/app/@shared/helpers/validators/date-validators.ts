@@ -1,6 +1,9 @@
 import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
-import {isBefore} from 'date-fns';
+import * as moment from 'moment';
 
+/**
+ * date validators in order to check if the startDate is Before the endDate
+ */
 export abstract class DateValidators {
   static validateDate(): ValidatorFn {
     return (form: AbstractControl): ValidationErrors | null => {
@@ -10,7 +13,7 @@ export abstract class DateValidators {
       form.get('startDate').markAsTouched();
       form.get('endDate').markAsTouched();
 
-      if (isBefore(startDate, endDate)) {
+      if (moment(startDate).isBefore(endDate)) {
         form.get('startDate').setErrors(null);
         form.get('endDate').setErrors(null);
         return null;

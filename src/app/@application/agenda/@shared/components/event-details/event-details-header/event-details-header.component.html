@@ -1,22 +1,32 @@
-<div fxLayout="column">
+<div fxLayout="row">
+  <div fxLayoutAlign="start center"
+       fxLayoutGap="8px">
+    <ng-content></ng-content>
+  </div>
+
+  <span fxFlex="auto"></span>
+
+
   <div fxLayoutAlign="end center"
        fxLayoutGap="8px">
-    <button nbButton
+    <button *ngIf="isOwner()"
+            nbButton
             ghost
             type="button"
             shape="round"
             size="small"
-            status="basic"
+            status="control"
             (click)="delete.emit()">
       <nb-icon icon="trash-2-outline"></nb-icon>
     </button>
 
-    <button nbButton
+    <button *ngIf="isOwner()"
+            nbButton
             ghost
             type="button"
             shape="round"
             size="small"
-            status="basic"
+            status="control"
             (click)="edit.emit()">
       <nb-icon icon="edit-2-outline"></nb-icon>
     </button>
@@ -31,10 +41,5 @@
             (click)="close.emit()">
       <nb-icon icon="close-outline"></nb-icon>
     </button>
-  </div>
-
-  <div fxLayoutAlign="start center"
-       fxLayoutGap="8px">
-    <ng-content></ng-content>
   </div>
 </div>
