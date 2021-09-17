@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { NbSidebarService, NbThemeService } from '@nebular/theme';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { NbSidebarComponent, NbSidebarService, NbThemeService } from '@nebular/theme';
 import { NbSidebarState } from '@nebular/theme/components/sidebar/sidebar.component';
 import { filter, takeUntil, tap } from 'rxjs/operators';
 import { AuthService } from '../../../@shared/services/auth.service';
@@ -13,7 +13,8 @@ import { AgendaHelperService } from '../../agenda/@shared/services/agenda-helper
   templateUrl: './template.component.html',
   styleUrls: [ './template.component.scss' ],
 })
-export class TemplateComponent implements OnInit, OnDestroy {
+export class TemplateComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('rightSideBar') rightSidebar: NbSidebarComponent;
   public nbLeftSidebarState: NbSidebarState = 'expanded';
 
   private _destroy$: Subject<any> = new Subject<any>();
@@ -30,6 +31,10 @@ export class TemplateComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._initTheme();
+  }
+
+  ngAfterViewInit(): void {
+    this.rightSidebar.collapse();
   }
 
   ngOnDestroy(): void {

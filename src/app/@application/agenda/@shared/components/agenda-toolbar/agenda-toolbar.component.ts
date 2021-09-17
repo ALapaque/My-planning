@@ -114,4 +114,7 @@ export class AgendaToolbarComponent implements OnInit, OnDestroy {
     this.agendaHelperService.refreshAgenda$.next(true);
   }
 
+  dateChange($event: Date) {
+    console.log($event);
+  }
 }

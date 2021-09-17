@@ -20,7 +20,8 @@
     </nb-sidebar-footer>
   </nb-sidebar>
 
-  <nb-sidebar [tag]="'right'"
+  <nb-sidebar #rightSideBar
+              [tag]="'right'"
               right
               [responsive]="true"
               (responsiveStateChange)="rightMenuService.expanded$.next(false)"
