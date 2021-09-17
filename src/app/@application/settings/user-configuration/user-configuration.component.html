@@ -1,0 +1,63 @@
+<nb-card>
+  <nb-card-header fxLayoutAlign="space-between center">
+    <div fxLayoutAlign="start center"
+         fxLayoutGap="12px">
+      <button nbButton
+              ghost
+              size="small"
+              shape="round"
+              status="primary"
+              [disabled]="!selectedUsers?.length || selectedUsers.length !== 1"
+              (click)="details()">
+        <nb-icon [icon]="'eye-outline'"></nb-icon>
+      </button>
+
+      <button nbButton
+              ghost
+              size="small"
+              shape="round"
+              status="primary"
+              [disabled]="!selectedUsers?.length || selectedUsers.length !== 1"
+              (click)="addOrEdit()">
+        <nb-icon [icon]="'edit-outline'"></nb-icon>
+      </button>
+
+      <button nbButton
+              ghost
+              size="small"
+              shape="round"
+              status="danger"
+              [disabled]="!selectedUsers?.length || selfSelected()"
+              (click)="delete()">
+        <nb-icon [icon]="'trash-outline'"></nb-icon>
+      </button>
+    </div>
+
+    <div>
+      <button nbButton
+              outline
+              size="small"
+              shape="round"
+              status="primary"
+              (click)="addOrEdit()">
+        <nb-icon [icon]="'plus-outline'"></nb-icon>
+      </button>
+    </div>
+  </nb-card-header>
+
+  <nb-card-body>
+
+    <div *ngIf="users$ | async as users">
+      <div gdColumns="repeat(auto-fill, minmax(300px, 1fr))"
+           gdColumns.lt-sm="1fr"
+           gdGap="12px">
+        <app-user-card *ngFor="let user of users"
+                       [user]="user"
+                       [selectedUsers]="selectedUsers"
+                       (checkOnChange)="onCheckedChange($event)">
+        </app-user-card>
+      </div>
+    </div>
+
+  </nb-card-body>
+</nb-card>

@@ -120,6 +120,34 @@
     "LEFT_MENU": {
       "DASHBOARD": "Dashboard",
       "AGENDA": "Agenda"
+    },
+    "CONFIGURATION": {
+      "USERS": {
+        "DETAILS": "Details of : ",
+        "FIRSTNAME": "Firstname : ",
+        "LASTNAME": "Lastname : ",
+        "EMAIL": "Email : ",
+        "ROLE": {
+          "LABEL": "Role : ",
+          "VIEWER": "Viewer",
+          "USER": "User",
+          "ADMIN": "Administrator"
+        },
+        "AGENDA": "Agendas : ",
+        "SHAREDAGENDAS": "Shared agendas : "
+      },
+      "TOASTR": {
+        "ERROR": {
+          "NOT_FOUND": "Element not found",
+          "ERROR": "Something wrong happened",
+          "SAVE": "Erreur lors de l'enregistrement",
+          "DELETE": "Erreur lors de la suppression"
+        },
+        "SUCCESS": {
+          "SAVE": "Enregistrement éffectué",
+          "DELETE": "Suppression éffectué"
+        }
+      }
     }
   },
   "FORM": {

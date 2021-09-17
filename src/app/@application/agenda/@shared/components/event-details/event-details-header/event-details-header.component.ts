@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {SchedulerEvent} from '../../../models/scheduler-event.model';
+import {AuthService} from '../../../../../../@shared/services/auth.service';
 
 @Component({
   selector: 'app-event-details-header',
@@ -13,9 +14,16 @@ export class EventDetailsHeaderComponent implements OnInit {
   @Output() delete: EventEmitter<any> = new EventEmitter<any>();
   @Output() edit: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(
+    private _authService: AuthService,
+  ) {
+  }
 
   ngOnInit(): void {
   }
 
+  isOwner(): boolean {
+    if (this.event.Meta?.agenda?.team) return true;
+    return this.event?.Meta?.agenda?.user?.id === this._authService.user.id;
+  }
 }

@@ -1,0 +1,49 @@
+<div class="title"
+     fxLayoutAlign="space-between center">
+  <span><ng-content></ng-content></span>
+
+  <div>
+    <button nbButton
+            ghost
+            size="tiny"
+            shape="round"
+            (click)="expanded = !expanded">
+      <nb-icon [icon]="expanded ? 'arrow-ios-upward-outline' : 'arrow-ios-downward-outline'"></nb-icon>
+    </button>
+  </div>
+</div>
+
+<div *ngIf="expanded"
+     class="calendars-container">
+  <div *ngFor="let agenda of agendas$ | async; let index = index"
+       fxLayoutAlign="space-between center"
+       fxLayoutGap="8px">
+    <ng-container *ngIf="isDefaultUserAgenda(agenda); else selectableAgendaTemplate">
+      <nb-checkbox [checked]="true" [disabled]="true">
+        <app-agenda-label [agenda]="agenda">
+          {{ agenda.name | translate }}
+        </app-agenda-label>
+      </nb-checkbox>
+    </ng-container>
+    <ng-template #selectableAgendaTemplate>
+      <nb-checkbox [checked]="isSelected(agenda)"
+                   (checkedChange)="checkedOnChange.emit({ checked: $event, agenda: agenda })">
+        <app-agenda-label [agenda]="agenda">
+          <ng-container *ngIf="type === 'shared'; else normalLabel">
+            {{ agenda.displayFormattedName() }}
+          </ng-container>
+          <ng-template #normalLabel>
+            {{ agenda.name }}
+          </ng-template>
+        </app-agenda-label>
+      </nb-checkbox>
+    </ng-template>
+
+    <app-agenda-calendar-btn *ngIf="canPerformAction(agenda)"
+                             [agenda]="agenda"
+                             [index]="index"
+                             (delete)="deleteEmitter.emit($event)"
+                             (edit)="editEmitter.emit($event)">
+    </app-agenda-calendar-btn>
+  </div>
+</div>

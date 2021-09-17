@@ -13,7 +13,12 @@
     "TODAY": "Aujourd'hui",
     "NOW": "Maintenant",
     "CONFIRM_DELETE": "Êtes-vous sûr de vouloir supprimer cet élément ?",
-    "EMPTY": "Aucun contenu a afficher"
+    "EMPTY": "Aucun contenu a afficher",
+    "ROLE": {
+      "VIEWER": "Visualiseur",
+      "USER": "Utilisateur",
+      "ADMIN": "Administrateur"
+    }
   },
   "AUTH": {
     "LOGIN": "Connexion",
@@ -60,6 +65,13 @@
   },
   "APP": {
     "AGENDA": {
+      "DEFAULT_NAME": "Mon agenda",
+      "SIDEBAR": {
+        "FILTER": "Filtres",
+        "MY": "Mes agendas",
+        "SHARED": "Agendas partagés",
+        "APPLY_FILTER": "Appliquer"
+      },
       "VIEWS": {
         "DAY": "Journée",
         "WEEK": "Semaine",
@@ -97,12 +109,29 @@
               "TITLE": "Renseigner les informations nécéssaires"
             },
             "STEP-2": {
-              "LABEL": "Plage horaire",
-              "TITLE": "Détails sur la durée de l'événement"
+              "LABEL": "Discussion",
+              "TITLE": "Fil de discussion"
             },
             "STEP-3": {
               "LABEL": "Visibilité",
               "TITLE": "Paramètres de la visibilités"
+            }
+          }
+        },
+        "AGENDA": {
+          "CREATE": "Nouveau rendez-vous",
+          "UPDATE": "Modifier le rendez-vous",
+          "SHAREDUSERS": "Partager avec les utilisateurs suivants :",
+          "SHAREDTEAMS": "Partager avec les équipes suivants :",
+          "STEPS": {
+            "STEP-1": {
+              "LABEL": "Info. nécéssaires",
+              "TITLE": "Renseigner les informations nécéssaires"
+            },
+            "STEP-2": {
+              "LABEL": "Partage",
+              "TITLE": "Informations de partages",
+              "HINT-SHAREDUSERS": "Saisissez le nom d'utilisateur ou l'email puis appuyer sur entrer"
             }
           }
         },
@@ -142,16 +171,39 @@
       },
       "TOASTR": {
         "ERROR": {
-          "GET_EVENTS": "Impossible de récupérer les événements",
-          "GET_EVENT": "Impossible de récupérer l'événement",
-          "SAVE": "Erreur lors de l'enregistrement",
-          "DELETE": "Erreur lors de la suppression"
+          "NOT_FOUND": "Element introuvable !",
+          "NOT_ALLOWED": "Action non autorisé !",
+          "ALREADY_IN": "L'élément fait déjà parti de la liste !",
+          "GET_EVENTS": "Impossible de récupérer les événements !",
+          "GET_EVENT": "Impossible de récupérer l'événement !",
+          "SAVE": "Erreur lors de l'enregistrement !",
+          "DELETE": "Erreur lors de la suppression !"
         },
         "SUCCESS": {
           "GET_EVENTS": "Événements récupérés",
           "GET_EVENT": "Événement récupéré",
           "SAVE": "Enregistrement éffectué",
           "DELETE": "Événement supprimé"
+        }
+      },
+      "DETAILS": {
+        "STEPS": {
+          "1": {
+            "TITLE": "Info. Générales",
+            "LABEL": "Informations générales",
+            "JOIN_MEETING": "Participer à la réunion"
+          },
+          "2": {
+            "TITLE": "Discussion",
+            "LABEL": "Fil de duscussion",
+            "NO_MESSAGE": "Aucun message",
+            "SEND_MESSAGE": "Envoyer un message"
+          },
+          "3": {
+            "TITLE": "Document",
+            "LABEL": "Rapport de réunion",
+            "VIEW_FILE": "Télécharger le fichier"
+          }
         }
       }
     },
@@ -171,7 +223,72 @@
     },
     "LEFT_MENU": {
       "DASHBOARD": "Tableau de bord",
-      "AGENDA": "Agenda"
+      "AGENDA": "Agenda",
+      "SETTINGS": "Configuration",
+      "USERS": "Utilisateurs",
+      "TEAMS": "Equipes",
+      "CALENDARS": "Calendriers"
+    },
+    "ERRORS": {
+      "NOT_ALLOWED": "Accès non autorisé !"
+    },
+    "CONFIGURATION": {
+      "USERS": {
+        "DETAILS": {
+          "TITLE": "Fiche détail de : ",
+          "FIRSTNAME": "Prénom : ",
+          "LASTNAME": "Nom : ",
+          "EMAIL": "Email : ",
+          "ROLE": {
+            "LABEL": "Role : "
+          },
+          "AGENDA": "Agendas : ",
+          "SHAREDAGENDAS": "Agendas partagés : "
+        }
+      },
+      "TEAMS": {
+        "DETAILS": {
+          "TITLE": "Fiche détail de : ",
+          "NAME": "Nom : ",
+          "USERS": "Utilisateurs : ",
+          "AGENDA": "Agendas : ",
+          "SHAREDAGENDAS": "Agendas partagés : "
+        }
+      },
+      "TOASTR": {
+        "ERROR": {
+          "NOT_FOUND": "Element introuvable",
+          "ERROR": "Une erreur est survenue",
+          "SAVE": "Erreur lors de l'enregistrement",
+          "DELETE": "Erreur lors de la suppression"
+        },
+        "SUCCESS": {
+          "SAVE": "Enregistrement éffectué",
+          "DELETE": "Suppression éffectué"
+        }
+      },
+      "FORM": {
+        "TEAM": {
+          "CREATE": "Nouvel équipe",
+          "UPDATE": "Modifier l'équipe",
+          "NAME": "Nom : ",
+          "USERS": "Utilisateurs : ",
+          "HINT-USERS": "Saisissez le nom d'utilisateur ou l'email puis appuyer sur entrer"
+        },
+        "USER": {
+          "CREATE": "Nouvel utilisateur",
+          "UPDATE": "Modifier l'utilisateur",
+          "FIRSTNAME": "Prénom : ",
+          "LASTNAME": "Nom : ",
+          "ORGANIZATION": "Organisation : ",
+          "USERNAME": "Nom d'utilisateur : ",
+          "EMAIL": "Adresse email : ",
+          "PASSWORD": "Mot de passe : ",
+          "PASSWORD-HINT": "Laissez vide, si vous souhaitez garder l'ancien mot de passe",
+          "ROLE": "Role : ",
+          "TEAMS": "Equipes : "
+        }
+      }
     }
   },
   "FORM": {
@@ -181,6 +298,7 @@
       "LASTNAME": "Nom de famille",
       "PASSWORD": "Mot de passe",
       "EMAIL": "Adresse email",
+      "ORGANIZATION": "Organisation",
       "CONFIRM_PASSWORD": "Confirmation du mot de passe",
       "ERRORS": {
         "REQUIRED": "Ce champ est requis !",

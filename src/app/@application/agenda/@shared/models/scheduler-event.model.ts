@@ -1,11 +1,11 @@
-import {addHours} from 'date-fns';
-import {Event} from '../../../../@shared/models/event.model';
+import { Event } from '../../../../@shared/models/event.model';
+import * as moment from 'moment';
 
 export class SchedulerEvent {
   public Id: number = 0;
   public Subject: string = '';
-  public StartTime: string = new Date().toISOString();
-  public EndTime: string = addHours(new Date(), 1).toISOString();
+  public StartTime: string = moment().toISOString(false);
+  public EndTime: string = moment().add(1, 'hours').toISOString(false);
   public Description?: string;
   public CategoryColor?: string;
   public PrimaryColor: string = '#1aaa7f';
@@ -35,6 +35,7 @@ export class SchedulerEvent {
       StartTime: event.startDate,
       EndTime: event.endDate,
       SecondaryColor: event.agenda.color,
+      PrimaryColor: event.eventType === 'MEETING' ? '#e3b83f' : '#3366ff',
       Meta: new Event(event),
     });
   }

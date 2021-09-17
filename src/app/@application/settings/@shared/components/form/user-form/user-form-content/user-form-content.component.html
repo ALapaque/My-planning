@@ -1,0 +1,160 @@
+<form [formGroup]="form">
+
+  <div fxLayout="row"
+       fxLayout.lt-md="column"
+       fxLayoutAlign="start center"
+       fxLayoutAlign.lt-md="center space-between"
+       fxLayoutGap="8px"
+       [style.marginBottom]="(checkFieldForError('firstName') || checkFieldForError('lastName')) ? '32px' : '16px'">
+
+    <!-- INPUT FIRSTNAME -->
+    <nb-form-field fxFlex="100%">
+      <label for="firstname-input">{{ 'APP.CONFIGURATION.FORM.USER.FIRSTNAME' | translate }}</label>
+
+      <input [formControlName]="'firstName'"
+             id="firstname-input"
+             type="text"
+             nbInput
+             fullWidth
+             [status]="(checkFieldForError('firstName')) ? 'danger' : 'primary'">
+      <nb-error *ngIf="checkFieldForError('firstName')">
+        <ng-container *ngIf="form.get('firstName').errors.required">
+          {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+        </ng-container>
+      </nb-error>
+    </nb-form-field>
+
+    <!-- INPUT LASTNAME -->
+    <nb-form-field fxFlex="100%">
+      <label for="lastname-input">{{ 'APP.CONFIGURATION.FORM.USER.LASTNAME' | translate }}</label>
+
+      <input [formControlName]="'lastName'"
+             id="lastname-input"
+             type="text"
+             nbInput
+             fullWidth
+             [status]="(checkFieldForError('lastName')) ? 'danger' : 'primary'">
+      <nb-error *ngIf="checkFieldForError('lastName')">
+        <ng-container *ngIf="form.get('lastName').errors.required">
+          {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+        </ng-container>
+      </nb-error>
+    </nb-form-field>
+
+  </div>
+
+  <!-- INPUT ORGANIZATION -->
+  <nb-form-field [style.marginBottom]="(checkFieldForError('organization')) ? '32px' : '16px'">
+    <label for="organization-input">{{ 'APP.CONFIGURATION.FORM.USER.ORGANIZATION' | translate }}</label>
+
+    <input [formControlName]="'organization'"
+           id="organization-input"
+           type="text"
+           nbInput
+           fullWidth
+           [status]="(checkFieldForError('organization')) ? 'danger' : 'primary'">
+    <nb-error *ngIf="checkFieldForError('organization')">
+      <ng-container *ngIf="form.get('organization').errors.required">
+        {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+      </ng-container>
+    </nb-error>
+  </nb-form-field>
+
+  <!-- INPUT USER -->
+  <nb-form-field [style.marginBottom]="(checkFieldForError('username')) ? '32px' : '16px'">
+    <label for="username-input">{{ 'APP.CONFIGURATION.FORM.USER.USERNAME' | translate }}</label>
+
+    <input [formControlName]="'username'"
+           id="username-input"
+           type="text"
+           nbInput
+           fullWidth
+           [status]="(checkFieldForError('username')) ? 'danger' : 'primary'">
+    <nb-error *ngIf="checkFieldForError('username')">
+      <ng-container *ngIf="form.get('username').errors.required">
+        {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+      </ng-container>
+    </nb-error>
+  </nb-form-field>
+
+  <!-- INPUT EMAIL -->
+  <nb-form-field [style.marginBottom]="(checkFieldForError('email')) ? '32px' : '16px'">
+    <label for="email-input">{{ 'APP.CONFIGURATION.FORM.USER.EMAIL' | translate }}</label>
+
+    <input [formControlName]="'email'"
+           id="email-input"
+           type="email"
+           nbInput
+           fullWidth
+           [status]="(checkFieldForError('email')) ? 'danger' : 'primary'">
+    <nb-error *ngIf="checkFieldForError('email')">
+      <ng-container *ngIf="form.get('email').errors.required">
+        {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+      </ng-container>
+      <ng-container *ngIf="form.get('email').errors.email">
+        {{'FORM.INPUT.ERRORS.FORMAT' | translate}}
+      </ng-container>
+    </nb-error>
+  </nb-form-field>
+
+  <!-- INPUT PASSWORD -->
+  <nb-form-field [style.marginBottom]="(checkFieldForError('password')) ? '32px' : '16px'">
+    <label for="password-input">{{ 'APP.CONFIGURATION.FORM.USER.PASSWORD' | translate }}</label>
+
+    <input [formControlName]="'password'"
+           id="password-input"
+           type="password"
+           nbInput
+           fullWidth
+           [status]="(checkFieldForError('password')) ? 'danger' : 'primary'">
+    <small><i>{{ 'APP.CONFIGURATION.FORM.USER.PASSWORD-HINT' | translate }}</i></small>
+    <nb-error *ngIf="checkFieldForError('password')">
+      <ng-container *ngIf="form.get('password').errors.required">
+        {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+      </ng-container>
+    </nb-error>
+  </nb-form-field>
+
+  <!-- SELECT ROLE -->
+  <nb-form-field [style.marginBottom]="(checkFieldForError('role')) ? '32px' : '16px'">
+    <label for="role-select">{{ 'APP.CONFIGURATION.FORM.USER.ROLE' | translate }}</label>
+
+    <nb-select id="role-select"
+               [status]="(checkFieldForError('role')) ? 'danger' : 'primary'"
+               [formControlName]="'role'"
+               [compareWith]="compareFn"
+               fullWidth>
+      <nb-option *ngFor="let role of roles$ | async"
+                 [value]="role">
+        {{ 'GLOBAL.ROLE.' + role.name.toUpperCase() | translate }}
+      </nb-option>
+    </nb-select>
+    <nb-error *ngIf="checkFieldForError('role')">
+      <ng-container *ngIf="form.get('role').errors.required">
+        {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+      </ng-container>
+    </nb-error>
+  </nb-form-field>
+
+  <!-- SELECT TEAMS -->
+  <nb-form-field [style.marginBottom]="(checkFieldForError('teams')) ? '32px' : '16px'">
+    <label for="role-select">{{ 'APP.CONFIGURATION.FORM.USER.TEAMS' | translate }}</label>
+
+    <nb-select id="teams-select"
+               multiple
+               [status]="(checkFieldForError('teams')) ? 'danger' : 'primary'"
+               [formControlName]="'teams'"
+               [compareWith]="compareFn"
+               fullWidth>
+      <nb-option *ngFor="let team of teams$ | async"
+                 [value]="team">
+        {{ team.name }}
+      </nb-option>
+    </nb-select>
+    <nb-error *ngIf="checkFieldForError('teams')">
+      <ng-container *ngIf="form.get('teams').errors.required">
+        {{ 'FORM.INPUT.ERRORS.REQUIRED' | translate }}
+      </ng-container>
+    </nb-error>
+  </nb-form-field>
+</form>

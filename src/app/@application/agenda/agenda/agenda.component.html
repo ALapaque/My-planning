@@ -4,11 +4,12 @@
          nbSpinnerSize="giant">
   <nb-card-body>
     <ejs-schedule #ejsSchedule
-                  [locale]='getAgendaLocale()'
+                  [locale]='localeService.locale'
                   [views]="agendaHelperService.views"
                   [currentView]="agendaHelperService.currentViewDisplayed"
                   [eventSettings]="events$ | async"
                   [height]="'calc(((100vh - 76px) - 36px) - 4.5rem)'"
+                  [startHour]="'8'"
                   [selectedDate]="agendaHelperService.viewDate"
                   [showHeaderBar]="false"
                   [firstDayOfWeek]="agendaHelperService.firstDayDisplayed.value"
@@ -24,7 +25,7 @@
           <ng-template #eventTemplate
                        let-data>
             <ng-container [ngTemplateOutlet]="customEventTemplate"
-                          [ngTemplateOutletContext]="{data: data}">
+                          [ngTemplateOutletContext]="{data: data, view: view}">
             </ng-container>
           </ng-template>
         </e-view>
@@ -34,8 +35,12 @@
 </nb-card>
 
 <ng-template #customEventTemplate
-             let-data="data">
-  <app-event-template fxFlex="auto" [event]="data"></app-event-template>
+             let-data="data"
+             let-view="view">
+  <app-event-template fxFlex="auto"
+                      [event]="data"
+                      [view]="view">
+  </app-event-template>
 </ng-template>
 
 

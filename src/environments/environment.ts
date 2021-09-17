@@ -5,7 +5,7 @@
 export const environment = {
   // apiUrl: 'http://amaury.must.be:32768',
   apiUrl: 'http://localhost:8081',
-  apiUrlSuffix: '/api',
+  apiUrlSuffix: '',
   production: false,
 };
 

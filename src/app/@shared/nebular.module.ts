@@ -1,9 +1,10 @@
 import {NgModule} from '@angular/core';
 import {NbEvaIconsModule} from '@nebular/eva-icons';
 import {
-  NbActionsModule, NbButtonGroupModule,
+  NbAccordionModule,
+  NbActionsModule, NbBadgeModule, NbButtonGroupModule,
   NbButtonModule,
-  NbCardModule,
+  NbCardModule, NbChatModule,
   NbCheckboxModule,
   NbContextMenuModule, NbDatepickerModule,
   NbDialogModule,
@@ -18,13 +19,14 @@ import {
   NbSearchModule,
   NbSelectModule,
   NbSidebarModule, NbSpinnerModule, NbStepperModule,
-  NbTabsetModule, NbTimepickerModule,
+  NbTabsetModule, NbTagModule, NbTimepickerModule,
   NbToastrModule,
-  NbToggleModule,
+  NbToggleModule, NbTooltipModule,
   NbUserModule,
   NbWindowModule,
   NbWindowState,
 } from '@nebular/theme';
+import { ColorPickerModule } from 'ngx-color-picker';
 import {NbDialogCustomService} from './services/nb-dialog-custom.service';
 
 const nebularModule: Array<any> = [
@@ -56,6 +58,12 @@ const nebularModule: Array<any> = [
   NbDatepickerModule,
   NbRadioModule,
   NbButtonGroupModule,
+  NbChatModule,
+  NbAccordionModule,
+  NbBadgeModule,
+  NbTooltipModule,
+  NbTagModule,
+  ColorPickerModule
 ];
 
 @NgModule({

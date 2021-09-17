@@ -1,0 +1,26 @@
+<nb-card>
+  <nb-card-header>
+    <app-dialog-header (close)="dialogRef.close()">
+      <ng-container *ngIf="user?.id; else createTitle">
+        {{ 'APP.CONFIGURATION.FORM.USER.UPDATE' | translate }}
+      </ng-container>
+      <ng-template #createTitle>
+        {{ 'APP.CONFIGURATION.FORM.USER.CREATE' | translate }}
+      </ng-template>
+    </app-dialog-header>
+  </nb-card-header>
+
+  <nb-card-body>
+    <app-user-form-content #userFormContentComponent
+                           [user]="user"
+                           [form]="form">
+    </app-user-form-content>
+  </nb-card-body>
+
+  <nb-card-footer>
+    <app-dialog-action-btn (submit)="submit()"
+                           (close)="dialogRef.close()"
+                           [form]="form">
+    </app-dialog-action-btn>
+  </nb-card-footer>
+</nb-card>

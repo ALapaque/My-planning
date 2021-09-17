@@ -1,0 +1,27 @@
+<nb-card>
+  <nb-card-header>
+    <app-dialog-header (close)="dialogRef.close()">
+      <ng-container *ngIf="agenda?.id; else createTitle">
+        {{ 'APP.AGENDA.FORM.AGENDA.UPDATE' | translate }}
+      </ng-container>
+      <ng-template #createTitle>
+        {{ 'APP.AGENDA.FORM.AGENDA.CREATE' | translate }}
+      </ng-template>
+    </app-dialog-header>
+  </nb-card-header>
+
+  <nb-card-body>
+    <app-agenda-form-content #agendaFormContentComponent
+                            [agenda]="agenda"
+                            [form]="form">
+    </app-agenda-form-content>
+  </nb-card-body>
+
+  <nb-card-footer>
+    <app-dialog-action-btn (submit)="submit()"
+                           (close)="dialogRef.close()"
+                           [form]="form"
+                           [stepper]="agendaFormContentComponent.nbStepper">
+    </app-dialog-action-btn>
+  </nb-card-footer>
+</nb-card>

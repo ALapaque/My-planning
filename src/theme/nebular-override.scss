@@ -1,5 +1,14 @@
 @import "theme";
 
+/* DISABLE horizontal resize of textarea */
+textarea {
+  resize: vertical !important;
+}
+
+nb-checkbox:hover {
+  cursor: pointer !important;
+}
+
 /* OVERRIDE OF ngx-toastr style */
 div.toast-container {
   div.ngx-toastr {

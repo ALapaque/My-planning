@@ -6,6 +6,7 @@ import { User } from './user.model';
 
 export class Agenda implements AbstractEntity<number> {
   public id: number = 0;
+  public byDefault: boolean = false;
   public name: string = null;
   public color: string = '#de5c08';
   public user: User = null;
@@ -31,4 +32,17 @@ export class Agenda implements AbstractEntity<number> {
       Object.create(this);
     }
   }
+
+  public displayFormattedName(): string {
+    let agendaName: string = 'Default name';
+
+    if (this.user) {
+      agendaName = this.user.firstName.charAt(0) + '.' + this.user.lastName;
+    } else if (this.team) {
+      agendaName = this.team.name;
+    }
+
+    return agendaName;
+  }
+
 }

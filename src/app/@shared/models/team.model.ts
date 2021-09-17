@@ -4,10 +4,10 @@ import { User } from './user.model';
 
 export class Team implements AbstractEntity<number> {
   public id: number = 0;
-  public name: string = null;
-  public agendas: Array<Agenda> = null;
-  public users: Array<User> = null;
-  public sharedAgendas: Array<Agenda> = null;
+  public name: string = '';
+  public agendas: Array<Agenda> = [];
+  public users: Array<User> = [];
+  public sharedAgendas: Array<Agenda> = [];
 
   constructor(team?: Partial<Team>) {
     if (team) {

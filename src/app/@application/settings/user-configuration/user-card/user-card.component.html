@@ -1,0 +1,10 @@
+<nb-card>
+  <nb-checkbox #checkbox
+               [checked]="isChecked()"
+               (checkedChange)="onCheckedChanged($event)"
+               [style.padding]="'12px'">
+    <nb-user size="medium"
+             [name]="user.displayFormattedName()">
+    </nb-user>
+  </nb-checkbox>
+</nb-card>

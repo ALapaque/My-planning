@@ -23,7 +23,6 @@ export class AgendaSettingsComponent implements OnInit {
   }
 
   submit(): void {
-    console.log('SUBMIT');
     this._agendaHelperService.startTime = this.form.value.viewSettings.startTime;
     this._agendaHelperService.endTime = this.form.value.viewSettings.endTime;
     this._agendaHelperService.timeSlotDisplayed = this.form.value.viewSettings.timeSlotDisplayed;

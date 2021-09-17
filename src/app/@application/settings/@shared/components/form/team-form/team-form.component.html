@@ -1,0 +1,26 @@
+<nb-card>
+  <nb-card-header>
+    <app-dialog-header (close)="dialogRef.close()">
+      <ng-container *ngIf="team?.id; else createTitle">
+        {{ 'APP.CONFIGURATION.FORM.TEAM.UPDATE' | translate }}
+      </ng-container>
+      <ng-template #createTitle>
+        {{ 'APP.CONFIGURATION.FORM.TEAM.CREATE' | translate }}
+      </ng-template>
+    </app-dialog-header>
+  </nb-card-header>
+
+  <nb-card-body>
+    <app-team-form-content #teamFormContentComponent
+                           [team]="team"
+                           [form]="form">
+    </app-team-form-content>
+  </nb-card-body>
+
+  <nb-card-footer>
+    <app-dialog-action-btn (submit)="submit()"
+                           (close)="dialogRef.close()"
+                           [form]="form">
+    </app-dialog-action-btn>
+  </nb-card-footer>
+</nb-card>

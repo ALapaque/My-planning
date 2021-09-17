@@ -1,3 +1,6 @@
+/**
+ * State matcher for the select inputs
+ */
 export abstract class CompareStateMatcher {
   static compareWith(obj1: Record<string, any>, obj2: Record<string, any>): boolean {
     if (!obj1 || !obj2) return false;

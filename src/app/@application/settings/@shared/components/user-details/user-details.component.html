@@ -1,0 +1,100 @@
+<nb-card>
+  <nb-card-header>
+    <app-dialog-header (close)="dialogRef.close()">
+      <span>{{ 'APP.CONFIGURATION.USERS.DETAILS.TITLE' | translate }} {{ user.displayFormattedName() }}</span>
+    </app-dialog-header>
+  </nb-card-header>
+
+  <nb-card-body fxLayout="column"
+                fxLayoutGap="8px">
+    <div fxLayout="column"
+         fxLayoutAlign="start start"
+         fxLayoutGap="8px">
+      <nb-user [name]="user.displayFormattedName()"
+               showInitials="true"
+               showName="false">
+      </nb-user>
+      <div>
+        <span class="section-title">
+          {{ 'APP.CONFIGURATION.USERS.DETAILS.FIRSTNAME' | translate }}
+        </span>
+        {{ user.firstName | titlecase }}
+      </div>
+      <div>
+        <span class="section-title">
+          {{ 'APP.CONFIGURATION.USERS.DETAILS.LASTNAME' | translate }}
+        </span>
+        {{ user.lastName | titlecase }}
+      </div>
+      <div>
+        <span class="section-title">
+          {{ 'APP.CONFIGURATION.USERS.DETAILS.EMAIL' | translate }}
+        </span>
+        {{ user.email }}
+      </div>
+      <div>
+        <span class="section-title">
+          {{ 'APP.CONFIGURATION.USERS.DETAILS.ROLE.LABEL' | translate }}
+        </span>
+        {{ 'GLOBAL.ROLE.' + user.role.name.toUpperCase() | translate }}
+      </div>
+    </div>
+    <div *ngIf="!!user.teams?.length"
+         fxLayout="row"
+         fxLayoutAlign="start start"
+         fxLayoutGap="8px">
+      <span class="section-title">Teams :</span>
+      <div fxLayout="column"
+           fxLayoutGap="8px">
+        <span *ngFor="let team of user.teams">{{team.name}}</span>
+      </div>
+    </div>
+    <div *ngIf="!!(userAgendas$ | async)?.length"
+         fxLayout="row"
+         fxLayoutAlign="start start"
+         fxLayoutGap="8px">
+      <span class="section-title">{{ 'APP.CONFIGURATION.USERS.DETAILS.AGENDA' | translate }}</span>
+      <div fxLayout="column"
+           fxLayoutGap="8px">
+        <app-agenda-label *ngFor="let agenda of userAgendas$ | async"
+                          [agenda]="agenda">
+          <ng-container *ngIf="agenda.byDefault; else userLabel">
+            {{ agenda.name | translate }}
+          </ng-container>
+          <ng-template #userLabel>
+            <ng-container *ngIf="agenda.user; else teamLabel">
+              {{ agenda.user.displayFormattedName() }}
+            </ng-container>
+            <ng-template #teamLabel>
+              {{ agenda.team.name }}
+            </ng-template>
+          </ng-template>
+        </app-agenda-label>
+      </div>
+    </div>
+    <div *ngIf="!!(userSharedAgendas$ | async)?.length"
+         fxLayout="row"
+         fxLayoutAlign="start start"
+         fxLayoutGap="8px">
+      <span class="section-title">{{ 'APP.CONFIGURATION.USERS.DETAILS.SHAREDAGENDAS' | translate }}</span>
+      <div fxLayout="column"
+           fxLayoutGap="8px">
+        <app-agenda-label *ngFor="let agenda of userSharedAgendas$ | async"
+                          [agenda]="agenda">
+          <ng-container *ngIf="agenda.byDefault; else userLabel">
+            {{ agenda.name | translate }}
+          </ng-container>
+          <ng-template #userLabel>
+            <ng-container *ngIf="agenda.user; else teamLabel">
+              {{ agenda.user.displayFormattedName() }}
+            </ng-container>
+            <ng-template #teamLabel>
+              {{ agenda.team.name }}
+            </ng-template>
+          </ng-template>
+        </app-agenda-label>
+      </div>
+    </div>
+
+  </nb-card-body>
+</nb-card>

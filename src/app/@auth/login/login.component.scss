@@ -3,12 +3,14 @@
     nb-card-header {}
 
     nb-card-body {
+      padding: 0 2rem;
       form {
         height: 100%;
         h1.title {
           font-family: "Dancing Script", cursive;
           font-size: 3rem;
           font-weight: bold;
+          margin: 0;
         }
       }
     }

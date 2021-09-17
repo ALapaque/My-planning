@@ -1,15 +1,14 @@
-import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { NbThemeService } from '@nebular/theme';
-import { Section } from './@shared/models/section.model';
-import { TranslateService } from '@ngx-translate/core';
+import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Section} from './@shared/models/section.model';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: [ './homepage.component.scss' ],
+  styleUrls: ['./homepage.component.scss'],
 })
-export class HomepageComponent implements OnInit, AfterViewInit {
+export class HomepageComponent implements OnInit {
 
   public sections: Array<Section> | undefined;
   public scrollYPosition: number = 0;
@@ -25,18 +24,14 @@ export class HomepageComponent implements OnInit, AfterViewInit {
   }
 
   public ngOnInit(): void {
-    this._router.navigate([ '' ], { fragment: 'home' });
-  }
-
-  public ngAfterViewInit(): void {
-    console.log('afterViewInit');
+    this._router.navigate([''], {fragment: 'home'});
   }
 
   public get displayScrollToTop(): boolean {
     return !!this.scrollYPosition;
   }
 
-  @HostListener('window:scroll', [ '$event' ]) onScroll(e: any): void {
+  @HostListener('window:scroll', ['$event']) onScroll(e: any): void {
     this.scrollYPosition = e.srcElement.scrollingElement.scrollTop;
   }
 
