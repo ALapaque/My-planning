@@ -109,7 +109,9 @@ export class UserConfigurationComponent implements OnInit {
   }
 
   private _refreshUsers(): void {
-    this.users$ = this._userService.getUsers();
+    this.users$ = this._userService.getUsers().pipe(
+      tap(() => this.selectedUsers = [])
+    );
   }
 
   private _openForm(user: User): void {

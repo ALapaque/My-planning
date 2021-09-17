@@ -1,10 +1,10 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment, generateCompleteUrl } from '../../../../environments/environment';
-import { Team } from '../../../@shared/models/team.model';
+import { generateCompleteUrl } from '../../../../environments/environment';
 import { User } from '../../../@shared/models/user.model';
+import { AuthService } from '../../../@shared/services/auth.service';
 
 @Injectable()
 export class UserService {
@@ -12,12 +12,13 @@ export class UserService {
   private _baseUrl: string = generateCompleteUrl() + '/user';
 
   constructor(
-    private _http: HttpClient
+    private _http: HttpClient,
+    private _authService: AuthService,
   ) {
   }
 
   public getUsers(): Observable<Array<User>> {
-    return this._http.get<Array<User>>(`${ this._baseUrl }`).pipe(
+    return this._http.get<Array<User>>(`${ this._baseUrl }/organization/${ this._authService.user.organization }`).pipe(
       map((users: Array<User>) => users.map((user: User) => new User(user)))
     );
   }
