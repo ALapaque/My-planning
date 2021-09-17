@@ -45,13 +45,6 @@ export class HomepageComponent implements OnInit {
           anchor: '',
         },
       ),
-      new Section(
-        {
-          id: 2,
-          title: this._translateService.instant('HOMEPAGE.SECTION.FUNCTIONNALITIES'),
-          anchor: 'features',
-        },
-      ),
     );
   }
 }
