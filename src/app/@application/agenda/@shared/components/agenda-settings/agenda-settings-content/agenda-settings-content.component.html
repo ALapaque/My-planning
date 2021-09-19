@@ -1,82 +1,68 @@
 <form [formGroup]="form">
+  <form [formGroupName]="'viewSettings'">
+    <div fxLayout="column"
+         fxLayoutGap="8px">
+      <div fxLayout.lt-sm="column"
+           fxLayoutAlign="start center"
+           fxLayoutAlign.lt-sm="center start"
+           fxLayoutGap="8px">
+        <span fxFlex.gt-sm="33%">{{ 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS.TITLE' | translate }}:</span>
+        <nb-select fullWidth
+                   [placeholder]="'APP.AGENDA.FORM.SETTINGS.TIMESLOTS.TITLE' | translate"
+                   [formControlName]="'timeSlotDisplayed'">
+          <nb-option *ngFor="let timeSlot of agendaHelperService.timeSlotDuration"
+                     [value]="timeSlot">
+            {{ timeSlot.name + '.' + timeSlot.value | translate }}
+          </nb-option>
+        </nb-select>
+      </div>
 
-  <nb-stepper #stepper
-              [orientation]="breakpointObserver.isMatched('(max-width: 960px)') ? 'horizontal' : 'vertical'">
+      <div fxLayout.lt-sm="column"
+           fxLayoutAlign="start center"
+           fxLayoutAlign.lt-sm="center start"
+           fxLayoutGap="8px">
+        <span fxFlex.gt-sm="33%">{{ 'APP.AGENDA.FORM.SETTINGS.DAYS.FIRSTDAYDISPLAYED' | translate }}:</span>
+        <nb-select fullWidth
+                   [placeholder]="'APP.AGENDA.FORM.SETTINGS.DAYS.FIRSTDAYDISPLAYED' | translate"
+                   [formControlName]="'firstDayDisplayed'">
+          <nb-option *ngFor="let weekDay of agendaHelperService.weekDays"
+                     [value]="weekDay">
+            {{ weekDay.name + '.' + weekDay.value | translate }}
+          </nb-option>
+        </nb-select>
+      </div>
 
-    <!-- CALENDARS -->
-    <nb-step [label]="'APP.AGENDA.FORM.SETTINGS.STEPS.STEP-1.LABEL' | translate">
-      <h4>{{ 'APP.AGENDA.FORM.SETTINGS.STEPS.STEP-1.TITLE' | translate }}</h4>
-    </nb-step>
+      <div fxLayout.lt-sm="column"
+           fxLayoutAlign="start center"
+           fxLayoutAlign.lt-sm="center start"
+           fxLayoutGap="8px">
+        <span fxFlex.gt-sm="33%">{{ 'APP.AGENDA.FORM.SETTINGS.STARTTIME' | translate }}:</span>
 
-    <!-- PLAGE HORAIRE -->
-    <nb-step [label]="'APP.AGENDA.FORM.SETTINGS.STEPS.STEP-2.LABEL' | translate">
-      <h4>{{ 'APP.AGENDA.FORM.SETTINGS.STEPS.STEP-2.TITLE' | translate }}</h4>
-      <form [formGroupName]="'viewSettings'">
-        <div fxLayout="column"
-             fxLayoutGap="8px">
-          <div fxLayout.lt-sm="column"
-               fxLayoutAlign="start center"
-               fxLayoutAlign.lt-sm="center start"
-               fxLayoutGap="8px">
-            <span fxFlex.gt-sm="33%">{{ 'APP.AGENDA.FORM.SETTINGS.TIMESLOTS.TITLE' | translate }}:</span>
-            <nb-select fullWidth
-                       [placeholder]="'APP.AGENDA.FORM.SETTINGS.TIMESLOTS.TITLE' | translate"
-                       [formControlName]="'timeSlotDisplayed'">
-              <nb-option *ngFor="let timeSlot of agendaHelperService.timeSlotDuration"
-                         [value]="timeSlot">
-                {{ timeSlot.name + '.' + timeSlot.value | translate }}
-              </nb-option>
-            </nb-select>
-          </div>
+        <input nbInput
+               fullWidth
+               [nbTimepicker]="startTimePicker"
+               [formControlName]="'startTime'"/>
+        <nb-timepicker #startTimePicker
+                       style="display: none"
+                       [date]="form.get('viewSettings').get('startTime').value">
+        </nb-timepicker>
+      </div>
 
-          <div fxLayout.lt-sm="column"
-               fxLayoutAlign="start center"
-               fxLayoutAlign.lt-sm="center start"
-               fxLayoutGap="8px">
-            <span fxFlex.gt-sm="33%">{{ 'APP.AGENDA.FORM.SETTINGS.DAYS.FIRSTDAYDISPLAYED' | translate }}:</span>
-            <nb-select fullWidth
-                       [placeholder]="'APP.AGENDA.FORM.SETTINGS.DAYS.FIRSTDAYDISPLAYED' | translate"
-                       [formControlName]="'firstDayDisplayed'">
-              <nb-option *ngFor="let weekDay of agendaHelperService.weekDays"
-                         [value]="weekDay">
-                {{ weekDay.name + '.' + weekDay.value | translate }}
-              </nb-option>
-            </nb-select>
-          </div>
+      <div fxLayout.lt-sm="column"
+           fxLayoutAlign="start center"
+           fxLayoutAlign.lt-sm="center start"
+           fxLayoutGap="8px">
+        <span fxFlex.gt-sm="33%">{{ 'APP.AGENDA.FORM.SETTINGS.ENDTIME' | translate }}:</span>
 
-          <div fxLayout.lt-sm="column"
-               fxLayoutAlign="start center"
-               fxLayoutAlign.lt-sm="center start"
-               fxLayoutGap="8px">
-            <span fxFlex.gt-sm="33%">{{ 'APP.AGENDA.FORM.SETTINGS.STARTTIME' | translate }}:</span>
-
-            <input nbInput
-                   fullWidth
-                   [nbTimepicker]="startTimePicker"
-                   [formControlName]="'startTime'"/>
-            <nb-timepicker #startTimePicker
-                           style="display: none"
-                           [date]="form.get('viewSettings').get('startTime').value">
-            </nb-timepicker>
-          </div>
-
-          <div fxLayout.lt-sm="column"
-               fxLayoutAlign="start center"
-               fxLayoutAlign.lt-sm="center start"
-               fxLayoutGap="8px">
-            <span fxFlex.gt-sm="33%">{{ 'APP.AGENDA.FORM.SETTINGS.ENDTIME' | translate }}:</span>
-
-            <input nbInput
-                   fullWidth
-                   [nbTimepicker]="endTimePicker"
-                   [formControlName]="'endTime'"/>
-            <nb-timepicker #endTimePicker
-                           style="display: none"
-                           [date]="form.get('viewSettings').get('endTime').value">
-            </nb-timepicker>
-          </div>
-        </div>
-      </form>
-    </nb-step>
-  </nb-stepper>
+        <input nbInput
+               fullWidth
+               [nbTimepicker]="endTimePicker"
+               [formControlName]="'endTime'"/>
+        <nb-timepicker #endTimePicker
+                       style="display: none"
+                       [date]="form.get('viewSettings').get('endTime').value">
+        </nb-timepicker>
+      </div>
+    </div>
+  </form>
 </form>
