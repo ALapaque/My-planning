@@ -17,7 +17,7 @@
         <nb-icon icon="calendar-outline"></nb-icon>
         <app-agenda-label [agenda]="event.Meta.agenda">
           <ng-container *ngIf="isOwner(); else standardLabel">
-            {{ event.Meta.agenda.name }}
+            {{ event.Meta.agenda.name | translate }}
           </ng-container>
 
           <ng-template #standardLabel>
