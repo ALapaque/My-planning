@@ -13,7 +13,7 @@ import {TranslateService} from '@ngx-translate/core';
 )
 export class HeaderMenuComponent implements OnInit {
 
-  public menuItems: NbMenuItem[] | undefined;
+  public menuItems: NbMenuItem[] | undefined = [];
 
   public mobileMenuItems: NbMenuItem[] | undefined;
 
@@ -48,38 +48,38 @@ export class HeaderMenuComponent implements OnInit {
 
   private async _initMenu() {
     await this._translateService.get('APPNAME').toPromise();
-    this.menuItems = [
-      {
-        title: this._translateService.instant('HOMEPAGE.HEADER.MENU.HOMEPAGE'),
-        link: '/homepage',
-        fragment: 'home',
-      },
-      {
-        title: this._translateService.instant('HOMEPAGE.HEADER.MENU.FUNCTIONNALITIES'),
-        link: '/homepage',
-        fragment: 'features',
-      },
-      {
-        title: this._translateService.instant('HOMEPAGE.HEADER.MENU.SECTORS'),
-        link: '/homepage',
-        fragment: 'sectors',
-      },
-      {
-        title: this._translateService.instant('HOMEPAGE.HEADER.MENU.OFFERS'),
-        link: '/homepage',
-        fragment: 'offers',
-      },
-      {
-        title: this._translateService.instant('HOMEPAGE.HEADER.MENU.CLIENTS'),
-        link: '/homepage',
-        fragment: 'clients',
-      },
-      {
-        title: this._translateService.instant('HOMEPAGE.HEADER.MENU.ABOUT'),
-        link: '/homepage',
-        fragment: 'about',
-      },
-    ];
+    // this.menuItems = [
+    //   {
+    //     title: this._translateService.instant('HOMEPAGE.HEADER.MENU.HOMEPAGE'),
+    //     link: '/homepage',
+    //     fragment: 'home',
+    //   },
+    //   {
+    //     title: this._translateService.instant('HOMEPAGE.HEADER.MENU.FUNCTIONNALITIES'),
+    //     link: '/homepage',
+    //     fragment: 'features',
+    //   },
+    //   {
+    //     title: this._translateService.instant('HOMEPAGE.HEADER.MENU.SECTORS'),
+    //     link: '/homepage',
+    //     fragment: 'sectors',
+    //   },
+    //   {
+    //     title: this._translateService.instant('HOMEPAGE.HEADER.MENU.OFFERS'),
+    //     link: '/homepage',
+    //     fragment: 'offers',
+    //   },
+    //   {
+    //     title: this._translateService.instant('HOMEPAGE.HEADER.MENU.CLIENTS'),
+    //     link: '/homepage',
+    //     fragment: 'clients',
+    //   },
+    //   {
+    //     title: this._translateService.instant('HOMEPAGE.HEADER.MENU.ABOUT'),
+    //     link: '/homepage',
+    //     fragment: 'about',
+    //   },
+    // ];
     this.mobileMenuItems = [
       ...this.menuItems,
       {

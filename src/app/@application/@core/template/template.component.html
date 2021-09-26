@@ -20,10 +20,11 @@
     </nb-sidebar-footer>
   </nb-sidebar>
 
-  <nb-sidebar [tag]="'right'"
+  <nb-sidebar #rightSideBar
+              [tag]="'right'"
               right
+              (responsiveStateChange)="responsiveStateChange($event)"
               [responsive]="true"
-              (responsiveStateChange)="rightMenuService.expanded$.next(false)"
               [compactedBreakpoints]="[]"
               [collapsedBreakpoints]="['xs', 'is', 'sm', 'sm', 'md', 'lg']"
               [state]="(rightMenuService.expanded$ | async) ? 'expanded' : 'collapsed'">

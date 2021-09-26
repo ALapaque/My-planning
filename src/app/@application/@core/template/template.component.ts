@@ -1,19 +1,20 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { NbSidebarService, NbThemeService } from '@nebular/theme';
-import { NbSidebarState } from '@nebular/theme/components/sidebar/sidebar.component';
-import { filter, takeUntil, tap } from 'rxjs/operators';
-import { AuthService } from '../../../@shared/services/auth.service';
-import { Subject } from 'rxjs';
-import { LoaderService } from '../../@shared/services/loader.service';
-import { RightMenuService } from '../../@shared/services/right-menu.service';
-import { AgendaHelperService } from '../../agenda/@shared/services/agenda-helper.service';
+import {AfterViewInit, Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {NbSidebarComponent, NbSidebarResponsiveState, NbSidebarService, NbThemeService} from '@nebular/theme';
+import {NbSidebarState} from '@nebular/theme/components/sidebar/sidebar.component';
+import {filter, takeUntil, tap} from 'rxjs/operators';
+import {AuthService} from '../../../@shared/services/auth.service';
+import {Subject} from 'rxjs';
+import {LoaderService} from '../../@shared/services/loader.service';
+import {RightMenuService} from '../../@shared/services/right-menu.service';
+import {AgendaHelperService} from '../../agenda/@shared/services/agenda-helper.service';
 
 @Component({
   selector: 'app-template',
   templateUrl: './template.component.html',
-  styleUrls: [ './template.component.scss' ],
+  styleUrls: ['./template.component.scss'],
 })
-export class TemplateComponent implements OnInit, OnDestroy {
+export class TemplateComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('rightSideBar') rightSidebar: NbSidebarComponent;
   public nbLeftSidebarState: NbSidebarState = 'expanded';
 
   private _destroy$: Subject<any> = new Subject<any>();
@@ -32,6 +33,10 @@ export class TemplateComponent implements OnInit, OnDestroy {
     this._initTheme();
   }
 
+  ngAfterViewInit(): void {
+    this.rightSidebar.collapse();
+  }
+
   ngOnDestroy(): void {
     this._destroy$.next();
   }
@@ -45,7 +50,13 @@ export class TemplateComponent implements OnInit, OnDestroy {
     this._agendaHelperService.calendarsSelected = undefined;
   }
 
-  private _initTheme() {
+  public responsiveStateChange($event: NbSidebarResponsiveState): void {
+    console.log($event);
+    this.rightSidebar.collapse();
+    this.rightMenuService.expanded$.next(false);
+  }
+
+  private _initTheme(): void {
     this._nbThemeService.changeTheme(sessionStorage.getItem('theme') ?? 'default');
     sessionStorage.setItem('theme', this._nbThemeService.currentTheme);
   }
