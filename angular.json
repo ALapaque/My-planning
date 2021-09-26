@@ -32,13 +32,14 @@
               "src/favicon.ico",
               "src/assets",
               "src/manifest.webmanifest",
+              "src/manifest.webmanifest",
               "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.scss"
             ],
             "scripts": [],
-            "serviceWorker": false,
+            "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json",
             "vendorChunk": true,
             "extractLicenses": false,
@@ -107,6 +108,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
+              "src/manifest.webmanifest",
               "src/manifest.webmanifest",
               "src/manifest.webmanifest"
             ],
