@@ -13,7 +13,7 @@
     <a (click)="scrollToAnchor(item?.fragment)"
        [fragment]="item.fragment"
        [routerLink]="item.link"
-       [class.active]="(activeFragment | async) === item.fragment">
+       [class.active]="(activeFragment$ | async) === item.fragment">
       {{ item.title }}
     </a>
   </li>

@@ -24,9 +24,9 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: [ './agenda.component.scss' ],
 })
 export class AgendaComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('ejsSchedule') public ejsSchedule: ScheduleComponent | undefined;
+  @ViewChild('ejsSchedule') ejsSchedule: ScheduleComponent | undefined;
 
-  public events$: Observable<EventSettingsModel> = of({ dataSource: [] });
+  events$: Observable<EventSettingsModel> = of({ dataSource: [] });
 
   private _destroy: Subject<any> = new Subject<any>();
 
@@ -45,6 +45,10 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
     this._initRefreshListener();
   }
 
+  /**
+   * host listener for the resize of the window in order to switch to day view
+   * @param event
+   */
   @HostListener('window:resize', [ '$event' ])
   onResize(event: any): void {
     const width: number = event.target.innerWidth;

@@ -1,10 +1,9 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NbDialogRef } from '@nebular/theme';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Team } from '../../../../../../@shared/models/team.model';
-import { AuthService } from '../../../../../../@shared/services/auth.service';
 import { TeamService } from '../../../../../@shared/services/team.service';
 
 @Component({

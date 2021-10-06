@@ -18,14 +18,14 @@ import {Comment} from '../../../../../../../@shared/models/comment.model';
   styleUrls: ['./event-form-content.component.scss']
 })
 export class EventFormContentComponent implements OnInit {
-  @ViewChild('stepper') public nbStepper: NbStepperComponent;
-  @Input() public event!: SchedulerEvent;
-  @Input() public form!: FormGroup;
-
-  compareFn = (o1: any, o2: any) => CompareStateMatcher.compareWith(o1, o2);
+  @ViewChild('stepper') nbStepper: NbStepperComponent;
+  @Input() event!: SchedulerEvent;
+  @Input() form!: FormGroup;
 
   agendas$: Observable<Array<Agenda>>;
   sharedAgendas$: Observable<Array<Agenda>>;
+
+  compareFn = (o1: any, o2: any) => CompareStateMatcher.compareWith(o1, o2);
 
   constructor(
     public breakpointObserver: BreakpointObserver,
@@ -53,11 +53,11 @@ export class EventFormContentComponent implements OnInit {
     return this._authService.user.id === msg.user.id;
   }
 
-  checkFieldForError(fieldName: string) {
+  checkFieldForError(fieldName: string): boolean | undefined {
     return ErrorStateMatcher.checkField(fieldName, this.form);
   }
 
-  hasMeetingChanged(checked: boolean) {
+  hasMeetingChanged(checked: boolean): void {
     if (checked) {
       this.form.get('eventType').setValue('MEETING');
       this.form.get('meetingUrl').setValidators(

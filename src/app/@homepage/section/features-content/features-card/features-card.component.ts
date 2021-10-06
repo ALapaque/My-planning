@@ -8,7 +8,7 @@ import { SectionCard }              from '../../../@shared/models/section-card.m
 })
 export class FeaturesCardComponent implements OnInit {
 
-  @Input() public card: SectionCard | undefined;
+  @Input() card: SectionCard | undefined;
 
   constructor() { }
 

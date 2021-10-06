@@ -17,19 +17,19 @@ export class UserService {
   ) {
   }
 
-  public getUsers(): Observable<Array<User>> {
+  getUsers(): Observable<Array<User>> {
     return this._http.get<Array<User>>(`${ this._baseUrl }/organization/${ this._authService.user.organization }`).pipe(
       map((users: Array<User>) => users.map((user: User) => new User(user)))
     );
   }
 
-  public getUser(value: number | string): Observable<User> {
+  getUser(value: number | string): Observable<User> {
     return this._http.get<User>(`${ this._baseUrl }/${ value }`).pipe(
       map((user: User) => new User(user))
     );
   }
 
-  public delete(user: User): Observable<boolean> {
+  delete(user: User): Observable<boolean> {
     return this._http.delete<boolean>(`${ this._baseUrl }/${ user.id.toString(10) }`);
   }
 

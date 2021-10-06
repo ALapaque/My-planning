@@ -8,7 +8,7 @@ import {AbstractControl} from '@angular/forms';
 })
 export class NbErrorComponent implements OnInit {
 
-  @Input() public control: AbstractControl | undefined;
+  @Input() control: AbstractControl | undefined;
 
   constructor() { }
 

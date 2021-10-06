@@ -8,7 +8,6 @@ import {AuthService} from '../../../../../../@shared/services/auth.service';
   styleUrls: ['./event-details-header.component.scss']
 })
 export class EventDetailsHeaderComponent implements OnInit {
-
   @Input() event!: SchedulerEvent;
   @Output() close: EventEmitter<any> = new EventEmitter<any>();
   @Output() delete: EventEmitter<any> = new EventEmitter<any>();

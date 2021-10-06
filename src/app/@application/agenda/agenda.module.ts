@@ -30,7 +30,6 @@ import { EventTemplateComponent } from './@shared/components/event-template/even
 import { EventDetailsComponent } from './@shared/components/event-details/event-details.component';
 import { EventDetailsContentComponent } from './@shared/components/event-details/event-details-content/event-details-content.component';
 import { EventDetailsHeaderComponent } from './@shared/components/event-details/event-details-header/event-details-header.component';
-import { EventService } from '../@shared/services/event.service';
 import { AgendaLabelComponent } from './@shared/components/agenda-label/agenda-label.component';
 import { DocumentEditorComponent } from './@shared/components/document-editor/document-editor.component';
 import {

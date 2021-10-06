@@ -12,7 +12,7 @@ export class ResponsiveService {
     this._initBreakpointListener();
   }
 
-  public get isMobile(): boolean {
+  get isMobile(): boolean {
     return (window.innerWidth < 960) ||
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
       this.needsMobileView;

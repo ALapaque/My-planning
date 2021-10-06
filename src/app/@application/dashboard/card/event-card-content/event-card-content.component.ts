@@ -5,9 +5,6 @@ import {Event} from '../../../../@shared/models/event.model';
 import {CardType} from '../../../../@shared/models/types/card-type.type';
 import {CardService} from '../../../@shared/services/card.service';
 import * as moment from 'moment';
-import {SchedulerEvent} from '../../../agenda/@shared/models/scheduler-event.model';
-import {EventService} from '../../../@shared/services/event.service';
-import {AgendaHelperService} from '../../../agenda/@shared/services/agenda-helper.service';
 
 @Component({
   selector: 'app-event-card-content',
@@ -16,8 +13,8 @@ import {AgendaHelperService} from '../../../agenda/@shared/services/agenda-helpe
 })
 export class EventCardContentComponent implements OnInit, OnDestroy {
   @Input() type!: CardType;
-  public content$: Observable<Array<Event>>;
-  public contentLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  content$: Observable<Array<Event>>;
+  contentLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
   private _destroy$: Subject<any> = new Subject();
 

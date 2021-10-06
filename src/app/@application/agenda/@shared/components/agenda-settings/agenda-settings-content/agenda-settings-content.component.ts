@@ -10,9 +10,8 @@ import {BreakpointObserver} from '@angular/cdk/layout';
   styleUrls: ['./agenda-settings-content.component.scss']
 })
 export class AgendaSettingsContentComponent implements OnInit {
-
-  @ViewChild('stepper') public nbStepper: NbStepperComponent;
-  @Input() public form!: FormGroup;
+  @ViewChild('stepper') nbStepper: NbStepperComponent;
+  @Input() form!: FormGroup;
   date: Date = new Date();
 
   constructor(

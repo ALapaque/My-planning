@@ -9,8 +9,8 @@ import {SchedulerEvent} from '../../models/scheduler-event.model';
 })
 export class EventTemplateComponent implements OnInit {
 
-  @Input() public event!: SchedulerEvent;
-  @Input() public view!: View;
+  @Input() event!: SchedulerEvent;
+  @Input() view!: View;
 
   constructor() { }
 

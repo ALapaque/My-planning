@@ -12,8 +12,8 @@ import { Agenda } from '../../../../../../@shared/models/agenda.model';
   styleUrls: [ './agenda-form.component.scss' ]
 })
 export class AgendaFormComponent implements AfterViewInit {
-  @Input() public agenda!: Agenda | undefined;
-  public form: FormGroup = new FormGroup({
+  @Input() agenda!: Agenda | undefined;
+  form: FormGroup = new FormGroup({
     name: new FormControl('', [ Validators.required ]),
     color: new FormControl('#de5c08', [ Validators.required, Validators.pattern('^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$') ]),
     user: new FormControl(null, [ Validators.required ]),

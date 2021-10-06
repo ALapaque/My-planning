@@ -29,6 +29,10 @@ export class AppComponent {
     this._checkForUpdates();
   }
 
+  /**
+   * host listener for the modals in order to happened the correct class for the responsive
+   * @param event
+   */
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
     const width: number = event.target.innerWidth;

@@ -9,11 +9,11 @@ import {FormGroup} from '@angular/forms';
 })
 export class DialogActionBtnComponent implements OnInit {
 
-  @Input() public stepper: NbStepperComponent | undefined;
-  @Input() public form: FormGroup | undefined;
-  @Input() public hideRightButtons: boolean = false;
-  @Output() public close: EventEmitter<any> = new EventEmitter<any>();
-  @Output() public submit: EventEmitter<any> = new EventEmitter<any>();
+  @Input() stepper: NbStepperComponent | undefined;
+  @Input() form: FormGroup | undefined;
+  @Input() hideRightButtons: boolean = false;
+  @Output() close: EventEmitter<any> = new EventEmitter<any>();
+  @Output() submit: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 

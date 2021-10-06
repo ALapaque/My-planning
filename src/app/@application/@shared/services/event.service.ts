@@ -28,7 +28,7 @@ export class EventService {
   ) {
   }
 
-  public getEvents(): Observable<EventSettingsModel> {
+  getEvents(): Observable<EventSettingsModel> {
     this._agendaHelperService.isAgendaLoading.next(true);
 
     const parameters: { startDate: string, endDate: string } = this._generateHttpParams;
@@ -56,7 +56,7 @@ export class EventService {
     );
   }
 
-  public getById(id: number): Observable<SchedulerEvent> {
+  getById(id: number): Observable<SchedulerEvent> {
     this._agendaHelperService.isAgendaLoading.next(true);
 
     return this._http.get<Event>(`${ this._baseUrl }/${ id.toString(10) }`).pipe(
@@ -73,7 +73,7 @@ export class EventService {
     );
   }
 
-  public save(schedulerEvent: SchedulerEvent): Observable<SchedulerEvent> {
+  save(schedulerEvent: SchedulerEvent): Observable<SchedulerEvent> {
     this._agendaHelperService.isAgendaLoading.next(true);
 
     const event: Event = Event.transformIntoEvent(schedulerEvent);
@@ -92,21 +92,21 @@ export class EventService {
     );
   }
 
-  public create(event: Event): Observable<SchedulerEvent> {
+  create(event: Event): Observable<SchedulerEvent> {
     return this._http.post<Event>(`${ this._baseUrl }`, event).pipe(
       map((eventReceived: Event) => SchedulerEvent.transformIntoSchedulerEvent(eventReceived)),
       tap((eventReceived: SchedulerEvent) => this._agendaHelperService.ejsSchedule.addEvent(eventReceived))
     );
   }
 
-  public update(event: Event): Observable<SchedulerEvent> {
+  update(event: Event): Observable<SchedulerEvent> {
     return this._http.put<Event>(`${ this._baseUrl }/${ event.id }`, event).pipe(
       map((eventReceived: Event) => SchedulerEvent.transformIntoSchedulerEvent(eventReceived)),
       tap((eventReceived: SchedulerEvent) => this._agendaHelperService.ejsSchedule.saveEvent(eventReceived))
     );
   }
 
-  public delete(id: number): Observable<boolean> {
+  delete(id: number): Observable<boolean> {
     this._agendaHelperService.isAgendaLoading.next(true);
 
     return this._http.delete<boolean>(`${ this._baseUrl }/${ id.toString(10) }`).pipe(

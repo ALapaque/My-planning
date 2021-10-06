@@ -12,8 +12,8 @@ import { CardService } from '../../@shared/services/card.service';
 })
 export class RecapCardComponent implements OnInit {
   @Input() card!: Card;
-  public content$: Observable<number>;
-  public contentLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  content$: Observable<number>;
+  contentLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
   constructor(
     private _cardService: CardService,

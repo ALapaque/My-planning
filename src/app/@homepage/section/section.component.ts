@@ -7,11 +7,11 @@ import { Section }                  from '../@shared/models/section.model';
   styleUrls: [ './section.component.scss']
 })
 export class SectionComponent implements OnInit {
-  @Input() public section: Section = new Section();
-  @Input() public even: boolean | undefined;
-  @Input() public odd: boolean | undefined;
-  @Input() public last: boolean | undefined;
-  @Input() public first: boolean | undefined;
+  @Input() section: Section = new Section();
+  @Input() even: boolean | undefined;
+  @Input() odd: boolean | undefined;
+  @Input() last: boolean | undefined;
+  @Input() first: boolean | undefined;
 
 
   constructor() { }

@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
            })
 export class ScrollToTopComponent implements OnInit {
 
-  @Input() public container: 'app' | 'homepage' | undefined;
+  @Input() container: 'app' | 'homepage' | undefined;
 
   constructor() {
   }
@@ -16,11 +16,11 @@ export class ScrollToTopComponent implements OnInit {
   }
 
   /**
-   * test
+   * will scroll to an anchor
    * @param {string} location
    * @param {number} wait
    */
-  public scrollToAnchor(location: string | undefined, wait: number = 250): void {
+  scrollToAnchor(location: string | undefined, wait: number = 250): void {
     if (!location) {
       return;
     }

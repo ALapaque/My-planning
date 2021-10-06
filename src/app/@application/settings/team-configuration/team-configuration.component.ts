@@ -5,7 +5,6 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Team } from '../../../@shared/models/team.model';
-import { User } from '../../../@shared/models/user.model';
 import { AuthService } from '../../../@shared/services/auth.service';
 import { NbDialogCustomService } from '../../../@shared/services/nb-dialog-custom.service';
 import { ConfirmDialogComponent } from '../../../@shared/ui-components/confirm-dialog/confirm-dialog.component';

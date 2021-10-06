@@ -7,7 +7,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class DialogHeaderComponent implements OnInit {
 
-  @Output() public close: EventEmitter<any> = new EventEmitter<any>();
+  @Output() close: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 

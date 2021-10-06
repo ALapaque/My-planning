@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
   providedIn: 'root'
 })
 export class LocaleService {
-  public locale: 'fr-FR' | 'fr-BE' | 'en-US';
+  locale: 'fr-FR' | 'fr-BE' | 'en-US';
 
   constructor(
     private _translateService: TranslateService

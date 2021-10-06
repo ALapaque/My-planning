@@ -9,7 +9,7 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class FeaturesContentComponent implements OnInit {
 
-  public cards: Array<SectionCard> | undefined;
+  cards: Array<SectionCard> | undefined;
 
   constructor(
     private _translateService: TranslateService,

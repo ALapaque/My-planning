@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { Agenda } from '../../../../../@shared/models/agenda.model';
 import { User } from '../../../../../@shared/models/user.model';
 import { AgendaService } from '../../../../@shared/services/agenda.service';
-import { UserService } from '../../../../@shared/services/user.service';
 
 @Component({
   selector: 'app-user-details',

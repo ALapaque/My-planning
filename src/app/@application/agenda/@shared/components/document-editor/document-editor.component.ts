@@ -11,12 +11,12 @@ import { SchedulerEvent } from '../../models/scheduler-event.model';
   providers: [ ToolbarService ]
 })
 export class DocumentEditorComponent implements OnInit {
-  @Input() public event?: SchedulerEvent;
-  @Output() public saveReport: EventEmitter<true> = new EventEmitter<true>();
-  @ViewChild('documenteditor_default') public container: DocumentEditorContainerComponent;
-  public culture: string = 'fr-BE';
-  public isEdited: boolean = false;
-  public isFullscreen: boolean = false;
+  @Input() event?: SchedulerEvent;
+  @Output() saveReport: EventEmitter<true> = new EventEmitter<true>();
+  @ViewChild('documenteditor_default') container: DocumentEditorContainerComponent;
+  culture: string = 'fr-BE';
+  isEdited: boolean = false;
+  isFullscreen: boolean = false;
 
   constructor(
     public authService: AuthService,
@@ -27,29 +27,29 @@ export class DocumentEditorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onCreate() {
+  onCreate(): void {
     this.container.documentEditor.open(JSON.parse(this.event.Meta.report));
     this.isEdited = false;
   }
 
-  toggleFullscreen() {
+  toggleFullscreen(): void {
     this.isFullscreen = !this.isFullscreen;
     setTimeout(() => this.container.resize(), 100);
   }
 
-  onContentChange() {
+  onContentChange(): void {
     this.isEdited = true;
   }
 
-  onPrint() {
+  onPrint(): void {
     this.container.documentEditor.print();
   }
 
-  onDownload(format: FormatType = 'Docx') {
+  onDownload(format: FormatType = 'Docx'): void {
     this.container.documentEditor.save(this.event.Subject, format);
   }
 
-  onSave(format: FormatType = 'Sfdt') {
+  onSave(format: FormatType = 'Sfdt'): void {
     this.event.Meta.report = this.container.documentEditor.serialize();
 
     this.saveReport.emit(true);
