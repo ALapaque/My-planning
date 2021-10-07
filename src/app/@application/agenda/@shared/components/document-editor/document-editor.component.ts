@@ -30,6 +30,7 @@ export class DocumentEditorComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.container);
   }
 
   onCreate(): void {
