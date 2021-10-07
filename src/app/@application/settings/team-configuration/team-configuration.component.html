@@ -46,7 +46,6 @@
   </nb-card-header>
 
   <nb-card-body>
-
     <div *ngIf="teams$ | async as teams">
       <div gdColumns="repeat(auto-fill, minmax(300px, 1fr))"
            gdColumns.lt-sm="1fr"
@@ -58,6 +57,5 @@
         </app-team-card>
       </div>
     </div>
-
   </nb-card-body>
 </nb-card>

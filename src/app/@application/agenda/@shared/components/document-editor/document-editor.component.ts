@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { DocumentEditorContainerComponent, FormatType, ToolbarService } from '@syncfusion/ej2-angular-documenteditor';
+import {
+  DocumentEditorContainerComponent,
+  FormatType,
+  ToolbarItem,
+  ToolbarService
+} from '@syncfusion/ej2-angular-documenteditor';
 import { AuthService } from '../../../../../@shared/services/auth.service';
 import { LocaleService } from '../../../../@shared/services/locale.service';
 import { SchedulerEvent } from '../../models/scheduler-event.model';
@@ -14,7 +19,7 @@ export class DocumentEditorComponent implements OnInit {
   @Input() event?: SchedulerEvent;
   @Output() saveReport: EventEmitter<true> = new EventEmitter<true>();
   @ViewChild('documenteditor_default') container: DocumentEditorContainerComponent;
-  culture: string = 'fr-BE';
+  toolbarItems: Array<ToolbarItem> = ['New', 'Open', 'Separator', 'Undo', 'Redo', 'Separator', 'Image', 'Table', 'Hyperlink', 'Bookmark', 'TableOfContents', 'Separator', 'Header', 'Footer', 'Break', 'PageSetup'];
   isEdited: boolean = false;
   isFullscreen: boolean = false;
 
