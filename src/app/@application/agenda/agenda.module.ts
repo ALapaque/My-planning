@@ -42,12 +42,12 @@ import { AgendaCalendarBtnComponent } from './@shared/components/agenda-calendar
 import { AgendaFormComponent } from './@shared/components/forms/agenda-form/agenda-form.component';
 import { AgendaFormContentComponent } from './@shared/components/forms/agenda-form/agenda-form-content/agenda-form-content.component';
 // @ts-ignore
-import frVersion from '@syncfusion/ej2-locale/src/fr.json';
+import fr_locale from '@syncfusion/ej2-locale/src/fr.json';
 
 loadCldr(numberingSystems, gregorian, numbers, timeZoneNames);
 L10n.load({
-  'fr-FR': frVersion.fr,
-  'fr-BE': frVersion.fr,
+  'fr-FR': fr_locale.fr,
+  'fr-BE': fr_locale.fr,
 });
 setCulture('fr-BE');
 
