@@ -11,7 +11,7 @@ import {AgendaHelperService} from '../../services/agenda-helper.service';
   styleUrls: ['./event-details.component.scss']
 })
 export class EventDetailsComponent implements OnInit {
-  public event: SchedulerEvent = new SchedulerEvent();
+  event: SchedulerEvent = new SchedulerEvent();
 
   constructor(
     public dialogRef: NbDialogRef<EventDetailsComponent>,

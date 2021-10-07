@@ -18,7 +18,7 @@
               shape="round"
               status="primary"
               [disabled]="!selectedUsers?.length || selectedUsers.length !== 1"
-              (click)="addOrEdit()">
+              (click)="editUser()">
         <nb-icon [icon]="'edit-outline'"></nb-icon>
       </button>
 
@@ -39,7 +39,7 @@
               size="small"
               shape="round"
               status="primary"
-              (click)="addOrEdit()">
+              (click)="addUser()">
         <nb-icon [icon]="'plus-outline'"></nb-icon>
       </button>
     </div>

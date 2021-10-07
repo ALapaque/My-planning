@@ -12,13 +12,13 @@ import { ConfirmDialogComponent } from '../../../../../../@shared/ui-components/
   styleUrls: [ './agenda-calendar-btn.component.scss' ]
 })
 export class AgendaCalendarBtnComponent implements OnInit, OnDestroy {
-  @Input() public agenda!: Agenda;
-  @Input() public index!: number;
+  @Input() agenda!: Agenda;
+  @Input() index!: number;
 
-  @Output() public edit: EventEmitter<Agenda> = new EventEmitter<Agenda>();
-  @Output() public delete: EventEmitter<Agenda> = new EventEmitter<Agenda>();
+  @Output() edit: EventEmitter<Agenda> = new EventEmitter<Agenda>();
+  @Output() delete: EventEmitter<Agenda> = new EventEmitter<Agenda>();
 
-  public contextMenu: {
+  contextMenu: {
     tag: string,
     items: Array<NbMenuItem>
   } = {

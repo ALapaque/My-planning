@@ -3,6 +3,5 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class RightMenuService {
-  public expanded$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
+  expanded$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 }

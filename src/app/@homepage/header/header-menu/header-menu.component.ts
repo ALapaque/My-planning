@@ -3,6 +3,7 @@ import { ActivatedRoute }    from '@angular/router';
 import { NbMenuItem }        from '@nebular/theme';
 import { share }             from 'rxjs/operators';
 import {TranslateService} from '@ngx-translate/core';
+import {Observable} from 'rxjs';
 
 @Component(
   {
@@ -13,11 +14,9 @@ import {TranslateService} from '@ngx-translate/core';
 )
 export class HeaderMenuComponent implements OnInit {
 
-  public menuItems: NbMenuItem[] | undefined = [];
-
-  public mobileMenuItems: NbMenuItem[] | undefined;
-
-  public activeFragment = this._activatedRoute.fragment.pipe(share());
+  menuItems: NbMenuItem[] | undefined = [];
+  mobileMenuItems: NbMenuItem[] | undefined;
+  activeFragment$: Observable<string | null> = this._activatedRoute.fragment.pipe(share());
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -34,7 +33,7 @@ export class HeaderMenuComponent implements OnInit {
    * @param {string} location
    * @param {number} wait
    */
-  public scrollToAnchor(location: string | undefined, wait: number = 250): void {
+  scrollToAnchor(location: string | undefined, wait: number = 250): void {
     if (!location) {
       return;
     }

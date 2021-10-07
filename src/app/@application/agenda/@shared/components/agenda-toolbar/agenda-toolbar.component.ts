@@ -52,13 +52,6 @@ export class AgendaToolbarComponent implements OnInit, OnDestroy {
     );
   }
 
-
-  onViewChange(view: View): void {
-    this.agendaHelperService.currentViewDisplayed = view;
-    console.log(3);
-    this.agendaHelperService.refreshAgenda$.next(true);
-  }
-
   normalViews(): Array<View> {
     return this.agendaHelperService.views.filter((view: string) => !view.toLowerCase().includes('timeline'));
   }
@@ -112,9 +105,5 @@ export class AgendaToolbarComponent implements OnInit, OnDestroy {
     }
     console.log(2);
     this.agendaHelperService.refreshAgenda$.next(true);
-  }
-
-  dateChange($event: Date) {
-    console.log($event);
   }
 }

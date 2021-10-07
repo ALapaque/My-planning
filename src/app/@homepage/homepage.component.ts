@@ -10,10 +10,10 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class HomepageComponent implements OnInit {
 
-  public sections: Array<Section> | undefined;
-  public scrollYPosition: number = 0;
+  sections: Array<Section> | undefined;
+  scrollYPosition: number = 0;
 
-  @ViewChild('nbLayoutHeaderComponent') public nbLayoutHeaderComponent: ElementRef | undefined;
+  @ViewChild('nbLayoutHeaderComponent') nbLayoutHeaderComponent: ElementRef | undefined;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
@@ -23,19 +23,23 @@ export class HomepageComponent implements OnInit {
     this._initSections();
   }
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     this._router.navigate([''], {fragment: 'home'});
   }
 
-  public get displayScrollToTop(): boolean {
+  get displayScrollToTop(): boolean {
     return !!this.scrollYPosition;
   }
 
+  /**
+   * get the actual scroll position to top
+   * @param e
+   */
   @HostListener('window:scroll', ['$event']) onScroll(e: any): void {
     this.scrollYPosition = e.srcElement.scrollingElement.scrollTop;
   }
 
-  private async _initSections() {
+  private async _initSections(): Promise<void> {
     await this._translateService.get('APPNAME').toPromise();
     this.sections = new Array<Section>(
       new Section(

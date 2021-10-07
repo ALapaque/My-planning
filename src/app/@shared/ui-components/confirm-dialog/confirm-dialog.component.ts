@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {NbDialogRef} from '@nebular/theme';
 
-export type ConfirmDialogResult = {
+export interface ConfirmDialogResult {
   confirmed: boolean;
 }
 
@@ -17,11 +17,11 @@ export class ConfirmDialogComponent {
   ) {
   }
 
-  public cancel(): void {
+  cancel(): void {
     this.dialogRef.close();
   }
 
-  public submit(): void {
+  submit(): void {
     this.dialogRef.close({confirmed: true});
   }
 }

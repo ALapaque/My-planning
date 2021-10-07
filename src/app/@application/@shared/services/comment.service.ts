@@ -17,7 +17,7 @@ export class CommentService {
   ) {
   }
 
-  public save(comment: Comment): Observable<Comment> {
+  save(comment: Comment): Observable<Comment> {
     let obs: Observable<Comment>;
     obs = comment.id ? this._update(comment) : this._create(comment);
 

@@ -10,6 +10,9 @@ import { AuthService } from '../../../../@shared/services/auth.service';
 })
 export class LeftMenuComponent implements OnInit {
 
+  /**
+   * contains the menu items
+   */
   items: NbMenuItem[] | undefined;
 
   constructor(

@@ -1,4 +1,4 @@
-import { Component, OnInit, Self } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,8 +15,8 @@ import { ErrorStateMatcher } from '../../@shared/helpers/matchers/error-state-ma
 })
 export class LoginComponent implements OnInit {
 
-  public showPassword: boolean = false;
-  public loginForm: FormGroup = new FormGroup(
+  showPassword: boolean = false;
+  loginForm: FormGroup = new FormGroup(
     {
       usernameOrEmail: new FormControl(null, [ Validators.required ]),
       password: new FormControl(null, [ Validators.required ]),
@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  public login(): void {
+  login(): void {
     this._authService
       .login(this.loginForm.value)
       .subscribe(

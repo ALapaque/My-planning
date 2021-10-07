@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { EventService } from '../../../../../@shared/services/event.service';
 import { SchedulerEvent } from '../../../models/scheduler-event.model';
 import { Comment } from '../../../../../../@shared/models/comment.model';
@@ -6,9 +6,6 @@ import { AuthService } from '../../../../../../@shared/services/auth.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { NbChatComponent, NbStepperComponent } from '@nebular/theme';
 import { CommentService } from '../../../../../@shared/services/comment.service';
-import { Event } from '../../../../../../@shared/models/event.model';
-import { fromEvent } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-event-details-content',
@@ -16,9 +13,9 @@ import { tap } from 'rxjs/operators';
   styleUrls: [ './event-details-content.component.scss' ]
 })
 export class EventDetailsContentComponent {
-  @ViewChild('stepper') public nbStepper: NbStepperComponent;
-  @ViewChild('chat') public nbChat: NbChatComponent;
-  @Input() public event!: SchedulerEvent;
+  @ViewChild('stepper') nbStepper: NbStepperComponent;
+  @ViewChild('chat') nbChat: NbChatComponent;
+  @Input() event!: SchedulerEvent;
 
   constructor(
     public breakpointObserver: BreakpointObserver,
@@ -28,7 +25,7 @@ export class EventDetailsContentComponent {
   ) {
   }
 
-  public isOwner(): boolean {
+  isOwner(): boolean {
     if (this.event.Meta?.agenda?.team) return true;
     return this.event?.Meta?.agenda?.user?.id === this._authService.user.id;
   }

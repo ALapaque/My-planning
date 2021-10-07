@@ -3,9 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { generateCompleteUrl } from '../../../../environments/environment';
-import { Agenda } from '../../../@shared/models/agenda.model';
 import { Team } from '../../../@shared/models/team.model';
-import { User } from '../../../@shared/models/user.model';
 import { AuthService } from '../../../@shared/services/auth.service';
 
 @Injectable({
@@ -20,7 +18,7 @@ export class TeamService {
   ) {
   }
 
-  public getUsersTeams(): Observable<Array<Team>> {
+  getUsersTeams(): Observable<Array<Team>> {
     return this._http.get<Array<Team>>(`${ this._baseUrl }/user/${ this._authService.user.id }`)
       .pipe(
         map((teams: Array<Team>) => teams.map((team: Team) => new Team(team)))
@@ -28,13 +26,13 @@ export class TeamService {
   }
 
 
-  public getTeam(value: number | string): Observable<Team> {
+  getTeam(value: number | string): Observable<Team> {
     return this._http.get<Team>(`${ this._baseUrl }/${ value }`).pipe(
       map((team: Team) => new Team(team))
     );
   }
 
-  public delete(team: Team): Observable<boolean> {
+  delete(team: Team): Observable<boolean> {
     return this._http.delete<boolean>(`${ this._baseUrl }/${ team.id.toString(10) }`);
   }
 

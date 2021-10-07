@@ -41,6 +41,9 @@ export class TemplateComponent implements OnInit, AfterViewInit, OnDestroy {
     this._destroy$.next();
   }
 
+  /**
+   * toggle the left menu
+   */
   public toggle(): void {
     this.nbSidebarService.toggle(true, 'left');
   }

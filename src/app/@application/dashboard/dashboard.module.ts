@@ -9,8 +9,6 @@ import { CardComponent } from './card/card.component';
 import { RecapCardComponent } from './recap-card/recap-card.component';
 import { EventCardContentComponent } from './card/event-card-content/event-card-content.component';
 
-
-
 @NgModule({
   declarations: [
     DashboardComponent,

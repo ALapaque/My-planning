@@ -25,8 +25,11 @@
   <nb-card-body>
     <ejs-documenteditorcontainer #documenteditor_default
                                  [locale]="localeService.locale"
-                                 [enableToolbar]=true
+                                 [enableToolbar]="true"
+                                 [enableComment]="false"
+                                 [toolbarItems]="toolbarItems"
                                  [showPropertiesPane]="false"
+                                 [serviceUrl]="'https://ej2services.syncfusion.com/production/web-services/api/documenteditor/'"
                                  (created)="onCreate()"
                                  (contentChange)="onContentChange()">
     </ejs-documenteditorcontainer>

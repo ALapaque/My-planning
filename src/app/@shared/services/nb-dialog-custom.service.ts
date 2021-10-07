@@ -11,7 +11,7 @@ export class NbDialogCustomService {
   ) {
   }
 
-  public get isFullscreen(): string {
+  get isFullscreen(): string {
     return (this._responsiveService.isMobile) ? 'nebular-dialog-fullscreen' : 'nebular-dialog';
   }
 }

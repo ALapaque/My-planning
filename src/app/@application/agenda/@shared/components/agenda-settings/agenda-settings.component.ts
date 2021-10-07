@@ -10,7 +10,7 @@ import {AgendaHelperService} from '../../services/agenda-helper.service';
 })
 export class AgendaSettingsComponent implements OnInit {
 
-  public form: FormGroup = new FormGroup({});
+  form: FormGroup = new FormGroup({});
 
   constructor(
     public dialogRef: NbDialogRef<AgendaSettingsComponent>,

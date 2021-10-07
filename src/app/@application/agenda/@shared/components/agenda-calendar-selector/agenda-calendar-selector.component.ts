@@ -15,15 +15,15 @@ export interface CalendarCheckedState {
   styleUrls: ['./agenda-calendar-selector.component.scss']
 })
 export class AgendaCalendarSelectorComponent implements OnInit {
-  public agendas$: Observable<Array<Agenda>>;
+  agendas$: Observable<Array<Agenda>>;
 
-  @Input() public expanded: boolean = false;
-  @Input() public getAgendas$: Observable<Array<Agenda>>;
-  @Input() public type!: 'shared' | 'user';
+  @Input() expanded: boolean = false;
+  @Input() getAgendas$: Observable<Array<Agenda>>;
+  @Input() type!: 'shared' | 'user';
 
-  @Output() public editEmitter: EventEmitter<Agenda> = new EventEmitter<Agenda>();
-  @Output() public deleteEmitter: EventEmitter<Agenda> = new EventEmitter<Agenda>();
-  @Output() public checkedOnChange: EventEmitter<CalendarCheckedState> = new EventEmitter<CalendarCheckedState>();
+  @Output() editEmitter: EventEmitter<Agenda> = new EventEmitter<Agenda>();
+  @Output() deleteEmitter: EventEmitter<Agenda> = new EventEmitter<Agenda>();
+  @Output() checkedOnChange: EventEmitter<CalendarCheckedState> = new EventEmitter<CalendarCheckedState>();
 
   constructor(
     private _authService: AuthService,

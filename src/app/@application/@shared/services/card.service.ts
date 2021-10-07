@@ -19,19 +19,23 @@ export class CardService {
   ) {
   }
 
-  public getCards(): Observable<Array<Card>> {
+  getCards(): Observable<Array<Card>> {
     return this._http.get<Array<Card>>(`${ this._baseUrl }`).pipe(
       map((cards: Array<Card>) => cards.map((card: Card) => new Card(card)))
     );
   }
 
-  public getUserCards(): Observable<Array<Card>> {
+  getUserCards(): Observable<Array<Card>> {
     return this._http.get<Array<Card>>(`${ this._baseUrl }/user/${ this._authService.user.id.toString(10) }`).pipe(
       map((cards: Array<Card>) => cards.map((card: Card) => new Card(card)))
     );
   }
 
-  public getRecapIncoming(cardType: CardType): Observable<Array<Event>> {
+  /**
+   * will get the card content for the recap cards
+   * @param cardType
+   */
+  getRecapIncoming(cardType: CardType): Observable<Array<Event>> {
     const params: HttpParams = new HttpParams()
       .set('userId', this._authService.user.id.toString(10))
       .set('type', cardType)
@@ -41,7 +45,11 @@ export class CardService {
     return this._getEventsIncoming(params);
   }
 
-  public getNormalIncoming(cardType: CardType): Observable<Array<Event>> {
+  /**
+   * will get the card content for the normal cards
+   * @param cardType
+   */
+  getNormalIncoming(cardType: CardType): Observable<Array<Event>> {
     const params: HttpParams = new HttpParams()
       .set('userId', this._authService.user.id.toString(10))
       .set('type', cardType)

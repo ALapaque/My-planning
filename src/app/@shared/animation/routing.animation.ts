@@ -1,5 +1,8 @@
 import { animate, group, query, style, transition, trigger } from '@angular/animations';
 
+/**
+ * contains the animations for the routing
+ */
 export const slideInAnimation =
   trigger('routeAnimations', [
     transition('homepage => *', [

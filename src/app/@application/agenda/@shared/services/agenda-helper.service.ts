@@ -25,9 +25,9 @@ export interface WeekDay {
 
 @Injectable()
 export class AgendaHelperService {
-  public refreshAgenda$: BehaviorSubject<true> = new BehaviorSubject<true>(undefined);
-  public isAgendaLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  public ejsSchedule: ScheduleComponent | undefined;
+  refreshAgenda$: BehaviorSubject<true> = new BehaviorSubject<true>(undefined);
+  isAgendaLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  ejsSchedule: ScheduleComponent | undefined;
 
   private _calendarsSelected: Array<number>;
   private _viewDate: Date = new Date();

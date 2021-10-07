@@ -12,9 +12,7 @@ import { AgendaHelperService } from './agenda/@shared/services/agenda-helper.ser
 import { AgendaModule } from './agenda/agenda.module';
 import { ApplicationRouting } from './application.routing';
 import { LeftMenuComponent } from './@core/template/left-menu/left-menu.component';
-import { UserDetailsComponent } from './settings/@shared/components/user-details/user-details.component';
 import { RightMenuComponent } from './@core/template/right-menu/right-menu.component';
-
 
 @NgModule(
   {

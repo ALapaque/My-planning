@@ -13,8 +13,8 @@ import * as moment from 'moment';
 })
 export class EventFormComponent implements AfterViewInit {
 
-  @Input() public event!: SchedulerEvent | undefined;
-  public form: FormGroup = new FormGroup({
+  @Input() event!: SchedulerEvent | undefined;
+  form: FormGroup = new FormGroup({
     eventType: new FormControl('APPOINTMENT', [Validators.required]),
     name: new FormControl(null, [Validators.required]),
     agenda: new FormControl(null, [Validators.required]),

@@ -15,8 +15,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class RegisterComponent implements OnInit {
 
-  public showPassword: boolean = false;
-  public registerForm: FormGroup = new FormGroup(
+  showPassword: boolean = false;
+  registerForm: FormGroup = new FormGroup(
     {
       username: new FormControl(null, [ Validators.required ]),
       email: new FormControl(null, [ Validators.required, Validators.email ]),
@@ -40,11 +40,11 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public navigatePrevious(): void {
+  navigatePrevious(): void {
     this._location.back();
   }
 
-  public register(): void {
+  register(): void {
     this._authService.register(this.registerForm.value).subscribe(
       () => {
         this._toastrService.success('Votre compte a été créé');

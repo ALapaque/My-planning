@@ -7,12 +7,12 @@ import {JwtHelper} from '../models/jwt-helper.model';
 import {environment} from '../../../environments/environment';
 import {User} from '../models/user.model';
 
-
 @Injectable({providedIn: 'root'})
 export class AuthService {
+  user: User;
+
   private jwtHelper$: BehaviorSubject<JwtHelper> = new BehaviorSubject(new JwtHelper());
   private _jwtService: JwtHelperService = new JwtHelperService();
-  public user: User;
 
   constructor(
     private http: HttpClient,
@@ -23,15 +23,15 @@ export class AuthService {
     }
   }
 
-  public get isAdmin(): boolean {
+  get isAdmin(): boolean {
     return this.user?.role?.name?.toLowerCase().includes('admin');
   }
 
-  public get jwtHelper(): JwtHelper {
+  get jwtHelper(): JwtHelper {
     return this.jwtHelper$.getValue();
   }
 
-  public login(loginRequest: { usernameOrEmail: string, password: string }): Observable<JwtHelper> {
+  login(loginRequest: { usernameOrEmail: string, password: string }): Observable<JwtHelper> {
     return this.http.post<{ token: string }>(`${environment.apiUrl}/auth/login`, loginRequest)
       .pipe(
         map((value: { token: string }) => new JwtHelper({token: value.token, isAuthenticated: true, expired: false})),
@@ -46,11 +46,11 @@ export class AuthService {
       );
   }
 
-  public register(registerRequest: { username: string, organization: string, firstName: string, lastName: string, email: string, password: string }): Observable<any> {
+  register(registerRequest: { username: string, organization: string, firstName: string, lastName: string, email: string, password: string }): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/auth/register`, registerRequest);
   }
 
-  public logout() {
+  logout(): void {
     // remove elements from local storage to log user out
     sessionStorage.removeItem('jwtHelper');
     this.jwtHelper$.next(new JwtHelper());

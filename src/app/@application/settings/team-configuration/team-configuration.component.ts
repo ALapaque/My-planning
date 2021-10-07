@@ -1,22 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { NbDialogService } from '@nebular/theme';
-import { TranslateService } from '@ngx-translate/core';
-import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { Team } from '../../../@shared/models/team.model';
-import { User } from '../../../@shared/models/user.model';
-import { AuthService } from '../../../@shared/services/auth.service';
-import { NbDialogCustomService } from '../../../@shared/services/nb-dialog-custom.service';
-import { ConfirmDialogComponent } from '../../../@shared/ui-components/confirm-dialog/confirm-dialog.component';
-import { TeamFormComponent } from '../@shared/components/form/team-form/team-form.component';
-import { TeamDetailsComponent } from '../@shared/components/team-details/team-details.component';
-import { TeamService } from '../../@shared/services/team.service';
+import {Component, OnInit} from '@angular/core';
+import {NbDialogService} from '@nebular/theme';
+import {TranslateService} from '@ngx-translate/core';
+import {ToastrService} from 'ngx-toastr';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
+import {Team} from '../../../@shared/models/team.model';
+import {AuthService} from '../../../@shared/services/auth.service';
+import {NbDialogCustomService} from '../../../@shared/services/nb-dialog-custom.service';
+import {ConfirmDialogComponent} from '../../../@shared/ui-components/confirm-dialog/confirm-dialog.component';
+import {TeamFormComponent} from '../@shared/components/form/team-form/team-form.component';
+import {TeamDetailsComponent} from '../@shared/components/team-details/team-details.component';
+import {TeamService} from '../../@shared/services/team.service';
 
 @Component({
   selector: 'app-team-configuration',
   templateUrl: './team-configuration.component.html',
-  styleUrls: [ './team-configuration.component.scss' ]
+  styleUrls: ['./team-configuration.component.scss']
 })
 export class TeamConfigurationComponent implements OnInit {
   teams$: Observable<Array<Team>>;
@@ -58,27 +57,30 @@ export class TeamConfigurationComponent implements OnInit {
 
   }
 
-  addOrEdit(): void {
-    if (!!this.selectedTeams.length) {
-      this._teamService
-        .getTeam(this.selectedTeams[0].id)
-        .pipe(
-          tap((teamComplete: Team) => {
-            this._openForm(teamComplete);
-          })
-        )
-        .subscribe();
-    } else {
-      this._openForm(new Team({
-        users: [ this._authService.user ]
-      }));
-    }
+  addTeam(): void {
+    this._openForm(new Team({
+      users: [this._authService.user]
+    }));
+  }
+
+  editTeam(): void {
+    if (!this.selectedTeams.length) return;
+
+    this._teamService
+      .getTeam(this.selectedTeams[0].id)
+      .pipe(
+        tap((teamComplete: Team) => {
+          this._openForm(teamComplete);
+        })
+      )
+      .subscribe();
+
   }
 
   delete(): void {
     this._nbDialogService
       .open(ConfirmDialogComponent,
-        { dialogClass: this._nbDialogCustomService.isFullscreen })
+        {dialogClass: this._nbDialogCustomService.isFullscreen})
       .onClose
       .subscribe((result: { confirmed: boolean }) => {
         if (!result.confirmed) return;

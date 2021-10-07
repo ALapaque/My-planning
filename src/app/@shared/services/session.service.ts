@@ -42,7 +42,7 @@ export class SessionService {
     return this._locale;
   }
 
-  public registerCulture(culture: Locale): void {
+  registerCulture(culture: Locale): void {
     if (!culture) {
       return;
     }

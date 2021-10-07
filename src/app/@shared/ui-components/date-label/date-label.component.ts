@@ -15,7 +15,7 @@ export class DateLabelComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public isSameDay(): boolean {
+  isSameDay(): boolean {
     return moment(this.startDate).isSame(this.endDate, 'day');
   }
 

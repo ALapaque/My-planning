@@ -21,10 +21,10 @@ import { UserService } from '../../../../../../@shared/services/user.service';
   styleUrls: [ './agenda-form-content.component.scss' ]
 })
 export class AgendaFormContentComponent implements OnInit, OnDestroy {
-  @ViewChild('stepper') public nbStepper: NbStepperComponent;
-  @ViewChild('colorInput') public colorInput: HTMLInputElement;
-  @Input() public agenda!: Agenda;
-  @Input() public form!: FormGroup;
+  @ViewChild('stepper') nbStepper: NbStepperComponent;
+  @ViewChild('colorInput') colorInput: HTMLInputElement;
+  @Input() agenda!: Agenda;
+  @Input() form!: FormGroup;
 
   teams$: Observable<Array<Team>>;
 
@@ -71,6 +71,7 @@ export class AgendaFormContentComponent implements OnInit, OnDestroy {
   onSharedUserAdd({ value, input }: NbTagInputAddEvent): void {
     if (value && value !== this._authService.user.username) {
       const sharedUsers: Array<User> = this.form.value.sharedUsers;
+
       this._userService.getUser(value)
         .pipe(
           takeUntil(this._destroy$),

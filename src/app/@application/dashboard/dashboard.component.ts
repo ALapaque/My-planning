@@ -9,7 +9,7 @@ import { CardService } from '../@shared/services/card.service';
   styleUrls: [ './dashboard.component.scss' ]
 })
 export class DashboardComponent implements OnInit {
-  public cards$: Observable<Array<Card>>;
+  cards$: Observable<Array<Card>>;
 
   constructor(
     private _cardService: CardService,

@@ -21,8 +21,8 @@ import { AgendaFormComponent } from '../forms/agenda-form/agenda-form.component'
   styleUrls: [ './agenda-sidebar.component.scss' ]
 })
 export class AgendaSidebarComponent implements OnInit, OnDestroy {
-  public agendas$: Observable<Array<Agenda>>;
-  public sharedAgendas$: Observable<Array<Agenda>>;
+  agendas$: Observable<Array<Agenda>>;
+  sharedAgendas$: Observable<Array<Agenda>>;
 
   private _calendarsSelected: Array<number>;
   private _destroy$: Subject<any> = new Subject<any>();
