@@ -41,7 +41,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     AppRouting,
     BrowserAnimationsModule,
     HttpClientModule,
-    NbThemeModule.forRoot({ name: 'default' }),
+    NbThemeModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {

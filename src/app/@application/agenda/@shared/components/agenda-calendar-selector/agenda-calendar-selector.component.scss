@@ -16,5 +16,5 @@
 }
 
 ::ng-deep nb-checkbox.status-basic .native-input:disabled ~ .text {
-  color: nb-theme(color-basic-800) !important;
+  color: red !important;
 }

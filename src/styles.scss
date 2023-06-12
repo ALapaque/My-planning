@@ -32,12 +32,12 @@ html body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: nb-theme(color-primary-400);
+  background: red;
   border-radius: 15px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: nb-theme(color-primary-400);
+  background: red;
 }
 
 ::-webkit-scrollbar-track {

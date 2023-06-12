@@ -8,7 +8,7 @@
 
       span {
         &.in-progress {
-          color: nb-theme(color-danger-default);
+          color: red;
           font-weight: bold;
         }
       }

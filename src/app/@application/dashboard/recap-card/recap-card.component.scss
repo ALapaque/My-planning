@@ -5,14 +5,14 @@
     padding: 12px 30px;
     border-radius: 25px;
     height: auto;
-    color: nb-theme(text-basic-color);
+    color: red;
     @extend .full-width;
 
     &.success {
-      background: nb-theme(color-success-default);
+      background: red;
     }
     &:not(.success) {
-      background: nb-theme(color-primary-default);
+      background: red;
     }
 
     .title {

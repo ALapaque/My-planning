@@ -30,19 +30,19 @@
         height: 2px;
         left: 50%;
         position: absolute;
-        background: nb-theme(text-primary-color);
+        background: red;
         transition: width 0.3s ease 0s, left 0.3s ease 0s;
         width: 0;
       }
 
       a:hover {
-        color: nb-theme(text-primary-color);
+        color: red;
       }
 
       a.active {
-        color: nb-theme(text-primary-color);
+        color: red;
         &:after {
-          background: nb-theme(text-primary-color);
+          background: red;
           width: 100%;
           left: 0;
         }

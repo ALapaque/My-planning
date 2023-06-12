@@ -9,12 +9,12 @@
     clip-path: polygon(0 0, 100% 0%, 100% 94%, 0% 100%);
 
     &.even {
-      background: nb-theme(color-primary-400);
+      background: red;
       color: white;
     }
 
     &.odd {
-      color: nb-theme(color-primary-400);
+      color: red;
     }
 
     h1 {

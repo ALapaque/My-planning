@@ -10,10 +10,10 @@ nb-checkbox:hover {
 /* OVERRIDE OF ngx-toastr style */
 div.toast-container {
   div.ngx-toastr {
-    color: nb-theme(text-basic-color);
+    color: red;
 
     &.toast-success {
-      background-color: nb-theme(color-success-default);
+      background-color: red;
       background-image: none;
       color: inherit;
 
@@ -27,7 +27,7 @@ div.toast-container {
     }
 
     &.toast-warn {
-      background-color: nb-theme(color-warning-default);
+      background-color: red;
       background-image: none;
       color: inherit;
 
@@ -41,7 +41,7 @@ div.toast-container {
     }
 
     &.toast-info {
-      background-color: nb-theme(color-info-default);
+      background-color: red;
       background-image: none;
       color: inherit;
 
@@ -55,7 +55,7 @@ div.toast-container {
     }
 
     &.toast-error {
-      background-color: nb-theme(color-danger-default);
+      background-color: red;
       background-image: none;
       color: inherit;
 

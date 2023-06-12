@@ -1,3 +1,5 @@
+@use '../../../themes' as *;
+
 nb-card {
   margin: 0;
 
@@ -31,7 +33,7 @@ nb-card {
 
     ::ng-deep nb-actions {
       nb-action {
-        color: nb-theme(text-basic-color);
+        color: red;
 
         &:first-child {
           nb-badge {

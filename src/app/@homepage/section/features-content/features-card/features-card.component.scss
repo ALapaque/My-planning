@@ -2,10 +2,10 @@
 
 :host ::ng-deep {
   .card {
-    background-color: nb-theme(color-primary-400);
+    background-color: red;
     height: 200px;
     border-radius: 20px;
-    box-shadow: 0 0 30px rgba(nb-theme(color-primary-400), 0.18);
+    box-shadow: 0 0 30px rgba(red, 0.18);
     color: #ffffff;
 
     .container {

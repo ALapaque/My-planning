@@ -19,28 +19,28 @@
         transition: all 1s ease-in-out;
 
         app-header-app-name {
-          color: nb-theme(color-primary-400);
+          color: red;
         }
 
         app-header-menu {
           ul {
             li {
               a {
-                color: nb-theme(color-primary-400);
+                color: red;
                 transition: all 1s ease-in-out;
               }
 
               a:after {
-                background: nb-theme(color-primary-400);
+                background: red;
               }
 
               a:hover {
-                color: nb-theme(color-primary-600);
+                color: red;
               }
 
               a.active {
                 transition: all 1s ease-in-out;
-                color: nb-theme(color-primary-400);
+                color: red;
               }
             }
           }
@@ -48,7 +48,7 @@
       }
 
       &.transparent {
-        background-color: nb-theme(color-primary-400);
+        background-color: red;
 
         app-header-app-name {
           div {
