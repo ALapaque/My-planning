@@ -32,7 +32,7 @@ export class AgendaContainerComponent implements OnInit, AfterViewInit, OnDestro
   }
 
   ngOnDestroy(): void {
-    this._destroy$.next();
+    this._destroy$.next(true);
     this._rightMenuService.expanded$.next(false);
   }
 

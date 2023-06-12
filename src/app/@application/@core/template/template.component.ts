@@ -38,7 +38,7 @@ export class TemplateComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this._destroy$.next();
+    this._destroy$.next(true);
   }
 
   /**

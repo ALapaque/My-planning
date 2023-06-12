@@ -28,7 +28,7 @@ export class EventCardContentComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this._destroy$.next();
+    this._destroy$.next(true);
   }
 
   public isInProgress(event: Event): boolean {

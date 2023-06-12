@@ -35,7 +35,7 @@ export class AgendaToolbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this._destroy$.next();
+    this._destroy$.next(true);
   }
 
   navigatePrevious(): void {

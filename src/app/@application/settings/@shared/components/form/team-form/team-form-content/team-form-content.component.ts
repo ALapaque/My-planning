@@ -34,7 +34,7 @@ export class TeamFormContentComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this._destroy$.next();
+    this._destroy$.next(true);
   }
 
   checkFieldForError(fieldName: string): boolean | undefined {

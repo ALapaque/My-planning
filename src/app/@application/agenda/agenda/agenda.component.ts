@@ -79,7 +79,7 @@ export class AgendaComponent implements AfterViewInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this._destroy.next();
+    this._destroy.next(true);
     this.agendaHelperService.refreshAgenda$.next(undefined);
   }
 

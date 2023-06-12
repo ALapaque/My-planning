@@ -31,7 +31,6 @@ const routes: Routes = [
       onSameUrlNavigation: 'ignore',
       scrollPositionRestoration: 'enabled',
       anchorScrolling: 'enabled',
-      relativeLinkResolution: 'legacy',
       preloadingStrategy: PreloadAllModules,
     },
   )],

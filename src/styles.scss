@@ -1,8 +1,5 @@
 @import 'helper';
-@import 'theme/theme.scss';
 @import 'theme/nebular-override';
-
-@import '~@nebular/theme/styles/globals';
 
 @import '../node_modules/ngx-toastr/toastr.css';
 
@@ -23,10 +20,6 @@
 @import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
 @import '../node_modules/@syncfusion/ej2-angular-documenteditor/styles/material.css';
 
-
-@include nb-install() {
-  @include nb-theme-global();
-}
 
 html body {
   font-family: 'Manrope', sans-serif;

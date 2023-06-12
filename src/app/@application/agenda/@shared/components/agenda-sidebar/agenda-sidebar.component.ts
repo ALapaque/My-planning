@@ -47,7 +47,7 @@ export class AgendaSidebarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this._destroy$.next();
+    this._destroy$.next(true);
   }
 
   calendarSelectedOnChange($event: CalendarCheckedState): void {
