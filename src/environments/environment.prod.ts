@@ -1,6 +1,6 @@
 export const environment = {
-  apiUrl: 'https://my-planning-backend.amaury-lapaque.io',
-  apiUrlSuffix: '/api',
+  apiUrl: 'http://my-planning-backend.amaury-lapaque.io',
+  apiUrlSuffix: '',
   production: true,
 };
 

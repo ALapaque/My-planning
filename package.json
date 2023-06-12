@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --watch",
+    "start:prod": "ng serve --prod",
     "build": "ng build --configuration=production",
     "build:test": "npm run build & http-server -p 4201 -c-1 dist/My-planning",
     "test": "ng test",
