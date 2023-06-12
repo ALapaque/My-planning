@@ -1,7 +1,7 @@
 export const environment = {
-  apiUrl: 'http://amaury.must.be:32768',
+  apiUrl: 'https://my-planning-backend.amaury-lapaque.io',
   apiUrlSuffix: '/api',
-  production: false,
+  production: true,
 };
 
 export function generateCompleteUrl(): string {
